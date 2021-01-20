@@ -43,7 +43,7 @@ namespace MyGame
             {
                 Margin = new Thickness(0),
                 Orientation = Orientation.Horizontal,
-            };
+            }; 
             Dictionary<int, User> users = Db.GetAllUsers();
             foreach(var user in users)
             {
