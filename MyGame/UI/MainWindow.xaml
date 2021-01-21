@@ -1,9 +1,9 @@
-﻿<Window x:Class="MyGame.MainWindow"
+﻿<Window x:Class="Ranks.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MyGame"
+        xmlns:local="clr-namespace:Ranks"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         
         Title="MainWindow" Height="616" Width="873" ResizeMode="CanMinimize" WindowStyle="None">

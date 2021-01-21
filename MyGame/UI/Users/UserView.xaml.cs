@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MyGame
+namespace Ranks
 {
     /// <summary>
     /// Логика взаимодействия для UserView.xaml

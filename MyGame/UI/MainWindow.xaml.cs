@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MyGame
+namespace Ranks
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -59,8 +59,13 @@ namespace MyGame
                     GridMain.Children.Add(usc);
                     break;
                 case Layouts.Profile:
-                    User user = Db.GetUser(id);
-                    AddUser addUser = new AddUser(user);
+                    AddUser addUser;
+                    if (id != -1)
+                    {
+                        User user = Db.GetUser(id);
+                         addUser = new AddUser(user);
+                    }
+                    else addUser = new AddUser();
                     addUser.GotoDef += GotoDef;
                     GridMain.Children.Add(addUser);
                     break;

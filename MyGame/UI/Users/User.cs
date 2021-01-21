@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
-namespace MyGame
+namespace Ranks
 {
     public class User : EventArgs 
     {

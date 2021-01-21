@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MyGame
+namespace Ranks
 {
     static class Db
     {
@@ -63,7 +63,6 @@ namespace MyGame
             string sqlQuery = $"SELECT * FROM Users WHERE (id = {id})";
             m_sqlCmd = new SQLiteCommand(sqlQuery, m_dbConn);
             rdr = m_sqlCmd.ExecuteReader();
-            Console.Write("Получен пользователь --- ");
             if (rdr.Read())
             {
                 User user = new User
@@ -90,7 +89,6 @@ namespace MyGame
             string sqlQuery = $"INSERT INTO Users (name,sec_name,user_group,rank,is_admin,pass,pic,about) VALUES ('{user.name}','{user.sec_name}','{user.user_group}',{user.rank},{user.is_admin},'{user.pass}','{user.pic}','{user.about}')";
             m_sqlCmd = new SQLiteCommand(sqlQuery, m_dbConn);
             rdr = m_sqlCmd.ExecuteReader();
-            Console.WriteLine($"Создан пользователь :: {user.ToString()}");
         }
         /// <summary>
         /// Обновляет пользователя
@@ -100,7 +98,6 @@ namespace MyGame
             string sqlQuery = $"UPDATE Users SET name = '{user.name}',sec_name = '{user.sec_name}',user_group = '{user.user_group}',rank = {user.rank},is_admin = {user.is_admin},pass = '{user.pass}',pic = '{user.pic}',about = '{user.about}' WHERE id = {user.id}";
             m_sqlCmd = new SQLiteCommand(sqlQuery, m_dbConn);
             rdr = m_sqlCmd.ExecuteReader();
-            Console.WriteLine($"Обновлен :: {user.ToString()}");
         }
         /// <summary>
         /// Удаляет пользователя
