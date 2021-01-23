@@ -45,6 +45,7 @@ namespace Ranks
                 Orientation = Orientation.Horizontal,
             }; 
             Dictionary<int, User> users = Db.GetAllUsers();
+
             foreach(var user in users)
             {
                 if(userRow.Children.Count > 3)
@@ -78,7 +79,7 @@ namespace Ranks
             userInf.Visibility = Visibility.Visible;
             userInf.VerticalAlignment = VerticalAlignment.Top;
         }
-        private void userPic_MouseLeave(object sender, MouseEventArgs e)
+        private void userPic_MouseLeave(object sender, MouseEventArgs e)//ана может запустить ну тип ты можеш посмотреть анимацию какую ана запускает)
         {
             Button bt = sender as Button;
             Image userPic = (Image)GetByUid(bt, "userPic");

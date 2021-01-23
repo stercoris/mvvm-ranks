@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Rangi.UI.Groups.Groups"
+﻿<UserControl x:Class="Ranks.Groups"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,42 +8,17 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="450" d:DesignWidth="800" Height="570" Width="818">
     <UserControl.Resources>
-        <ResourceDictionary>
 
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-            <ControlTemplate x:Key="MyButton" TargetType="{x:Type Button}">
-                <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                    <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                </Border>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsDefaulted" Value="True">
-                        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                    </Trigger>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Opacity" TargetName="border" Value="0.8"/>
-                    </Trigger>
-                    <Trigger Property="IsPressed" Value="True">
-                        <Setter Property="Opacity" TargetName="border" Value="0.5"/>
-                    </Trigger>
-                    <Trigger Property="ToggleButton.IsChecked" Value="True">
-                        <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
-                        <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
-                    </Trigger>
-                    <Trigger Property="IsEnabled" Value="False">
-                        <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
-                        <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
-                        <Setter Property="Foreground" Value="#FF838383"/>
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
-        </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
-        
+    <Grid Background="White">
+        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Disabled"  Name="scroll" Padding="25,0,0,0" Margin="0,60,0,66">
+            <StackPanel  Name="GroupListView"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+
+
+        </ScrollViewer>
+        <Button Background="#135BAB" Width="140" Margin="668,528,10,10" Click="Button_Click" >
+            Добавить
+        </Button>
+        <Label Content="Список групп" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" FontSize="36"/>
     </Grid>
 </UserControl>

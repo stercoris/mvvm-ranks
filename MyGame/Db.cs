@@ -234,6 +234,16 @@ namespace Ranks
             else return ("Хз, сбой");
         }
 
+
+
+        static public void AddGroup(string groupName)
+        {
+            string sqlQuery = $"INSERT INTO groups (name) VALUES ('{groupName}')";
+            m_sqlCmd = new SQLiteCommand(sqlQuery, m_dbConn);
+            rdr = m_sqlCmd.ExecuteReader();
+        }
+
+
         /// <summary>
         /// Получает ID через имя группы
         /// </summary>

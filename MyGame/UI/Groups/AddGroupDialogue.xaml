@@ -4,15 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ranks"
-             mc:Ignorable="d" d:DesignWidth="300" Padding="0" Background="White" BorderThickness="2" BorderBrush="#135BAB" Height="130.571">
+             mc:Ignorable="d" d:DesignWidth="300" Padding="0" Background="White" BorderThickness="2" BorderBrush="#135BAB" Height="144.895">
     <StackPanel Orientation="Vertical">
         <Label Foreground="Black" FontSize="19">Введите название новой группы</Label>
-        <TextBox Name="nameBox" HorizontalAlignment="Left" Margin="10" Height="30" Width="270" FontSize="20" BorderBrush="#135BAB"/>
-        <StackPanel Orientation="Horizontal">
+        <TextBox Name="nameBox" HorizontalAlignment="Left" Margin="10,10,0,10" Height="39" Width="270" FontSize="20" BorderBrush="#135BAB"/>
+        <StackPanel Orientation="Horizontal" Height="41">
             <Button Width="140" Margin="4" Background="IndianRed" BorderBrush="IndianRed">
                 Отмена
             </Button>
-            <Button Width="140" Margin="4">
+            <Button Background="#135BAB" Width="140" Margin="4" Click="Button_Click_2">
                 Добавить
             </Button>
 

@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 namespace Ranks
 {
-    /// <summary>
+    
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
@@ -74,6 +74,9 @@ namespace Ranks
                     GridMain.Children.Add(rank);
                     break;
                 case Layouts.Groups:
+                    Groups groups = new Groups();
+                    GridMain.Children.Add(groups);
+
                     break;
                 default:
                     break;
