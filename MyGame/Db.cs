@@ -205,16 +205,23 @@ namespace Ranks
         /// 
         /// </summary>
         /// <returns></returns>
-        static public List<string> GetGroups()
+        static public List<Group> GetGroups()
         {
             string sqlQuery = $"SELECT * FROM groups";
             m_sqlCmd = new SQLiteCommand(sqlQuery, m_dbConn);
             rdr = m_sqlCmd.ExecuteReader();
-            List<string> groups = new List<string> { };
+            
+            List<Group> groups = new List<Group> { };
             while (rdr.Read())
             {
-                groups.Add(rdr["name"].ToString());
+                Group gr = new Group();
+                gr.group = rdr["name"].ToString();
+                gr.pic = rdr["pic"].ToString();
+                
+                groups.Add(gr);
+
             }
+            
             return (groups);
         }
         /// <summary>
@@ -236,9 +243,9 @@ namespace Ranks
 
 
 
-        static public void AddGroup(string groupName)
+        static public void AddGroup(string groupName, string img)
         {
-            string sqlQuery = $"INSERT INTO groups (name) VALUES ('{groupName}')";
+            string sqlQuery = $"INSERT INTO groups (name, pic) VALUES ('{groupName}', '{img}')";
             m_sqlCmd = new SQLiteCommand(sqlQuery, m_dbConn);
             rdr = m_sqlCmd.ExecuteReader();
         }

@@ -18,11 +18,15 @@ namespace Ranks
     /// <summary>
     /// Логика взаимодействия для AddGroupDialogue.xaml
     /// </summary>
-    public partial class AddGroupDialogue : UserControl
+    
+    public partial class AddGroupDialogue : Window
     {
+        bool isImg = false;
+        string loadedImg = "";
         public AddGroupDialogue()
         {
             InitializeComponent();
+            
            
         }
 
@@ -38,8 +42,31 @@ namespace Ranks
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if(nameBox.Text != "" && nameBox.Text.Length < 6) Db.AddGroup(nameBox.Text);
-            
+            if(isImg) 
+                Db.AddGroup(nameBox.Text, loadedImg);
+            else
+                if (nameBox.Text != "" && nameBox.Text.Length < 6) 
+                    Db.AddGroup(nameBox.Text, "");
+            this.Close();
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void AddImageClick(object sender, RoutedEventArgs e)
+        {
+            isImg = true;
+            var dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.Filter =
+                "Image Files (*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            if ((bool)dialog.ShowDialog())
+            {
+                loadedImg = Group.picToBase64(new BitmapImage(new Uri(dialog.FileName)));
+                GroupPic.Source = new BitmapImage(new Uri(dialog.FileName));
+            }
         }
     }
 }

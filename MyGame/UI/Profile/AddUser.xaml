@@ -19,7 +19,7 @@
                     <DropShadowEffect BlurRadius="3" Opacity="0.2"/>
                 </Image.Effect>
             </Image>
-            <Button x:Name="addPhoto" Margin="0,10,-2,0" Background="#135BAB" BorderBrush="{x:Null}" Click="AddImageClick" Content="Нажмите для загрузки фото"/>
+            <Button x:Name="addPhoto" Margin="0,10,-2,0" Background="#135BAB" BorderBrush="{x:Null}" Click="AddImageClick" Content="Загрузить фото"/>
         </StackPanel>
         <Button Template="{DynamicResource MyButton}" x:Name="RankUp" Background="#135BAB" BorderBrush="{x:Null}" Click="AddOne" BorderThickness="0" Foreground="White" Padding="0" Width="100" Height="100" Margin="337,305,381,165">
             <materialDesign:PackIcon  Kind="ArrowTop" Width="100" Height="100" />

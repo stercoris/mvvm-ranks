@@ -31,8 +31,8 @@ namespace Ranks
 
             InitializeComponent();
             List<string> grouplist = new List<string> { };
-            foreach (var groupname in Db.GetGroups())
-                    grouplist.Add(groupname);
+            foreach (var item in Db.GetGroups())
+                grouplist.Add(item.group);
             groupList.ItemsSource = grouplist;
             groupList.SelectedIndex = 0;
             DrawUsers("aa");

@@ -94,8 +94,12 @@
     <Compile Include="UI\Groups\AddGroupDialogue.xaml.cs">
       <DependentUpon>AddGroupDialogue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Groups\Group.cs" />
     <Compile Include="UI\Groups\Groups.xaml.cs">
       <DependentUpon>Groups.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Groups\GroupView.xaml.cs">
+      <DependentUpon>GroupView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Profile\AddUser.xaml.cs">
       <DependentUpon>AddUser.xaml</DependentUpon>
@@ -120,6 +124,10 @@
     <Page Include="UI\Groups\Groups.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Groups\GroupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Profile\AddUser.xaml">
       <SubType>Designer</SubType>

@@ -31,14 +31,14 @@ namespace Ranks
         void DrawGroups()
         {
             
-            List<string> groups = Db.GetGroups();
+            List<Group> groups = Db.GetGroups();
             StackPanel GroupRow = new StackPanel()
             {
                 Margin = new Thickness(0),
                 Orientation = Orientation.Horizontal,
             };
             var converter = new BrushConverter();
-            foreach (var item in groups)
+            foreach (var group in groups)
             {
                 if (GroupRow.Children.Count > 3)
                 {
@@ -49,13 +49,10 @@ namespace Ranks
                         Orientation = Orientation.Horizontal,
                     };
                 }
-                TextBlock printTextBlock = new TextBlock() { 
-                    Height = 50,
-                    Width = 100,
-                    Background = (Brush)converter.ConvertFromString("Yellow")
-                };
-                printTextBlock.Text = item;
-                GroupRow.Children.Add(printTextBlock);
+                GroupView view = new GroupView(group);
+                //view.GroupChoice += click_ChangeUser;
+                GroupRow.Children.Add(view);
+               
             }
             if (!GroupListView.Children.Contains(GroupRow))
             {
@@ -66,11 +63,10 @@ namespace Ranks
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddGroupDialogue addGroups = new AddGroupDialogue(){
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center
-            };
-            this.ShowDialog(addGroups);
+            AddGroupDialogue addGroups = new AddGroupDialogue();
+            //this.IsEnabled = false;
+            addGroups.Top = 400;
+            addGroups.Show();   
             //GroupListView.Children.Clear();
             //GroupListView.Children.Add(addGroups);
 
