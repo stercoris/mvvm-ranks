@@ -18,7 +18,7 @@ namespace Ranks
     /// <summary>
     /// Логика взаимодействия для RankList.xaml
     /// </summary>
-    public partial class RankList : UserControl
+    public partial class RankList : Frame
     {
         public RankList()
         {

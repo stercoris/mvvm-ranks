@@ -25,66 +25,17 @@ namespace Ranks
         {
             InitializeComponent();
             Db.OpenConnect("users.db");
-            User user = new User();
             layoutBtn = (Button)FindName("def");
-            PageChange(layoutBtn, null);
+            GotoPage(Layouts.Ranks);
         }
 
         //Событие срабатывает при нажатии на кнопки слева
         private void PageChange(object sender, RoutedEventArgs e)
         {
-            ChangeLayout(Convert.ToInt32((sender as Button).Uid));
-        }
-        //Событие срабатывает при нажатии на иконку пользователя и приводит к страничке редактирования
-        private void GotoDef(object sender, EventArgs e)
-        {
-            ChangeLayout(Layouts.Users);
-        }
-        //Событие срабатывает при добавлении или удалении пользователя
-        private void GotoUser(object sender, EventArgs e)
-        {
-            int id = Convert.ToInt32((sender as UserControl).Uid);
-            ChangeLayout(Layouts.Profile, id);
-        }
-        //Меняет слой на нужный
-        private void ChangeLayout(int uid, int id = -1)
-        {
-            Change_Color(uid);
-            GridMain.Children.Clear();
-            switch (uid)
-            {
-                case Layouts.Users:
-                    Users usc = new Users();
-                    usc.ChangeUser += GotoUser;
-                    GridMain.Children.Add(usc);
-                    break;
-                case Layouts.Profile:
-                    AddUser addUser;
-                    if (id != -1)
-                    {
-                        User user = Db.GetUser(id);
-                         addUser = new AddUser(user);
-                    }
-                    else addUser = new AddUser();
-                    addUser.GotoDef += GotoDef;
-                    GridMain.Children.Add(addUser);
-                    break;
-                case Layouts.Ranks:
-                    RankList rank = new RankList();
-                    GridMain.Children.Add(rank);
-                    break;
-                case Layouts.Groups:
-                    Groups groups = new Groups();
-                    GridMain.Children.Add(groups);
-
-                    break;
-                default:
-                    break;
-            }
+            GotoPage((Layouts)Convert.ToInt32((sender as Button).Uid));
         }
 
-
-        //Меняет цввет выбранной ячейки
+        //Меняет цвет выбранной ячейки
         private void Change_Color(int uid)
         {
             var converter = new BrushConverter();
@@ -110,6 +61,7 @@ namespace Ranks
         {
             this.DragMove();
         }
+
         public static UIElement GetByUid(DependencyObject rootElement, string uid)
         {
             foreach (UIElement element in LogicalTreeHelper.GetChildren(rootElement).OfType<UIElement>())
@@ -122,13 +74,57 @@ namespace Ranks
             }
             return null;
         }
+
+        void GotoPage(Layouts page)
+        {
+            Change_Color(Convert.ToInt32(page));
+            GridMain.Children.Clear();
+            Frame next_frame;
+            switch (page)
+            {
+                case Layouts.Users:
+                    next_frame = new Users();
+                    break;
+                case Layouts.Profile:
+                    next_frame = new Profile();
+                    break;
+                case Layouts.Ranks:
+                    next_frame = new RankList();
+                    break;
+                case Layouts.Groups:
+                    next_frame = new Groups();
+                    break;
+                default:
+                    return;
+            }
+            next_frame.PageChanging += GotoPage;
+            next_frame.UserChanging += GotoUser;
+            next_frame.GroupUsersChanging += GotoGroupUsers;
+            GridMain.Children.Add(next_frame);
+        }
+
+        void GotoUser(int userid)
+        {
+            Profile user = new Profile(Db.GetUser(userid));
+            Change_Color(Convert.ToInt32(Layouts.Profile));
+            GridMain.Children.Clear();
+            GridMain.Children.Add(user);
+        }
+        void GotoGroupUsers(int groupid)
+        {
+            Users user = new Users(groupid);
+            Change_Color(Convert.ToInt32(Layouts.Profile));
+            GridMain.Children.Clear();
+            GridMain.Children.Add(user);
+        }
     }
 
-    static class Layouts
+    public enum Layouts
     {
-        public const int Users = 1;
-        public const int Profile = 2;
-        public const int Ranks = 3;
-        public const int Groups = 4;
+        Users = 1,
+        Profile = 2,
+        Ranks = 3,
+        Groups = 4,
+        Games = 5,
     }
 }

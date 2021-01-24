@@ -21,32 +21,37 @@ namespace Ranks
     /// <summary>
     /// Логика взаимодействия для Users.xaml
     /// </summary>
-    public partial class Users : UserControl
+    public partial class Users : Frame
     {
-        [Browsable(true)] [Category("Action")]
-        [Description("On user click")]
-        public event EventHandler ChangeUser;
-        public Users()
+        bool isGroupSelected = true;
+        public Users(int selectedGroup = -1)
         {
-
             InitializeComponent();
-            List<string> grouplist = new List<string> { };
-            foreach (var item in Db.GetGroups())
-                grouplist.Add(item.group);
-            groupList.ItemsSource = grouplist;
-            groupList.SelectedIndex = 0;
-            DrawUsers("aa");
-        }
-        void DrawUsers(string Group)
+            SetupGroupList();
+            if(selectedGroup != -1)
+                DrawUsers(selectedGroup);
+            else
+            {
+                isGroupSelected = false;
+                DrawUsers();
+            }
+        }   
+        void DrawUsers(int group = -1)
         {
             StackPanel userRow = new StackPanel()
             {
                 Margin = new Thickness(0),
                 Orientation = Orientation.Horizontal,
-            }; 
-            Dictionary<int, User> users = Db.GetAllUsers();
+            };
 
-            foreach(var user in users)
+            List<User> users;
+
+            if (isGroupSelected)
+                users = Db.GetAllUsers().FindAll(user => user.user_group != group);
+            else
+                users = Db.GetAllUsers();
+
+            foreach (var user in users)
             {
                 if(userRow.Children.Count > 3)
                 {
@@ -57,7 +62,7 @@ namespace Ranks
                         Orientation = Orientation.Horizontal,
                     };
                 }
-                UserView view = new UserView(user.Value);
+                UserView view = new UserView(user);
                 view.UserChoice += click_ChangeUser;
                 userRow.Children.Add(view);
             }
@@ -104,11 +109,19 @@ namespace Ranks
             }
             return null;
         }
-        protected void click_ChangeUser(object sender, User user)
+
+        /// <summary>
+        /// Устанавливает значения в список "Список групп"
+        /// </summary>
+        private void SetupGroupList()
         {
-            
-            if (this.ChangeUser != null)
-                this.ChangeUser(sender, user);
+            groupList.ItemsSource = Db.GetGroups().Select(group => group.group);
+            groupList.SelectedIndex = 0;
+        }
+
+        protected void click_ChangeUser(User user)
+        {
+            GotoUser(user.id);
         }
     }
 }

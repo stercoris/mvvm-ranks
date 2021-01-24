@@ -20,7 +20,7 @@ namespace Ranks
     /// <summary>
     /// Логика взаимодействия для Groups.xaml
     /// </summary>
-    public partial class Groups : UserControl
+    public partial class Groups : Frame
     {
         public Groups()
         {

@@ -29,12 +29,12 @@ namespace Ranks
         /// Получение всех пользователей
         /// </summary>
         /// <returns>Лист(номер,пользователь)</returns>
-        static public Dictionary<int, User> GetAllUsers()
+        static public List<User> GetAllUsers()
         {
             string sqlQuery = $"SELECT * FROM Users";
             m_sqlCmd = new SQLiteCommand(sqlQuery, m_dbConn);
             rdr = m_sqlCmd.ExecuteReader();
-            Dictionary<int, User> users = new Dictionary<int, User> { };
+            List<User> users = new List<User> { };
             while (rdr.Read())
             {
                 Console.WriteLine(rdr.FieldCount);
@@ -48,7 +48,7 @@ namespace Ranks
                 user.pass = rdr["pass"].ToString();
                 user.pic = rdr["pic"].ToString();
                 user.about = rdr["about"].ToString();
-                users.Add(Convert.ToInt32(rdr.GetValue(0)), user);
+                users.Add(user);
             }
             return (users);
         }

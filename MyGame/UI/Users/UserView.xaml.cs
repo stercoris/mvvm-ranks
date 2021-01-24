@@ -21,7 +21,9 @@ namespace Ranks
     /// </summary>
     public partial class UserView : UserControl
     {
-        public event EventHandler<User> UserChoice;
+        public delegate void UserChoiceHandler(User user);
+        public event UserChoiceHandler UserChoice;
+
         private User user;
         public UserView(User user)
         {
@@ -60,7 +62,7 @@ namespace Ranks
 
         private void container_Click(object sender, RoutedEventArgs e)
         {
-            UserChoice(this, this.user);
+            UserChoice(this.user);
         }
     }
 }

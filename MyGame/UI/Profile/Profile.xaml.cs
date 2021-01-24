@@ -21,11 +21,8 @@ namespace Ranks
     /// <summary>
     /// Логика взаимодействия для AddUser.xaml
     /// </summary>
-    public partial class AddUser : UserControl
+    public partial class Profile : Frame
     {
-        [Browsable(true)] [Category("Action")]
-        [Description("On user delete")]
-        public event EventHandler GotoDef;
 
         // "Отсутствует изображение"
         readonly BitmapImage no_image = new BitmapImage(new Uri("pack://application:,,,/img/no_image.jpg"));
@@ -47,7 +44,7 @@ namespace Ranks
         /// Изменение пользователя
         /// </summary>
         /// <param name="user">пользователь</param>
-        public AddUser(User user)
+        public Profile(User user)
         {
             isNewUser = false;
             this.source_user = user;
@@ -61,7 +58,7 @@ namespace Ranks
         /// <summary>
         /// Создание нового пользователя
         /// </summary>
-        public AddUser()
+        public Profile()
         {
             isNewUser = true;
             this.user = new User()
@@ -155,12 +152,12 @@ namespace Ranks
             if (isNewUser)
             {
                 Db.AddUser(user);
-                GotoDef?.Invoke(sender, e);
+                ChangePage(Layouts.Users);
             }
             else
             {
                 Db.UpdateUser(user);
-                GotoDef?.Invoke(sender, e);
+                ChangePage(Layouts.Users);
             }
 
         }
@@ -171,10 +168,12 @@ namespace Ranks
         protected void click_DeleteUser(object sender, RoutedEventArgs e)
         {
             Db.DeleteUser(user.id);
-            (sender as Button).Uid = user.id.ToString();
-            GotoDef?.Invoke(sender, e);//Если GotoDef не равно null , то вызывает (делегат?) событие.
+            Console.WriteLine(Layouts.Users);
+            ChangePage(Layouts.Users);
         }
 
+
+        
         /// <summary>
         /// Нажатие на стрелку вверх
         /// </summary>
@@ -222,7 +221,7 @@ namespace Ranks
         /// </summary>
         private void SetupGroupList()
         {
-            groupList.ItemsSource = Db.GetGroups();
+            groupList.ItemsSource = Db.GetGroups().Select(group => group.group);
             groupList.SelectedIndex = 0;
         }
 

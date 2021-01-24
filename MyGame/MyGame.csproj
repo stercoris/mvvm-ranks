@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C0015D8E-D983-4CC2-87C7-D41AA66C560E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Rangi</RootNamespace>
+    <RootNamespace>Ranks</RootNamespace>
     <AssemblyName>Ранги%28бета%29</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -91,6 +91,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UI\Frame.cs" />
     <Compile Include="UI\Groups\AddGroupDialogue.xaml.cs">
       <DependentUpon>AddGroupDialogue.xaml</DependentUpon>
     </Compile>
@@ -101,8 +102,8 @@
     <Compile Include="UI\Groups\GroupView.xaml.cs">
       <DependentUpon>GroupView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Profile\AddUser.xaml.cs">
-      <DependentUpon>AddUser.xaml</DependentUpon>
+    <Compile Include="UI\Profile\Profile.xaml.cs">
+      <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\RankList\RankList.xaml.cs">
       <DependentUpon>RankList.xaml</DependentUpon>
@@ -129,7 +130,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Profile\AddUser.xaml">
+    <Page Include="UI\Profile\Profile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Ranks.AddUser"
+﻿<local:Frame x:Class="Ranks.Profile"
              Uid="2"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -35,4 +35,4 @@
         <Button x:Name="addUser" Background="#135BAB" BorderBrush="{x:Null}" Click="AddUserClick" Content="Добавить пользователя в группу" Margin="478,508,10,30"/>
         <Button x:Name="deleteUser" Visibility="Hidden" Background="#e56b60" BorderBrush="{x:Null}" Click="click_DeleteUser" Content="Удалить пользователя" Margin="288,508,345,30"/>
     </Grid>
-</UserControl>
+</local:Frame>
