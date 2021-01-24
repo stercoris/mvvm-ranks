@@ -106,16 +106,22 @@ namespace Ranks
         void GotoUser(int userid)
         {
             Profile user = new Profile(Db.GetUser(userid));
+            user.PageChanging += GotoPage;
+            user.UserChanging += GotoUser;
+            user.GroupUsersChanging += GotoGroupUsers;
             Change_Color(Convert.ToInt32(Layouts.Profile));
             GridMain.Children.Clear();
             GridMain.Children.Add(user);
         }
         void GotoGroupUsers(int groupid)
         {
-            Users user = new Users(groupid);
+            Users users = new Users(groupid);
+            users.PageChanging += GotoPage;
+            users.UserChanging += GotoUser;
+            users.GroupUsersChanging += GotoGroupUsers;
             Change_Color(Convert.ToInt32(Layouts.Profile));
             GridMain.Children.Clear();
-            GridMain.Children.Add(user);
+            GridMain.Children.Add(users);
         }
     }
 
