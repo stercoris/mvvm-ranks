@@ -13,9 +13,6 @@
 
 
         </ScrollViewer>
-        <Button Background="#135BAB" Width="140" Margin="668,528,10,10" Click="Button_Click" >
-            Добавить
-        </Button>
         <Label Content="Список групп" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" FontSize="36"/>
     </Grid>
 </local:Frame>

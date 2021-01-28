@@ -3,6 +3,7 @@ using Ranks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -50,7 +51,7 @@ namespace Ranks
                     };
                 }
                 GroupView view = new GroupView(group);
-                //view.GroupChoice += click_ChangeUser;
+                view.GroupChoice += choseGroup;
                 GroupRow.Children.Add(view);
                
             }
@@ -61,14 +62,14 @@ namespace Ranks
            
         }
 
+        private void choseGroup(object sender, EventArgs args)
+        {
+            GotoGroup((sender as GroupView).group);
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddGroupDialogue addGroups = new AddGroupDialogue();
-            //this.IsEnabled = false;
-            addGroups.Top = 400;
-            addGroups.Show();   
-            //GroupListView.Children.Clear();
-            //GroupListView.Children.Add(addGroups);
+            
 
         }
     }

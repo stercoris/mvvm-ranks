@@ -23,33 +23,33 @@ namespace Ranks
     /// </summary>
     public partial class Users : Frame
     {
-        bool isGroupSelected = true;
         public Users(int selectedGroup = -1)
         {
             InitializeComponent();
             SetupGroupList();
-            if(selectedGroup != -1)
+            if (selectedGroup != -1) {
                 DrawUsers(selectedGroup);
-            else
-            {
-                isGroupSelected = false;
+            } else {
                 DrawUsers();
             }
         }   
         void DrawUsers(int group = -1)
         {
+            userList.Children.Clear();
             StackPanel userRow = new StackPanel()
             {
                 Margin = new Thickness(0),
                 Orientation = Orientation.Horizontal,
             };
 
-            List<User> users;
+            List<User> users = new List<User> { };
 
-            if (isGroupSelected)
-                users = Db.GetAllUsers().FindAll(user => user.user_group != group);
+            if (group != -1)
+                users = Db.GetAllUsers().FindAll(user => user.user_group == group);
             else
                 users = Db.GetAllUsers();
+
+            Console.WriteLine(users.Count);
 
             foreach (var user in users)
             {
@@ -122,6 +122,11 @@ namespace Ranks
         protected void click_ChangeUser(User user)
         {
             GotoUser(user.id);
+        }
+
+        private void groupChenge(object sender, SelectionChangedEventArgs e)
+        {
+            DrawUsers(Db.GetGroupId(groupList.SelectedItem.ToString()));            
         }
     }
 }

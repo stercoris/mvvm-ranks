@@ -22,15 +22,15 @@ namespace Ranks
     public partial class GroupView : UserControl
     {
         public event EventHandler<Group> GroupChoice;
-        private Group group;
+        public Group group;
         public GroupView(Group group)
         {
             InitializeComponent();
             this.group = group;
             //this.Uid = group.id.ToString();
-            inf.Text = $"Группа: {group.group} \n";
+            inf.Text = $"Группа: {group.group} \n Описание: {group.about}";
             if(group.pic != "")
-                pic.Source = Group.Base64ToBitmap(group.pic);
+                pic.Source = Db.Base64ToBitmap(group.pic);
         }
         private void pic_MouseEnter(object sender, MouseEventArgs e)
         {

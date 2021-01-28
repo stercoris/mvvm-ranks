@@ -11,7 +11,7 @@
     
     <StackPanel Orientation="Vertical" Background="White">
         <Grid>
-            <ComboBox Name="groupList" Style="{StaticResource MaterialDesignComboBox}" ItemContainerStyle="{StaticResource MaterialDesignComboBoxItemStyle}" HorizontalAlignment="Right" Width="120" Margin="10,15,30,10" FontSize="17">
+            <ComboBox Name="groupList" Style="{StaticResource MaterialDesignComboBox}" ItemContainerStyle="{StaticResource MaterialDesignComboBoxItemStyle}" HorizontalAlignment="Right" Width="120" Margin="10,15,30,10" FontSize="17" SelectionChanged="groupChenge" >
                 
             </ComboBox>
         </Grid>

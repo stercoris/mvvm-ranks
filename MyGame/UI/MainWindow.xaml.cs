@@ -26,7 +26,7 @@ namespace Ranks
             InitializeComponent();
             Db.OpenConnect("users.db");
             layoutBtn = (Button)FindName("def");
-            GotoPage(Layouts.Ranks);
+            GotoPage(Layouts.Users);
         }
 
         //Событие срабатывает при нажатии на кнопки слева
@@ -94,11 +94,15 @@ namespace Ranks
                 case Layouts.Groups:
                     next_frame = new Groups();
                     break;
+                case Layouts.AddGroups:
+                    next_frame = new AddGroups();
+                    break;
                 default:
                     return;
             }
             next_frame.PageChanging += GotoPage;
             next_frame.UserChanging += GotoUser;
+            next_frame.GotoGroupChanging += GotoGroup;
             next_frame.GroupUsersChanging += GotoGroupUsers;
             GridMain.Children.Add(next_frame);
         }
@@ -112,6 +116,16 @@ namespace Ranks
             Change_Color(Convert.ToInt32(Layouts.Profile));
             GridMain.Children.Clear();
             GridMain.Children.Add(user);
+        }
+        private void GotoGroup(Group group)
+        {
+            AddGroups group_profile = new AddGroups(group);
+            group_profile.PageChanging += GotoPage;
+            group_profile.UserChanging += GotoUser;
+            group_profile.GroupUsersChanging += GotoGroupUsers;
+            Change_Color(Convert.ToInt32(Layouts.AddGroups));
+            GridMain.Children.Clear();
+            GridMain.Children.Add(group_profile);
         }
         void GotoGroupUsers(int groupid)
         {
@@ -131,6 +145,6 @@ namespace Ranks
         Profile = 2,
         Ranks = 3,
         Groups = 4,
-        Games = 5,
+        AddGroups = 5,
     }
 }

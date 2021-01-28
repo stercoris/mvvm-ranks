@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace Ranks
 {
@@ -37,7 +41,6 @@ namespace Ranks
             List<User> users = new List<User> { };
             while (rdr.Read())
             {
-                Console.WriteLine(rdr.FieldCount);
                 User user = new User();
                 user.id = Convert.ToInt32(rdr["id"]);
                 user.name = rdr["name"].ToString();
@@ -216,8 +219,11 @@ namespace Ranks
             {
                 Group gr = new Group();
                 gr.group = rdr["name"].ToString();
+                gr.about = rdr["about"].ToString();
                 gr.pic = rdr["pic"].ToString();
-                
+                gr.id = Convert.ToInt32(rdr["id"]);
+
+
                 groups.Add(gr);
 
             }
@@ -243,9 +249,9 @@ namespace Ranks
 
 
 
-        static public void AddGroup(string groupName, string img)
+        static public void AddGroup(string groupName, string img, string about)
         {
-            string sqlQuery = $"INSERT INTO groups (name, pic) VALUES ('{groupName}', '{img}')";
+            string sqlQuery = $"INSERT INTO groups (name, pic, about) VALUES ('{groupName}', '{img}', '{about}')";
             m_sqlCmd = new SQLiteCommand(sqlQuery, m_dbConn);
             rdr = m_sqlCmd.ExecuteReader();
         }
@@ -266,6 +272,38 @@ namespace Ranks
                 return Convert.ToInt32(rdr["id"]);
             }
             else return (1);
+        }
+
+
+
+        /// <summary>
+        /// Переводит пикчу в base64
+        /// </summary>
+        public static string picToBase64(BitmapImage img)
+        {
+            MemoryStream outStream = new MemoryStream();
+            BitmapEncoder enc = new BmpBitmapEncoder();
+            enc.Frames.Add(BitmapFrame.Create(img));
+            enc.Save(outStream);
+            Bitmap bitmap = new System.Drawing.Bitmap(outStream);
+            Bitmap bm = new Bitmap(bitmap);
+            MemoryStream ms = new MemoryStream();
+            bm.Save(ms, ImageFormat.Jpeg);
+            byte[] byteImage = ms.ToArray();
+            return (Convert.ToBase64String(byteImage));
+        }
+        public static BitmapImage Base64ToBitmap(string base64String)
+        {
+            byte[] imgBytes = Convert.FromBase64String(base64String);
+
+            BitmapImage bitmapImage = new BitmapImage();
+            MemoryStream ms = new MemoryStream(imgBytes);
+            bitmapImage.BeginInit();
+            bitmapImage.StreamSource = ms;
+            bitmapImage.EndInit();
+
+            //Image object
+            return (bitmapImage);
         }
     }
 }

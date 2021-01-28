@@ -42,12 +42,12 @@ namespace Ranks
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if(isImg) 
-                Db.AddGroup(nameBox.Text, loadedImg);
-            else
-                if (nameBox.Text != "" && nameBox.Text.Length < 6) 
-                    Db.AddGroup(nameBox.Text, "");
-            this.Close();
+            //if(isImg) 
+            //    Db.AddGroup(nameBox.Text, loadedImg);
+            //else
+            //    if (nameBox.Text != "" && nameBox.Text.Length < 6) 
+            //        Db.AddGroup(nameBox.Text, "");
+            //this.Close();
 
         }
 
@@ -64,7 +64,7 @@ namespace Ranks
                 "Image Files (*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
             if ((bool)dialog.ShowDialog())
             {
-                loadedImg = Group.picToBase64(new BitmapImage(new Uri(dialog.FileName)));
+                loadedImg = Db.picToBase64(new BitmapImage(new Uri(dialog.FileName)));
                 GroupPic.Source = new BitmapImage(new Uri(dialog.FileName));
             }
         }
