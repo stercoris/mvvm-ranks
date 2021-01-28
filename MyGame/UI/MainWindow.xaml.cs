@@ -15,8 +15,8 @@ using System.Windows.Shapes;
 
 namespace Ranks
 {
-    
-    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
+    /// Главное окно приложения
     /// </summary>
     public partial class MainWindow : Window
     {
