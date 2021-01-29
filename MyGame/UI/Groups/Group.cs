@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 
 namespace Ranks
 {
-    public class Group : EventArgs
+    public class Group
     {
         
         /// <summary>

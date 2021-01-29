@@ -30,34 +30,20 @@ namespace Ranks
             InitializeComponent();
             this.user = user;
             this.Uid = user.id.ToString();
-            inf.Text =  $"Имя : {user.name} \n" +
+            information.Text =  $"Имя : {user.name} \n" +
                         $"Фамилия : {user.sec_name} \n" +
                         $"Группа : {Db.GroupById(user.user_group)} \n" +
                         $"Ранг : {user.rank} \n" +
                         $"Описание : {user.about} \n";
-            pic.Source = User.Base64ToBitmap(user.pic);
+            picture.Source = User.Base64ToBitmap(user.pic);
         }
         private void pic_MouseEnter(object sender, MouseEventArgs e)
         {
-            DoubleAnimation myDoubleAnimation = new DoubleAnimation();
-            myDoubleAnimation.From = pic.ActualHeight;
-            myDoubleAnimation.To = 0;
-            myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.1));
-            pic.Stretch = Stretch.Uniform;
-            pic.BeginAnimation(HeightProperty, myDoubleAnimation);
-            inf.Visibility = Visibility.Visible;
-            inf.VerticalAlignment = VerticalAlignment.Top;
+            CoolAnimation.start(picture, information, HeightProperty);
         }
         private void pic_MouseLeave(object sender, MouseEventArgs e)
         {
-            DoubleAnimation myDoubleAnimation = new DoubleAnimation();
-            myDoubleAnimation.From = pic.Height;
-            myDoubleAnimation.To = 110;
-            myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.1));
-            pic.Stretch = Stretch.Fill;
-            pic.BeginAnimation(HeightProperty, myDoubleAnimation);
-            inf.Visibility = Visibility.Hidden;
-            inf.VerticalAlignment = VerticalAlignment.Center;
+            CoolAnimation.end(picture, information, HeightProperty);
         }
 
         private void container_Click(object sender, RoutedEventArgs e)

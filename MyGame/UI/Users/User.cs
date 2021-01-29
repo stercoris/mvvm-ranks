@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 
 namespace Ranks
 {
-    public class User : EventArgs 
+    public class User 
     {
         /// <summary>
         /// ID пользователя

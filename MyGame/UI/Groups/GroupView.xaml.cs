@@ -21,43 +21,30 @@ namespace Ranks
     /// </summary>
     public partial class GroupView : UserControl
     {
-        public event EventHandler<Group> GroupChoice;
+        public delegate void GroupButtonHandler (Group group);
+        public event GroupButtonHandler GroupButtonPressed;
         public Group group;
         public GroupView(Group group)
         {
             InitializeComponent();
             this.group = group;
             //this.Uid = group.id.ToString();
-            inf.Text = $"Группа: {group.group} \n Описание: {group.about}";
+            information.Text = $"Группа: {group.group} \n Описание: {group.about}";
             if(group.pic != "")
-                pic.Source = Db.Base64ToBitmap(group.pic);
+                picture.Source = Db.Base64ToBitmap(group.pic);
         }
         private void pic_MouseEnter(object sender, MouseEventArgs e)
         {
-            DoubleAnimation myDoubleAnimation = new DoubleAnimation();
-            myDoubleAnimation.From = pic.ActualHeight;
-            myDoubleAnimation.To = 0;
-            myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.1));
-            pic.Stretch = Stretch.Uniform;
-            pic.BeginAnimation(HeightProperty, myDoubleAnimation);
-            inf.Visibility = Visibility.Visible;
-            inf.VerticalAlignment = VerticalAlignment.Top;
+            CoolAnimation.start(picture, information, HeightProperty);
         }
         private void pic_MouseLeave(object sender, MouseEventArgs e)
         {
-            DoubleAnimation myDoubleAnimation = new DoubleAnimation();
-            myDoubleAnimation.From = pic.Height;
-            myDoubleAnimation.To = 110;
-            myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.1));
-            pic.Stretch = Stretch.Fill;
-            pic.BeginAnimation(HeightProperty, myDoubleAnimation);
-            inf.Visibility = Visibility.Hidden;
-            inf.VerticalAlignment = VerticalAlignment.Center;
+            CoolAnimation.end(picture, information, HeightProperty);
         }
 
         private void container_Click(object sender, RoutedEventArgs e)
         {
-            GroupChoice(this, this.group);
+            GroupButtonPressed(this.group);
         }
     }
 }
