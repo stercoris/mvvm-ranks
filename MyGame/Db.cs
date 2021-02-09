@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Ranks
@@ -274,36 +275,47 @@ namespace Ranks
             else return (1);
         }
 
-
+        /// <summary>
+        /// Изменяет запись группы в БД
+        /// </summary>
+        /// <param name="name">Имя группы</param>
+        /// <returns>Группа(название)</returns>
+        static public void UpdateGroup(Group group)
+        {
+            string sqlQuery = $"UPDATE groups SET name='{group.group}', pic='{group.}', about='{group.about}' WHERE id='{group.id}'";
+            m_sqlCmd = new SQLiteCommand(sqlQuery, m_dbConn);
+            rdr = m_sqlCmd.ExecuteReader();
+        }
 
         /// <summary>
         /// Переводит пикчу в base64
         /// </summary>
-        public static string picToBase64(BitmapImage img)
+        public static byte[] PicToBlob(Image image, ImageFormat format)
         {
-            MemoryStream outStream = new MemoryStream();
-            BitmapEncoder enc = new BmpBitmapEncoder();
-            enc.Frames.Add(BitmapFrame.Create(img));
-            enc.Save(outStream);
-            Bitmap bitmap = new System.Drawing.Bitmap(outStream);
-            Bitmap bm = new Bitmap(bitmap);
-            MemoryStream ms = new MemoryStream();
-            bm.Save(ms, ImageFormat.Jpeg);
-            byte[] byteImage = ms.ToArray();
-            return (Convert.ToBase64String(byteImage));
+            using (MemoryStream ms = new MemoryStream())
+            {
+                image.Save(ms, format);
+                byte[] imageBytes = ms.ToArray();
+                return imageBytes;
+            }
         }
-        public static BitmapImage Base64ToBitmap(string base64String)
+        public static ImageSource BlobToPic(byte[] imageBytes)
         {
-            byte[] imgBytes = Convert.FromBase64String(base64String);
+            MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
+            ms.Write(imageBytes, 0, imageBytes.Length);
+            Bitmap bitmap = new Bitmap(ms);
 
-            BitmapImage bitmapImage = new BitmapImage();
-            MemoryStream ms = new MemoryStream(imgBytes);
-            bitmapImage.BeginInit();
-            bitmapImage.StreamSource = ms;
-            bitmapImage.EndInit();
+            ms = new MemoryStream();
+            bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            ms.Seek(0, SeekOrigin.Begin);
+            image.StreamSource = ms;
+            image.EndInit();
 
-            //Image object
-            return (bitmapImage);
+            return image;
         }
+
+
     }
 }

@@ -29,8 +29,8 @@ namespace Ranks
             this.group = group;
             //this.Uid = group.id.ToString();
             inf.Text = $"Группа: {group.group} \n Описание: {group.about}";
-            if(group.pic != "")
-                pic.Source = Db.Base64ToBitmap(group.pic);
+            if(group.pic != null)
+                pic.Source = group.picture;
         }
         private void pic_MouseEnter(object sender, MouseEventArgs e)
         {

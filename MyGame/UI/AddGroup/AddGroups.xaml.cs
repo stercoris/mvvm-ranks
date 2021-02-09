@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,30 +22,44 @@ namespace Ranks
 
     public partial class AddGroups : Frame
     {
+        Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+        Group group = new Group();
         bool isImg = false;
         string loadedImg = "";
         //Заглушки
         string[] placeholders = new string[]{"Название","Описание"};
         public AddGroups(Group group = null)
         {
+
             InitializeComponent();
             if(group != null)
             {
+                this.group = group;
                 nameBox.Text = group.group;
                 aboutBox.Text = group.about;
-                GroupPic.Source = Db.Base64ToBitmap(group.pic);
+                GroupPic.Source = Db.BlobToPic(group.pic_blob);
+            }
+            else
+            {
+                this.group = new Group();
             }
         }
 
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void AddUpdateGroup(object sender, RoutedEventArgs e)
         {
+            //Console.WriteLine("диалог - " + dialog.FileName);
+
+            group.group = nameBox.Text;            
+            group.about = aboutBox.Text;
+
             if (isImg)
                 Db.AddGroup(nameBox.Text, loadedImg, aboutBox.Text);
             else
                 if (nameBox.Text != "" && nameBox.Text.Length < 6)
-                    Db.AddGroup(nameBox.Text, "", aboutBox.Text);
-            //go back
+                Db.AddGroup(nameBox.Text, "", aboutBox.Text);
+            //Thread thread = new Thread(addElement);
+            //thread.Start();            
             ChangePage(Layouts.Groups);
 
         }
@@ -64,7 +79,7 @@ namespace Ranks
                 "Image Files (*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
             if ((bool)dialog.ShowDialog())
             {
-                loadedImg = Db.picToBase64(new BitmapImage(new Uri(dialog.FileName)));
+                loadedImg =dialog.SafeFileName;
                 GroupPic.Source = new BitmapImage(new Uri(dialog.FileName));
             }
         }
@@ -77,7 +92,7 @@ namespace Ranks
                 myTxtbx.Text = "";
             }
         }
-
+         
         private void nameBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -88,5 +103,14 @@ namespace Ranks
             
         }
 
+        private void addElement()
+        {
+            this.Dispatcher.Invoke(()=>
+            {
+                
+                
+            });
+            
+        }
     }
 }

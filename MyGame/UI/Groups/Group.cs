@@ -6,11 +6,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Ranks
 {
-    public class Group : EventArgs
+    public class Group
     {
         
         /// <summary>
@@ -29,11 +30,17 @@ namespace Ranks
         public string about;
 
         /// <summary>
-        /// Пикча(base64)
+        /// Пикча(blob)
         /// </summary>
-        public string pic = Db.picToBase64(new BitmapImage(new Uri("pack://application:,,,/img/no_image.jpg")));
+        public byte[] pic_blob = Db.PicToBlob(new Bitmap("pack://application:,,,/img/no_image.jpg"), ImageFormat.Jpeg);
 
-       
+        /// <summary>
+        /// Пикча(imagesource)
+        /// </summary>
+        public ImageSource picture;
+
+
+
     }
 
 }

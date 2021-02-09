@@ -18,7 +18,7 @@
 
             <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal" Margin="100,400,0,0" Height="41">
                 <Button Width="140" Margin="4" Background="IndianRed" BorderBrush="IndianRed" Click="Button_Click_3" Content="Отмена"/>
-                <Button Background="#135BAB" Width="140" Margin="4,4,4,5" Click="Button_Click_2" Content="Сохранить"/>
+                <Button Background="#135BAB" Width="140" Margin="4,4,4,5" Click="AddUpdateGroup" Content="Сохранить"/>
 
             </StackPanel>
 

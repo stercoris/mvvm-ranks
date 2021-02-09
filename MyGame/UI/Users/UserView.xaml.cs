@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +15,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Ranks
 {
@@ -35,7 +38,14 @@ namespace Ranks
                         $"Группа : {Db.GroupById(user.user_group)} \n" +
                         $"Ранг : {user.rank} \n" +
                         $"Описание : {user.about} \n";
-            pic.Source = User.Base64ToBitmap(user.pic);
+                Application.Current.Dispatcher.BeginInvoke(
+                    DispatcherPriority.Background,
+                    new Action(() => 
+                    {
+                        BitmapImage bmi = User.Base64ToBitmap(user.pic);
+                            this.pic.Source = bmi;
+                    })
+                );
         }
         private void pic_MouseEnter(object sender, MouseEventArgs e)
         {
