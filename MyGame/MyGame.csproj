@@ -91,6 +91,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UI\CoolAnimation.cs" />
     <Compile Include="UI\Frame.cs" />
     <Compile Include="UI\Groups\AddGroupDialogue.xaml.cs">
       <DependentUpon>AddGroupDialogue.xaml</DependentUpon>

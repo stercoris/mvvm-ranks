@@ -51,7 +51,7 @@ namespace Ranks
                     };
                 }
                 GroupView view = new GroupView(group);
-                view.GroupChoice += choseGroup;
+                view.GroupButtonPressed += choseGroup;
                 GroupRow.Children.Add(view);
                
             }
@@ -62,9 +62,9 @@ namespace Ranks
            
         }
 
-        private void choseGroup(object sender, EventArgs args)
+        private void choseGroup(Group group)
         {
-            GotoGroup((sender as GroupView).group);
+            GotoGroup(group);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -13,8 +13,8 @@
             Padding="0"
             BorderBrush="#173763" Click="container_Click">
         <Grid Background="White" Width="170" Height="110">
-            <TextBlock Name="inf" Padding="0" TextWrapping="Wrap" Margin="5,10" Foreground="Black" Visibility="Hidden"/>
-            <Image Name="pic"  Source="../../img/no_image.jpg" Stretch="Fill"/>
+            <TextBlock Name="information" Padding="0" TextWrapping="Wrap" Margin="5,10" Foreground="Black" Visibility="Hidden"/>
+            <Image Name="picture"  Source="../../img/no_image.jpg" Stretch="Fill"/>
         </Grid>
     </Button>
 </UserControl>
