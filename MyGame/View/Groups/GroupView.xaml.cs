@@ -30,7 +30,7 @@ namespace Ranks
             this.group = group;
             //this.Uid = group.id.ToString();
             information.Text = $"Группа: {group.group} \n Описание: {group.about}";
-            if(group.pic != "")
+            if (group.pic != "")
                 picture.Source = Db.Base64ToBitmap(group.pic);
         }
         private void pic_MouseEnter(object sender, MouseEventArgs e)

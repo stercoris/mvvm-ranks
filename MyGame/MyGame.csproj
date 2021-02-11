@@ -58,8 +58,20 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
+    </Reference>
     <Reference Include="Costura, Version=4.1.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
       <HintPath>..\packages\Costura.Fody.4.1.0\lib\net40\Costura.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
     </Reference>
     <Reference Include="MaterialDesignColors, Version=1.2.2.920, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.2.2\lib\net45\MaterialDesignColors.dll</HintPath>
@@ -73,6 +85,9 @@
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.112.0\lib\net46\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -91,83 +106,72 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UI\CoolAnimation.cs" />
-    <Compile Include="UI\Frame.cs" />
-    <Compile Include="UI\Groups\AddGroupDialogue.xaml.cs">
-      <DependentUpon>AddGroupDialogue.xaml</DependentUpon>
+    <Compile Include="DataBase\DBConnection.cs" />
+    <Compile Include="DataBase\Groups.cs" />
+    <Compile Include="DataBase\Ranks.cs" />
+    <Compile Include="DataBase\Users.cs" />
+    <Compile Include="Model\Group.cs" />
+    <Compile Include="Model\Rank.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Services\CoolAnumation.cs" />
+    <Compile Include="Services\ImageConverter.cs" />
+    <Compile Include="View\GroupProfile\GroupProfile.xaml.cs">
+      <DependentUpon>GroupProfile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Groups\Group.cs" />
-    <Compile Include="UI\AddGroup\AddGroups.xaml.cs">
-      <DependentUpon>AddGroups.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Groups\Groups.xaml.cs">
+    <Compile Include="View\Groups\Groups.xaml.cs">
       <DependentUpon>Groups.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Groups\GroupView.xaml.cs">
+    <Compile Include="View\Groups\GroupView.xaml.cs">
       <DependentUpon>GroupView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Profile\Profile.xaml.cs">
-      <DependentUpon>Profile.xaml</DependentUpon>
+    <Compile Include="View\UserProfile\UserProfile.xaml.cs">
+      <DependentUpon>UserProfile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\RankList\RankList.xaml.cs">
+    <Compile Include="View\Ranks\RankList.xaml.cs">
       <DependentUpon>RankList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\RankList\RankView.xaml.cs">
+    <Compile Include="View\Ranks\RankView.xaml.cs">
       <DependentUpon>RankView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Users\User.cs" />
-    <Compile Include="UI\Users\Users.xaml.cs">
+    <Compile Include="View\Users\Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Users\UserView.xaml.cs">
+    <Compile Include="View\Users\UserView.xaml.cs">
       <DependentUpon>UserView.xaml</DependentUpon>
     </Compile>
-    <Page Include="UI\Groups\AddGroupDialogue.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\AddGroup\AddGroups.xaml">
+    <Page Include="View\GroupProfile\GroupProfile.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Groups\Groups.xaml">
+    <Page Include="View\Groups\Groups.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Groups\GroupView.xaml">
+    <Page Include="View\Groups\GroupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Profile\Profile.xaml">
+    <Page Include="View\UserProfile\UserProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Db.cs" />
-    <Compile Include="UI\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="UI\RankList\RankList.xaml">
+    <Page Include="View\Ranks\RankList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\RankList\RankView.xaml">
+    <Page Include="View\Ranks\RankView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Users\Users.xaml">
+    <Page Include="View\Users\Users.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Users\UserView.xaml">
+    <Page Include="View\Users\UserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,6 +228,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\studfaces\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\nad.JPG" />

@@ -32,7 +32,5 @@ namespace Ranks
             inf.Visibility = Visibility.Hidden;
             inf.VerticalAlignment = VerticalAlignment.Center;
         }
-
-
     }
 }

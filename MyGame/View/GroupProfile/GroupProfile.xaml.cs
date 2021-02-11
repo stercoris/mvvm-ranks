@@ -18,42 +18,42 @@ namespace Ranks
     /// <summary>
     /// Логика взаимодействия для AddGroupDialogue.xaml
     /// </summary>
-    
-    public partial class AddGroupDialogue : Window
+
+    public partial class AddGroups
     {
         bool isImg = false;
         string loadedImg = "";
-        public AddGroupDialogue()
+        //Заглушки
+        string[] placeholders = new string[]{"Название","Описание"};
+        public AddGroups(Group group = null)
         {
             InitializeComponent();
-            
-           
+            if(group != null)
+            {
+                nameBox.Text = group.group;
+                aboutBox.Text = group.about;
+                GroupPic.Source = Db.Base64ToBitmap(group.pic);
+            }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            //if(isImg) 
-            //    Db.AddGroup(nameBox.Text, loadedImg);
-            //else
-            //    if (nameBox.Text != "" && nameBox.Text.Length < 6) 
-            //        Db.AddGroup(nameBox.Text, "");
-            //this.Close();
+            if (isImg)
+                Db.AddGroup(nameBox.Text, loadedImg, aboutBox.Text);
+            else
+                if (nameBox.Text != "" && nameBox.Text.Length < 6)
+                    Db.AddGroup(nameBox.Text, "", aboutBox.Text);
+            //go back
+            ChangePage(Layouts.Groups);
 
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //go back
+            ChangePage(Layouts.Groups);
+
         }
 
         private void AddImageClick(object sender, RoutedEventArgs e)
@@ -68,5 +68,25 @@ namespace Ranks
                 GroupPic.Source = new BitmapImage(new Uri(dialog.FileName));
             }
         }
+
+        public void RemoveText(object sender, EventArgs e)
+        {
+            TextBox myTxtbx = sender as TextBox;
+            if (placeholders.Contains(myTxtbx.Text))
+            {
+                myTxtbx.Text = "";
+            }
+        }
+
+        private void nameBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void nameBox_DragEnter(object sender, DragEventArgs e)
+        {
+            
+        }
+
     }
 }
