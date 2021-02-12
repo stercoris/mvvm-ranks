@@ -21,56 +21,11 @@ namespace Ranks
     /// <summary>
     /// Логика взаимодействия для Groups.xaml
     /// </summary>
-    public partial class Groups : Frame
+    public partial class Groups : UserControl
     {
         public Groups()
         {
             InitializeComponent();
-            DrawGroups();
-
-        }
-        void DrawGroups()
-        {
-            
-            List<Group> groups = Db.GetGroups();
-            StackPanel GroupRow = new StackPanel()
-            {
-                Margin = new Thickness(0),
-                Orientation = Orientation.Horizontal,
-            };
-            var converter = new BrushConverter();
-            foreach (var group in groups)
-            {
-                if (GroupRow.Children.Count > 3)
-                {
-                    GroupListView.Children.Add(GroupRow);
-                    GroupRow = new StackPanel()
-                    {
-                        Margin = new Thickness(0),
-                        Orientation = Orientation.Horizontal,
-                    };
-                }
-                GroupView view = new GroupView(group);
-                view.GroupButtonPressed += choseGroup;
-                GroupRow.Children.Add(view);
-               
-            }
-            if (!GroupListView.Children.Contains(GroupRow))
-            {
-                GroupListView.Children.Add(GroupRow);
-            }
-           
-        }
-
-        private void choseGroup(Group group)
-        {
-            GotoGroup(group);
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-
         }
     }
 }

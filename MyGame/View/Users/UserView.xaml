@@ -4,14 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ranks"
-             mc:Ignorable="d" Width="170" Height="110" Margin="10"  MouseEnter="pic_MouseEnter" MouseLeave="pic_MouseLeave">
+             mc:Ignorable="d" Width="170" Height="110" Margin="10">
     <Button Name="container"
             Height="Auto" 
             Background="White" 
             HorizontalAlignment="Stretch" 
             VerticalAlignment="Stretch" 
             Padding="0"
-            BorderBrush="#173763" Click="container_Click">
+            BorderBrush="#173763">
         <Grid Background="White" Width="170" Height="110">
             <TextBlock Name="information" Padding="0" TextWrapping="Wrap" Margin="5,10" Foreground="Black" Visibility="Hidden"/>
             <Image Name="picture"  Source="../../img/no_image.jpg" Stretch="Fill"/>

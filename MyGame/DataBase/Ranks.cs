@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ranks.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
@@ -80,15 +81,19 @@ namespace Ranks.DataBase
         ///  Получает все ранги
         /// </summary>
         /// <returns> Массив рангов </returns>
-        static public List<string> GetAll()
+        static public List<Rank> GetAll()
         {
             string sqlQuery = $"SELECT * FROM ranks";
             m_sqlCmd = new SQLiteCommand(sqlQuery, connection);
             rdr = m_sqlCmd.ExecuteReader();
-            List<string> ranks = new List<string> { };
+            List<Rank> ranks = new List<Rank> { };
             while (rdr.Read())
             {
-                ranks.Add(rdr["name"].ToString());
+                ranks.Add(new Rank
+                {
+                    Id = Convert.ToInt32(rdr["rank"]),
+                    Name = rdr["name"].ToString(),
+                });
             }
             return (ranks);
         }
@@ -97,9 +102,9 @@ namespace Ranks.DataBase
         /// </summary>
         /// <param name="rankId">ID ранга</param>
         /// <returns>Ранг(название)</returns>
-        static public string Get(int rankId)
+        static public Rank Get(int rankId)
         {
-            List<string> ranks = GetAll();
+            List<Rank> ranks = GetAll();
             if (rankId < 0) return (ranks[0]);
             else if (rankId >= ranks.Count) return (ranks[ranks.Count - 1]);
             else return (ranks[rankId]);

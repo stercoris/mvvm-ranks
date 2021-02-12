@@ -46,14 +46,19 @@ namespace Ranks.DataBase
         /// </summary>
         /// <param name="groupId">ID группы</param>
         /// <returns>Группа(название)</returns>
-        static public string GroupById(int groupId)
+        static public Group GroupById(int groupId)
         {
             string sqlQuery = $"SELECT * FROM groups WHERE id = {groupId}";
             m_sqlCmd = new SQLiteCommand(sqlQuery, connection);
             rdr = m_sqlCmd.ExecuteReader();
             if (rdr.Read())
             {
-                return rdr["name"].ToString();
+                return new Group {
+                    Name = rdr["name"].ToString(),
+                    About = rdr["about"].ToString(),
+                    Picture = Services.ImageConverter.toBitmapImage(rdr["pic"].ToString()),
+                    Id = Convert.ToInt32(rdr["id"]),
+                };
             }
             else throw new Exception("Хз, сбой");
         }

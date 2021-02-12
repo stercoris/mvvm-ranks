@@ -21,112 +21,11 @@ namespace Ranks
     /// <summary>
     /// Логика взаимодействия для Users.xaml
     /// </summary>
-    public partial class Users : Frame
+    public partial class Users : UserControl
     {
-        public Users(int selectedGroup = -1)
+        public Users()
         {
             InitializeComponent();
-            SetupGroupList();
-            if (selectedGroup != -1) {
-                DrawUsers(selectedGroup);
-            } else {
-                DrawUsers();
-            }
-        }   
-        void DrawUsers(int group = -1)
-        {
-            userList.Children.Clear();
-            StackPanel userRow = new StackPanel()
-            {
-                Margin = new Thickness(0),
-                Orientation = Orientation.Horizontal,
-            };
-
-            List<User> users = new List<User> { };
-
-            if (group != -1)
-                users = Db.GetAllUsers().FindAll(user => user.user_group == group);
-            else
-                users = Db.GetAllUsers();
-
-            Console.WriteLine(users.Count);
-
-            foreach (var user in users)
-            {
-                if(userRow.Children.Count > 3)
-                {
-                    userList.Children.Add(userRow);
-                    userRow = new StackPanel()
-                    {
-                        Margin = new Thickness(0),
-                        Orientation = Orientation.Horizontal,
-                    };
-                }
-                UserView view = new UserView(user);
-                view.UserChoice += click_ChangeUser;
-                userRow.Children.Add(view);
-            }
-            if(!userList.Children.Contains(userRow))
-            {
-                userList.Children.Add(userRow);
-            }
-        }
-        private void userPic_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Button bt = sender as Button;
-            Image userPic = (Image)GetByUid(bt, "userPic");
-            DoubleAnimation myDoubleAnimation = new DoubleAnimation();
-            myDoubleAnimation.From = userPic.ActualHeight;
-            myDoubleAnimation.To = 0;
-            myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.1));
-            userPic.BeginAnimation(HeightProperty, myDoubleAnimation);
-            Grid userInf = (Grid)GetByUid(bt, "userInf");
-            userInf.Visibility = Visibility.Visible;
-            userInf.VerticalAlignment = VerticalAlignment.Top;
-        }
-        private void userPic_MouseLeave(object sender, MouseEventArgs e)//ана может запустить ну тип ты можеш посмотреть анимацию какую ана запускает)
-        {
-            Button bt = sender as Button;
-            Image userPic = (Image)GetByUid(bt, "userPic");
-            DoubleAnimation myDoubleAnimation = new DoubleAnimation();
-            myDoubleAnimation.From = userPic.Height;
-            myDoubleAnimation.To = 160;
-            myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.1));
-            userPic.BeginAnimation(HeightProperty, myDoubleAnimation);
-            Grid userInf = (Grid)GetByUid(bt, "userInf");
-            userInf.Visibility = Visibility.Hidden;
-            userInf.VerticalAlignment = VerticalAlignment.Center;
-        }
-        public static UIElement GetByUid(DependencyObject rootElement, string uid)
-        {
-            foreach (UIElement element in LogicalTreeHelper.GetChildren(rootElement).OfType<UIElement>())
-            {
-                if (element.Uid == uid)
-                    return element;
-                UIElement resultChildren = GetByUid(element, uid);
-                if (resultChildren != null)
-                    return resultChildren;
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Устанавливает значения в список "Список групп"
-        /// </summary>
-        private void SetupGroupList()
-        {
-            groupList.ItemsSource = Db.GetGroups().Select(group => group.group);
-            groupList.SelectedIndex = 0;
-        }
-
-        protected void click_ChangeUser(User user)
-        {
-            GotoUser(user.id);
-        }
-
-        private void groupChenge(object sender, SelectionChangedEventArgs e)
-        {
-            DrawUsers(Db.GetGroupId(groupList.SelectedItem.ToString()));            
-        }
+        } 
     }
 }

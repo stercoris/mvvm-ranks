@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ranks.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
@@ -24,16 +25,18 @@ namespace Ranks.DataBase
             List<User> users = new List<User> { };
             while (rdr.Read())
             {
-                User user = new User();
-                user.id = Convert.ToInt32(rdr["id"]);
-                user.name = rdr["name"].ToString();
-                user.sec_name = rdr["sec_name"].ToString();
-                user.user_group = Convert.ToInt32(rdr["user_group"]);
-                user.rank = Convert.ToInt32(rdr["rank"]);
-                user.is_admin = Convert.ToBoolean(rdr["is_admin"]);
-                user.pass = rdr["pass"].ToString();
-                user.pic = rdr["pic"].ToString();
-                user.about = rdr["about"].ToString();
+                User user = new User
+                {
+                    Id = Convert.ToInt32(rdr["id"]),
+                    Name = rdr["name"].ToString(),
+                    SecondName = rdr["sec_name"].ToString(),
+                    Group = Groups.GroupById(Convert.ToInt32(rdr["user_group"])),
+                    Rank = Ranks.Get(Convert.ToInt32(rdr["rank"])),
+                    IsAdmin = Convert.ToBoolean(rdr["is_admin"]),
+                    Password = rdr["pass"].ToString(),
+                    Picture = Services.ImageConverter.toBitmapImage(rdr["pic"].ToString()),
+                    About = rdr["about"].ToString(),
+                };
                 users.Add(user);
             }
             return (users);
@@ -43,7 +46,7 @@ namespace Ranks.DataBase
         /// </summary>
         /// <param name="id">ID пользователя</param>
         /// <returns></returns>
-        static public global::Ranks.User GetById(int id)
+        static public User GetById(int id)
         {
 
             string sqlQuery = $"SELECT * FROM Users WHERE (id = {id})";
@@ -51,17 +54,17 @@ namespace Ranks.DataBase
             rdr = m_sqlCmd.ExecuteReader();
             if (rdr.Read())
             {
-                global::Ranks.User user = new User
+               User user = new User
                 {
-                    id = Convert.ToInt32(rdr["id"]),
-                    name = rdr["name"].ToString(),
-                    sec_name = rdr["sec_name"].ToString(),
-                    user_group = Convert.ToInt32(rdr["user_group"]),
-                    rank = Convert.ToInt32(rdr["rank"]),
-                    is_admin = Convert.ToBoolean(rdr["is_admin"]),
-                    pass = rdr["pass"].ToString(),
-                    pic = rdr["pic"].ToString(),
-                    about = rdr["about"].ToString(),
+                    Id = Convert.ToInt32(rdr["id"]),
+                    Name = rdr["name"].ToString(),
+                    SecondName = rdr["sec_name"].ToString(),
+                    Group = Groups.GroupById(Convert.ToInt32(rdr["user_group"])),
+                    Rank = Ranks.Get(Convert.ToInt32(rdr["rank"])),
+                    IsAdmin = Convert.ToBoolean(rdr["is_admin"]),
+                    Password = rdr["pass"].ToString(),
+                    Picture = Services.ImageConverter.toBitmapImage(rdr["pic"].ToString()),
+                    About = rdr["about"].ToString(),
                 };
                 return (user);
             }
@@ -72,7 +75,7 @@ namespace Ranks.DataBase
         /// </summary>
         static public void Add(User user)
         {
-            string sqlQuery = $"INSERT INTO Users (name,sec_name,user_group,rank,is_admin,pass,pic,about) VALUES ('{user.name}','{user.sec_name}','{user.user_group}',{user.rank},{user.is_admin},'{user.pass}','{user.pic}','{user.about}')";
+            string sqlQuery = $"INSERT INTO Users (name,sec_name,user_group,rank,is_admin,pass,pic,about) VALUES ('{user.Name}','{user.SecondName}','{user.Group}',{user.Rank},{user.IsAdmin},'{user.Password}','{user.Picture}','{user.About}')";
             m_sqlCmd = new SQLiteCommand(sqlQuery, connection);
             rdr = m_sqlCmd.ExecuteReader();
         }
@@ -81,7 +84,7 @@ namespace Ranks.DataBase
         /// </summary>
         static public void Update(User user)
         {
-            string sqlQuery = $"UPDATE Users SET name = '{user.name}',sec_name = '{user.sec_name}',user_group = '{user.user_group}',rank = {user.rank},is_admin = {user.is_admin},pass = '{user.pass}',pic = '{user.pic}',about = '{user.about}' WHERE id = {user.id}";
+            string sqlQuery = $"UPDATE Users SET name = '{user.Name}',sec_name = '{user.SecondName}',user_group = '{user.Group}',rank = {user.Rank},is_admin = {user.IsAdmin},pass = '{user.Password}',pic = '{user.Picture}',about = '{user.About}' WHERE id = {user.Id}";
             m_sqlCmd = new SQLiteCommand(sqlQuery, connection);
             rdr = m_sqlCmd.ExecuteReader();
         }

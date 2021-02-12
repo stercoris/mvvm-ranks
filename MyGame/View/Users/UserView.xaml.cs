@@ -21,34 +21,9 @@ namespace Ranks
     /// </summary>
     public partial class UserView : UserControl
     {
-        public delegate void UserChoiceHandler(User user);
-        public event UserChoiceHandler UserChoice;
-
-        private User user;
-        public UserView(User user)
+        public UserView()
         {
             InitializeComponent();
-            this.user = user;
-            this.Uid = user.id.ToString();
-            information.Text =  $"Имя : {user.name} \n" +
-                        $"Фамилия : {user.sec_name} \n" +
-                        $"Группа : {Db.GroupById(user.user_group)} \n" +
-                        $"Ранг : {user.rank} \n" +
-                        $"Описание : {user.about} \n";
-            picture.Source = User.Base64ToBitmap(user.pic);
-        }
-        private void pic_MouseEnter(object sender, MouseEventArgs e)
-        {
-            CoolAnimation.start(picture, information, HeightProperty);
-        }
-        private void pic_MouseLeave(object sender, MouseEventArgs e)
-        {
-            CoolAnimation.end(picture, information, HeightProperty);
-        }
-
-        private void container_Click(object sender, RoutedEventArgs e)
-        {
-            UserChoice(this.user);
         }
     }
 }

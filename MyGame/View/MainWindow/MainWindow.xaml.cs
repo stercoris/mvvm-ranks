@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,16 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Ranks
+namespace MyGame
 {
     /// <summary>
-    /// Логика взаимодействия для AddGroupDialogue.xaml
+    /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class AddGroups : UserControl
+    public partial class MainWindow : Window
     {
-        public AddGroups()
+        public MainWindow()
         {
-
             InitializeComponent();
         }
     }

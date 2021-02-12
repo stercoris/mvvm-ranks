@@ -20,41 +20,9 @@ namespace Ranks
     /// </summary>
     public partial class RankView : UserControl
     {
-        public event EventHandler createRank;
-        public event EventHandler deleteRank;
-        public string rankname{
-            get{
-                return (nameBox.Text);
-            }
-            set{
-                nameBox.Text = value;
-            }
-        }
-
-        public int rankN;
-
-        public RankView(string name,int newrankN)
+        public RankView()
         {
             InitializeComponent();
-            rankname = name;
-            nameBox.Text = name;
-            rankN = newrankN;
-            rankNum.Content = $"{newrankN}.";
         }
-        /*public void ChangeRankNum(int dif)
-        {
-            rankN = rankN + dif;
-            rankNum.Content = $"{rankN}.";
-        }
-
-        private void addRankClick(object sender, RoutedEventArgs e)
-        {
-            createRank(this, e);
-        }
-
-        private void deleteRankClick(object sender, RoutedEventArgs e)
-        {
-            deleteRank(this, e);
-        }*/
     }
 }
