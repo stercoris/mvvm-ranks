@@ -1,24 +1,28 @@
-﻿<Window x:Class="MyGame.MainWindow"
+﻿<Window x:Class="MyGame.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Ranks"
+        xmlns:viewmodels="clr-namespace:Ranks.ViewModel"
         Title="MainWindow" Height="616" Width="873" ResizeMode="CanMinimize" WindowStyle="None">
+    <Window.DataContext>
+        <viewmodels:MainViewModel/>
+    </Window.DataContext>
     <Grid Background="#FFDEDEDE">
         <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="570" Width="818"/>
-        <Grid x:Name="TopMenu" Height="46" VerticalAlignment="Top" Background="#135BAB">
+        <Grid x:Name="TopMenu" Height="46" VerticalAlignment="Top" Background="#135BAB" Panel.ZIndex="20">
             <Button x:Name="exitBt" Template="{DynamicResource CustomButton}" Style="{DynamicResource WindowControls}">
                 <materialDesign:PackIcon  Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="Close" />
             </Button>
             <Button x:Name="minBt" Template="{DynamicResource CustomButton}" Style="{DynamicResource WindowControls}" Margin="10,10,40,10">
                 <materialDesign:PackIcon  Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Kind="WindowMinimize" Margin="0,0,0,-13"/>
             </Button>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">Звания</TextBlock>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Text="{Binding TestText}"/>
         </Grid>
-        <Grid x:Name="GridMenu" Width="55" HorizontalAlignment="Left" Background="#173763">
-            <StackPanel x:Name="ListViewMenu" Background="#173763" Orientation="Vertical" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <Grid x:Name="GridMenu" HorizontalAlignment="Left" Background="#173763">
+            <StackPanel x:Name="ListViewMenu" Background="#173763" Orientation="Vertical" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <Button x:Name="def" Uid="1"  Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}">
                     <materialDesign:PackIcon Kind="Grade" Height="30" Width="30"/>
                 </Button>
@@ -30,9 +34,6 @@
                 </Button>
                 <Button x:Name="groupList" Uid="4" Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}">
                     <materialDesign:PackIcon Kind="People" Height="30" Width="30"/>
-                </Button>
-                <Button x:Name="studGames" Uid="5" Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}">
-                    <materialDesign:PackIcon Kind="Games" Height="30" Width="30"/>
                 </Button>
             </StackPanel>
         </Grid>

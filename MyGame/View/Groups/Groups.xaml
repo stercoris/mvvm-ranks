@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Ranks.Groups"
+﻿<Page x:Class="Ranks.View.Groups"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -15,4 +15,4 @@
         </ScrollViewer>
         <Label Content="Список групп" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" FontSize="36"/>
     </Grid>
-</UserControl>
+</Page>

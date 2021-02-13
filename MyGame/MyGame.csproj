@@ -115,6 +115,7 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Services\CoolAnumation.cs" />
     <Compile Include="Services\ImageConverter.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\GroupProfile\GroupProfile.xaml.cs">
       <DependentUpon>GroupProfile.xaml</DependentUpon>
     </Compile>
@@ -238,8 +239,8 @@
     <Resource Include="img\rank1.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Commands\" />
     <Folder Include="img\studfaces\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\nad.JPG" />

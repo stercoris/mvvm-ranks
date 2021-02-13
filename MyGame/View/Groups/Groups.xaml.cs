@@ -16,12 +16,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Ranks
+namespace Ranks.View
 {
     /// <summary>
     /// Логика взаимодействия для Groups.xaml
     /// </summary>
-    public partial class Groups : UserControl
+    public partial class Groups : Page
     {
         public Groups()
         {

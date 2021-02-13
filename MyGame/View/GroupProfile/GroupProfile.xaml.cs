@@ -14,16 +14,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Ranks
+namespace Ranks.View
 {
     /// <summary>
     /// Логика взаимодействия для AddGroupDialogue.xaml
     /// </summary>
-    public partial class AddGroups : UserControl
+    public partial class AddGroups : Page
     {
         public AddGroups()
         {
-
             InitializeComponent();
         }
     }

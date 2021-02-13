@@ -16,12 +16,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Ranks
+namespace Ranks.View
 {
     /// <summary>
     /// Логика взаимодействия для AddUser.xaml
     /// </summary>
-    public partial class Profile : UserControl
+    public partial class Profile : Page
     {
         /// <summary>
         /// пользователя

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Ranks.Profile"
+﻿<Page x:Class="Ranks.View.Profile"
              Uid="2"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -33,6 +33,6 @@
         <TextBox Name="rankBox" Height="50" Margin="673,137,25,383" FontSize="27" Text="Ранг"/>
         <TextBox Name="aboutBox" Height="50" Margin="337,222,25,298" FontSize="27" Text="Кратко"/>
         <Button x:Name="addUser" Background="#135BAB" BorderBrush="{x:Null}" Content="Добавить пользователя в группу" Margin="478,508,10,30"/>
-        <Button x:Name="deleteUser" Visibility="Hidden" Background="#e56b60" BorderBrush="{x:Null}" Content="Удалить пользователя" Margin="288,508,345,30"/>
+        <Button x:Name="deleteUser" Background="#e56b60" BorderBrush="{x:Null}" Content="Удалить пользователя" Margin="288,508,345,30"/>
     </Grid>
-</UserControl>
+</Page>

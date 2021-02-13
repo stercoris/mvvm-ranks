@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Ranks
+namespace Ranks.View
 {
     /// <summary>
     /// Логика взаимодействия для GroupView.xaml
