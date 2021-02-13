@@ -21,7 +21,7 @@ namespace Ranks.View
     /// <summary>
     /// Логика взаимодействия для Users.xaml
     /// </summary>
-    public partial class Users : UserControl
+    public partial class Users : Page
     {
         public Users()
         {

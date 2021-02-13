@@ -1,13 +1,11 @@
 ﻿<Page x:Class="Ranks.View.Profile"
-             Uid="2"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Ranks"
-             mc:Ignorable="d" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             d:DesignHeight="570" d:DesignWidth="818" Height="570" Width="818">
+             xmlns:local="clr-namespace:Ranks"
+             Height="570" Width="818">
     
     <Grid Background="White">
         <Grid Margin="442,344,150,196" Width="226">

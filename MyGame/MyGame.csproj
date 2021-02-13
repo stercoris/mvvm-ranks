@@ -113,7 +113,7 @@
     <Compile Include="Model\Group.cs" />
     <Compile Include="Model\Rank.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="Services\CoolAnumation.cs" />
+    <Compile Include="Services\CoolAnimation.cs" />
     <Compile Include="Services\ImageConverter.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\GroupProfile\GroupProfile.xaml.cs">
