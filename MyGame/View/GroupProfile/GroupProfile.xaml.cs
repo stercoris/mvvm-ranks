@@ -19,9 +19,9 @@ namespace Ranks.View
     /// <summary>
     /// Логика взаимодействия для AddGroupDialogue.xaml
     /// </summary>
-    public partial class AddGroups : Page
+    public partial class GroupProfile : Page
     {
-        public AddGroups()
+        public GroupProfile()
         {
             InitializeComponent();
         }

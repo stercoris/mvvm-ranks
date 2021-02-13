@@ -11,7 +11,7 @@
         <viewmodels:MainViewModel/>
     </Window.DataContext>
     <Grid Background="#FFDEDEDE">
-        <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="570" Width="818"/>
+        <Frame Content="{Binding SelectedPage}" NavigationUIVisibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="570" Width="833"></Frame>
         <Grid x:Name="TopMenu" Height="46" VerticalAlignment="Top" Background="#135BAB" Panel.ZIndex="20">
             <Button x:Name="exitBt" Template="{DynamicResource CustomButton}" Style="{DynamicResource WindowControls}">
                 <materialDesign:PackIcon  Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="Close" />
@@ -19,20 +19,20 @@
             <Button x:Name="minBt" Template="{DynamicResource CustomButton}" Style="{DynamicResource WindowControls}" Margin="10,10,40,10">
                 <materialDesign:PackIcon  Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Kind="WindowMinimize" Margin="0,0,0,-13"/>
             </Button>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Text="{Binding TestText}"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Text="{Binding SelectedPage.Uid}"/>
         </Grid>
         <Grid x:Name="GridMenu" HorizontalAlignment="Left" Background="#173763">
             <StackPanel x:Name="ListViewMenu" Background="#173763" Orientation="Vertical" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <Button x:Name="def" Uid="1"  Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}">
+                <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavUsersClick}">
                     <materialDesign:PackIcon Kind="Grade" Height="30" Width="30"/>
                 </Button>
-                <Button  x:Name="add" Uid="2" Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}">
+                <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavUserProfileClick}">
                     <materialDesign:PackIcon Kind="Pencil" Height="30" Width="30"/>
                 </Button>
-                <Button x:Name="rankList" Uid="3" Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}">
+                <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavRankListClick}">
                     <materialDesign:PackIcon Kind="ReorderHorizontal" Height="30" Width="30"/>
                 </Button>
-                <Button x:Name="groupList" Uid="4" Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}">
+                <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavGroupListClick}">
                     <materialDesign:PackIcon Kind="People" Height="30" Width="30"/>
                 </Button>
             </StackPanel>

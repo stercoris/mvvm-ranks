@@ -21,12 +21,12 @@ namespace Ranks.View
     /// <summary>
     /// Логика взаимодействия для AddUser.xaml
     /// </summary>
-    public partial class Profile : Page
+    public partial class UserProfile : Page
     {
         /// <summary>
         /// пользователя
         /// </summary>
-        public Profile()
+        public UserProfile()
         {
             InitializeComponent();
         }
