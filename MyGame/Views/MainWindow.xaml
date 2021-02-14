@@ -19,7 +19,7 @@
             <Button x:Name="minBt" Template="{DynamicResource CustomButton}" Style="{DynamicResource WindowControls}" Margin="10,10,40,10">
                 <materialDesign:PackIcon  Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Kind="WindowMinimize" Margin="0,0,0,-13"/>
             </Button>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Text="{Binding SelectedPage.Uid}"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Montserrat}" FontSize="22" Text="{Binding SelectedPage.Uid}"/>
         </Grid>
         <Grid x:Name="GridMenu" HorizontalAlignment="Left" Background="#173763">
             <StackPanel x:Name="ListViewMenu" Background="#173763" Orientation="Vertical" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -27,10 +27,10 @@
                     <materialDesign:PackIcon Kind="Grade" Height="30" Width="30"/>
                 </Button>
                 <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavUserProfileClick}">
-                    <materialDesign:PackIcon Kind="Pencil" Height="30" Width="30"/>
+                    <materialDesign:PackIcon Kind="Accessible" Height="30" Width="30"/>
                 </Button>
                 <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavRankListClick}">
-                    <materialDesign:PackIcon Kind="ReorderHorizontal" Height="30" Width="30"/>
+                    <materialDesign:PackIcon Kind="Assignment" Height="30" Width="30"/>
                 </Button>
                 <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavGroupListClick}">
                     <materialDesign:PackIcon Kind="People" Height="30" Width="30"/>

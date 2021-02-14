@@ -116,54 +116,58 @@
     <Compile Include="Services\CoolAnimation.cs" />
     <Compile Include="Services\ImageConverter.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="View\GroupProfile\GroupProfile.xaml.cs">
+    <Compile Include="Views\Pages\GroupProfile\GroupProfile.xaml.cs">
       <DependentUpon>GroupProfile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Groups\Groups.xaml.cs">
+    <Compile Include="Views\Pages\Groups\Groups.xaml.cs">
       <DependentUpon>Groups.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Groups\GroupView.xaml.cs">
+    <Compile Include="Views\Pages\Groups\GroupView.xaml.cs">
       <DependentUpon>GroupView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainWindow\MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserProfile\UserProfile.xaml.cs">
+    <Compile Include="Views\Pages\UserProfile\UserProfile.xaml.cs">
       <DependentUpon>UserProfile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Ranks\RankList.xaml.cs">
+    <Compile Include="Views\Pages\Ranks\RankList.xaml.cs">
       <DependentUpon>RankList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Ranks\RankView.xaml.cs">
+    <Compile Include="Views\Pages\Ranks\RankView.xaml.cs">
       <DependentUpon>RankView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Users\Users.xaml.cs">
+    <Compile Include="Views\Pages\Users\Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Users\UserView.xaml.cs">
+    <Compile Include="Views\Pages\Users\UserView.xaml.cs">
       <DependentUpon>UserView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\Buttons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\GroupProfile\GroupProfile.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Groups\Groups.xaml">
+    <Page Include="Resources\Fonts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Groups\GroupView.xaml">
+    <Page Include="Views\Pages\GroupProfile\GroupProfile.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\MainWindow\MainWindow.xaml">
+    <Page Include="Views\Pages\Groups\Groups.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserProfile\UserProfile.xaml">
+    <Page Include="Views\Pages\Groups\GroupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\UserProfile\UserProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,19 +175,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Ranks\RankList.xaml">
+    <Page Include="Views\Pages\Ranks\RankList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Ranks\RankView.xaml">
+    <Page Include="Views\Pages\Ranks\RankView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Users\Users.xaml">
+    <Page Include="Views\Pages\Users\Users.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Users\UserView.xaml">
+    <Page Include="Views\Pages\Users\UserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,6 +215,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Montserrat.ttf" />
     <None Include="users.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -219,35 +224,35 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\Exit.png" />
-    <Resource Include="img\RL3.png" />
+    <Resource Include="Images\Exit.png" />
+    <Resource Include="Images\RL3.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\no_image.jpg" />
+    <Resource Include="Images\no_image.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\rank.png" />
+    <Resource Include="Images\rank.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\add.png" />
+    <Resource Include="Images\add.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\Ar.png" />
-    <Resource Include="img\refresh.png" />
+    <Resource Include="Images\Ar.png" />
+    <Resource Include="Images\refresh.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\rank1.png" />
+    <Resource Include="Images\rank1.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />
-    <Folder Include="img\studfaces\" />
+    <Folder Include="Images\studfaces\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\nad.JPG" />
-    <Resource Include="img\rod.JPG" />
+    <Resource Include="Images\nad.JPG" />
+    <Resource Include="Images\rod.JPG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\kyd.jpg" />
+    <Resource Include="Images\kyd.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="logo.ico" />

@@ -13,7 +13,7 @@ namespace Ranks.ViewModel
 {
     internal class MainViewModel : ViewModelBase
     {
-        #region Pages
+        #region Pages And Buttons
         private Page GroupList;
         private Page GroupProfile;
         private Page Users;
@@ -22,20 +22,20 @@ namespace Ranks.ViewModel
         private Page _selected_page;
         public Page SelectedPage
         {
-            get { return _selected_page; }
-            set { if (value != _selected_page) Set(ref _selected_page, value); }
+            get => _selected_page;
+            set => Set(ref _selected_page, value);
         }
 
         public ICommand bNavGroupListClick 
-        { get { return new RelayCommand(() => SelectedPage = GroupList);} }
+        { get => new RelayCommand(() => SelectedPage = GroupList); }
         public ICommand bNavGroupProfileClick
-        { get { return new RelayCommand(() => SelectedPage = GroupProfile); } }
+        { get => new RelayCommand(() => SelectedPage = GroupProfile); }
         public ICommand bNavUsersClick
-        { get { return new RelayCommand(() => SelectedPage = Users); } }
+        { get => new RelayCommand(() => SelectedPage = Users); }
         public ICommand bNavUserProfileClick
-        { get { return new RelayCommand(() => SelectedPage = UserProfile); } }
+        { get => new RelayCommand(() => SelectedPage = UserProfile); }
         public ICommand bNavRankListClick
-        { get { return new RelayCommand(() => SelectedPage = RankList); } }
+        { get => new RelayCommand(() => SelectedPage = RankList); }
 
         #endregion
 
