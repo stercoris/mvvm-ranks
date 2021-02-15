@@ -1,4 +1,4 @@
-﻿<Window x:Class="MyGame.View.MainWindow"
+﻿<Window x:Class="Ranks.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Ranks"
         xmlns:viewmodels="clr-namespace:Ranks.ViewModel"
-        Title="MainWindow" 
+        Title="Ранги" 
         Height="616" Width="873" Margin="5"
         MinHeight="616" MinWidth="873" 
         ResizeMode="CanResize" WindowStyle="None" 
@@ -51,7 +51,7 @@
                 </StackPanel>
             </Grid>
 
-            <Frame Content="{Binding SelectedPage}" Grid.Column="1" NavigationUIVisibility="Hidden" Background="{x:Null}"></Frame>
+            <Frame Content="{Binding SelectedPage}" Style="{StaticResource FrameGradient}" Grid.Column="1" NavigationUIVisibility="Hidden" ></Frame>
         </Grid>
 
         <Border Padding="0" VerticalAlignment="Top" Margin="50,0,0,0" Background="Transparent" Panel.ZIndex="20" MouseDown="GrabStart">

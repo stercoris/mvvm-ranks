@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MyGame.View
+namespace Ranks.View
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
