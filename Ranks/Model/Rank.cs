@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Ranks.Model
 {
-    class Rank : INotifyPropertyChanged
+    class Rank : ViewModelBase
     {
         private int _id;
         private string _name;
@@ -16,31 +17,13 @@ namespace Ranks.Model
         public int Id
         {
             get => _id;
-            set
-            {
-                if (value == _id) return;
-                _id = value;
-                OnPropertyChanged();
-            }
+            set => Set(ref _id, value);
         }
 
         public string Name
         {
             get => _name;
-            set
-            {
-                if (value == _name) return;
-                _name = value;
-                OnPropertyChanged();
-            }
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            set => Set(ref _name, value);
         }
     }
 }

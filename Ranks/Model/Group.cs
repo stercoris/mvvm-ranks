@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Windows.Media.Imaging;
 
 namespace Ranks.Model
 {
-    class Group : INotifyPropertyChanged
+    class Group : ViewModelBase
     {
         private int _id;
         private string _name;
@@ -19,53 +20,25 @@ namespace Ranks.Model
         public int Id
         {
             get => _id;
-            set
-            {
-                if (value == _id) return;
-                _id = value;
-                OnPropertyChanged();
-            }
+            set => Set(ref _id, value);
         }
 
         public string Name
         {
             get => _name;
-            set
-            {
-                if (value == _name) return;
-                _name = value;
-                OnPropertyChanged();
-            }
+            set => Set(ref _name, value);
         }
 
         public string About
         {
             get => _about;
-            set
-            {
-                if (value == _about) return;
-                _about = value;
-                OnPropertyChanged();
-            }
+            set => Set(ref _about, value);
         }
 
         public BitmapImage Picture
         {
             get => _piture;
-            set
-            {
-                if (value == _piture) return;
-                _piture = value;
-                OnPropertyChanged();
-            }
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            set => Set(ref _piture, value);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Windows.Media.Imaging;
 
 namespace Ranks.Model
 {
-    class User : INotifyPropertyChanged
+    class User : ViewModelBase
     {
         private int _id;
         private string _name;
@@ -24,108 +25,55 @@ namespace Ranks.Model
         public int Id
         {
             get => _id;
-            set
-            {
-                if (value == _id) return;
-                _id = value;
-                OnPropertyChanged();
-            }
+            set => Set(ref _id, value);
         }
 
         public string Name
         {
             get => _name;
-            set
-            {
-                if (value == _name) return;
-                _name = value;
-                OnPropertyChanged();
-            }
+            set => Set(ref _name, value);
         }
 
         public string SecondName
         {
             get => _sec_name;
-            set
-            {
-                if (value == _sec_name) return;
-                _sec_name = value;
-                OnPropertyChanged();
-            }
+            set => Set(ref _sec_name, value);
         }
 
         public Rank Rank
         {
             get => _rank;
-            set
-            {
-                if (value == _rank) return;
-                _rank = value;
-                OnPropertyChanged();
-            }
+            set => Set(ref _rank, value);
         }
 
         public Group Group
         {
             get => _group;
-            set
-            {
-                if (value == _group) return;
-                _group = value;
-                OnPropertyChanged();
-            }
+            set => Set(ref _group, value);
         }
 
         public bool IsAdmin
         {
             get => _is_admin;
-            set
-            {
-                if (value == _is_admin) return;
-                _is_admin = value;
-                OnPropertyChanged();
-            }
+            set => Set(ref _is_admin, value);
         }
         
         public string Password
         {
             get => _password;
-            set
-            {
-                if (value == _password) return;
-                _password = value;
-                OnPropertyChanged();
-            }
+            set => Set(ref _password, value);
         }
 
         public BitmapImage Picture
         {
             get => _piture;
-            set
-            {
-                if (value == _piture) return;
-                _piture = value;
-                OnPropertyChanged();
-            }
+            set => Set(ref _piture, value);
         }
         
         public string About
         {
             get => _about;
-            set
-            {
-                if (value == _about) return;
-                _about = value;
-                OnPropertyChanged();
-            }
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            set => Set(ref _about, value);
         }
     }
 }
