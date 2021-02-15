@@ -3,4 +3,10 @@
                     xmlns:local="clr-namespace:Ranks">
     <FontFamily x:Key="Montserrat">pack://application:,,,/Resources/#Montserrat Alternates Regular</FontFamily>
 
+    <Style x:Key="RanksText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
 </ResourceDictionary>
