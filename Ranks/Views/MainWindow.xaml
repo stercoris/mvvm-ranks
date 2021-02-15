@@ -20,12 +20,12 @@
         ResizeBorderThickness="5" />
     </WindowChrome.WindowChrome>
     <Grid>
-        <Grid>
+        <Grid ShowGridLines="True">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="60"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
+
             <Grid Background="#151319" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -50,20 +50,23 @@
                     </Button>
                 </StackPanel>
             </Grid>
+            
+            <Frame Content="{Binding SelectedPage}" Grid.Column="1" NavigationUIVisibility="Hidden"/>
 
-            <Frame Content="{Binding SelectedPage}" Style="{StaticResource FrameGradient}" Grid.Column="1" NavigationUIVisibility="Hidden" ></Frame>
+            <Border MouseDown="GrabStart" Height="25" Width="auto" Grid.Column="1" VerticalAlignment="Top" Background="Transparent">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+                    <Button Template="{DynamicResource CustomButton}" Style="{DynamicResource WindowControls}">
+                        <materialDesign:PackIcon  Width="30" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Kind="WindowMinimize" Margin="0,0,0,-13"/>
+                    </Button>
+                    <Button Template="{DynamicResource CustomButton}" Style="{DynamicResource WindowControls}">
+                        <materialDesign:PackIcon  Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Kind="Close" />
+                    </Button>
+                </StackPanel>
+            </Border>
         </Grid>
 
-        <Border Padding="0" VerticalAlignment="Top" Margin="50,0,0,0" Background="Transparent" Panel.ZIndex="20" MouseDown="GrabStart">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
-                <Button Template="{DynamicResource CustomButton}" Style="{DynamicResource WindowControls}">
-                    <materialDesign:PackIcon  Width="30" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Kind="WindowMinimize" Margin="0,0,0,-13"/>
-                </Button>
-                <Button Template="{DynamicResource CustomButton}" Style="{DynamicResource WindowControls}">
-                    <materialDesign:PackIcon  Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Kind="Close" />
-                </Button>
-            </StackPanel>
-        </Border>
+        
+        
         
     </Grid>
 </Window>

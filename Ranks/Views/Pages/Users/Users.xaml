@@ -5,18 +5,38 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
             xmlns:local="clr-namespace:Ranks"
-            Height="570" Width="833" x:Uid="Пользователи">
-    
-    <StackPanel Orientation="Vertical">
-        <Grid>
-            <ComboBox Name="groupList" Style="{StaticResource MaterialDesignComboBox}" ItemContainerStyle="{StaticResource MaterialDesignComboBoxItemStyle}" HorizontalAlignment="Right" Width="120" Margin="10,15,30,10" FontSize="17" >
-            
-            </ComboBox>
+            MinHeight="570" MinWidth="833" x:Uid="Пользователи" Background="#151319">
+
+    <Grid Background="{StaticResource DarkGradient}" ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/> <!-- Функциональные кнопки-->
+            <ColumnDefinition/>    <!-- Контент кнопки-->  
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBox 
+                materialDesign:HintAssist.Hint="Поиск" 
+                materialDesign:HintAssist.IsFloating="False"
+                BorderBrush="Transparent"
+                Grid.Row="0"  
+                Text="Qwfqwfqfqwqwfq" 
+                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" 
+                FontSize="14" 
+                TextWrapping="NoWrap" 
+                AcceptsReturn="False" 
+                VerticalContentAlignment="Center" 
+                VerticalAlignment="Center"
+                Margin="10"
+                Padding="0,-5,0,-5"
+                Background="White" 
+                Foreground="{StaticResource MaterialDesignDarkBackground}" />
         </Grid>
-        <ScrollViewer Name="scroll" Height="510" Padding="25,0,0,0">
-            <StackPanel Name="userList" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-        </ScrollViewer>
-    </StackPanel>
+        
+    </Grid>
     
 
 </Page>
