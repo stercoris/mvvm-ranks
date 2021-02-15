@@ -24,5 +24,28 @@ namespace MyGame.View
         {
             InitializeComponent();
         }
+
+        private void GrabStart(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                if (WindowState == WindowState.Maximized)
+                {
+                    var point = PointToScreen(e.MouseDevice.GetPosition(this));
+
+                    if (point.X <= RestoreBounds.Width / 2)
+                        this.Left = 0;
+                    else if (point.X + RestoreBounds.Width / 2 >= SystemParameters.MaximizedPrimaryScreenWidth)
+                        this.Left = point.X - (RestoreBounds.Width - (this.ActualWidth - point.X));
+                    else
+                        this.Left = point.X - (RestoreBounds.Width / 2);
+
+                    Top = point.Y - (((FrameworkElement)sender).ActualHeight / 2);
+                    WindowState = WindowState.Normal;
+                }
+                this.DragMove();
+            }
+                
+        }
     }
 }
