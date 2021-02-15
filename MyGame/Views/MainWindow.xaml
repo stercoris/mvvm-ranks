@@ -6,36 +6,64 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Ranks"
         xmlns:viewmodels="clr-namespace:Ranks.ViewModel"
-        Title="MainWindow" Height="616" Width="873" ResizeMode="CanMinimize" WindowStyle="None">
+        Title="MainWindow" 
+        Height="616" Width="873" Margin="5"
+        MinHeight="616" MinWidth="873" 
+        ResizeMode="CanResize" WindowStyle="None" 
+        MaxHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}}">
     <Window.DataContext>
         <viewmodels:MainViewModel/>
     </Window.DataContext>
-    <Grid Background="#FFDEDEDE">
-        <Frame Content="{Binding SelectedPage}" NavigationUIVisibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="570" Width="833"></Frame>
-        <Grid x:Name="TopMenu" Height="46" VerticalAlignment="Top" Background="#135BAB" Panel.ZIndex="20">
-            <Button x:Name="exitBt" Template="{DynamicResource CustomButton}" Style="{DynamicResource WindowControls}">
-                <materialDesign:PackIcon  Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="Close" />
-            </Button>
-            <Button x:Name="minBt" Template="{DynamicResource CustomButton}" Style="{DynamicResource WindowControls}" Margin="10,10,40,10">
-                <materialDesign:PackIcon  Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Kind="WindowMinimize" Margin="0,0,0,-13"/>
-            </Button>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Montserrat}" FontSize="22" Text="{Binding SelectedPage.Uid}"/>
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+        CaptionHeight="0"
+        ResizeBorderThickness="5" />
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Grid Background="#151319" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Image Source="pack://application:,,,/Images/Logo.png" Margin="8,13"/>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Row="1" Margin="0,0,0,150">
+                    <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavUsersClick}">
+                        <materialDesign:PackIcon Kind="User" Style="{DynamicResource NavBtnIcon}"/>
+                    </Button>
+                    <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavUserProfileClick}">
+                        <materialDesign:PackIcon Kind="UserAdd" Style="{DynamicResource NavBtnIcon}"/>
+                    </Button>
+                    <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavRankListClick}">
+                        <materialDesign:PackIcon Kind="ViewList" Style="{DynamicResource NavBtnIcon}"/>
+                    </Button>
+                    <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavGroupListClick}">
+                        <materialDesign:PackIcon Kind="People" Style="{DynamicResource NavBtnIcon}"/>
+                    </Button>
+                    <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavGroupProfileClick}">
+                        <materialDesign:PackIcon Kind="PeopleAdd" Style="{DynamicResource NavBtnIcon}"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <Frame Content="{Binding SelectedPage}" Grid.Column="1" NavigationUIVisibility="Hidden" Background="{x:Null}"></Frame>
         </Grid>
-        <Grid x:Name="GridMenu" HorizontalAlignment="Left" Background="#173763">
-            <StackPanel x:Name="ListViewMenu" Background="#173763" Orientation="Vertical" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavUsersClick}">
-                    <materialDesign:PackIcon Kind="Grade" Height="30" Width="30"/>
+
+        <Border Padding="0" VerticalAlignment="Top" Margin="50,0,0,0" Background="Transparent" Panel.ZIndex="20" MouseDown="GrabStart">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <Button Template="{DynamicResource CustomButton}" Style="{DynamicResource WindowControls}">
+                    <materialDesign:PackIcon  Width="30" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Kind="WindowMinimize" Margin="0,0,0,-13"/>
                 </Button>
-                <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavUserProfileClick}">
-                    <materialDesign:PackIcon Kind="Accessible" Height="30" Width="30"/>
-                </Button>
-                <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavRankListClick}">
-                    <materialDesign:PackIcon Kind="Assignment" Height="30" Width="30"/>
-                </Button>
-                <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavGroupListClick}">
-                    <materialDesign:PackIcon Kind="People" Height="30" Width="30"/>
+                <Button Template="{DynamicResource CustomButton}" Style="{DynamicResource WindowControls}">
+                    <materialDesign:PackIcon  Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Kind="Close" />
                 </Button>
             </StackPanel>
-        </Grid>
+        </Border>
+        
     </Grid>
 </Window>
