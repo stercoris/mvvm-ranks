@@ -5,17 +5,17 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
             xmlns:local="clr-namespace:Ranks"
-            MinHeight="570" MinWidth="833" x:Uid="Пользователи" Background="#151319">
+            d:DesignHeight ="600" d:DesignWidth="900" x:Uid="Пользователи" Background="#151319">
 
     <Grid Background="{StaticResource DarkGradient}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/> <!-- Функциональные кнопки-->
+            <ColumnDefinition Width="250"/> <!-- Функциональные кнопки-->
             <ColumnDefinition/>    <!-- Контент кнопки-->  
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Background="#100E14">
+        <Grid Grid.Column="0" Background="{StaticResource DarkPurple}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="55"/>
+                <RowDefinition Height="65"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBox 
@@ -23,16 +23,15 @@
                 materialDesign:HintAssist.IsFloating="False"
                 BorderBrush="Transparent"
                 Grid.Row="0"  
-                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" 
+                Template="{StaticResource SearchBox}"
+                Height="30"
                 FontSize="14" 
                 TextWrapping="NoWrap" 
                 AcceptsReturn="False" 
                 VerticalContentAlignment="Center" 
                 VerticalAlignment="Center"
-                Margin="10"
-                Padding="0,-5,0,-5"
-                Background="White" 
-                Foreground="{StaticResource MaterialDesignDarkBackground}" />
+                Margin="23,0"
+                Background="White"/>
         </Grid>
         
     </Grid>
