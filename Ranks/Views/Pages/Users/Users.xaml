@@ -7,13 +7,13 @@
             xmlns:local="clr-namespace:Ranks"
             MinHeight="570" MinWidth="833" x:Uid="Пользователи" Background="#151319">
 
-    <Grid Background="{StaticResource DarkGradient}" ShowGridLines="True">
+    <Grid Background="{StaticResource DarkGradient}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/> <!-- Функциональные кнопки-->
             <ColumnDefinition/>    <!-- Контент кнопки-->  
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="0" Background="#100E14">
             <Grid.RowDefinitions>
                 <RowDefinition Height="55"/>
                 <RowDefinition/>
@@ -23,7 +23,6 @@
                 materialDesign:HintAssist.IsFloating="False"
                 BorderBrush="Transparent"
                 Grid.Row="0"  
-                Text="Qwfqwfqfqwqwfq" 
                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" 
                 FontSize="14" 
                 TextWrapping="NoWrap" 
