@@ -7,15 +7,15 @@
         xmlns:local="clr-namespace:Ranks"
         xmlns:viewmodels="clr-namespace:Ranks.ViewModel"
         Title="Ранги" 
-        Height="616" Width="873" Margin="5"
-        MinHeight="616" MinWidth="873" 
+        Height="600" Width="950" Margin="5"
+        MinHeight="600" MinWidth="950"
         ResizeMode="CanResize" WindowStyle="None" 
         MaxHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}}">
     <Window.DataContext>
         <viewmodels:MainViewModel/>
     </Window.DataContext>
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" ResizeBorderThickness="0"/>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5"/>
     </WindowChrome.WindowChrome>
     <Grid Style="{StaticResource WindowMainPanelStyle}">
         <Grid>
@@ -24,7 +24,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Grid Background="#151319" Grid.Column="0">
+            <Grid Background="{StaticResource WindowControlsColor}" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition/>
@@ -53,10 +53,10 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Border Width="auto" Height="30" Margin="0" Padding="0" Grid.Row="0" BorderThickness="0" Background="#151319"  MouseDown="GrabStart">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Right">
-                        <Button Style="{DynamicResource WindowControls}" Template="{DynamicResource CustomButton}" Background="Transparent">
-                            <materialDesign:PackIcon Style="{DynamicResource NavBtnIcon}" Margin="0,5,0,0" Kind="WindowMinimize"/>
+                <Border Height="30" Grid.Row="0" Background="{StaticResource WindowControlsColor}" MouseDown="GrabStart">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Style="{DynamicResource WindowControls}" Template="{DynamicResource CustomButton}">
+                            <materialDesign:PackIcon Style="{DynamicResource NavBtnIcon}" Margin="0,6,0,0" Kind="WindowMinimize"/>
                         </Button>
                         <Button Style="{DynamicResource WindowControls}" Template="{DynamicResource CustomButton}">
                             <materialDesign:PackIcon Style="{DynamicResource NavBtnIcon}" Kind="Close" />
