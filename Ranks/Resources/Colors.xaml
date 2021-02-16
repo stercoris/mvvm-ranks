@@ -13,5 +13,11 @@
     <Color x:Key="Gray">
         #2F3035
     </Color>
+    <!--<Color x:Key="DarkPurple">
+        #100E14
+    </Color>-->
+
+    <SolidColorBrush x:Key="DarkPurple" Color="#100E14"/>
+    <SolidColorBrush x:Key="WindowControlsColor" Color="#151319"/>
 
 </ResourceDictionary>
