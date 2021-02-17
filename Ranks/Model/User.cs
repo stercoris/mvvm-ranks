@@ -15,7 +15,7 @@ namespace Ranks.Model
         private int _id;
         private string _name;
         private string _sec_name;
-        private Group _group;
+        private int _groupid;
         private Rank _rank;
         private bool _is_admin;
         private string _password;
@@ -46,10 +46,10 @@ namespace Ranks.Model
             set => Set(ref _rank, value);
         }
 
-        public Group Group
+        public int GroupId
         {
-            get => _group;
-            set => Set(ref _group, value);
+            get => _groupid;
+            set => Set(ref _groupid, value);
         }
 
         public bool IsAdmin

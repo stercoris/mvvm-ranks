@@ -16,6 +16,7 @@ namespace Ranks.Model
         private string _name;
         private string _about;
         private BitmapImage _piture;
+        private List<User> _users;
 
         public int Id
         {
@@ -39,6 +40,12 @@ namespace Ranks.Model
         {
             get => _piture;
             set => Set(ref _piture, value);
+        }
+
+        public List<User> Users
+        {
+            get => _users;
+            set => Set(ref _users, value);
         }
     }
 }
