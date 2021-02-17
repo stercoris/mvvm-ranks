@@ -1,6 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
-using Ranks.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,25 +39,16 @@ namespace Ranks.ViewModel
 
         #endregion
 
-        private List<Group> _groups;
-        public List<Group> Groups
-        {
-            get => _groups;
-            set => Set(ref _groups, value);
-        }
-
 
         public MainViewModel()
         {
             GroupList = new View.Groups();
             GroupProfile = new View.GroupProfile();
-            Users = new View.Users() {DataContext = this};
+            Users = new View.Users();
             UserProfile = new View.UserProfile();
             RankList = new View.RankList();
 
-            Groups = DataBase.Groups.GetGroups();
-
-            SelectedPage = Users;
+            this.SelectedPage = Users;
         }
     }
 }

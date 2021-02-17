@@ -10,9 +10,10 @@
         Height="600" Width="950" Margin="5"
         MinHeight="600" MinWidth="950"
         ResizeMode="CanResize" WindowStyle="None" 
-        MaxHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}}" 
-        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=True}">
-
+        MaxHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}}">
+    <Window.DataContext>
+        <viewmodels:MainViewModel/>
+    </Window.DataContext>
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="5"/>
     </WindowChrome.WindowChrome>
@@ -63,7 +64,6 @@
                     </StackPanel>
                 </Border>
                 <Frame Content="{Binding SelectedPage}" Grid.Row="1" NavigationUIVisibility="Hidden" Panel.ZIndex="200"/>
-
             </Grid>
         </Grid>
     </Grid>

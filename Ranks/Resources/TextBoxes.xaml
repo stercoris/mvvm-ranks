@@ -26,18 +26,4 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-
-
-
-    <Style x:Key="SearchTextBox" TargetType="TextBox">
-        <Setter Property="Height" Value="30"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="TextWrapping" Value="NoWrap"/>
-        <Setter Property="AcceptsReturn" Value="False"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Margin" Value="23,0"/>
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-    </Style>
 </ResourceDictionary>

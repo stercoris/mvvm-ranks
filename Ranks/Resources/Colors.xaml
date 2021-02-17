@@ -19,8 +19,5 @@
 
     <SolidColorBrush x:Key="DarkPurple" Color="#100E14"/>
     <SolidColorBrush x:Key="WindowControlsColor" Color="#151319"/>
-    <SolidColorBrush x:Key="PurpleBrush" Color="#151319"/>
-    <SolidColorBrush x:Key="OrangeBrush" Color="#151319"/>
-    <SolidColorBrush x:Key="GrayBrush" Color="#151319"/>
 
 </ResourceDictionary>
