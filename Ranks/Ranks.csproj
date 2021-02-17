@@ -107,10 +107,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DataBase\DBConnection.cs" />
-    <Compile Include="DataBase\Groups.cs" />
-    <Compile Include="DataBase\Ranks.cs" />
-    <Compile Include="DataBase\Users.cs" />
+    <Compile Include="Data\DBConnection.cs" />
+    <Compile Include="Data\Groups.cs" />
+    <Compile Include="Data\Ranks.cs" />
+    <Compile Include="Data\Users.cs" />
     <Compile Include="Model\Group.cs" />
     <Compile Include="Model\Rank.cs" />
     <Compile Include="Model\User.cs" />
