@@ -7,8 +7,8 @@
             xmlns:local="clr-namespace:Ranks"
             xmlns:viewmodels="clr-namespace:Ranks.ViewModel"
             d:DesignHeight ="600" d:DesignWidth="900" x:Uid="Пользователи" Background="#151319"
-            d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=True}">
-    <Grid Background="{StaticResource DarkGradient}">
+            d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/> <!-- Поиск-->
             <ColumnDefinition/>    <!-- Контент кнопки-->  
@@ -32,21 +32,47 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Background="{StaticResource GrayBrush}" BorderThickness="1" Height="40" CornerRadius="20" Margin="10">
-                            <StackPanel Orientation="Horizontal" >
-                                <Ellipse Width="40" Height="40" Margin="0,0,0,0" Stretch="Fill">
+                        <Button Style="{StaticResource GroupSelectButton}" 
+                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.SelectGroupCommand}" CommandParameter="{Binding}">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                                <Ellipse Width="55" Height="50" Margin="0" Stretch="Fill">
                                     <Ellipse.Fill>
-                                        <ImageBrush ImageSource="{Binding Picture}"/>
+                                        <ImageBrush ImageSource="{Binding Image}"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
                                 <TextBlock Text="{Binding Name}" Style="{StaticResource RanksText}" VerticalAlignment="Center" Margin="40,0"/>
                             </StackPanel>
-                        </Border>
+                        </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Grid>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Background="{StaticResource DarkGradient}">
+            <ItemsControl ItemsSource="{Binding SelectedGroup.Users}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Style="{StaticResource UserSelectionButton}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="{Binding Name}" Style="{StaticResource UserSelectionTitle}"/>
+                                <Image Grid.Row="1" Source="{Binding Image}" Stretch="Fill" Height="auto"/>
+                            </Grid>
+                        </Button>
+                    </DataTemplate> 
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
         
+
     </Grid>
     
 
