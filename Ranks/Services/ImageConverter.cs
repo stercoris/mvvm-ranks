@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Ranks.Services
@@ -36,7 +33,7 @@ namespace Ranks.Services
         /// </summary>
         /// <param name="base64String">base 64 string</param>
         /// <returns></returns>
-        public static BitmapImage toBitmapImage(string base64String)
+        public static ImageSource toImage(string base64String)
         {
             byte[] imgBytes = Convert.FromBase64String(base64String);
 
@@ -46,7 +43,7 @@ namespace Ranks.Services
             bitmapImage.StreamSource = ms;
             bitmapImage.EndInit();
 
-            //Image object
+
             return (bitmapImage);
         }
     }
