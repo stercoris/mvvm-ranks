@@ -5,6 +5,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Ranks.DataBase
 {
@@ -34,7 +35,7 @@ namespace Ranks.DataBase
                     Rank = Ranks.Get(Convert.ToInt32(rdr["rank"])),
                     IsAdmin = Convert.ToBoolean(rdr["is_admin"]),
                     Password = rdr["pass"].ToString(),
-                    Image = Services.ImageConverter.toImage(rdr["pic"].ToString()),
+                    //Image = Services.ImageConverter.toImage(rdr["pic"].ToString()),
                     About = rdr["about"].ToString(),
                 };
                 users.Add(user);
@@ -63,13 +64,32 @@ namespace Ranks.DataBase
                     Rank = Ranks.Get(Convert.ToInt32(rdr["rank"])),
                     IsAdmin = Convert.ToBoolean(rdr["is_admin"]),
                     Password = rdr["pass"].ToString(),
-                    Image = Services.ImageConverter.toImage(rdr["pic"].ToString()),
+                    //Image = Services.ImageConverter.toImage(rdr["pic"].ToString()),
                     About = rdr["about"].ToString(),
                 };
                 return (user);
             }
             else return null;
         }
+
+        /// <summary>
+        /// Получает ImageSource
+        /// </summary>
+        /// <param name="id">ID пользователя</param>
+        /// <returns></returns>
+        static public ImageSource GetImageByUid(int id)
+        {
+
+            string sqlQuery = $"SELECT pic FROM Users WHERE (id = {id})";
+            m_sqlCmd = new SQLiteCommand(sqlQuery, connection);
+            rdr = m_sqlCmd.ExecuteReader();
+            if (rdr.Read())
+            {
+                return (Services.ImageConverter.toImage(rdr["pic"].ToString()));
+            }
+            else return null;
+        }
+
         /// <summary>
         /// Добавляет пользователя
         /// </summary>

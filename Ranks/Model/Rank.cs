@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 namespace Ranks.Model
 {
-    class Rank : ViewModelBase
+    public class Rank : ViewModelBase
     {
         private int _id;
         private string _name;

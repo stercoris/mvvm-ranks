@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace Ranks.Model
 {
-    class Group : ViewModelBase
+    public class Group : ViewModelBase
     {
         private int _id;
         private string _name;

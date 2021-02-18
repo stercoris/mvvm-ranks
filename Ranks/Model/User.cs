@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace Ranks.Model
 {
-    class User : ViewModelBase
+    public class User : ViewModelBase
     {
         private int _id;
         private string _name;
@@ -59,8 +59,12 @@ namespace Ranks.Model
 
         public ImageSource Image
         {
-            get => _image;
-            set => Set(ref _image, value);
+            //get => _image;
+            get
+            {
+                return DataBase.Users.GetImageByUid(this.Id);
+            }
+            //set => Set(ref _image, value);
         }
         
         public string About
