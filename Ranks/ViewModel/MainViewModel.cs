@@ -27,7 +27,7 @@ namespace Ranks.ViewModel
             set => Set(ref _selected_page, value);
         }
 
-        public ICommand bNavGroupListClick 
+        public ICommand bNavGroupListClick
         { get => new RelayCommand(() => SelectedPage = GroupList); }
         public ICommand bNavGroupProfileClick
         { get => new RelayCommand(() => SelectedPage = GroupProfile); }
@@ -40,12 +40,24 @@ namespace Ranks.ViewModel
 
         #endregion
 
+
+        #region Groups and Group selection
+        public Commands.SelectGroupCommand SelectGroupCommand { get; set; }
         private List<Group> _groups;
         public List<Group> Groups
         {
             get => _groups;
             set => Set(ref _groups, value);
         }
+        private Group _selected_group;
+        public Group SelectedGroup
+        {
+            get => _selected_group;
+            set => Set(ref _selected_group, value);
+        }
+        public void SelectGroup(Group group)
+        { SelectedGroup = group;}
+        #endregion
 
 
         public MainViewModel()
@@ -55,8 +67,9 @@ namespace Ranks.ViewModel
             Users = new View.Users() {DataContext = this};
             UserProfile = new View.UserProfile();
             RankList = new View.RankList();
-
             Groups = DataBase.Groups.GetGroups();
+
+            SelectGroupCommand = new Commands.SelectGroupCommand(this);
 
             SelectedPage = Users;
         }
