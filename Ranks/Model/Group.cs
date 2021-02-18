@@ -1,12 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
+using System.Windows.Media;
 
 namespace Ranks.Model
 {
@@ -15,7 +9,7 @@ namespace Ranks.Model
         private int _id;
         private string _name;
         private string _about;
-        private BitmapImage _piture;
+        private ImageSource _image;
         private List<User> _users;
 
         public int Id
@@ -36,10 +30,10 @@ namespace Ranks.Model
             set => Set(ref _about, value);
         }
 
-        public BitmapImage Picture
+        public ImageSource Image
         {
-            get => _piture;
-            set => Set(ref _piture, value);
+            get => _image;
+            set => Set(ref _image, value);
         }
 
         public List<User> Users

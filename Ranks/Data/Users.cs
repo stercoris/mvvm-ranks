@@ -34,7 +34,7 @@ namespace Ranks.DataBase
                     Rank = Ranks.Get(Convert.ToInt32(rdr["rank"])),
                     IsAdmin = Convert.ToBoolean(rdr["is_admin"]),
                     Password = rdr["pass"].ToString(),
-                    Picture = Services.ImageConverter.toBitmapImage(rdr["pic"].ToString()),
+                    Image = Services.ImageConverter.toImage(rdr["pic"].ToString()),
                     About = rdr["about"].ToString(),
                 };
                 users.Add(user);
@@ -63,7 +63,7 @@ namespace Ranks.DataBase
                     Rank = Ranks.Get(Convert.ToInt32(rdr["rank"])),
                     IsAdmin = Convert.ToBoolean(rdr["is_admin"]),
                     Password = rdr["pass"].ToString(),
-                    Picture = Services.ImageConverter.toBitmapImage(rdr["pic"].ToString()),
+                    Image = Services.ImageConverter.toImage(rdr["pic"].ToString()),
                     About = rdr["about"].ToString(),
                 };
                 return (user);
@@ -75,7 +75,7 @@ namespace Ranks.DataBase
         /// </summary>
         static public void Add(User user)
         {
-            string sqlQuery = $"INSERT INTO Users (name,sec_name,user_group,rank,is_admin,pass,pic,about) VALUES ('{user.Name}','{user.SecondName}','{user.GroupId}',{user.Rank},{user.IsAdmin},'{user.Password}','{user.Picture}','{user.About}')";
+            string sqlQuery = $"INSERT INTO Users (name,sec_name,user_group,rank,is_admin,pass,pic,about) VALUES ('{user.Name}','{user.SecondName}','{user.GroupId}',{user.Rank},{user.IsAdmin},'{user.Password}','{user.Image}','{user.About}')";
             m_sqlCmd = new SQLiteCommand(sqlQuery, connection);
             rdr = m_sqlCmd.ExecuteReader();
         }
@@ -84,7 +84,7 @@ namespace Ranks.DataBase
         /// </summary>
         static public void Update(User user)
         {
-            string sqlQuery = $"UPDATE Users SET name = '{user.Name}',sec_name = '{user.SecondName}',user_group = '{user.GroupId}',rank = {user.Rank},is_admin = {user.IsAdmin},pass = '{user.Password}',pic = '{user.Picture}',about = '{user.About}' WHERE id = {user.Id}";
+            string sqlQuery = $"UPDATE Users SET name = '{user.Name}',sec_name = '{user.SecondName}',user_group = '{user.GroupId}',rank = {user.Rank},is_admin = {user.IsAdmin},pass = '{user.Password}',pic = '{user.Image}',about = '{user.About}' WHERE id = {user.Id}";
             m_sqlCmd = new SQLiteCommand(sqlQuery, connection);
             rdr = m_sqlCmd.ExecuteReader();
         }

@@ -34,14 +34,13 @@ namespace Ranks.DataBase
                 {
                     Name = rdr["name"].ToString(),
                     Id = Convert.ToInt32(rdr["id"]),
-                    Picture = Services.ImageConverter.toBitmapImage(rdr["pic"].ToString()),
+                    Image = Services.ImageConverter.toImage(rdr["pic"].ToString()),
                     About = rdr["about"].ToString(),
                 };
                 group.Users = users.FindAll((user) => user.GroupId == group.Id);
 
                 groups.Add(group);
             }
-
             return (groups);
         }
         /// <summary>
@@ -59,7 +58,7 @@ namespace Ranks.DataBase
                 return new Group {
                     Name = rdr["name"].ToString(),
                     About = rdr["about"].ToString(),
-                    Picture = Services.ImageConverter.toBitmapImage(rdr["pic"].ToString()),
+                    Image = Services.ImageConverter.toImage(rdr["pic"].ToString()),
                     Id = Convert.ToInt32(rdr["id"]),
                 };
             }
