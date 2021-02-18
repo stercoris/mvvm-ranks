@@ -107,6 +107,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\SelectGroupCommand.cs" />
     <Compile Include="Data\DBConnection.cs" />
     <Compile Include="Data\Groups.cs" />
     <Compile Include="Data\Ranks.cs" />
@@ -240,9 +241,7 @@
   <ItemGroup>
     <Resource Include="Images\no_image.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">
       <Visible>False</Visible>
