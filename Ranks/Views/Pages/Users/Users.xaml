@@ -8,23 +8,25 @@
             xmlns:viewmodels="clr-namespace:Ranks.ViewModel"
             d:DesignHeight ="600" d:DesignWidth="900" x:Uid="Пользователи" Background="#151319"
             d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/> <!-- Поиск-->
             <ColumnDefinition/>    <!-- Контент кнопки-->  
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Background="{StaticResource DarkPurple}">
+        <Grid Grid.Column="0" Background="{DynamicResource DarkPurple}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="65"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBox 
                 Grid.Row="0"  
-                Style="{StaticResource SearchTextBox}"
-                Template="{StaticResource SearchBox}"/>
+                Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}"
+                Style="{DynamicResource SearchTextBox}"
+                Template="{DynamicResource SearchBox}"/>
 
-            <ItemsControl x:Name="Groups" Grid.Row="1" ItemsSource="{Binding Groups}">
+            <ItemsControl x:Name="Groups" Grid.Row="1" ItemsSource="{Binding FoundGroups}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Vertical"/>
@@ -32,7 +34,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Style="{StaticResource GroupSelectButton}" 
+                        <Button Style="{DynamicResource GroupSelectButton}" 
                                 Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.SelectGroupCommand}" CommandParameter="{Binding}">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
                                 <Ellipse Width="55" Height="50" Margin="0" Stretch="Fill">
@@ -40,7 +42,7 @@
                                         <ImageBrush ImageSource="{Binding Image}"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
-                                <TextBlock Text="{Binding Name}" Style="{StaticResource RanksText}" VerticalAlignment="Center" Margin="40,0"/>
+                                <TextBlock Text="{Binding Name}" Style="{DynamicResource RanksText}" VerticalAlignment="Center" Margin="40,0"/>
                             </StackPanel>
                         </Button>
                     </DataTemplate>
@@ -48,7 +50,7 @@
             </ItemsControl>
         </Grid>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Background="{StaticResource DarkGradient}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Background="{DynamicResource DarkGradient}">
             <ItemsControl ItemsSource="{Binding SelectedGroup.Users}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -57,17 +59,21 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Style="{StaticResource UserSelectionButton}">
+                        <Button Style="{DynamicResource UserSelectionButton}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="40"/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Grid.Row="0" Text="{Binding Name}" Style="{StaticResource UserSelectionTitle}"/>
+                                <TextBlock Grid.Row="0" Style="{DynamicResource UserSelectionTitle}">
+                                    <Run Text="{Binding Name}" />
+                                    <Run Text=" " />
+                                    <Run Text="{Binding SecondName}" />
+                                </TextBlock>
                                 <Image Grid.Row="1" Source="{Binding Image}" Stretch="Fill" Height="auto"/>
                             </Grid>
                         </Button>
-                    </DataTemplate> 
+                    </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
