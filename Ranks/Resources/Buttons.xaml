@@ -25,7 +25,7 @@
                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Opacity" TargetName="border" Value="0.8"/>
+                <Setter Property="Opacity" TargetName="border" Value="0.7"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Opacity" TargetName="border" Value="0.5"/>
@@ -33,6 +33,9 @@
             <Trigger Property="ToggleButton.IsChecked" Value="True">
                 <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
                 <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="border" Value="0.3"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -75,7 +78,7 @@
         <Setter Property="Height" Value="auto"/>
         <Setter Property="Padding" Value="0,10"/>
         <Setter Property="Margin" Value="0"/>
-        <Setter Property="Template" Value="{StaticResource CustomButton}"/>
+        <Setter Property="Template" Value="{DynamicResource CustomButton}"/>
         <Setter Property="BorderThickness" Value="0,1,0,1"/>
         <Setter Property="BorderBrush" Value="{StaticResource GrayBrush}"/>
         <Setter Property="Background" Value="Transparent"/>
