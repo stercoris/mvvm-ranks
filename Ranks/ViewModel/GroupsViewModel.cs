@@ -13,8 +13,8 @@ namespace Ranks.ViewModel
         public GroupsViewModel()
         {
             Groups = DataBase.Groups.GetGroups();
-            SelectGroupCommand = new Commands.SelectGroupCommand(this);
             FoundGroups = Groups;
+            SelectGroupCommand = new Commands.SelectGroupCommand(this);
         }
 
         public Commands.SelectGroupCommand SelectGroupCommand { get; set; }

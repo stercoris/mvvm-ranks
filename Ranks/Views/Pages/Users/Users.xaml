@@ -12,7 +12,7 @@
     <Grid DataContext="{Binding GroupViewModel}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/> <!-- Поиск-->
-            <ColumnDefinition/>    <!-- Контент кнопки-->  
+            <ColumnDefinition/> <!-- Контент кнопки-->
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0" Background="{DynamicResource DarkPurple}">
@@ -25,29 +25,30 @@
                 Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}"
                 Style="{DynamicResource SearchTextBox}"
                 Template="{DynamicResource SearchBox}"/>
-
-            <ItemsControl  x:Name="Groups" Grid.Row="1" ItemsSource="{Binding FoundGroups}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Vertical"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Button Style="{DynamicResource GroupSelectButton}" 
-                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=DataContext.SelectGroupCommand}" CommandParameter="{Binding}">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
-                                <Ellipse Width="55" Height="50" Margin="0" Stretch="Fill">
-                                    <Ellipse.Fill>
-                                        <ImageBrush ImageSource="{Binding Image}"/>
-                                    </Ellipse.Fill>
-                                </Ellipse>
-                                <TextBlock Text="{Binding Name}" Style="{DynamicResource RanksText}" VerticalAlignment="Center" Margin="40,0"/>
-                            </StackPanel>
-                        </Button>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <ScrollViewer VerticalScrollBarVisibility="Auto"  Grid.Row="1">
+                <ItemsControl  x:Name="Groups" ItemsSource="{Binding FoundGroups}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Style="{DynamicResource GroupSelectButton}" 
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=DataContext.SelectGroupCommand}" CommandParameter="{Binding}">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                                    <Ellipse Width="55" Height="50" Margin="0" Stretch="Fill">
+                                        <Ellipse.Fill>
+                                            <ImageBrush ImageSource="{Binding Image}"/>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <TextBlock Text="{Binding Name}" Style="{DynamicResource RanksText}" VerticalAlignment="Center" Margin="40,0"/>
+                                </StackPanel>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
         </Grid>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Background="{DynamicResource DarkGradient}">
@@ -77,9 +78,5 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        
-
     </Grid>
-    
-
 </Page>
