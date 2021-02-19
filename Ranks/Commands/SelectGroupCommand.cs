@@ -11,9 +11,9 @@ namespace Ranks.Commands
 {
     class SelectGroupCommand : ICommand
     {
-        public MainViewModel viewModel { get; set; }
+        public GroupsViewModel viewModel { get; set; }
 
-        public SelectGroupCommand(MainViewModel viewModel)
+        public SelectGroupCommand(GroupsViewModel viewModel)
         {
             this.viewModel = viewModel;
         }

@@ -8,8 +8,8 @@
             xmlns:viewmodels="clr-namespace:Ranks.ViewModel"
             d:DesignHeight ="600" d:DesignWidth="900" x:Uid="Пользователи" Background="#151319"
             d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">
-    
-    <Grid>
+
+    <Grid DataContext="{Binding GroupViewModel}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/> <!-- Поиск-->
             <ColumnDefinition/>    <!-- Контент кнопки-->  
@@ -26,7 +26,7 @@
                 Style="{DynamicResource SearchTextBox}"
                 Template="{DynamicResource SearchBox}"/>
 
-            <ItemsControl x:Name="Groups" Grid.Row="1" ItemsSource="{Binding FoundGroups}">
+            <ItemsControl  x:Name="Groups" Grid.Row="1" ItemsSource="{Binding FoundGroups}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Vertical"/>
@@ -35,7 +35,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button Style="{DynamicResource GroupSelectButton}" 
-                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=DataContext.SelectGroupCommand}" CommandParameter="{Binding}">
+                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=DataContext.SelectGroupCommand}" CommandParameter="{Binding}">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
                                 <Ellipse Width="55" Height="50" Margin="0" Stretch="Fill">
                                     <Ellipse.Fill>
