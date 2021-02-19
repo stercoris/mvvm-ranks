@@ -33,18 +33,19 @@ namespace Ranks.Services
         /// </summary>
         /// <param name="base64String">base 64 string</param>
         /// <returns></returns>
-        public static ImageSource toImage(string base64String)
+        public static ImageSource toImage(string base64String, int width = 197, int height = 170)
         {
-            byte[] imgBytes = Convert.FromBase64String(base64String);
-
             BitmapImage bitmapImage = new BitmapImage();
-            MemoryStream ms = new MemoryStream(imgBytes);
+
             bitmapImage.BeginInit();
-            bitmapImage.StreamSource = ms;
+            bitmapImage.DecodePixelWidth = width;
+            bitmapImage.DecodePixelHeight = height;
+            bitmapImage.CacheOption = BitmapCacheOption.None;
+            bitmapImage.StreamSource = new MemoryStream(Convert.FromBase64String(base64String));
             bitmapImage.EndInit();
 
-
             return (bitmapImage);
+
         }
     }
 }

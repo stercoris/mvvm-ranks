@@ -60,11 +60,8 @@ namespace Ranks.Model
         public ImageSource Image
         {
             //get => _image;
-            get
-            {
-                return DataBase.Users.GetImageByUid(this.Id);
-            }
-            //set => Set(ref _image, value);
+            get => DataBase.Users.GetImageByUid(this.Id);
+            set => Set(ref _image, value);
         }
         
         public string About
