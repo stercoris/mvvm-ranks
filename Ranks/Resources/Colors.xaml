@@ -23,4 +23,11 @@
     <SolidColorBrush x:Key="OrangeBrush" Color="#FF663B"/>
     <SolidColorBrush x:Key="GrayBrush" Color="#2F3035"/>
 
+    <LinearGradientBrush x:Key="OrangeToPurpleGradient" StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0.1" Color="{StaticResource Orange}" />
+            <GradientStop Offset="1" Color="{StaticResource Purple}" />
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
 </ResourceDictionary>

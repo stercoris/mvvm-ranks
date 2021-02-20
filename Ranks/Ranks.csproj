@@ -120,6 +120,8 @@
     <Compile Include="Services\ImageConverter.cs" />
     <Compile Include="ViewModel\GroupsViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\Ranks\RanksViewModel.cs" />
+    <Compile Include="ViewModel\Ranks\RankItemViewModel.cs" />
     <Compile Include="Views\Pages\GroupProfile\GroupProfile.xaml.cs">
       <DependentUpon>GroupProfile.xaml</DependentUpon>
     </Compile>

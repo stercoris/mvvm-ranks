@@ -40,6 +40,8 @@ namespace Ranks.ViewModel
 
         #endregion
 
+
+        #region ChildrenViewModels
         private GroupsViewModel _group_view_model;
         public GroupsViewModel GroupViewModel
         {
@@ -47,15 +49,25 @@ namespace Ranks.ViewModel
             set => Set(ref _group_view_model, value);
         }
 
+        private RanksViewModel _ranks_view_model;
+        public RanksViewModel RanksViewModel
+        {
+            get => _ranks_view_model;
+            set => Set(ref _ranks_view_model, value);
+        }
+        #endregion
+
+
         public MainViewModel()
         {
-            GroupList = new View.Groups();
-            GroupProfile = new View.GroupProfile();
+            GroupList = new View.Groups() { DataContext = this };
+            GroupProfile = new View.GroupProfile() { DataContext = this };
             Users = new View.Users() {DataContext = this};
-            UserProfile = new View.UserProfile();
-            RankList = new View.RankList();
+            UserProfile = new View.UserProfile() { DataContext = this };
+            RankList = new View.RankList() { DataContext = this };
 
             GroupViewModel = new GroupsViewModel();
+            RanksViewModel = new RanksViewModel();
             SelectedPage = Users;
         }
     }

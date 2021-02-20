@@ -6,7 +6,7 @@
             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
             xmlns:local="clr-namespace:Ranks"
             xmlns:viewmodels="clr-namespace:Ranks.ViewModel"
-            d:DesignHeight ="600" d:DesignWidth="900" x:Uid="Пользователи" Background="#151319"
+            d:DesignHeight ="600" d:DesignWidth="900" x:Uid="Пользователи"
             d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">
 
     <Grid DataContext="{Binding GroupViewModel}">
