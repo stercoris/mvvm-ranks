@@ -1,18 +1,19 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
-using Ranks.Model;
+﻿using Ranks.Models;
+using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Ranks.ViewModel
 {
-    internal class MainViewModel : ViewModelBase
+    internal class MainViewModel : ReactiveObject
     {
         #region Pages And Buttons
         private Page GroupList;
@@ -20,41 +21,30 @@ namespace Ranks.ViewModel
         private Page Users;
         private Page UserProfile;
         private Page RankList;
-        private Page _selected_page;
-        public Page SelectedPage
-        {
-            get => _selected_page;
-            set => Set(ref _selected_page, value);
-        }
+
+        [Reactive] public Page SelectedPage { get; set; }
 
         public ICommand bNavGroupListClick
-        { get => new RelayCommand(() => SelectedPage = GroupList); }
+        { get => ReactiveCommand.Create(() => SelectedPage = GroupList); }
         public ICommand bNavGroupProfileClick
-        { get => new RelayCommand(() => SelectedPage = GroupProfile); }
+        { get => ReactiveCommand.Create(() => SelectedPage = GroupProfile); }
         public ICommand bNavUsersClick
-        { get => new RelayCommand(() => SelectedPage = Users); }
+        { get => ReactiveCommand.Create(() => SelectedPage = Users); }
         public ICommand bNavUserProfileClick
-        { get => new RelayCommand(() => SelectedPage = UserProfile); }
+        { get => ReactiveCommand.Create(() => SelectedPage = UserProfile); }
         public ICommand bNavRankListClick
-        { get => new RelayCommand(() => SelectedPage = RankList); }
+        { get => ReactiveCommand.Create(() => SelectedPage = RankList); }
 
         #endregion
 
-
         #region ChildrenViewModels
-        private GroupsViewModel _group_view_model;
+        [Reactive]
         public GroupsViewModel GroupViewModel
-        {
-            get => _group_view_model;
-            set => Set(ref _group_view_model, value);
-        }
+        { get; set; }
 
-        private RanksViewModel _ranks_view_model;
+        [Reactive]
         public RanksViewModel RanksViewModel
-        {
-            get => _ranks_view_model;
-            set => Set(ref _ranks_view_model, value);
-        }
+        { get; set; }
         #endregion
 
 
@@ -69,6 +59,7 @@ namespace Ranks.ViewModel
             GroupViewModel = new GroupsViewModel();
             RanksViewModel = new RanksViewModel();
             SelectedPage = Users;
+
         }
     }
 }

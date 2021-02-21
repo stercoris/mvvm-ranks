@@ -1,5 +1,6 @@
-﻿using GalaSoft.MvvmLight;
-using Ranks.Model;
+﻿using Ranks.Models;
+using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Ranks.ViewModel
 {
-    class GroupsViewModel : ViewModelBase
+    class GroupsViewModel : ReactiveObject
     {
         public GroupsViewModel()
         {
@@ -18,18 +19,11 @@ namespace Ranks.ViewModel
         }
 
         public Commands.SelectGroupCommand SelectGroupCommand { get; set; }
-        private List<Group> _groups;
-        public List<Group> Groups
-        {
-            get => _groups;
-            set => Set(ref _groups, value);
-        }
-        private Group _selected_group;
-        public Group SelectedGroup
-        {
-            get => _selected_group;
-            set => Set(ref _selected_group, value);
-        }
+
+        [Reactive] public List<Group> Groups{ get; set; }
+        [Reactive] public Group SelectedGroup { get; set; }
+        [Reactive] public List<Group> FoundGroups { get; set; }
+
         public void SelectGroup(Group group)
         { SelectedGroup = group; }
 
@@ -39,7 +33,6 @@ namespace Ranks.ViewModel
             get => _search_string;
             set
             {
-                Set(ref _search_string, value);
                 if (String.IsNullOrWhiteSpace(_search_string))
                     FoundGroups = Groups;
                 else
@@ -49,14 +42,9 @@ namespace Ranks.ViewModel
                         return (group.Name.Contains(_search_string));
                     });
                 }
-                RaisePropertyChanged(nameof(FoundGroups));
+                this.RaiseAndSetIfChanged(ref _search_string, value);
+                this.RaisePropertyChanged(nameof(FoundGroups));
             }
-        }
-        private List<Group> _found_groups;
-        public List<Group> FoundGroups
-        {
-            get => _found_groups;
-            set => Set(ref _found_groups, value);
         }
     }
 }

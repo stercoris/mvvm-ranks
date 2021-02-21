@@ -1,5 +1,6 @@
-﻿using GalaSoft.MvvmLight;
-using Ranks.Model;
+﻿using Ranks.Models;
+using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +9,12 @@ using System.Threading.Tasks;
 
 namespace Ranks.ViewModel
 {
-    class RankItemViewModel : ViewModelBase
+    class RankItemViewModel : ReactiveObject
     {
-        private Rank _rank;
+        [Reactive]
         public Rank Rank
-        {
-            get => _rank;
-            set => Set(ref _rank, value);
-        }
+        { get; set; }
+
         public RankItemViewModel(Rank rank)
         {
             Rank = rank;

@@ -1,5 +1,4 @@
-﻿using GalaSoft.MvvmLight;
-using Ranks.ViewModel;
+﻿using Ranks.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,14 +23,14 @@ namespace Ranks.Commands
         {
             if(parameter != null)
             {
-                if ((parameter as Model.Group).Users.Count > 0)
+                if ((parameter as Models.Group).Users.Count > 0)
                     return true;
             }
             return false;
         }
         public void Execute(object parameter)
         {
-            this.viewModel.SelectGroup(parameter as Model.Group);
+            this.viewModel.SelectGroup(parameter as Models.Group);
         }
     }
 }

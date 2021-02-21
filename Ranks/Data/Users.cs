@@ -1,4 +1,4 @@
-﻿using Ranks.Model;
+﻿using Ranks.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
