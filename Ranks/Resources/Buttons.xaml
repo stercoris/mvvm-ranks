@@ -67,8 +67,9 @@
 
     <Style x:Key="GroupSelectButton" TargetType="Button">
         <Setter Property="Height" Value="auto"/>
-        <Setter Property="Padding" Value="0,10"/>
+        <Setter Property="Padding" Value="10,10"/>
         <Setter Property="Margin" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="Template" Value="{DynamicResource CustomButton}"/>
         <Setter Property="BorderThickness" Value="0,1,0,1"/>
         <Setter Property="BorderBrush" Value="{StaticResource GrayBrush}"/>
@@ -77,8 +78,6 @@
 
 
     <Style x:Key="UserSelectionButton" TargetType="Button">
-        <Setter Property="Height" Value="170"/>
-        <Setter Property="Width" Value="197"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="Template" Value="{StaticResource CustomButton}"/>

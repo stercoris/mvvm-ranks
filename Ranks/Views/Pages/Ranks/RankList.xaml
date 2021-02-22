@@ -5,7 +5,7 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
             xmlns:local="clr-namespace:Ranks"
-            xmlns:viewmodels="clr-namespace:Ranks.ViewModel"
+            xmlns:viewmodels="clr-namespace:Ranks.ViewModels"
             xmlns:uc="clr-namespace:Ranks.View"
             d:DesignHeight ="600" d:DesignWidth="900" x:Uid="Ранги"
             d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">

@@ -5,11 +5,12 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
             xmlns:local="clr-namespace:Ranks"
-            xmlns:viewmodels="clr-namespace:Ranks.ViewModel"
+            xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
+            xmlns:sys="clr-namespace:System;assembly=mscorlib"
             d:DesignHeight ="600" d:DesignWidth="900" x:Uid="Пользователи"
             d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">
 
-    <Grid DataContext="{Binding GroupViewModel}">
+    <Grid DataContext="{Binding GroupsViewModel}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/> <!-- Поиск-->
             <ColumnDefinition/> <!-- Контент кнопки-->
@@ -26,6 +27,9 @@
                 Style="{DynamicResource SearchTextBox}"
                 Template="{DynamicResource SearchBox}"/>
             <ScrollViewer VerticalScrollBarVisibility="Auto"  Grid.Row="1">
+                <ScrollViewer.Resources>
+                    <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">0</sys:Double>
+                </ScrollViewer.Resources>
                 <ItemsControl  x:Name="Groups" ItemsSource="{Binding FoundGroups}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -35,7 +39,8 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Button Style="{DynamicResource GroupSelectButton}" 
-                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=DataContext.SelectGroupCommand}" CommandParameter="{Binding}">
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=DataContext.SelectGroupCommand}" 
+                                    CommandParameter="{Binding}">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
                                     <Ellipse Width="55" Height="50" Margin="0" Stretch="Fill">
                                         <Ellipse.Fill>
@@ -52,10 +57,13 @@
         </Grid>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Background="{DynamicResource DarkGradient}">
+            <ScrollViewer.Resources>
+                <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">0</sys:Double>
+            </ScrollViewer.Resources>
             <ItemsControl ItemsSource="{Binding SelectedGroup.Users}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel HorizontalAlignment="Center"/>
+                        <WrapPanel HorizontalAlignment="Center" ItemWidth="197" ItemHeight="170"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ranks.ViewModel
+namespace Ranks.ViewModels
 {
     class RanksViewModel : ReactiveObject
     {

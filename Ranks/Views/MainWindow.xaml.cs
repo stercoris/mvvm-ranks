@@ -22,7 +22,7 @@ namespace Ranks.View
     {
         public MainWindow()
         {
-            this.DataContext = new ViewModel.MainViewModel();
+            this.DataContext = new ViewModels.MainViewModel();
             InitializeComponent();
         }
 

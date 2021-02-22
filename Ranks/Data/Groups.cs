@@ -34,7 +34,7 @@ namespace Ranks.DataBase
                 {
                     Name = rdr["name"].ToString(),
                     Id = Convert.ToInt32(rdr["id"]),
-                    Image = Services.ImageConverter.toImage(rdr["pic"].ToString()),
+                    Image = Services.ImageConverter.toImage(rdr["pic"].ToString(), 50, 50),
                     About = rdr["about"].ToString(),
                 };
                 group.Users = users.FindAll((user) => user.GroupId == group.Id);

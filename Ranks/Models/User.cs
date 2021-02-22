@@ -13,9 +13,9 @@ namespace Ranks.Models
         [Reactive] public int GroupId { get; set; }
         [Reactive] public bool IsAdmin { get; set; }
         [Reactive] public string Password { get; set; }
+        [Reactive] public string About { get; set; }
 
         private ImageSource _image;
-
         public ImageSource Image
         {
             get => DataBase.Users.GetImageByUid(Id);
@@ -24,7 +24,6 @@ namespace Ranks.Models
                 DataBase.Users.Update(this);
             }
         }
-        [Reactive] public string About { get; set; }
 
     }
 }

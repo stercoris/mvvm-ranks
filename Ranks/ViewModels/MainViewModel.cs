@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Ranks.ViewModel
+namespace Ranks.ViewModels
 {
     internal class MainViewModel : ReactiveObject
     {
@@ -39,7 +39,7 @@ namespace Ranks.ViewModel
 
         #region ChildrenViewModels
         [Reactive]
-        public GroupsViewModel GroupViewModel
+        public GroupsViewModel GroupsViewModel
         { get; set; }
 
         [Reactive]
@@ -56,7 +56,7 @@ namespace Ranks.ViewModel
             UserProfile = new View.UserProfile() { DataContext = this };
             RankList = new View.RankList() { DataContext = this };
 
-            GroupViewModel = new GroupsViewModel();
+            GroupsViewModel = new GroupsViewModel();
             RanksViewModel = new RanksViewModel();
             SelectedPage = Users;
 

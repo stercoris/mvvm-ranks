@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Ranks"
-        xmlns:viewmodels="clr-namespace:Ranks.ViewModel"
+        xmlns:viewmodels="clr-namespace:Ranks.ViewModels"
         Title="Ранги" 
-        Height="600" Width="950" Margin="5"
-        MinHeight="600" MinWidth="950"
-        ResizeMode="CanResize" WindowStyle="None" 
+        Height="600" Width="903" Margin="5"
+        MinHeight="600" MinWidth="903"
+        ResizeMode="CanResize" WindowStyle="None" WindowState="Maximized"
         MaxHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}}" 
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">
 
