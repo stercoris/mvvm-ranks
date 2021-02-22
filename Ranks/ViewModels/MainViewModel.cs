@@ -16,22 +16,13 @@ namespace Ranks.ViewModels
     internal class MainViewModel : ReactiveObject
     {
         #region Pages And Buttons
-        private Page GroupList;
-        private Page GroupProfile;
-        private Page Users;
-        private Page UserProfile;
+        private Page GroupsAndUsers;
         private Page RankList;
 
         [Reactive] public Page SelectedPage { get; set; }
 
-        public ICommand bNavGroupListClick
-        { get => ReactiveCommand.Create(() => SelectedPage = GroupList); }
-        public ICommand bNavGroupProfileClick
-        { get => ReactiveCommand.Create(() => SelectedPage = GroupProfile); }
-        public ICommand bNavUsersClick
-        { get => ReactiveCommand.Create(() => SelectedPage = Users); }
-        public ICommand bNavUserProfileClick
-        { get => ReactiveCommand.Create(() => SelectedPage = UserProfile); }
+        public ICommand bNavGroupsAndUsersClick
+        { get => ReactiveCommand.Create(() => SelectedPage = GroupsAndUsers); }
         public ICommand bNavRankListClick
         { get => ReactiveCommand.Create(() => SelectedPage = RankList); }
 
@@ -50,15 +41,12 @@ namespace Ranks.ViewModels
 
         public MainViewModel()
         {
-            GroupList = new View.Groups() { DataContext = this };
-            GroupProfile = new View.GroupProfile() { DataContext = this };
-            Users = new View.Users() {DataContext = this};
-            UserProfile = new View.UserProfile() { DataContext = this };
+            GroupsAndUsers = new View.GroupsAndUsers() {DataContext = this};
             RankList = new View.RankList() { DataContext = this };
 
             GroupsViewModel = new GroupsViewModel();
             RanksViewModel = new RanksViewModel();
-            SelectedPage = Users;
+            SelectedPage = GroupsAndUsers;
 
         }
     }

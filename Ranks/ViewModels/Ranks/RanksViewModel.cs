@@ -13,7 +13,9 @@ namespace Ranks.ViewModels
         public List<RankItemViewModel> RankItems { get; private set; }
         public RanksViewModel()
         {
-            RankItems = new List<RankItemViewModel>(DataBase.Ranks.GetAll().Select(rank => new RankItemViewModel(rank)));
+            RankItems = new List<RankItemViewModel>(
+                DataServices.Ranks.GetAll().Select(rank => new RankItemViewModel(rank))
+            );
         }
     }
 }

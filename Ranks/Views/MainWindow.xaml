@@ -7,12 +7,11 @@
         xmlns:local="clr-namespace:Ranks"
         xmlns:viewmodels="clr-namespace:Ranks.ViewModels"
         Title="Ранги" 
-        Height="600" Width="903" Margin="5"
-        MinHeight="600" MinWidth="903"
+        Height="800" Width="1300" Margin="5"
+        MinHeight="800" MinWidth="1300"
         ResizeMode="CanResize" WindowStyle="None" WindowState="Maximized"
         MaxHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}}" 
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">
-
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="5"/>
     </WindowChrome.WindowChrome>
@@ -22,28 +21,33 @@
                 <ColumnDefinition Width="60"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
             <Grid Background="{StaticResource WindowControlsColor}" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Image Source="pack://application:,,,/Images/Logo.png" Margin="8,13"/>
+                <Image 
+                    Source="pack://application:,,,/Images/Logo.png" 
+                    Margin="8,13">
+                </Image>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Row="1" Margin="0,0,0,150">
-                    <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavUsersClick}">
-                        <materialDesign:PackIcon Kind="User" Style="{DynamicResource NavBtnIcon}"/>
+                    <Button 
+                        Style="{DynamicResource Navigation}"
+                        Template="{DynamicResource CustomButton}"
+                        Command="{Binding bNavGroupsAndUsersClick}">
+                        <materialDesign:PackIcon
+                            Style="{DynamicResource NavBtnIcon}"
+                            Kind="User">
+                        </materialDesign:PackIcon>
                     </Button>
-                    <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavUserProfileClick}">
-                        <materialDesign:PackIcon Kind="UserAdd" Style="{DynamicResource NavBtnIcon}"/>
-                    </Button>
-                    <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavRankListClick}">
-                        <materialDesign:PackIcon Kind="ViewList" Style="{DynamicResource NavBtnIcon}"/>
-                    </Button>
-                    <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavGroupListClick}">
-                        <materialDesign:PackIcon Kind="People" Style="{DynamicResource NavBtnIcon}"/>
-                    </Button>
-                    <Button Style="{DynamicResource Navigation}" Template="{DynamicResource CustomButton}" Command="{Binding bNavGroupProfileClick}">
-                        <materialDesign:PackIcon Kind="PeopleAdd" Style="{DynamicResource NavBtnIcon}"/>
+                    <Button 
+                        Style="{DynamicResource Navigation}"
+                        Template="{DynamicResource CustomButton}"
+                        Command="{Binding bNavRankListClick}">
+                        <materialDesign:PackIcon 
+                            Style="{DynamicResource NavBtnIcon}" 
+                            Kind="ViewList">
+                        </materialDesign:PackIcon>
                     </Button>
                 </StackPanel>
             </Grid>
@@ -52,18 +56,35 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Border Height="30" Grid.Row="0" Background="{StaticResource WindowControlsColor}" MouseDown="GrabStart">
+                <Border 
+                    Height="30" Grid.Row="0" 
+                    Background="{StaticResource WindowControlsColor}" 
+                    MouseDown="GrabStart">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Style="{DynamicResource WindowControls}" Template="{DynamicResource CustomButton}">
-                            <materialDesign:PackIcon Style="{DynamicResource NavBtnIcon}" Margin="0,6,0,0" Kind="WindowMinimize"/>
+                        <Button 
+                            Style="{DynamicResource WindowControls}" 
+                            Template="{DynamicResource CustomButton}">
+                            <materialDesign:PackIcon 
+                                Style="{DynamicResource NavBtnIcon}" 
+                                Margin="0,6,0,0" Kind="WindowMinimize">
+                            </materialDesign:PackIcon>
                         </Button>
-                        <Button Style="{DynamicResource WindowControls}" Template="{DynamicResource CustomButton}">
-                            <materialDesign:PackIcon Style="{DynamicResource NavBtnIcon}" Kind="Close" />
+                        <Button 
+                            Style="{DynamicResource WindowControls}" 
+                            Template="{DynamicResource CustomButton}">
+                            <materialDesign:PackIcon 
+                                Style="{DynamicResource NavBtnIcon}" 
+                                Kind="Close">
+                            </materialDesign:PackIcon>
                         </Button>
                     </StackPanel>
                 </Border>
-                <Frame Content="{Binding SelectedPage}" Grid.Row="1" NavigationUIVisibility="Hidden" Panel.ZIndex="200"/>
-
+                <Frame 
+                    Content="{Binding SelectedPage}" 
+                    Grid.Row="1" 
+                    NavigationUIVisibility="Hidden" 
+                    Panel.ZIndex="200">
+                </Frame>
             </Grid>
         </Grid>
     </Grid>

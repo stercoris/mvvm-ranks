@@ -133,10 +133,12 @@
     </ApplicationDefinition>
     <Compile Include="Commands\SelectGroupCommand.cs" />
     <Compile Include="Converters\GroupSearchConverter.cs" />
-    <Compile Include="Data\DBConnection.cs" />
-    <Compile Include="Data\Groups.cs" />
-    <Compile Include="Data\Ranks.cs" />
-    <Compile Include="Data\Users.cs" />
+    <Compile Include="DataSerevices\DataService.cs" />
+    <Compile Include="DataSerevices\IUserDataService.cs" />
+    <Compile Include="DataSerevices\Sqlite\DBConnection.cs" />
+    <Compile Include="DataSerevices\Sqlite\Groups.cs" />
+    <Compile Include="DataSerevices\Sqlite\Ranks.cs" />
+    <Compile Include="DataSerevices\Sqlite\Users.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\User.cs" />
@@ -146,20 +148,8 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Ranks\RanksViewModel.cs" />
     <Compile Include="ViewModels\Ranks\RankViewModel.cs" />
-    <Compile Include="Views\Pages\GroupProfile\GroupProfile.xaml.cs">
-      <DependentUpon>GroupProfile.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Pages\Groups\Groups.xaml.cs">
-      <DependentUpon>Groups.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Pages\Groups\GroupView.xaml.cs">
-      <DependentUpon>GroupView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Pages\UserProfile\UserProfile.xaml.cs">
-      <DependentUpon>UserProfile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\Ranks\RankList.xaml.cs">
       <DependentUpon>RankList.xaml</DependentUpon>
@@ -167,11 +157,8 @@
     <Compile Include="Views\Pages\Ranks\RankView.xaml.cs">
       <DependentUpon>RankView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\Users\Users.xaml.cs">
-      <DependentUpon>Users.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Pages\Users\UserView.xaml.cs">
-      <DependentUpon>UserView.xaml</DependentUpon>
+    <Compile Include="Views\Pages\GroupsAndUsers\GroupsAndUsersView.xaml.cs">
+      <DependentUpon>GroupsAndUsersView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\Buttons.xaml">
       <SubType>Designer</SubType>
@@ -193,23 +180,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pages\GroupProfile\GroupProfile.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Pages\Groups\Groups.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Pages\Groups\GroupView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Pages\UserProfile\UserProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -225,11 +196,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pages\Users\Users.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Pages\Users\UserView.xaml">
+    <Page Include="Views\Pages\GroupsAndUsers\GroupsAndUsersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -268,9 +235,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\no_image.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="FodyWeavers.xml" />

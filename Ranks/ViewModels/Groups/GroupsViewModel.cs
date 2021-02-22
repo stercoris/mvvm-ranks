@@ -13,7 +13,7 @@ namespace Ranks.ViewModels
     {
         public GroupsViewModel()
         {
-            Groups = DataBase.Groups.GetGroups();
+            Groups = DataServices.Groups.GetGroups();
             FoundGroups = Groups;
             SelectGroupCommand = new Commands.SelectGroupCommand(this);
         }

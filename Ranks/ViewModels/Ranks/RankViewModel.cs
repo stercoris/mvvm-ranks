@@ -11,9 +11,7 @@ namespace Ranks.ViewModels
 {
     class RankItemViewModel : ReactiveObject
     {
-        [Reactive]
-        public Rank Rank
-        { get; set; }
+        [Reactive] public Rank Rank { get; set; }
 
         public RankItemViewModel(Rank rank)
         {

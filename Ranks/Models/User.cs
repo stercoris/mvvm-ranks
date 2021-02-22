@@ -18,10 +18,10 @@ namespace Ranks.Models
         private ImageSource _image;
         public ImageSource Image
         {
-            get => DataBase.Users.GetImageByUid(Id);
+            get => DataServices.Users.GetImageByUid(Id);
             set { 
                 this.RaiseAndSetIfChanged(ref _image, value);
-                DataBase.Users.Update(this);
+                DataServices.Users.Update(this);
             }
         }
 
