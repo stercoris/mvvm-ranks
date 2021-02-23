@@ -76,7 +76,7 @@
             <ItemsControl ItemsSource="{Binding SelectedGroup}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel HorizontalAlignment="Center" ItemWidth="197" ItemHeight="170"/>
+                        <WrapPanel HorizontalAlignment="Center" ItemWidth="190" ItemHeight="170"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
