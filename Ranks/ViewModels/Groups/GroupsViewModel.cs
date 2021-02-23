@@ -17,7 +17,7 @@ namespace Ranks.ViewModels
 
             FoundGroups = Groups;
 
-            CurrentlySelectedObject = Groups[0];
+            CurrentlySelectedObject = new UserViewModel(this, Groups[0].Group.Users[0]);
         }
 
         [Reactive] public List<GroupViewModel> Groups{ get; set; }
@@ -30,8 +30,8 @@ namespace Ranks.ViewModels
         { 
             SelectedGroup = new List<UserViewModel>(
                 group.Group.Users.Select(user => new UserViewModel(this, user))
-            );            
-            CurrentlySelectedObject = group;
+            );
+            CurrentlySelectedObject = new UserViewModel(this, group.Group.Users[0]);
 
         }
 

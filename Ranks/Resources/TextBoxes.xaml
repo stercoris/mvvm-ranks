@@ -84,4 +84,42 @@
         <Setter Property="Background" Value="{StaticResource WindowControlsColor}"/>
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
     </Style>
+
+    <Style x:Key="AboutTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Margin" Value="50,100"/>
+        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
+        <Setter Property="Foreground" Value="{StaticResource MoreDarkerOrangeBrush}"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{StaticResource WindowControlsColor}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="TextAlignment" Value="Justify"/>
+    </Style>
+
+    <Style x:Key="ConstTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Margin" Value="0,40,0,0"/>
+        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
+        <Setter Property="Foreground" Value="{StaticResource MoreDarkerOrangeBrush}"/>
+        <Setter Property="Background" Value="{StaticResource DarkPurple}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+    </Style>
+
+    <Style x:Key="InfoTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Margin" Value="20,40,20,0"/>
+        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
+        <Setter Property="Foreground" Value="{StaticResource TrueOrange}"/>
+        <Setter Property="Background" Value="{StaticResource DarkPurple}"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+    </Style>
+
 </ResourceDictionary>

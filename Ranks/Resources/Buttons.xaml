@@ -64,6 +64,30 @@
         <Setter Property="Padding" Value="0"/>
     </Style>
 
+    <Style x:Key="SaveGroupButton" TargetType="Button">
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="250"/>
+        <Setter Property="Background" Value="{StaticResource OrangeBrush}"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style x:Key="RangUpGroupButton" TargetType="Button">
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Margin" Value="0,0,0,40"/>
+        <Setter Property="Background" Value="{StaticResource OrangeBrush}"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style x:Key="RangDownGroupButton" TargetType="Button">
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Margin" Value="0,0,0,40"/>
+        <Setter Property="Background" Value="DeepSkyBlue"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
 
     <Style x:Key="GroupSelectButton" TargetType="Button">
         <Setter Property="Height" Value="auto"/>

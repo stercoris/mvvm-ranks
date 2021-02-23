@@ -10,6 +10,7 @@ namespace Ranks.ViewModels
         [Reactive] public Group Group { get; set; }
         [Reactive] public GroupsViewModel groupsvm { get; set; }
         public ICommand SelectCommand { get; set; }
+
         public GroupViewModel(GroupsViewModel groupsvm, Group group)
         {
             this.Group = group;
@@ -18,5 +19,7 @@ namespace Ranks.ViewModels
         }
         public void Select()
         { groupsvm.SelectGroup(this); }
+        public ICommand Save
+        { get => ReactiveCommand.Create(() => Group.Save()); }
     }
 }

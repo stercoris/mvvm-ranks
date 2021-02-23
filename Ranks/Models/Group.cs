@@ -12,6 +12,7 @@ namespace Ranks.Models
         [Reactive] public string About { get; set; }
         [Reactive] public ImageSource Image { get; set; }
         [Reactive] public List<User> Users { get; set; }
-
+        public void Save()
+        { DataServices.Groups.AddOrUpdate(this); }
     }
 }

@@ -91,5 +91,16 @@ namespace Ranks.DataServices
             else return (1);
         }
 
+        /// <summary>
+        /// Обновляет пользователя
+        /// </summary>
+        static public void AddOrUpdate(Group group)
+        {
+            string sqlQuery = $"REPLACE INTO groups(id,name,pic,about) " +
+                $"VALUES('{group.Id}','{group.Name}', '{Services.ImageConverter.toBase64(group.Image)}', '{group.About}'); ";
+            m_sqlCmd = new SQLiteCommand(sqlQuery, connection);
+            rdr = m_sqlCmd.ExecuteReader();
+        }
+
     }
 }

@@ -8,10 +8,103 @@
             xmlns:views="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
             xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
             xmlns:sys="clr-namespace:System;assembly=mscorlib"
-            d:DesignHeight ="600" Width="399" x:Uid="Управление пользователем"
+            d:DesignHeight ="800" Width="399" x:Uid="Управление пользователем"
             d:DataContext="{d:DesignInstance Type=viewmodels:UserViewModel, IsDesignTimeCreatable=False}">
-    <StackPanel Background="{StaticResource DarkPurple}">
-        <Image Source="{Binding User.Image}"/>
-        <TextBlock Text="{Binding User.About}"/>
-    </StackPanel>
+    <Grid Background="{StaticResource DarkPurple}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        
+        <Ellipse Grid.Row="0" Width="150" Height="150" Margin="50">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="{Binding User.Image}" Stretch="UniformToFill"/>
+            </Ellipse.Fill>
+        </Ellipse>
+
+        <TextBox 
+            Grid.Row="1"
+            Text="{Binding User.Name}"
+            Style="{DynamicResource EditFieldTextBoxStyle}"/>
+
+        <Grid Grid.Row="2" Margin="20,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions> 
+            
+            <TextBox 
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Ранг:"
+                IsEnabled="False"
+                Style="{DynamicResource ConstTextBoxStyle}"/>
+            <TextBox 
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="Возраст:"
+                IsEnabled="False"               
+                Style="{DynamicResource ConstTextBoxStyle}">
+            </TextBox>
+            <TextBox 
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="Группа:"
+                IsEnabled="False"
+                Style="{DynamicResource ConstTextBoxStyle}">
+            </TextBox>
+            <TextBox 
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="Статус:"
+                IsEnabled="False"
+                Style="{DynamicResource ConstTextBoxStyle}">
+            </TextBox>
+            
+            <TextBox 
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="Авторитет"
+                Style="{DynamicResource InfoTextBoxStyle}">
+            </TextBox>
+            <TextBox 
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="Надо добавлять"
+                Style="{DynamicResource InfoTextBoxStyle}">
+            </TextBox>
+            <TextBox 
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="{Binding User.GroupId}"
+                Style="{DynamicResource InfoTextBoxStyle}">
+            </TextBox>
+            <TextBox 
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="Люблю Анимэ (это тоже надо сделать)"
+                Style="{DynamicResource InfoTextBoxStyle}">
+            </TextBox>
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Повысить" Style="{DynamicResource RangUpGroupButton}"/>
+            <Button Grid.Column="1" Content="Понизить" Style="{DynamicResource RangDownGroupButton}"/> 
+        </Grid>
+       
+    </Grid>
+    
 </UserControl>

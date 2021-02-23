@@ -14,11 +14,11 @@ namespace Ranks.Services
         /// </summary>
         /// <param name="img">image</param>
         /// <returns></returns>
-        public static string toBase64(BitmapImage img)
+        public static string toBase64(ImageSource img)
         {
             MemoryStream outStream = new MemoryStream();
             BitmapEncoder enc = new BmpBitmapEncoder();
-            enc.Frames.Add(BitmapFrame.Create(img));
+            enc.Frames.Add(BitmapFrame.Create((BitmapSource)img));
             enc.Save(outStream);
             Bitmap bitmap = new Bitmap(outStream);
             Bitmap bm = new Bitmap(bitmap);

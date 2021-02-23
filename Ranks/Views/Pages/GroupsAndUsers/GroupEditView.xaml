@@ -10,18 +10,31 @@
             xmlns:sys="clr-namespace:System;assembly=mscorlib"
             d:DesignHeight ="600" Width="399" x:Uid="Управление группой"
             d:DataContext="{d:DesignInstance Type=viewmodels:GroupViewModel, IsDesignTimeCreatable=False}">
-    <StackPanel Background="{StaticResource WindowControlsColor}">
-        <Ellipse Width="150" Height="150" Margin="50">
+    <Grid Background="{StaticResource WindowControlsColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Ellipse Grid.Row="0" Width="150" Height="150" Margin="50">
             <Ellipse.Fill>
                 <ImageBrush ImageSource="{Binding Group.Image}" Stretch="UniformToFill"/>
             </Ellipse.Fill>
         </Ellipse>
-        <TextBox 
-            Text="{Binding Group.Name, Mode=TwoWay}"
-            Style="{DynamicResource EditFieldTextBoxStyle}">            
-        </TextBox>
-        <TextBox  
-            Text="{Binding Group.About}"
-            Style="{DynamicResource EditFieldTextBoxStyle}"/>
-    </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <TextBox 
+                Text="{Binding Group.Name, Mode=TwoWay}"
+                Style="{DynamicResource EditFieldTextBoxStyle}"/>
+            <TextBox  
+                Text="{Binding Group.About}"
+                Style="{DynamicResource AboutTextBoxStyle}">
+            </TextBox>
+        </StackPanel>
+        
+        <Button
+            Grid.Row="2"
+            Content="Сохранить"
+            
+            Style="{DynamicResource SaveGroupButton}"></Button> 
+    </Grid>
 </UserControl>
