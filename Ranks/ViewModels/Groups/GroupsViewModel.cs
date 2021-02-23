@@ -23,15 +23,14 @@ namespace Ranks.ViewModels
         [Reactive] public List<GroupViewModel> Groups{ get; set; }
         [Reactive] public List<UserViewModel> SelectedGroup { get; set; }
         [Reactive] public List<GroupViewModel> FoundGroups { get; set; }
-        /// <summary> Объект, определяющий какой элемент находится в провом окне(окно настройки)</summary>
+        /// <summary> Объект, определяющий какой элемент находится в правом окне(окно настройки)</summary>
         [Reactive] public ReactiveObject CurrentlySelectedObject { get; set; }
 
         public void SelectGroup(GroupViewModel group)
         { 
             SelectedGroup = new List<UserViewModel>(
                 group.Group.Users.Select(user => new UserViewModel(this, user))
-            );
-            Console.WriteLine(SelectedGroup[0].User.About);
+            );            
             CurrentlySelectedObject = group;
 
         }

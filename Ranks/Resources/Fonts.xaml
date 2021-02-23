@@ -7,7 +7,7 @@
         <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
         <Setter Property="Foreground">
             <Setter.Value>
-                <SolidColorBrush Color="{StaticResource Purple}"/>
+                <SolidColorBrush Color="{StaticResource Orange}"/>
             </Setter.Value>
         </Setter>
         <Setter Property="FontSize" Value="22"/>

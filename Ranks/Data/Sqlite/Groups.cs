@@ -33,7 +33,7 @@ namespace Ranks.DataServices
                 {
                     Name = rdr["name"].ToString(),
                     Id = Convert.ToInt32(rdr["id"]),
-                    Image = Services.ImageConverter.toImage(rdr["pic"].ToString(), 160, 90),
+                    Image = Services.ImageConverter.toImage(rdr["pic"].ToString(), 320, 180),
                     About = rdr["about"].ToString(),
                 };
                 group.Users = users.FindAll((user) => user.GroupId == group.Id);

@@ -18,7 +18,10 @@
         </Ellipse>
         <TextBox 
             Text="{Binding Group.Name, Mode=TwoWay}"
+            Style="{DynamicResource EditFieldTextBoxStyle}">            
+        </TextBox>
+        <TextBox  
+            Text="{Binding Group.About}"
             Style="{DynamicResource EditFieldTextBoxStyle}"/>
-        <TextBlock Text="{Binding Group.About}"/>
     </StackPanel>
 </UserControl>
