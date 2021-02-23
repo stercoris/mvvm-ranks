@@ -1,10 +1,6 @@
-﻿using Ranks.Models;
-using ReactiveUI;
-using System;
+﻿using ReactiveUI;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ranks.ViewModels
 {

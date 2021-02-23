@@ -1,13 +1,12 @@
 ﻿using Ranks.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace Ranks.DataBase
+
+using System.Data.SQLite;
+
+namespace Ranks.DataServices
 {
     static partial class Users
     {

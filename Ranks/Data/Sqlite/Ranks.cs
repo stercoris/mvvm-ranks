@@ -1,12 +1,11 @@
 ﻿using Ranks.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Ranks.DataBase
+
+using System.Data.SQLite;
+
+namespace Ranks.DataServices
 {
     class Ranks
     {

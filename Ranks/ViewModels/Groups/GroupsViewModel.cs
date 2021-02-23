@@ -4,8 +4,6 @@ using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ranks.ViewModels
 {
@@ -13,19 +11,30 @@ namespace Ranks.ViewModels
     {
         public GroupsViewModel()
         {
-            Groups = DataServices.Groups.GetGroups();
+            Groups = new List<GroupViewModel> (
+                DataServices.Groups.GetGroups().Select(group => new GroupViewModel(this, group))
+            );
+
             FoundGroups = Groups;
-            SelectGroupCommand = new Commands.SelectGroupCommand(this);
+
+            CurrentlySelectedObject = Groups[0];
         }
 
-        public Commands.SelectGroupCommand SelectGroupCommand { get; set; }
+        [Reactive] public List<GroupViewModel> Groups{ get; set; }
+        [Reactive] public List<UserViewModel> SelectedGroup { get; set; }
+        [Reactive] public List<GroupViewModel> FoundGroups { get; set; }
+        /// <summary> Объект, определяющий какой элемент находится в провом окне(окно настройки)</summary>
+        [Reactive] public ReactiveObject CurrentlySelectedObject { get; set; }
 
-        [Reactive] public List<Group> Groups{ get; set; }
-        [Reactive] public Group SelectedGroup { get; set; }
-        [Reactive] public List<Group> FoundGroups { get; set; }
+        public void SelectGroup(GroupViewModel group)
+        { 
+            SelectedGroup = new List<UserViewModel>(
+                group.Group.Users.Select(user => new UserViewModel(this, user))
+            );
+            Console.WriteLine(SelectedGroup[0].User.About);
+            CurrentlySelectedObject = group;
 
-        public void SelectGroup(Group group)
-        { SelectedGroup = group; }
+        }
 
         private string _search_string;
         public string SearchString
@@ -39,7 +48,7 @@ namespace Ranks.ViewModels
                 {
                     FoundGroups = Groups.FindAll((group) =>
                     {
-                        return (group.Name.Contains(_search_string));
+                        return (group.Group.Name.Contains(_search_string));
                     });
                 }
                 this.RaiseAndSetIfChanged(ref _search_string, value);

@@ -12,8 +12,21 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <materialDesign:PackIcon Grid.Column="0" Kind="Search" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0"/>
-                <ScrollViewer Grid.Column="1"  x:Name="PART_ContentHost" materialDesign:HintAssist.Hint="Поиск" Background="Transparent"/>
+                
+                <materialDesign:PackIcon 
+                    Grid.Column="0" 
+                    Kind="Search" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center" 
+                    Margin="10,0">
+                </materialDesign:PackIcon>
+
+                <ScrollViewer 
+                    Grid.Column="1"
+                    x:Name="PART_ContentHost"
+                    materialDesign:HintAssist.Hint="Поиск"
+                    Background="Transparent">
+                </ScrollViewer>
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
@@ -40,5 +53,56 @@
         <Setter Property="Margin" Value="23,0"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
+    </Style>
+
+
+    <ControlTemplate x:Key="EditFieldTextBox" TargetType="{x:Type TextBox}">
+        <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <materialDesign:PackIcon
+                    Grid.Column="0" 
+                    Kind="Search" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center" 
+                    Margin="10,0">
+                </materialDesign:PackIcon>
+
+                <TextBlock Text="Название :"/>
+
+                <ScrollViewer
+                    Grid.Column="1" 
+                    x:Name="PART_ContentHost" 
+                    materialDesign:HintAssist.Hint="Поиск" 
+                    Background="Transparent">
+                </ScrollViewer>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Text" Value=""/>
+                <Setter TargetName="PART_ContentHost" Property="Opacity" Value="1"/>
+            </Trigger>
+            <Trigger Property="IsFocused" Value="False">
+                <Setter Property="Text" Value="Поиск"/>
+                <Setter TargetName="PART_ContentHost" Property="Opacity" Value="0.5"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="EditFieldTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Margin" Value="50,0"/>
+        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
+        <Setter Property="Foreground" Value="{StaticResource OrangeBrush}"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{StaticResource WindowControlsColor}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
     </Style>
 </ResourceDictionary>

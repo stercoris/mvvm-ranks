@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Ranks.Resources" 
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary x:Key="DisableScroller">
+        <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">
+            0 <!-- Убирает скроллер на 0 -->
+        </sys:Double>
+    </ResourceDictionary>
+</ResourceDictionary>

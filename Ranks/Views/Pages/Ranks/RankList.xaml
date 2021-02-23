@@ -22,6 +22,7 @@
                 Padding="10,30"> 
                 Ранги 
             </TextBlock>
+            
             <TextBlock Style="{DynamicResource UserSelectionTitle}">
                 <Run> Количество рангов : </Run>
                 <Run Text="{Binding RankItems.Count, Mode=OneWay}"/>
@@ -29,13 +30,17 @@
         </StackPanel>
 
         <Grid Grid.Column="1" Background="{StaticResource DarkGradient}">
-            <ScrollViewer VerticalScrollBarVisibility="Hidden"  Grid.Row="1">
+            <ScrollViewer
+                VerticalScrollBarVisibility="Hidden"
+                Grid.Row="1"
+                Resources="{StaticResource DisableScroller}">
                 <ItemsControl  x:Name="Ranks" ItemsSource="{Binding RankItems}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Vertical" Margin="20"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
+
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <uc:RankView DataContext="{Binding}" Margin="0,10"/>

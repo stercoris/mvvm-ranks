@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Ranks.Views.Pages.GroupsAndUsers.UserEditView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            xmlns:local="clr-namespace:Ranks"
+            xmlns:views="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
+            xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
+            xmlns:sys="clr-namespace:System;assembly=mscorlib"
+            d:DesignHeight ="600" Width="399" x:Uid="Управление пользователем"
+            d:DataContext="{d:DesignInstance Type=viewmodels:UserViewModel, IsDesignTimeCreatable=False}">
+    <StackPanel Background="{StaticResource DarkPurple}">
+        <Image Source="{Binding User.Image}"/>
+        <TextBlock Text="{Binding User.About}"/>
+    </StackPanel>
+</UserControl>

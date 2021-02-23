@@ -1,10 +1,9 @@
 ﻿using Ranks.Models;
 using System;
 using System.Collections.Generic;
+
+
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ranks.DataServices
 {
@@ -34,7 +33,7 @@ namespace Ranks.DataServices
                 {
                     Name = rdr["name"].ToString(),
                     Id = Convert.ToInt32(rdr["id"]),
-                    Image = Services.ImageConverter.toImage(rdr["pic"].ToString(), 50, 50),
+                    Image = Services.ImageConverter.toImage(rdr["pic"].ToString(), 160, 90),
                     About = rdr["about"].ToString(),
                 };
                 group.Users = users.FindAll((user) => user.GroupId == group.Id);

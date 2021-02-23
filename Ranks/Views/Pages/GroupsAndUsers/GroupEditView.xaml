@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Ranks.Views.Pages.GroupsAndUsers.GroupEditView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            xmlns:local="clr-namespace:Ranks"
+            xmlns:views="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
+            xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
+            xmlns:sys="clr-namespace:System;assembly=mscorlib"
+            d:DesignHeight ="600" Width="399" x:Uid="Управление группой"
+            d:DataContext="{d:DesignInstance Type=viewmodels:GroupViewModel, IsDesignTimeCreatable=False}">
+    <StackPanel Background="{StaticResource WindowControlsColor}">
+        <Ellipse Width="150" Height="150" Margin="50">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="{Binding Group.Image}" Stretch="UniformToFill"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <TextBox 
+            Text="{Binding Group.Name, Mode=TwoWay}"
+            Style="{DynamicResource EditFieldTextBoxStyle}"/>
+        <TextBlock Text="{Binding Group.About}"/>
+    </StackPanel>
+</UserControl>

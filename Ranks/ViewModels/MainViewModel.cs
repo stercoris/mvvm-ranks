@@ -1,13 +1,5 @@
-﻿using Ranks.Models;
-using ReactiveUI;
+﻿using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -29,13 +21,8 @@ namespace Ranks.ViewModels
         #endregion
 
         #region ChildrenViewModels
-        [Reactive]
-        public GroupsViewModel GroupsViewModel
-        { get; set; }
-
-        [Reactive]
-        public RanksViewModel RanksViewModel
-        { get; set; }
+        [Reactive] public GroupsViewModel GroupsViewModel { get; set; }
+        [Reactive] public RanksViewModel RanksViewModel { get; set; }
         #endregion
 
 

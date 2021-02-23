@@ -5,15 +5,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Ranks"
+        xmlns:views="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
         xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        d:DesignHeight ="600" d:DesignWidth="900" x:Uid="Пользователи"
+        d:DesignHeight ="600" d:DesignWidth="1240" x:Uid="Пользователи"
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">
 
+    <Page.Resources>
+        <views:GroupEditView x:Key="GroupEditView"/>
+        <views:UserEditView x:Key="UserEditView"/>
+    </Page.Resources>
     <Grid DataContext="{Binding GroupsViewModel}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/> <!-- Поиск-->
             <ColumnDefinition/> <!-- Контент кнопки-->
+            <ColumnDefinition Width="auto"/> <!-- Контент кнопки-->
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0" Background="{DynamicResource DarkPurple}">
@@ -27,12 +33,10 @@
                 Style="{DynamicResource SearchTextBox}"
                 Template="{DynamicResource SearchBox}">
             </TextBox>
-            <ScrollViewer VerticalScrollBarVisibility="Auto"  Grid.Row="1">
-                <ScrollViewer.Resources>
-                    <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">
-                        0 <!-- Убирает скроллер на 0-->  
-                    </sys:Double>
-                </ScrollViewer.Resources>
+            <ScrollViewer 
+                VerticalScrollBarVisibility="Auto"
+                Grid.Row="1"
+                Resources="{StaticResource DisableScroller}">
                 <ItemsControl  x:Name="Groups" ItemsSource="{Binding FoundGroups}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -42,11 +46,11 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Button Style="{DynamicResource GroupSelectButton}" 
-                                    Command="{Binding 
-                                        RelativeSource={RelativeSource AncestorType={x:Type Grid}}, 
-                                        Path=DataContext.SelectGroupCommand}" 
-                                    CommandParameter="{Binding}">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                                    Command="{Binding SelectCommand}">
+                                <StackPanel 
+                                    Orientation="Horizontal" 
+                                    HorizontalAlignment="Stretch" 
+                                    DataContext="{Binding Group}">
                                     <Ellipse Width="55" Height="50" Margin="0" Stretch="Fill">
                                         <Ellipse.Fill>
                                             <ImageBrush ImageSource="{Binding Image}"/>
@@ -68,13 +72,8 @@
         <ScrollViewer 
             VerticalScrollBarVisibility="Auto" Grid.Column="1" 
             Background="{DynamicResource DarkGradient}"
-            >
-            <ScrollViewer.Resources>
-                <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">
-                    0 <!-- Убирает скроллер на 0-->
-                </sys:Double>
-            </ScrollViewer.Resources>
-            <ItemsControl ItemsSource="{Binding SelectedGroup.Users}">
+            Resources="{StaticResource DisableScroller}">
+            <ItemsControl ItemsSource="{Binding SelectedGroup}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel HorizontalAlignment="Center" ItemWidth="197" ItemHeight="170"/>
@@ -82,7 +81,9 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Style="{DynamicResource UserSelectionButton}">
+                        <Button 
+                            Style="{DynamicResource UserSelectionButton}"
+                            DataContext="{Binding User}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="40"/>
@@ -103,5 +104,19 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+        
+        
+        
+        <Grid Grid.Column="2">
+            <Grid.Resources>
+                <DataTemplate DataType="{x:Type viewmodels:GroupViewModel}">
+                    <views:GroupEditView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:UserViewModel}">
+                    <views:UserEditView/>
+                </DataTemplate>
+            </Grid.Resources>
+            <Frame Content="{Binding CurrentlySelectedObject}" DataContext="{Binding}"/>
+        </Grid>
     </Grid>
 </Page>
