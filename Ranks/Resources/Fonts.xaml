@@ -23,7 +23,7 @@
                 <SolidColorBrush Color="{StaticResource Orange}"/>
             </Setter.Value>
         </Setter>
-        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontSize" Value="12"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>

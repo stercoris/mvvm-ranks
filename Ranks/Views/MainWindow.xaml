@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Ranks"
         xmlns:viewmodels="clr-namespace:Ranks.ViewModels"
         Title="Ранги" 
-        Height="800" Width="1280" Margin="5"
+        Height="800" Width="1280"
         MinHeight="800" MinWidth="1280"
         ResizeMode="CanResize" WindowStyle="None" WindowState="Maximized"
         MaxHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}}" 
