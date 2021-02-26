@@ -83,8 +83,8 @@
                     <DataTemplate>
                         <Button 
                             Style="{DynamicResource UserSelectionButton}"
-                            DataContext="{Binding User}">
-                            <Grid>
+                            Command="{Binding Select}">
+                            <Grid DataContext="{Binding User}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="40"/>
                                     <RowDefinition/>

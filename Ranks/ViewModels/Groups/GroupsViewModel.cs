@@ -31,8 +31,7 @@ namespace Ranks.ViewModels
             SelectedGroup = new List<UserViewModel>(
                 group.Group.Users.Select(user => new UserViewModel(this, user))
             );
-            CurrentlySelectedObject = new UserViewModel(this, group.Group.Users[0]);
-
+            CurrentlySelectedObject = group;
         }
 
         private string _search_string;
