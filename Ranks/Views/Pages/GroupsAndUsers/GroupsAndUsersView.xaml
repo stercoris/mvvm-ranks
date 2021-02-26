@@ -53,7 +53,7 @@
                                     DataContext="{Binding Group}">
                                     <Ellipse Width="55" Height="50" Margin="0" Stretch="Fill">
                                         <Ellipse.Fill>
-                                            <ImageBrush ImageSource="{Binding Image}"/>
+                                            <ImageBrush ImageSource="{Binding lqImage}"/>
                                         </Ellipse.Fill>
                                     </Ellipse>
                                     <TextBlock Text="{Binding Name}" 
@@ -95,7 +95,7 @@
                                     <Run Text="{Binding SecondName}" />
                                 </TextBlock>
                                 <Image Grid.Row="1" 
-                                       Source="{Binding Image}" 
+                                       Source="{Binding lqImage}" 
                                        Stretch="Fill" Height="auto">
                                 </Image>
                             </Grid>

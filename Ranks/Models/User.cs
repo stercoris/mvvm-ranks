@@ -14,16 +14,13 @@ namespace Ranks.Models
         [Reactive] public bool IsAdmin { get; set; }
         [Reactive] public string Password { get; set; }
         [Reactive] public string About { get; set; }
+        public ImageSource hqImage
+        {get => Services.ImageConverter.toImage(DataAccess.Users.GetBase64Image(Id), 960, 540);}
 
-        private ImageSource _image;
-        public ImageSource Image
-        {
-            get => DataServices.Users.GetImageByUid(Id);
-            set { 
-                this.RaiseAndSetIfChanged(ref _image, value);
-                DataServices.Users.Update(this);
-            }
-        }
+        public ImageSource lqImage
+        // Панелька, отображающая пользователя в юи сейчас примерно 180 на 90, но в последующее время надо будет добавить 
+        // конвертер, которы будет принимать только высоту или ширину(изображения могут быть разного соотношения сторон)
+        { get => Services.ImageConverter.toImage(DataAccess.Users.GetBase64Image(Id), 180, 90);} 
 
     }
 }

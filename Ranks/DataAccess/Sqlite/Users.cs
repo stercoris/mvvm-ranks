@@ -6,17 +6,13 @@ using System.Windows.Media;
 
 using System.Data.SQLite;
 
-namespace Ranks.DataServices
+namespace Ranks.DataAccess
 {
     static partial class Users
     {
         static private SQLiteConnection connection = DBConnection.connection;
         static private SQLiteCommand m_sqlCmd;
         static private SQLiteDataReader rdr;
-        /// <summary>
-        /// Получение всех пользователей
-        /// </summary>
-        /// <returns>Лист(номер,пользователь)</returns>
         static public List<User> GetAll()
         {
             string sqlQuery = $"SELECT * FROM Users";
@@ -41,11 +37,6 @@ namespace Ranks.DataServices
             }
             return (users);
         }
-        /// <summary>
-        /// Получает пользователя
-        /// </summary>
-        /// <param name="id">ID пользователя</param>
-        /// <returns></returns>
         static public User GetById(int id)
         {
 
@@ -63,20 +54,13 @@ namespace Ranks.DataServices
                     Rank = Ranks.Get(Convert.ToInt32(rdr["rank"])),
                     IsAdmin = Convert.ToBoolean(rdr["is_admin"]),
                     Password = rdr["pass"].ToString(),
-                    //Image = Services.ImageConverter.toImage(rdr["pic"].ToString()),
                     About = rdr["about"].ToString(),
                 };
                 return (user);
             }
             else return null;
         }
-
-        /// <summary>
-        /// Получает ImageSource
-        /// </summary>
-        /// <param name="id">ID пользователя</param>
-        /// <returns></returns>
-        static public ImageSource GetImageByUid(int id)
+        static public string GetBase64Image(int id)
         {
 
             string sqlQuery = $"SELECT pic FROM Users WHERE (id = {id})";
@@ -84,33 +68,22 @@ namespace Ranks.DataServices
             rdr = m_sqlCmd.ExecuteReader();
             if (rdr.Read())
             {
-                return (Services.ImageConverter.toImage(rdr["pic"].ToString()));
+                return (rdr["pic"].ToString());
             }
             else return null;
         }
-
-        /// <summary>
-        /// Добавляет пользователя
-        /// </summary>
         static public void Add(User user)
         {
-            string sqlQuery = $"INSERT INTO Users (name,sec_name,user_group,rank,is_admin,pass,pic,about) VALUES ('{user.Name}','{user.SecondName}','{user.GroupId}',{user.Rank},{user.IsAdmin},'{user.Password}','{user.Image}','{user.About}')";
+            string sqlQuery = $"INSERT INTO Users (name,sec_name,user_group,rank,is_admin,pass,pic,about) VALUES ('{user.Name}','{user.SecondName}','{user.GroupId}',{user.Rank},{user.IsAdmin},'{user.Password}','{user.hqImage}','{user.About}')";
             m_sqlCmd = new SQLiteCommand(sqlQuery, connection);
             rdr = m_sqlCmd.ExecuteReader();
         }
-        /// <summary>
-        /// Обновляет пользователя
-        /// </summary>
         static public void Update(User user)
         {
-            string sqlQuery = $"UPDATE Users SET name = '{user.Name}',sec_name = '{user.SecondName}',user_group = '{user.GroupId}',rank = {user.Rank},is_admin = {user.IsAdmin},pass = '{user.Password}',pic = '{user.Image}',about = '{user.About}' WHERE id = {user.Id}";
+            string sqlQuery = $"UPDATE Users SET name = '{user.Name}',sec_name = '{user.SecondName}',user_group = '{user.GroupId}',rank = {user.Rank},is_admin = {user.IsAdmin},pass = '{user.Password}',pic = '{user.hqImage}',about = '{user.About}' WHERE id = {user.Id}";
             m_sqlCmd = new SQLiteCommand(sqlQuery, connection);
             rdr = m_sqlCmd.ExecuteReader();
         }
-        /// <summary>
-        /// Удаляет пользователя
-        /// </summary>
-        /// <param name="id">ID пользователя</param>
         static public void DeleteById(int id)
         {
             string sqlQuery = $"DELETE FROM Users WHERE (id={id})";

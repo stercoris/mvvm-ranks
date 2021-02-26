@@ -133,10 +133,10 @@
     </ApplicationDefinition>
     <Compile Include="Commands\SelectGroupCommand.cs" />
     <Compile Include="Converters\GroupSearchConverter.cs" />
-    <Compile Include="Data\Sqlite\DBConnection.cs" />
-    <Compile Include="Data\Sqlite\Groups.cs" />
-    <Compile Include="Data\Sqlite\Ranks.cs" />
-    <Compile Include="Data\Sqlite\Users.cs" />
+    <Compile Include="DataAccess\Sqlite\DBConnection.cs" />
+    <Compile Include="DataAccess\Sqlite\Groups.cs" />
+    <Compile Include="DataAccess\Sqlite\Ranks.cs" />
+    <Compile Include="DataAccess\Sqlite\Users.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\User.cs" />

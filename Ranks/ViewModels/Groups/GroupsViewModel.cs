@@ -12,7 +12,7 @@ namespace Ranks.ViewModels
         public GroupsViewModel()
         {
             Groups = new List<GroupViewModel> (
-                DataServices.Groups.GetGroups().Select(group => new GroupViewModel(this, group))
+                DataAccess.Groups.GetGroups().Select(group => new GroupViewModel(this, group))
             );
 
             FoundGroups = Groups;

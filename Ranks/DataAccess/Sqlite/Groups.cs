@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 using System.Data.SQLite;
 
-namespace Ranks.DataServices
+namespace Ranks.DataAccess
 {
     class Groups
     {
@@ -14,10 +14,6 @@ namespace Ranks.DataServices
         static private SQLiteCommand m_sqlCmd;
         static private SQLiteDataReader rdr;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         static public List<Group> GetGroups()
         {
             string sqlQuery = $"SELECT * FROM groups";
@@ -33,7 +29,6 @@ namespace Ranks.DataServices
                 {
                     Name = rdr["name"].ToString(),
                     Id = Convert.ToInt32(rdr["id"]),
-                    Image = Services.ImageConverter.toImage(rdr["pic"].ToString(), 320, 180),
                     About = rdr["about"].ToString(),
                 };
                 group.Users = users.FindAll((user) => user.GroupId == group.Id);
@@ -42,11 +37,6 @@ namespace Ranks.DataServices
             }
             return (groups);
         }
-        /// <summary>
-        /// Получает имя группы через ID
-        /// </summary>
-        /// <param name="groupId">ID группы</param>
-        /// <returns>Группа(название)</returns>
         static public Group GroupById(int groupId)
         {
             string sqlQuery = $"SELECT * FROM groups WHERE id = {groupId}";
@@ -57,28 +47,17 @@ namespace Ranks.DataServices
                 return new Group {
                     Name = rdr["name"].ToString(),
                     About = rdr["about"].ToString(),
-                    Image = Services.ImageConverter.toImage(rdr["pic"].ToString()),
                     Id = Convert.ToInt32(rdr["id"]),
                 };
             }
             else throw new Exception("Хз, сбой");
         }
-
-
-
         static public void AddGroup(string groupName, string img, string about)
         {
             string sqlQuery = $"INSERT INTO groups (name, pic, about) VALUES ('{groupName}', '{img}', '{about}')";
             m_sqlCmd = new SQLiteCommand(sqlQuery, connection);
             rdr = m_sqlCmd.ExecuteReader();
         }
-
-
-        /// <summary>
-        /// Получает ID через имя группы
-        /// </summary>
-        /// <param name="name">Имя группы</param>
-        /// <returns>Группа(название)</returns>
         static public int GetGroupId(string name)
         {
             string sqlQuery = $"SELECT * FROM groups WHERE name = '{name}'";
@@ -90,14 +69,22 @@ namespace Ranks.DataServices
             }
             else return (1);
         }
+        static public string GetBase64Image(int id)
+        {
 
-        /// <summary>
-        /// Обновляет пользователя
-        /// </summary>
+            string sqlQuery = $"SELECT pic FROM groups WHERE (id = {id})";
+            m_sqlCmd = new SQLiteCommand(sqlQuery, connection);
+            rdr = m_sqlCmd.ExecuteReader();
+            if (rdr.Read())
+            {
+                return (rdr["pic"].ToString());
+            }
+            else return null;
+        }
         static public void AddOrUpdate(Group group)
         {
             string sqlQuery = $"REPLACE INTO groups(id,name,pic,about) " +
-                $"VALUES('{group.Id}','{group.Name}', '{Services.ImageConverter.toBase64(group.Image)}', '{group.About}'); ";
+                $"VALUES('{group.Id}','{group.Name}', '{Services.ImageConverter.toBase64(group.hqImage)}', '{group.About}'); ";
             m_sqlCmd = new SQLiteCommand(sqlQuery, connection);
             rdr = m_sqlCmd.ExecuteReader();
         }

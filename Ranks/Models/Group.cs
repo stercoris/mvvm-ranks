@@ -10,9 +10,10 @@ namespace Ranks.Models
         [Reactive] public int Id { get; set;}
         [Reactive] public string Name { get; set; }
         [Reactive] public string About { get; set; }
-        [Reactive] public ImageSource Image { get; set; }
         [Reactive] public List<User> Users { get; set; }
-        public void Save()
-        { DataServices.Groups.AddOrUpdate(this); }
+        public ImageSource hqImage
+        {get => Services.ImageConverter.toImage(DataAccess.Groups.GetBase64Image(Id), 960, 540);}
+        public ImageSource lqImage
+        {get => Services.ImageConverter.toImage(DataAccess.Groups.GetBase64Image(Id), 90, 45);}
     }
 }

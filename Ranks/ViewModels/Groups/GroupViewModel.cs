@@ -19,7 +19,5 @@ namespace Ranks.ViewModels
         }
         public void Select()
         { groupsvm.SelectGroup(this); }
-        public ICommand Save
-        { get => ReactiveCommand.Create(() => Group.Save()); }
     }
 }

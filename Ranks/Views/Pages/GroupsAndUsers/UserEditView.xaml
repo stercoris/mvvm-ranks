@@ -16,15 +16,14 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition />
-
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
-        <Ellipse Grid.Row="0" Width="150" Height="150" Margin="50">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="{Binding User.Image}" Stretch="UniformToFill"/>
-            </Ellipse.Fill>
-        </Ellipse>
+        <Rectangle Grid.Row="0" Width="360" Height="180" Margin="0,50">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="{Binding User.hqImage}" Stretch="Fill"/>
+            </Rectangle.Fill>
+        </Rectangle>
 
         <TextBox 
             Grid.Row="1"
@@ -92,7 +91,7 @@
             <TextBox 
                 Grid.Row="3"
                 Grid.Column="1"
-                Text="Люблю Анимэ (это тоже надо сделать)"
+                Text="это тоже надо сделать"
                 Style="{DynamicResource InfoTextBoxStyle}">
             </TextBox>
         </Grid>
