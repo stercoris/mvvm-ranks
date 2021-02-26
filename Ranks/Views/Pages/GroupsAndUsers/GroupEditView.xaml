@@ -8,7 +8,7 @@
             xmlns:views="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
             xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
             xmlns:sys="clr-namespace:System;assembly=mscorlib"
-            d:DesignHeight ="600" Width="399" x:Uid="Управление группой"
+            d:DesignHeight ="600" Width="360" x:Uid="Управление группой"
             d:DataContext="{d:DesignInstance Type=viewmodels:GroupViewModel, IsDesignTimeCreatable=False}">
     <Grid Background="{StaticResource WindowControlsColor}">
         <Grid.RowDefinitions>

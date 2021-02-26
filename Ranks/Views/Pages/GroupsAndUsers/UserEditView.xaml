@@ -8,7 +8,7 @@
             xmlns:views="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
             xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
             xmlns:sys="clr-namespace:System;assembly=mscorlib"
-            d:DesignHeight ="800" Width="399" x:Uid="Управление пользователем"
+            d:DesignHeight ="800" Width="360" x:Uid="Управление пользователем"
             d:DataContext="{d:DesignInstance Type=viewmodels:UserViewModel, IsDesignTimeCreatable=False}">
     <Grid Background="{StaticResource DarkPurple}">
         <Grid.RowDefinitions>
@@ -19,7 +19,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
-        <Rectangle Grid.Row="0" Width="360" Height="180" Margin="0,50">
+        <Rectangle Grid.Row="0" Width="350" Height="170" Margin="0,50">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="{Binding User.hqImage}" Stretch="Fill"/>
             </Rectangle.Fill>

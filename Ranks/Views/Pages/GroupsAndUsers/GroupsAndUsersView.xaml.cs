@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -26,6 +27,14 @@ namespace Ranks.View
         public GroupsAndUsers()
         {
             InitializeComponent();
-        } 
+        }
+
+        private void ButtonStartAnimation(object sender, RoutedEventArgs e)
+        {
+            if(InfoFrame.Visibility == Visibility.Visible)
+                InfoFrame.Visibility = Visibility.Collapsed;
+            else InfoFrame.Visibility = Visibility.Visible;
+        }
+        // Надькин лоххх
     }
 }

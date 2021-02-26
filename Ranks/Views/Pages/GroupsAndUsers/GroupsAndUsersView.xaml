@@ -17,9 +17,14 @@
     </Page.Resources>
     <Grid DataContext="{Binding GroupsViewModel}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/> <!-- Поиск-->
-            <ColumnDefinition/> <!-- Контент кнопки-->
-            <ColumnDefinition Width="auto"/> <!-- Контент кнопки-->
+            <ColumnDefinition Width="250"/>
+            <!-- Поиск-->
+            <ColumnDefinition Width="1*"/>
+            <!-- Контент кнопки-->
+            <ColumnDefinition Width="39"/>
+            <!-- Кнопка сокрытия-->
+            <ColumnDefinition Width="auto"/>
+            <!-- Контент кнопки-->
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0" Background="{DynamicResource DarkPurple}">
@@ -104,10 +109,36 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        
-        
-        
-        <Grid Grid.Column="2">
+
+        <Button
+            Grid.Column="2"
+            BorderThickness="0"
+            Background="{StaticResource OrangeToPurpleGradient}"
+            Height="auto"
+            Padding="-20,0,-20,0" Click="ButtonStartAnimation">
+            
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="RotorArrow"
+                                Storyboard.TargetProperty="(RotateTransform.Angle)"
+                                By="180" Duration="0:0:0.5" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+            <materialDesign:PackIcon Kind="KeyboardArrowRight" Height="80" Width="80" Margin="0" Padding="0" RenderTransformOrigin="0.5, 0.5">
+                <materialDesign:PackIcon.RenderTransform>
+                    <RotateTransform x:Name="RotorArrow" Angle="0"/>
+                </materialDesign:PackIcon.RenderTransform>
+            </materialDesign:PackIcon>
+        </Button>
+
+
+
+        <Grid Grid.Column="3">
             <Grid.Resources>
                 <DataTemplate DataType="{x:Type viewmodels:GroupViewModel}">
                     <views:GroupEditView/>
@@ -116,7 +147,7 @@
                     <views:UserEditView/>
                 </DataTemplate>
             </Grid.Resources>
-            <Frame Content="{Binding CurrentlySelectedObject}" DataContext="{Binding}"/>
+            <Frame x:Name="InfoFrame" Content="{Binding CurrentlySelectedObject}" DataContext="{Binding}" Grid.RowSpan="2"/>
         </Grid>
     </Grid>
 </Page>
