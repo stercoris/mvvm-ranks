@@ -14,25 +14,27 @@
                 ContentTemplate="{TemplateBinding ContentTemplate}" 
                 Content="{TemplateBinding Content}"
                 ContentStringFormat="{TemplateBinding ContentStringFormat}" 
-                Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                Focusable="False"
+                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                 Margin="{TemplateBinding Padding}" 
                 RecognizesAccessKey="True" 
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+            </ContentPresenter>
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsDefaulted" Value="True">
-                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                <Setter 
+                    Property="BorderBrush" 
+                    TargetName="border" 
+                    Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
+                </Setter>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Opacity" TargetName="border" Value="0.7"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Opacity" TargetName="border" Value="0.5"/>
-            </Trigger>
-            <Trigger Property="ToggleButton.IsChecked" Value="True">
-                <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
-                <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" TargetName="border" Value="0.3"/>
@@ -54,7 +56,7 @@
         <Setter Property="Width" Value="30"/>
         <Setter Property="Height" Value="30"/>
     </Style>
-    
+
     <Style x:Key="WindowControls" TargetType="Button">
         <Setter Property="Height" Value="30"/>
         <Setter Property="Width" Value="30"/>
@@ -64,36 +66,11 @@
         <Setter Property="Padding" Value="0"/>
     </Style>
 
-    <Style x:Key="SaveGroupButton" TargetType="Button">
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="Width" Value="250"/>
-        <Setter Property="Background" Value="{StaticResource OrangeBrush}"/>
-        <Setter Property="FontSize" Value="14"/>
-    </Style>
-
-    <Style x:Key="RangUpGroupButton" TargetType="Button">
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="Width" Value="150"/>
-        <Setter Property="FontSize" Value="24"/>
-        <Setter Property="Margin" Value="0,0,0,40"/>
-        <Setter Property="Background" Value="{StaticResource OrangeBrush}"/>
-        <Setter Property="FontSize" Value="14"/>
-    </Style>
-
-    <Style x:Key="RangDownGroupButton" TargetType="Button">
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="Width" Value="150"/>
-        <Setter Property="FontSize" Value="24"/>
-        <Setter Property="Margin" Value="0,0,0,40"/>
-        <Setter Property="Background" Value="DeepSkyBlue"/>
-        <Setter Property="FontSize" Value="14"/>
-    </Style>
-
     <Style x:Key="GroupSelectButton" TargetType="Button">
         <Setter Property="Height" Value="auto"/>
         <Setter Property="Padding" Value="10,10"/>
         <Setter Property="Margin" Value="0"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="Template" Value="{DynamicResource CustomButton}"/>
         <Setter Property="BorderThickness" Value="0,1,0,1"/>
         <Setter Property="BorderBrush" Value="{StaticResource GrayBrush}"/>

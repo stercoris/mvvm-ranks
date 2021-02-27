@@ -44,7 +44,8 @@ namespace Ranks.DataAccess
             rdr = m_sqlCmd.ExecuteReader();
             if (rdr.Read())
             {
-                return new Group {
+                return new Group
+                {
                     Name = rdr["name"].ToString(),
                     About = rdr["about"].ToString(),
                     Id = Convert.ToInt32(rdr["id"]),

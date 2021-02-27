@@ -10,7 +10,7 @@ namespace Ranks.ViewModels
         [Reactive] public User User { get; set; }
         [Reactive] public GroupsViewModel groupsvm { get; set; }
         public ICommand Select
-        { get => ReactiveCommand.Create(() => groupsvm.CurrentlySelectedObject = this); }
+        { get => ReactiveCommand.Create(() => groupsvm.CurrentlyEditableObject = this); }
         public UserViewModel(GroupsViewModel groupsvm, User user)
         {
             this.User = user;

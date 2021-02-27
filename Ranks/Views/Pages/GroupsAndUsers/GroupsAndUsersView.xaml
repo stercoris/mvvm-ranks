@@ -1,76 +1,74 @@
 ﻿<Page x:Class="Ranks.View.GroupsAndUsers"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:Ranks"
-        xmlns:views="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
-        xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
-        xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        d:DesignHeight ="600" d:DesignWidth="1240" x:Uid="Пользователи"
-        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:local="clr-namespace:Ranks"
+    xmlns:views="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
+    xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
+    xmlns:converters="clr-namespace:Ranks.Converters"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    d:DesignHeight ="600" d:DesignWidth="1240" x:Uid="Пользователи"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">
 
     <Page.Resources>
         <views:GroupEditView x:Key="GroupEditView"/>
         <views:UserEditView x:Key="UserEditView"/>
+        <converters:EditStateToArrowAngleConverter x:Key="EditStateToArrowAngleConverter"/>
+        <converters:GroupUsersToUserViewModelList x:Key="GroupUsersToUserViewModelList"/>
     </Page.Resources>
     <Grid DataContext="{Binding GroupsViewModel}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
-            <!-- Поиск-->
             <ColumnDefinition Width="1*"/>
-            <!-- Контент кнопки-->
-            <ColumnDefinition Width="39"/>
-            <!-- Кнопка сокрытия-->
+            <ColumnDefinition Width="15"/>
             <ColumnDefinition Width="auto"/>
-            <!-- Контент кнопки-->
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0" Background="{DynamicResource DarkPurple}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="65"/>
-                <RowDefinition/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
+            
             <TextBox 
                 Grid.Row="0"  
                 Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}"
                 Style="{DynamicResource SearchTextBox}"
                 Template="{DynamicResource SearchBox}">
             </TextBox>
+
             <ScrollViewer 
                 VerticalScrollBarVisibility="Auto"
                 Grid.Row="1"
                 Resources="{StaticResource DisableScroller}">
-                <ItemsControl  x:Name="Groups" ItemsSource="{Binding FoundGroups}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Vertical"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Button Style="{DynamicResource GroupSelectButton}" 
-                                    Command="{Binding SelectCommand}">
-                                <StackPanel 
-                                    Orientation="Horizontal" 
-                                    HorizontalAlignment="Stretch" 
-                                    DataContext="{Binding Group}">
-                                    <Ellipse Width="55" Height="50" Margin="0" Stretch="Fill">
-                                        <Ellipse.Fill>
-                                            <ImageBrush ImageSource="{Binding lqImage}"/>
-                                        </Ellipse.Fill>
-                                    </Ellipse>
-                                    <TextBlock Text="{Binding Name}" 
-                                               Style="{DynamicResource RanksText}" 
-                                               VerticalAlignment="Center"
-                                               Margin="40,0">
-                                    </TextBlock>
-                                </StackPanel>
-                            </Button>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                <StackPanel Orientation="Vertical">
+                    <ItemsControl  x:Name="Groups" ItemsSource="{Binding FoundGroups}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <views:GroupView DataContext="{Binding}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <Button 
+                        Style="{StaticResource GroupSelectButton}"
+                        Height="70">
+                        <StackPanel Orientation="Vertical">
+                            <materialDesign:PackIcon 
+                                Style="{StaticResource NavBtnIcon}"
+                                HorizontalAlignment="Center"
+                                Kind="Add">
+                            </materialDesign:PackIcon>
+                            
+                            <TextBlock 
+                                Style="{StaticResource UserSelectionTitle}" 
+                                Text="Добавить группу" 
+                                HorizontalAlignment="Center">
+                            </TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
             </ScrollViewer>
         </Grid>
 
@@ -78,36 +76,27 @@
             VerticalScrollBarVisibility="Auto" Grid.Column="1" 
             Background="{DynamicResource DarkGradient}"
             Resources="{StaticResource DisableScroller}">
-            <ItemsControl ItemsSource="{Binding SelectedGroup}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel HorizontalAlignment="Center" ItemWidth="190" ItemHeight="170"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Button 
-                            Style="{DynamicResource UserSelectionButton}"
-                            Command="{Binding Select}">
-                            <Grid DataContext="{Binding User}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="40"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Grid.Row="0" Style="{DynamicResource UserSelectionTitle}">
-                                    <Run Text="{Binding Name}" />
-                                    <Run Text=" " />
-                                    <Run Text="{Binding SecondName}" />
-                                </TextBlock>
-                                <Image Grid.Row="1" 
-                                       Source="{Binding lqImage}" 
-                                       Stretch="Fill" Height="auto">
-                                </Image>
-                            </Grid>
-                        </Button>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <WrapPanel 
+                HorizontalAlignment="Center">
+                <ItemsControl 
+                ItemsSource="{Binding SelectedGroup, 
+                    Converter={StaticResource GroupUsersToUserViewModelList}}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel 
+                            ItemWidth="190" ItemHeight="170">
+                            </WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <views:UserView DataContext="{Binding}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Button Style="{StaticResource UserSelectionButton}"> QQGFqqqqfwqfqfq</Button>
+            </WrapPanel>
+            
         </ScrollViewer>
 
         <Button
@@ -115,23 +104,19 @@
             BorderThickness="0"
             Background="{StaticResource OrangeToPurpleGradient}"
             Height="auto"
-            Padding="-20,0,-20,0" Click="ButtonStartAnimation">
-            
-            <Button.Triggers>
-                <EventTrigger RoutedEvent="Button.Click">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation
-                                Storyboard.TargetName="RotorArrow"
-                                Storyboard.TargetProperty="(RotateTransform.Angle)"
-                                By="180" Duration="0:0:0.5" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Button.Triggers>
-            <materialDesign:PackIcon Kind="KeyboardArrowRight" Height="80" Width="80" Margin="0" Padding="0" RenderTransformOrigin="0.5, 0.5">
+            Command="{Binding CmdChangeEditMenuVisibility}"
+            Style="{StaticResource GroupSelectButton}"
+            Padding="-12,0,0,0">
+            <materialDesign:PackIcon
+                Kind="KeyboardArrowRight"
+                Height="40" Width="40"
+                RenderTransformOrigin="0.5, 0.5">
                 <materialDesign:PackIcon.RenderTransform>
-                    <RotateTransform x:Name="RotorArrow" Angle="0"/>
+                    <RotateTransform 
+                        x:Name="RotorArrow"
+                        Angle="{Binding CurrentlyEditableObject,
+                                Converter={StaticResource EditStateToArrowAngleConverter}}">
+                    </RotateTransform>
                 </materialDesign:PackIcon.RenderTransform>
             </materialDesign:PackIcon>
         </Button>
@@ -147,7 +132,13 @@
                     <views:UserEditView/>
                 </DataTemplate>
             </Grid.Resources>
-            <Frame x:Name="InfoFrame" Content="{Binding CurrentlySelectedObject}" DataContext="{Binding}" Grid.RowSpan="2"/>
+            
+            <Frame x:Name="InfoFrame" 
+                   Content="{Binding CurrentlyEditableObject}"
+                   NavigationUIVisibility="Hidden" 
+                   DataContext="{Binding}" 
+                   Grid.RowSpan="2">
+            </Frame>
         </Grid>
     </Grid>
 </Page>

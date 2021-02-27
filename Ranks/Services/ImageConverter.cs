@@ -9,11 +9,6 @@ namespace Ranks.Services
 {
     static class ImageConverter
     {
-        /// <summary>
-        /// BitmapImage to Base64 string
-        /// </summary>
-        /// <param name="img">image</param>
-        /// <returns></returns>
         public static string toBase64(ImageSource img)
         {
             MemoryStream outStream = new MemoryStream();
@@ -27,12 +22,6 @@ namespace Ranks.Services
             byte[] byteImage = ms.ToArray();
             return (Convert.ToBase64String(byteImage));
         }
-
-        /// <summary>
-        /// Base64 string to BitmapImage
-        /// </summary>
-        /// <param name="base64String">base 64 string</param>
-        /// <returns></returns>
         public static ImageSource toImage(string base64String, int width = 197, int height = 170)
         {
             BitmapImage bitmapImage = new BitmapImage();

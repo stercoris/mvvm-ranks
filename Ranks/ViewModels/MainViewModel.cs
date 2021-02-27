@@ -7,7 +7,7 @@ namespace Ranks.ViewModels
 {
     internal class MainViewModel : ReactiveObject
     {
-        #region Pages And Buttons
+        #region Pages And NavBar
         private Page GroupsAndUsers;
         private Page RankList;
 
@@ -28,7 +28,7 @@ namespace Ranks.ViewModels
 
         public MainViewModel()
         {
-            GroupsAndUsers = new View.GroupsAndUsers() {DataContext = this};
+            GroupsAndUsers = new View.GroupsAndUsers() { DataContext = this };
             RankList = new View.RankList() { DataContext = this };
 
             GroupsViewModel = new GroupsViewModel();

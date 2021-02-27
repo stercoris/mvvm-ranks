@@ -9,15 +9,20 @@ namespace Ranks.ViewModels
     {
         [Reactive] public Group Group { get; set; }
         [Reactive] public GroupsViewModel groupsvm { get; set; }
-        public ICommand SelectCommand { get; set; }
+        public ICommand ShowUsersCommand { get; set; }
+        public ICommand EditCommand { get; set; }
 
         public GroupViewModel(GroupsViewModel groupsvm, Group group)
         {
             this.Group = group;
             this.groupsvm = groupsvm;
-            SelectCommand = new Commands.SelectGroupCommand(this);
+            // Требуется вынести в родительский класс, зачем создавать так много экземпляров команды?????????????
+            ShowUsersCommand = ReactiveCommand.Create(() => groupsvm.SelectedGroup = this);
+            EditCommand = ReactiveCommand.Create(() => groupsvm.CurrentlyEditableObject = this);
         }
         public void Select()
-        { groupsvm.SelectGroup(this); }
+        {
+            groupsvm.SelectedGroup = this;
+        }
     }
 }

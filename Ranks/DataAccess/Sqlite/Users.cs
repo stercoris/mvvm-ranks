@@ -1,7 +1,6 @@
 ﻿using Ranks.Models;
 using System;
 using System.Collections.Generic;
-using System.Windows.Media;
 
 
 using System.Data.SQLite;
@@ -45,7 +44,7 @@ namespace Ranks.DataAccess
             rdr = m_sqlCmd.ExecuteReader();
             if (rdr.Read())
             {
-               User user = new User
+                User user = new User
                 {
                     Id = Convert.ToInt32(rdr["id"]),
                     Name = rdr["name"].ToString(),

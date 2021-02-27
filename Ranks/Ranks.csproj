@@ -133,7 +133,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\SelectGroupCommand.cs" />
-    <Compile Include="Converters\GroupSearchConverter.cs" />
+    <Compile Include="Converters\GroupUsersToUserViewModelList.cs" />
+    <Compile Include="Converters\EditStateToArrowAngleConverter.cs" />
     <Compile Include="DataAccess\Sqlite\DBConnection.cs" />
     <Compile Include="DataAccess\Sqlite\Groups.cs" />
     <Compile Include="DataAccess\Sqlite\Ranks.cs" />
@@ -155,8 +156,14 @@
     <Compile Include="Views\Pages\GroupsAndUsers\GroupEditView.xaml.cs">
       <DependentUpon>GroupEditView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\GroupsAndUsers\GroupView.xaml.cs">
+      <DependentUpon>GroupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\GroupsAndUsers\UserEditView.xaml.cs">
       <DependentUpon>UserEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\GroupsAndUsers\UserView.xaml.cs">
+      <DependentUpon>UserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\Ranks\RankList.xaml.cs">
       <DependentUpon>RankList.xaml</DependentUpon>
@@ -203,7 +210,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Pages\GroupsAndUsers\GroupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\GroupsAndUsers\UserEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\GroupsAndUsers\UserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -246,7 +261,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Resource Include="logo.ico" />
     <Resource Include="Resources\Montserrat.ttf" />
     <None Include="users.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -277,7 +291,7 @@
     <Resource Include="Images\logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\Groups\Users\" />
+    <Resource Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets')" />

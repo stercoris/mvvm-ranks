@@ -16,11 +16,13 @@
             <RowDefinition/>
             <RowDefinition />
         </Grid.RowDefinitions>
+        
         <Ellipse Grid.Row="0" Width="150" Height="150" Margin="50">
             <Ellipse.Fill>
                 <ImageBrush ImageSource="{Binding Group.hqImage}" Stretch="UniformToFill"/>
             </Ellipse.Fill>
         </Ellipse>
+        
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <TextBox 
                 Text="{Binding Group.Name, Mode=TwoWay}"
@@ -30,11 +32,6 @@
                 Style="{DynamicResource AboutTextBoxStyle}">
             </TextBox>
         </StackPanel>
-        
-        <Button
-            Grid.Row="2"
-            Content="Сохранить"
-            
-            Style="{DynamicResource SaveGroupButton}"></Button> 
+
     </Grid>
 </UserControl>

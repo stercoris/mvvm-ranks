@@ -1,4 +1,5 @@
 ﻿using Ranks.Models;
+using Ranks.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,12 +11,14 @@ using System.Windows.Data;
 namespace Ranks.Converters
 {
 
-    public class GroupSearchConverter : IValueConverter
+    public class GroupUsersToUserViewModelList : IValueConverter
     {
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            List<Group> groups = value as List<Group>;
-            return groups.FindAll((group) => group.Name.Contains(parameter as string));
+            GroupViewModel groupvm = (value as GroupViewModel);
+            List<User> users = groupvm.Group.Users;
+            return (users.Select((user) => new UserViewModel(groupvm.groupsvm, user)));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
