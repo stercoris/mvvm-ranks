@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Ranks.Views.Pages.GroupsAndUsers.UserView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            xmlns:local="clr-namespace:Ranks"
+            xmlns:views="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
+            xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
+            xmlns:sys="clr-namespace:System;assembly=mscorlib"
+            d:DataContext="{d:DesignInstance Type=viewmodels:UserViewModel, IsDesignTimeCreatable=False}"
+            d:DesignWidth="180" d:DesignHeight="170" Tag="Представление пользователя">
+    <Button 
+        Style="{DynamicResource UserSelectionButton}"
+        Command="{Binding Select}">
+        <Grid DataContext="{Binding User}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock 
+                Grid.Row="0" 
+                Style="{DynamicResource UserSelectionTitle}">
+                <Run Text="{Binding Name}" />
+                <Run Text=" " />
+                <Run Text="{Binding SecondName}" />
+            </TextBlock>
+            
+            <Image Grid.Row="1" 
+                Source="{Binding lqImage}" 
+                Stretch="Fill" Height="auto">
+            </Image>
+        </Grid>
+    </Button>
+</UserControl>
