@@ -3,7 +3,9 @@ using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows.Input;
+using RanksClient;
 
 namespace Ranks.ViewModels
 {
@@ -11,17 +13,23 @@ namespace Ranks.ViewModels
     {
         public GroupsViewModel()
         {
-            Groups = new List<GroupViewModel>(
-                DataAccess.Groups.GetGroups().Select(group => new GroupViewModel(this, group))
-            );
-
-            FoundGroups = Groups;
-
-            if (FoundGroups.Count >= 0)
+            API api = new API("http://localhost:8000/graph");
+            new Thread(async ()=> 
             {
-                SelectedGroup = FoundGroups[0];
-                LastEditedObject = FoundGroups[0];
-            }
+                Groups = new List<GroupViewModel>(
+                    (await api.GroupResolver.GetAsync()).Select(group => new GroupViewModel(this, group))
+                );
+                FoundGroups = Groups;
+
+                if (FoundGroups.Count >= 0)
+                {
+                    SelectedGroup = FoundGroups[0];
+                    LastEditedObject = FoundGroups[0];
+                }
+            }).Start();
+            
+
+            
             CmdChangeEditMenuVisibility = ReactiveCommand.Create(
                 () => CurrentlyEditableObject == null ? 
                     CurrentlyEditableObject = LastEditedObject : CurrentlyEditableObject = null);

@@ -1,4 +1,4 @@
-﻿using Ranks.Models;
+﻿using RanksClient.Models;
 using Ranks.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+
 
 namespace Ranks.Converters
 {
@@ -17,8 +18,15 @@ namespace Ranks.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             GroupViewModel groupvm = (value as GroupViewModel);
-            List<User> users = groupvm.Group.Users;
-            return (users.Select((user) => new UserViewModel(groupvm.groupsvm, user)));
+            if (groupvm != null)
+            {
+                List<User> users = groupvm.Group.Users;
+                return (users.Select((user) => new UserViewModel(groupvm.groupsvm, user)));
+            }
+            else
+            {
+                return new List <UserViewModel>{ };
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

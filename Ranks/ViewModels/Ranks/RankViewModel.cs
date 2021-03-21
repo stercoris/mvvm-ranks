@@ -1,4 +1,4 @@
-﻿using Ranks.Models;
+﻿using RanksClient.Models;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 

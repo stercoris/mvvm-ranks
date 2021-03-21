@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ranks", "Ranks\Ranks.csproj", "{C0015D8E-D983-4CC2-87C7-D41AA66C560E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RanksClient", "RanksClient\RanksClient.csproj", "{FAF4DB5C-7BA9-4264-9E71-7AC5E815A956}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C0015D8E-D983-4CC2-87C7-D41AA66C560E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0015D8E-D983-4CC2-87C7-D41AA66C560E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0015D8E-D983-4CC2-87C7-D41AA66C560E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAF4DB5C-7BA9-4264-9E71-7AC5E815A956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAF4DB5C-7BA9-4264-9E71-7AC5E815A956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAF4DB5C-7BA9-4264-9E71-7AC5E815A956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAF4DB5C-7BA9-4264-9E71-7AC5E815A956}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

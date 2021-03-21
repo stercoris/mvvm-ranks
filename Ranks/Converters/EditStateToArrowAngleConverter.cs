@@ -1,4 +1,4 @@
-﻿using Ranks.Models;
+﻿using RanksClient.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
