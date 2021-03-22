@@ -30,9 +30,10 @@ namespace RanksClient.Resolvers
 
         protected async Task<Response> GetImage<Response>(object variable, Func<Response> defineResponseType)
         {
+            Console.WriteLine(variable.ToString());
             GraphQLRequest query_string = QueryGetImage;
             query_string.Variables = variable;
-            var response = await GraphQLClient.SendQueryAsync(QueryGetImage, defineResponseType);
+            var response = await GraphQLClient.SendQueryAsync(query_string, defineResponseType);
             return (response.Data);
         }
 

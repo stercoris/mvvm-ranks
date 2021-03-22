@@ -36,7 +36,7 @@ namespace RanksClient.Resolvers
         {
             get => new GraphQLRequest
             {
-                Query = @"query ($userid: GroupIdInput) {UsersImg(GroupId: $userid) {id,picture}}"
+                Query = @"query($groupId: String){UsersImg(GroupId: $groupId){id,picture}}"
             };
         }
 
@@ -51,11 +51,11 @@ namespace RanksClient.Resolvers
             public string pucture { get; set; }
         }
 
-        public async Task<string> GetImg(string UserId)
+        public async Task<List<UsersImg>> GetImg(string UserId)
         {
-            var response = await GetImage(new { userid = UserId },  () => new { UsersImg = new UserImage() }  );
-            Console.WriteLine(response);
-            return (response.UsersImg.pucture);
+            var response = await GetImage(new { groupId = UserId },  () => new { UsersImg = new List<UsersImg>() }  );
+            //Console.WriteLine(response);
+            return (response.UsersImg);
         }
         public async Task<UserInputTypeWithId> AddUser(UserInputType user)
         {
@@ -93,6 +93,12 @@ namespace RanksClient.Resolvers
         public string password { get; set; }
         public string picture { get; set; }
         public string about { get; set; }
+    }
+    public class UsersImg
+    {
+        public string id { get; set; }
+        public string picture { get; set; }
+
     }
 
 }

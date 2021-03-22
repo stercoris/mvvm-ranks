@@ -71,7 +71,6 @@ namespace RanksClient.Resolvers
     public class GroupType : GroupBase
     {
         public string id { get; set; }
-
     }
     abstract public class GroupBase
     {

@@ -8,26 +8,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using RanksClient;
+using RanksClient.Resolvers;
+using System.Threading;
 
 namespace Ranks.Converters
 {
-
+   
     public class GroupUsersToUserViewModelList : IValueConverter
     {
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public  object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             GroupViewModel groupvm = (value as GroupViewModel);
             if (groupvm != null)
             {
                 List<User> users = groupvm.Group.Users;
                 var api = new API("http://localhost:8000/graph");
-                return (users.Select(async (user) =>
+                var userViewModels = (users.Select((user) => new UserViewModel(groupvm.groupsvm, user)));
+                new Thread(async () =>
                 {
-                    user.Picture = await api.UserResolver.GetImg("9");
-                    Console.WriteLine(user.Picture);
-                    return (new UserViewModel(groupvm.groupsvm, user));
-                }));
+                    List<UsersImg> usersImg = await api.UserResolver.GetImg(groupvm.Group.Id.ToString());
+                    foreach(var uservm in userViewModels)
+                    {
+                        uservm.User.Picture = usersImg.Find(user=>user.id==uservm.User.Id.ToString()).picture;
+                    }
+                }).Start();
+                
+                return userViewModels;
             }
             else
             {
