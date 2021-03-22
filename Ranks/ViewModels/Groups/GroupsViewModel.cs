@@ -11,13 +11,12 @@ namespace Ranks.ViewModels
 {
     class GroupsViewModel : ReactiveObject
     {
-        public GroupsViewModel()
+        public GroupsViewModel(API api)
         {
-            API api = new API("http://localhost:8000/graph");
             new Thread(async ()=> 
             {
                 Groups = new List<GroupViewModel>(
-                    (await api.GroupResolver.GetAsync()).Select(group => new GroupViewModel(this, group))
+                    (await  api.GroupResolver.GetAsync()).Select(group => new GroupViewModel(this, group))
                 );
                 FoundGroups = Groups;
 

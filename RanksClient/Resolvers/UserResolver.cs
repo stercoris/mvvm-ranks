@@ -32,11 +32,30 @@ namespace RanksClient.Resolvers
                         id,name,secname,groupId,rankId,isAdmin,password,picture,about}}"
             };
         }
+        protected override GraphQLRequest QueryGetImage
+        {
+            get => new GraphQLRequest
+            {
+                Query = @"query ($userid: GroupIdInput) {UsersImg(GroupId: $userid) {id,picture}}"
+            };
+        }
 
         public async Task<List<UserInputType>> GetUsers()
         {
-            var response = await GetList(() => new { Users = new List<UserInputType> { } });
+            var response = await SendQuery(() => new { Users = new List<UserInputType> { } });
             return (response.Users);
+        }
+
+        class UserImage
+        {
+            public string pucture { get; set; }
+        }
+
+        public async Task<string> GetImg(string UserId)
+        {
+            var response = await GetImage(new { userid = UserId },  () => new { UsersImg = new UserImage() }  );
+            Console.WriteLine(response);
+            return (response.UsersImg.pucture);
         }
         public async Task<UserInputTypeWithId> AddUser(UserInputType user)
         {

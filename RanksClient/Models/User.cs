@@ -14,8 +14,15 @@ namespace RanksClient.Models
         public bool IsAdmin { get; set; }
         public string Password { get; set; }
         public string About { get; set; }
-        public string Picture{ get; set; }
-        public ImageSource hqImage { get=> ImageConverter.toImage(Picture, 960, 640); }
+
+        public string _picture;
+        public string Picture
+        {
+            get => _picture; 
+            set => _picture = ImageConverter.toBase64(ImageConverter.toImage(value));
+        }
+
+        public ImageSource hqImage { get => ImageConverter.toImage(Picture); }
         public ImageSource lqImage { get => ImageConverter.toImage(Picture); }
 
     }

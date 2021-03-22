@@ -38,10 +38,19 @@ namespace RanksClient.Resolvers
                 Query = @"mutation($group: GroupUpdateInput){UpdateGroup(Group: $group){name,id,picture,about}}"
             };
         }
+        protected override GraphQLRequest QueryGetImage
+        {
+            get => new GraphQLRequest
+            {
+                Query = @""
+            };
+
+
+        }
 
         public async Task<List<Group>> GetAsync()
         {
-            var response = await GetList(() => new { groups = new List<Group> { } });
+            var response = await SendQuery(() => new { groups = new List<Group> { } });
             return (response.groups);
         }
         public async Task<GroupInputType> AddGroup(GroupInputType group)

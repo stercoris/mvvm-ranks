@@ -1,4 +1,5 @@
-﻿using ReactiveUI;
+﻿using RanksClient;
+using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -25,13 +26,15 @@ namespace Ranks.ViewModels
         [Reactive] public RanksViewModel RanksViewModel { get; set; }
         #endregion
 
+        public API api { get; set; }
 
         public MainViewModel()
         {
+            api = new API("http://localhost:8000/graph");
             GroupsAndUsers = new View.GroupsAndUsers() { DataContext = this };
             RankList = new View.RankList() { DataContext = this };
 
-            GroupsViewModel = new GroupsViewModel();
+            GroupsViewModel = new GroupsViewModel(api);
             RanksViewModel = new RanksViewModel();
             SelectedPage = GroupsAndUsers;
 

@@ -32,10 +32,19 @@ namespace RanksClient.Resolvers
                 Query = @"mutation($rank: rankUpdateInput){UpdateRank(Rank: $rank){name,id,picture}}"
             };
         }
+        protected override GraphQLRequest QueryGetImage
+        {
+            get => new GraphQLRequest
+            {
+                Query = @""
+            };
+
+
+        }
 
         public async Task<List<Rank>> GetRanks()
         {
-            var response = await GetList(() => new { Ranks = new List<Rank> { } });
+            var response = await SendQuery(() => new { Ranks = new List<Rank> { } });
             return (response.Ranks);
         }
         public async Task<RankInputType> AddRank(RankInputType rank)

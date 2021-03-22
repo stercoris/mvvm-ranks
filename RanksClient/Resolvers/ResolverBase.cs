@@ -18,19 +18,21 @@ namespace RanksClient.Resolvers
         //protected GraphQLHttpClient GraphQLClient { get => new GraphQLHttpClient("http://localhost:8000/graph", new NewtonsoftJsonSerializer()); }
 
         protected abstract GraphQLRequest QueryString { get; }
-        //protected abstract GraphQLRequest QueryGetImage { get; }
+        protected abstract GraphQLRequest QueryGetImage { get; }
         protected abstract GraphQLRequest MutationStringCreate { get; }
         protected abstract GraphQLRequest MutationStringUpdate { get; }
 
-        //protected async Task<Response> GetImage<Response>(Func<Response> defineResponseType)
-        //{
-        //    var response = await GraphQLClient.SendQueryAsync(QueryString, defineResponseType);
-        //    return (response.Data);
-        //}
-
-        protected async Task<Response> GetList<Response>(Func<Response> defineResponseType)
+        protected async Task<Response> SendQuery<Response>(Func<Response> defineResponseType)
         {
             var response = await GraphQLClient.SendQueryAsync(QueryString, defineResponseType);
+            return (response.Data);
+        }
+
+        protected async Task<Response> GetImage<Response>(object variable, Func<Response> defineResponseType)
+        {
+            GraphQLRequest query_string = QueryGetImage;
+            query_string.Variables = variable;
+            var response = await GraphQLClient.SendQueryAsync(QueryGetImage, defineResponseType);
             return (response.Data);
         }
 
