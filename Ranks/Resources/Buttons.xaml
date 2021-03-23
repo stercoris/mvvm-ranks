@@ -87,4 +87,25 @@
         <Setter Property="BorderBrush" Value="{StaticResource GrayBrush}"/>
 
     </Style>
+    
+    
+    <Style x:Key="RankUpDown" TargetType="Button">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PurpleBrush}"/>
+        <Setter Property="Background" Value="{StaticResource PurpleBrush}"/>
+        <Setter Property="Template" Value="{StaticResource CustomButton}"/>
+    </Style>
+    
+    
+    <Style x:Key="CircleButton" TargetType="Button">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PurpleBrush}"/>
+        <Setter Property="Background" Value="{StaticResource PurpleBrush}"/>
+        
+
+    </Style>
 </ResourceDictionary>

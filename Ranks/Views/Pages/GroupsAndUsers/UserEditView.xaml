@@ -17,6 +17,8 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
         <Rectangle Grid.Row="0" Height="150" Margin="0,50" >
@@ -25,26 +27,89 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <TextBox 
-            Margin="20"
-            Grid.Row="1"
-            Text="{Binding User.Name}"
-            Style="{DynamicResource EditFieldTextBoxStyle}">
-        </TextBox>
-        <TextBox 
-            Margin="20"
-            Grid.Row="2"
-            Text="{Binding User.SecondName}"
-            Style="{DynamicResource EditFieldTextBoxStyle}">
-        </TextBox>
-        <TextBox 
-            Margin="20"
-            Grid.Row="3"
-            Text="{Binding User.About}"
-            Style="{DynamicResource EditFieldTextBoxStyle}">
-        </TextBox>
+        <Grid Grid.Row="1" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox 
+                Grid.Column="0"
+                Text="Имя:"
+                Style="{DynamicResource NoEditFieldTextBoxStyle}"/>
+            <TextBox 
+                Grid.Column="1"
+                Text="{Binding User.Name}"
+                Style="{DynamicResource NewEditFieldTextBoxStyle}"/>
+        </Grid>
 
+        <Grid Grid.Row="2" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox 
+                Grid.Column="0"
+                Text="Фамилия:"
+                Style="{DynamicResource NoEditFieldTextBoxStyle}"/>
+            <TextBox 
+                Grid.Column="1"
+                
+                Text="{Binding User.secname}"
+                Style="{DynamicResource NewEditFieldTextBoxStyle}"/>
 
         </Grid>
+        
+        
+        <Grid Grid.Row="3" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox 
+                Grid.Column="0"
+                Text="Ранг:"
+                Style="{DynamicResource NoEditFieldTextBoxStyle}"/>
+            <TextBox 
+                Grid.Column="1"                
+                Text="{Binding User.Rank}"
+                Style="{DynamicResource NewEditFieldTextBoxStyle}"/>
+
+        </Grid>
+
+        <Grid Grid.Row="4" Margin="20,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Content="повысить"
+                    Style="{DynamicResource RankUpDown}"/>
+            <Button Grid.Column="1"
+                    Content="понизить"
+                    Style="{DynamicResource RankUpDown}"/>
+        </Grid>
+
+
+        <Grid Grid.Row="5" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox 
+                Grid.Column="0"
+                Text="Описание:"
+                Style="{DynamicResource NoEditFieldTextBoxStyle}"/>
+            <TextBox 
+                Grid.Column="1"                
+                Text="{Binding User.About}"
+                Style="{DynamicResource NewEditFieldTextBoxStyle}"/>
+
+        </Grid>
+
+
+    </Grid>
     
 </UserControl>

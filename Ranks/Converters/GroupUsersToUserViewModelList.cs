@@ -33,7 +33,7 @@ namespace Ranks.Converters
                     {
 
                         uservm.User.Picture = usersImg.Find(user => user.id == uservm.User.Id.ToString()).picture;
-                        uservm.User.
+                        
                     }
                 }).Start();
 

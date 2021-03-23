@@ -71,20 +71,47 @@
                 </StackPanel>
             </ScrollViewer>
         </Grid>
+        <Canvas Panel.ZIndex="10" Grid.Column="1">
+            <Button
+                Canvas.Right="10"
+                Canvas.Bottom="10"
+                Width="auto"
+                Height="auto"
+                Template="{StaticResource CustomButton}"
+                Background="{x:Null}"
+                BorderThickness="0">
+                
+                <Border
+                    Background="{StaticResource DarkPurple}"
+                    CornerRadius="100"                    
+                    BorderBrush="Black">
+                    <materialDesign:PackIcon 
+                        Style="{StaticResource NavBtnIcon}"
+                        Width="80"
+                        Height="80"
+                        Margin="10"
+                        HorizontalAlignment="Center"
+                        Kind="Create">
+                    </materialDesign:PackIcon>
+                </Border>
+            </Button>
+
+        </Canvas>
 
         <ScrollViewer 
-            VerticalScrollBarVisibility="Auto" Grid.Column="1" 
+            Grid.Column="1"
+            VerticalScrollBarVisibility="Auto"  
             Background="{DynamicResource DarkGradient}"
             Resources="{StaticResource DisableScroller}">
             <WrapPanel 
-                HorizontalAlignment="Center">
+                    HorizontalAlignment="Center">
                 <ItemsControl 
-                ItemsSource="{Binding SelectedGroup, 
-                    Converter={StaticResource GroupUsersToUserViewModelList}}">
+                    ItemsSource="{Binding SelectedGroup, 
+                        Converter={StaticResource GroupUsersToUserViewModelList}}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel 
-                            ItemWidth="190" ItemHeight="170">
+                                ItemWidth="190" ItemHeight="170">
                             </WrapPanel>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
@@ -94,11 +121,10 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-                <Button Style="{StaticResource UserSelectionButton}"> QQGFqqqqfwqfqfq</Button>
+                <Button Style="{StaticResource UserSelectionButton}">QQGFqqqqfwqfqfq</Button>
             </WrapPanel>
-            
         </ScrollViewer>
-
+        
         <Button
             Grid.Column="2"
             BorderThickness="0"
