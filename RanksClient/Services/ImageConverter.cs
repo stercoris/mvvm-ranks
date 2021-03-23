@@ -30,6 +30,10 @@ namespace RanksClient.Services
             bitmapImage.DecodePixelWidth = width;
             bitmapImage.DecodePixelHeight = height;
             bitmapImage.CacheOption = BitmapCacheOption.None;
+            if(base64String == null)
+            {
+                return bitmapImage;
+            }
             bitmapImage.StreamSource = new MemoryStream(Convert.FromBase64String(base64String));
             bitmapImage.EndInit();
 

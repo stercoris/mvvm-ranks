@@ -14,8 +14,7 @@ namespace RanksClient.Models
         public bool IsAdmin { get; set; }
         public string Password { get; set; }
         public string About { get; set; }
-
-        public string _picture;
+        private string _picture;
         public string Picture
         {
             get => _picture; 

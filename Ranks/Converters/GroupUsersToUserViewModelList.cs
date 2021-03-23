@@ -19,6 +19,7 @@ namespace Ranks.Converters
 
         public  object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            
             GroupViewModel groupvm = (value as GroupViewModel);
             if (groupvm != null)
             {
@@ -28,12 +29,14 @@ namespace Ranks.Converters
                 new Thread(async () =>
                 {
                     List<UsersImg> usersImg = await api.UserResolver.GetImg(groupvm.Group.Id.ToString());
-                    foreach(var uservm in userViewModels)
+                    foreach (var uservm in userViewModels)
                     {
-                        uservm.User.Picture = usersImg.Find(user=>user.id==uservm.User.Id.ToString()).picture;
+
+                        uservm.User.Picture = usersImg.Find(user => user.id == uservm.User.Id.ToString()).picture;
+                        uservm.User.
                     }
                 }).Start();
-                
+
                 return userViewModels;
             }
             else
