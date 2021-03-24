@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:local="clr-namespace:Ranks"
+     
     xmlns:views="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
     xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
     xmlns:converters="clr-namespace:Ranks.Converters"
@@ -79,7 +80,8 @@
                 Height="auto"
                 Template="{StaticResource CustomButton}"
                 Background="{x:Null}"
-                BorderThickness="0">
+                BorderThickness="0"
+                Command="{Binding EditCommand}">
                 
                 <Border
                     Background="{StaticResource DarkPurple}"

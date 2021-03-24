@@ -14,7 +14,7 @@ namespace RanksClient.Resolvers
         {
             get => new GraphQLRequest
             {
-                Query = @"{Groups{id,name,about,picture,Users{id,name,secname,about}}}"
+                Query = @"{Groups{id,name,about,picture,Users{id,name,secname,about}, avrgRank}}"
             };
         }
         //protected override GraphQLRequest QueryGetImage => throw new System.NotImplementedException();
