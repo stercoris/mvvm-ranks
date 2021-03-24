@@ -16,11 +16,13 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Ellipse Grid.Row="0" Width="150" Height="150" Margin="50">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="{Binding Group.hqImage}" Stretch="UniformToFill"/>
-            </Ellipse.Fill>
-        </Ellipse>
+        <StackPanel Grid.Row="0" Height="300" Width="360"  Margin="0">
+            <StackPanel.Background>
+                <ImageBrush  ImageSource="{Binding Group.hqImage}" Stretch="UniformToFill"/>
+            </StackPanel.Background>
+
+        </StackPanel>
+        
 
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <TextBox 
@@ -60,11 +62,16 @@
                             Style="{DynamicResource GroupTextBoxes}"
                             Text="{Binding Group.AvrgRank}"/>
                     </StackPanel>
-                    <Rectangle
-                        MinHeight="100"  
-                        Grid.Column="1">
-
-                    </Rectangle>
+                    
+                    <StackPanel Grid.Column="1">
+                        <ItemsControl  x:Name="TopUsers" ItemsSource="{Binding FoundGroups}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <views:GroupView DataContext="{Binding}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
                 </Grid>
                 <Button Grid.Row="2"
                     Content="Добавить нового студента"

@@ -150,6 +150,9 @@
     <Compile Include="Views\Pages\GroupsAndUsers\GroupView.xaml.cs">
       <DependentUpon>GroupView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\GroupsAndUsers\TopUserView.xaml.cs">
+      <DependentUpon>TopUserView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\GroupsAndUsers\UserEditView.xaml.cs">
       <DependentUpon>UserEditView.xaml</DependentUpon>
     </Compile>
@@ -202,6 +205,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\GroupsAndUsers\GroupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\GroupsAndUsers\TopUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

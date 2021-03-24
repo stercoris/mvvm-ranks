@@ -25,6 +25,8 @@ namespace Ranks.ViewModels
                     SelectedGroup = FoundGroups[0];
                     LastEditedObject = FoundGroups[0];
                 }
+
+
             }).Start();
             
 
@@ -37,6 +39,8 @@ namespace Ranks.ViewModels
         [Reactive] public List<GroupViewModel> Groups { get; set; }
         [Reactive] public GroupViewModel SelectedGroup { get; set; }
         [Reactive] public List<GroupViewModel> FoundGroups { get; set; }
+        [Reactive] public List<UserViewModel> TopThreeUsers { get; set; }
+
 
         #region Логика окна редактирования
         public ICommand CmdChangeEditMenuVisibility { get; set; }
