@@ -21,7 +21,6 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="20"/>
             </Grid.ColumnDefinitions>
 
             <Ellipse 
@@ -46,15 +45,6 @@
                 Style="{DynamicResource RanksText}" >
             </TextBlock>
 
-            <Button
-                Grid.Column="2"
-                Style="{StaticResource MaterialDesignFlatButton}"
-                Margin="0" Padding="0" Height="20"
-                Command="{Binding EditCommand}">
-                <materialDesign:PackIcon
-                    Kind="Edit" Foreground="{StaticResource OrangeToPurpleGradient}">
-                </materialDesign:PackIcon>
-            </Button>
         </Grid>
     </Button>
 </UserControl>
