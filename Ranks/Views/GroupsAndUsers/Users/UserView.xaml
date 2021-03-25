@@ -17,25 +17,23 @@
     <Button 
         Style="{DynamicResource UserSelectionButton}"
         Command="{Binding Select}">
-        <Grid DataContext="{Binding User}">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            
+
             <TextBlock 
                 Grid.Row="0" 
                 Style="{DynamicResource UserSelectionTitle}">
-                <Run Text="{Binding Name}" />
+                <Run Text="{Binding User.name}" />
                 <Run Text=" " />
-                <Run Text="{Binding SecondName}" />
+                <Run Text="{Binding User.secname}" />
             </TextBlock>
-            
+
             <Image 
                 Grid.Row="1" 
-                Source="{Binding Picture, 
-                        Converter={StaticResource Base64ToImageSourceConverter},
-                        ConverterParameter=200 }"
+                Source="{Binding Picture, IsAsync=True}"
                 Stretch="Fill"
                 Height="auto">
             </Image>

@@ -29,10 +29,8 @@
                 Width="55" Height="50"
                 Margin="0" Stretch="Fill">
                 <Ellipse.Fill>
-                    <ImageBrush 
-                         ImageSource="{Binding Group.Picture, 
-                                       Converter={StaticResource Base64ToImageSourceConverter},
-                                       ConverterParameter=100 }">
+                    <ImageBrush >
+                         <!--ImageSource="{Binding Picture}"-->
                     </ImageBrush>
                     
                 </Ellipse.Fill>
@@ -40,7 +38,7 @@
 
             <TextBlock 
                 Grid.Column="1"
-                Text="{Binding Group.Name}"
+                Text="{Binding Group.name}"
                 Margin="20,0"
                 VerticalAlignment="Center"
                 Style="{DynamicResource RanksText}" >

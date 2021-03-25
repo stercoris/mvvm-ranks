@@ -17,7 +17,7 @@ namespace Ranks.Commands
 
         public bool CanExecute(object parameter)
         {
-            if (viewModel.Group.Users.Count > 0)
+            if (viewModel.Group.users.Count > 0)
                 return true;
             return false;
         }

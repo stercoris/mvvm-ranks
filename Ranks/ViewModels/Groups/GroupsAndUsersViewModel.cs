@@ -7,6 +7,8 @@ using System.Threading;
 using System.Windows.Input;
 using RanksClient;
 using System.Collections.ObjectModel;
+using Group = RanksApi.IGetGroupsAndUsersWithoutPicturesGQL.Response.GroupSelection;
+using System.Threading.Tasks;
 
 namespace Ranks.ViewModels
 {
@@ -14,24 +16,9 @@ namespace Ranks.ViewModels
     {
         public GroupsAndUsersViewModel(API api)
         {
-            new Thread(async ()=> 
-            {
-                Groups = new ObservableCollection<GroupViewModel>(
-                    (await  api.GroupResolver.GetAsync()).Select(group => new GroupViewModel(this, group))
-                );
-                FoundGroups = Groups;
-
-                if (FoundGroups.Count >= 0)
-                {
-                    SelectedGroup = FoundGroups[0];
-                    LastEditedObject = FoundGroups[0];
-                }
+            LoadGroups(api);
 
 
-            }).Start();
-            
-
-            
             CmdChangeEditMenuVisibility = ReactiveCommand.Create(
                 () => CurrentlyEditableObject == null ? 
                     CurrentlyEditableObject = LastEditedObject : CurrentlyEditableObject = null);
@@ -71,10 +58,26 @@ namespace Ranks.ViewModels
                 else
                 {
                     FoundGroups = new ObservableCollection<GroupViewModel>(
-                        Groups.Where((group) => group.Group.Name.Contains(value))
+                        Groups.Where((group) => group.Group.name.Contains(value))
                     );
                 }
                 this.RaisePropertyChanged(nameof(FoundGroups));
+            }
+        }
+
+        async private Task LoadGroups(API api)
+        {
+            var GroupsAndUsers = await RanksApi.IGetGroupsAndUsersWithoutPicturesGQL.SendQueryAsync(api.graphQLClient);
+            List<Group> groups = GroupsAndUsers.Data.Groups;
+
+            Groups = new ObservableCollection<GroupViewModel>(
+                groups.Select(group => new GroupViewModel(this, group))
+            );
+            FoundGroups = Groups;
+            if (FoundGroups.Count >= 0)
+            {
+                SelectedGroup = FoundGroups[0];
+                LastEditedObject = FoundGroups[0];
             }
         }
     }

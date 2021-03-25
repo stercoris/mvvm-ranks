@@ -29,8 +29,7 @@
         <Ellipse Grid.Row="0" Width="250" Height="250" Margin="10">
             <Ellipse.Fill>
                 <ImageBrush 
-                    ImageSource="{Binding User.Picture, 
-                    Converter={StaticResource Base64ToImageSourceConverter}, ConverterParameter=500 }"
+                    ImageSource="{Binding Picture,  IsAsync=True}"
                     Stretch="Fill">
                 </ImageBrush>
             </Ellipse.Fill>
@@ -47,7 +46,7 @@
                 Style="{DynamicResource NoEditFieldTextBoxStyle}"/>
             <TextBox 
                 Grid.Column="1"
-                Text="{Binding User.Name}"
+                Text="{Binding User.name}"
                 Style="{DynamicResource NewEditFieldTextBoxStyle}"/>
         </Grid>
 
@@ -81,7 +80,7 @@
                 Style="{DynamicResource NoEditFieldTextBoxStyle}"/>
             <TextBox 
                 Grid.Column="1"                
-                Text="{Binding User.Rank}"
+                Text="{Binding User.rankId}"
                 Style="{DynamicResource NewEditFieldTextBoxStyle}"/>
 
         </Grid>
@@ -112,7 +111,7 @@
                 Style="{DynamicResource NoEditFieldTextBoxStyle}"/>
             <TextBox 
                 Grid.Column="1"                
-                Text="{Binding User.About}"
+                Text="{Binding User.about}"
                 Style="{DynamicResource NewEditFieldTextBoxStyle}"/>
 
         </Grid>

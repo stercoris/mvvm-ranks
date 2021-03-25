@@ -22,10 +22,9 @@
 
         <StackPanel Grid.Row="0" Height="300" Width="360"  Margin="0">
             <StackPanel.Background>
-                <ImageBrush ImageSource="{Binding Group.Picture, 
-                                       Converter={StaticResource Base64ToImageSourceConverter},
-                                       ConverterParameter=500 }"
-                            Stretch="UniformToFill"/>
+                <ImageBrush Stretch="UniformToFill"/>
+                    <!--ImageSource="{Binding Picture, IsAsync=True}"-->
+                            
             </StackPanel.Background>
 
         </StackPanel>
@@ -33,7 +32,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <TextBox 
-                Text="{Binding Group.Name, Mode=TwoWay}"
+                Text="{Binding Group.name, Mode=TwoWay}"
                 Style="{DynamicResource EditFieldTextBoxStyle}"/>
             <Grid>
                 <Grid.RowDefinitions>
@@ -48,7 +47,7 @@
                     Grid.Row="0"
                     MaxLength="255"
                     Style="{DynamicResource GroupTextBoxes}"
-                    Text="{Binding Group.About, Mode=TwoWay}">
+                    Text="{Binding Group.about, Mode=TwoWay}">
                 </TextBox>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>

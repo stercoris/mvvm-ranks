@@ -30,7 +30,7 @@ namespace Ranks.ViewModels
 
         public MainViewModel()
         {
-            api = new API("http://localhost:8000/graph");
+            api = new API("http://localhost:8000/graphql");
             GroupsAndUsers = new View.GroupsAndUsers() { DataContext = this };
             RankList = new View.RankList() { DataContext = this };
 

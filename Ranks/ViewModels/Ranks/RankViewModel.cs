@@ -1,6 +1,10 @@
-﻿using RanksClient.Models;
-using ReactiveUI;
+﻿using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+
+class Rank
+{
+
+}
 
 namespace Ranks.ViewModels
 {
