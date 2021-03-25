@@ -74,7 +74,7 @@
         <Canvas Panel.ZIndex="10" Grid.Column="1">
             <Button
                 Canvas.Right="10"
-                Canvas.Bottom="10"
+                Canvas.Bottom="20"
                 Width="auto"
                 Height="auto"
                 Template="{StaticResource CustomButton}"

@@ -1,6 +1,4 @@
-﻿
-
-namespace RanksClient.Models
+﻿namespace RanksClient.Models
 {
     public class Rank
     {

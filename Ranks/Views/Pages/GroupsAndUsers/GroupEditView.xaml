@@ -37,6 +37,7 @@
                 <TextBox 
                     TextAlignment="Justify"
                     MinHeight="100"
+                    Background="#FE4659"
                     Grid.Row="0"
                     MaxLength="255"
                     Style="{DynamicResource GroupTextBoxes}"
@@ -52,6 +53,7 @@
                             TextAlignment="Center"
                             MinHeight="50"                      
                             Grid.Column="0"
+                            Background="#FE4659"
                             Style="{DynamicResource GroupTextBoxes}"
                             Text="Рейтинг:
                                 1"/>
@@ -59,6 +61,7 @@
                             TextAlignment="Center"
                             MinHeight="100"                      
                             Grid.Column="0"
+                            Background="#FE405F"                            
                             Style="{DynamicResource GroupTextBoxes}"
                             Text="{Binding Group.AvrgRank}"/>
                     </StackPanel>
@@ -74,6 +77,7 @@
                     </StackPanel>
                 </Grid>
                 <Button Grid.Row="2"
+                    
                     Content="Добавить нового студента"
                     Style="{DynamicResource AddUser}"/>
             </Grid>
