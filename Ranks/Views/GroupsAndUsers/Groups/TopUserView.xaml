@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="Ranks.Views.Pages.GroupsAndUsers.TopUserView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:converters="clr-namespace:Ranks.Converters"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -8,6 +9,9 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:GroupViewModel, IsDesignTimeCreatable=False}"
              Tag="Представление топового студента группы"
              mc:Ignorable="d" >
+    <UserControl.Resources>
+        <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
+    </UserControl.Resources>
     <Grid Background="{StaticResource DarkPurple}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -20,7 +24,9 @@
                 Margin="0" Stretch="Fill">
             <Ellipse.Fill>
                 <ImageBrush 
-                        ImageSource="{Binding Group.lqImage}">
+                        ImageSource="{Binding Group.Picture, 
+                                       Converter={StaticResource Base64ToImageSourceConverter},
+                                       ConverterParameter=500 }">
                 </ImageBrush>
             </Ellipse.Fill>
         </Ellipse>        

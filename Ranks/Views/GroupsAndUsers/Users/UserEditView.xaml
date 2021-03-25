@@ -5,11 +5,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:local="clr-namespace:Ranks"
+    xmlns:converters="clr-namespace:Ranks.Converters"
     xmlns:views="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
     xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     d:DesignHeight ="800" Width="360" x:Uid="Управление пользователем"
     d:DataContext="{d:DesignInstance Type=viewmodels:UserViewModel, IsDesignTimeCreatable=False}">
+    <UserControl.Resources>
+        <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
+    </UserControl.Resources>
     <Grid Background="{StaticResource DarkPurple}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -24,7 +28,11 @@
 
         <Ellipse Grid.Row="0" Width="250" Height="250" Margin="10">
             <Ellipse.Fill>
-                <ImageBrush ImageSource="{Binding User.hqImage}" Stretch="UniformToFill"/>
+                <ImageBrush 
+                    ImageSource="{Binding User.Picture, 
+                    Converter={StaticResource Base64ToImageSourceConverter}, ConverterParameter=500 }"
+                    Stretch="Fill">
+                </ImageBrush>
             </Ellipse.Fill>
         </Ellipse>
 

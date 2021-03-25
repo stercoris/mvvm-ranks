@@ -7,9 +7,13 @@
             xmlns:local="clr-namespace:Ranks"
             xmlns:views="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
             xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
+            xmlns:converters="clr-namespace:Ranks.Converters"
             xmlns:sys="clr-namespace:System;assembly=mscorlib"
             d:DesignHeight ="800" Width="360" x:Uid="Управление группой"
             d:DataContext="{d:DesignInstance Type=viewmodels:GroupViewModel, IsDesignTimeCreatable=False}">
+    <UserControl.Resources>
+        <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
+    </UserControl.Resources>
     <Grid Background="{StaticResource WindowControlsColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -18,7 +22,10 @@
 
         <StackPanel Grid.Row="0" Height="300" Width="360"  Margin="0">
             <StackPanel.Background>
-                <ImageBrush  ImageSource="{Binding Group.hqImage}" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="{Binding Group.Picture, 
+                                       Converter={StaticResource Base64ToImageSourceConverter},
+                                       ConverterParameter=500 }"
+                            Stretch="UniformToFill"/>
             </StackPanel.Background>
 
         </StackPanel>
@@ -63,7 +70,7 @@
                             Grid.Column="0"
                             Background="#FE405F"                            
                             Style="{DynamicResource GroupTextBoxes}"
-                            Text="{Binding Group.AvrgRank}"/>
+                            Text="среднее звание"/>
                     </StackPanel>
                     
                     <StackPanel Grid.Column="1">

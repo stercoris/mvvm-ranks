@@ -4,12 +4,16 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            xmlns:converters="clr-namespace:Ranks.Converters"
             xmlns:local="clr-namespace:Ranks"
             xmlns:views="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
             xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
             xmlns:sys="clr-namespace:System;assembly=mscorlib"
             d:DataContext="{d:DesignInstance Type=viewmodels:GroupViewModel, IsDesignTimeCreatable=False}"
             Tag="Представление группы">
+    <UserControl.Resources>
+        <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
+    </UserControl.Resources>
     <Button 
         Style="{DynamicResource GroupSelectButton}" 
         Command="{Binding ShowUsersCommand}">
@@ -26,8 +30,11 @@
                 Margin="0" Stretch="Fill">
                 <Ellipse.Fill>
                     <ImageBrush 
-                        ImageSource="{Binding Group.lqImage}">
+                         ImageSource="{Binding Group.Picture, 
+                                       Converter={StaticResource Base64ToImageSourceConverter},
+                                       ConverterParameter=100 }">
                     </ImageBrush>
+                    
                 </Ellipse.Fill>
             </Ellipse>
 

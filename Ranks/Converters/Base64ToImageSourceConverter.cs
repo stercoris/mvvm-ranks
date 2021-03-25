@@ -14,8 +14,8 @@ namespace Ranks.Converters
         {
             BitmapImage bitmapImage = new BitmapImage();
 
-            int width = (int)parameter;
-            int height = width/9*16;
+            int width = System.Convert.ToInt32(parameter);
+            int height = width/16*9;
             string base64String = (string)value ;
 
             bitmapImage.BeginInit();
