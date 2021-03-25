@@ -32,6 +32,7 @@ namespace Ranks.Services
             bitmapImage.CacheOption = BitmapCacheOption.None;
             if (base64String == null)
             {
+                bitmapImage.EndInit();
                 return bitmapImage;
             }
             bitmapImage.StreamSource = new MemoryStream(Convert.FromBase64String(base64String));
