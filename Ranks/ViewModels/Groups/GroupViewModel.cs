@@ -8,11 +8,11 @@ namespace Ranks.ViewModels
     class GroupViewModel : ReactiveObject
     {
         [Reactive] public Group Group { get; set; }
-        [Reactive] public GroupsViewModel groupsvm { get; set; }
+        [Reactive] public GroupsAndUsersViewModel groupsvm { get; set; }
         public ICommand ShowUsersCommand { get; set; }
         public ICommand EditCommand { get; set; }
 
-        public GroupViewModel(GroupsViewModel groupsvm, Group group)
+        public GroupViewModel(GroupsAndUsersViewModel groupsvm, Group group)
         {
             this.Group = group;
             this.groupsvm = groupsvm;

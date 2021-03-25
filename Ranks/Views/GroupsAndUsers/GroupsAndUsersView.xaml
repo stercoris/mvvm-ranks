@@ -121,7 +121,6 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-                <Button Style="{StaticResource UserSelectionButton}">QQGFqqqqfwqfqfq</Button>
             </WrapPanel>
         </ScrollViewer>
         
@@ -151,7 +150,7 @@
 
         <Grid Grid.Column="3">
             <Grid.Resources>
-                <DataTemplate DataType="{x:Type viewmodels:GroupViewModel}">
+                <DataTemplate DataType="{x:Type viewmodels:GroupsAndUsersViewModel}">
                     <views:GroupEditView/>
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodels:UserViewModel}">

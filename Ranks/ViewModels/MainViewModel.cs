@@ -22,7 +22,7 @@ namespace Ranks.ViewModels
         #endregion
 
         #region ChildrenViewModels
-        [Reactive] public GroupsViewModel GroupsViewModel { get; set; }
+        [Reactive] public GroupsAndUsersViewModel GroupsViewModel { get; set; }
         [Reactive] public RanksViewModel RanksViewModel { get; set; }
         #endregion
 
@@ -34,7 +34,7 @@ namespace Ranks.ViewModels
             GroupsAndUsers = new View.GroupsAndUsers() { DataContext = this };
             RankList = new View.RankList() { DataContext = this };
 
-            GroupsViewModel = new GroupsViewModel(api);
+            GroupsViewModel = new GroupsAndUsersViewModel(api);
             RanksViewModel = new RanksViewModel();
             SelectedPage = GroupsAndUsers;
 
