@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Input;
 using RanksClient;
+using System.Collections.ObjectModel;
 
 namespace Ranks.ViewModels
 {
@@ -15,7 +16,7 @@ namespace Ranks.ViewModels
         {
             new Thread(async ()=> 
             {
-                Groups = new List<GroupViewModel>(
+                Groups = new ObservableCollection<GroupViewModel>(
                     (await  api.GroupResolver.GetAsync()).Select(group => new GroupViewModel(this, group))
                 );
                 FoundGroups = Groups;
@@ -36,10 +37,9 @@ namespace Ranks.ViewModels
                     CurrentlyEditableObject = LastEditedObject : CurrentlyEditableObject = null);
         }
 
-        [Reactive] public List<GroupViewModel> Groups { get; set; }
-        [Reactive] public GroupViewModel SelectedGroup { get; set; }
-        [Reactive] public List<GroupViewModel> FoundGroups { get; set; }
-        [Reactive] public List<UserViewModel> TopThreeUsers { get; set; }
+        public ObservableCollection<GroupViewModel> Groups { get; set; }
+        public GroupViewModel SelectedGroup { get; set; }
+        public ObservableCollection<GroupViewModel> FoundGroups { get; set; }
 
 
         #region Логика окна редактирования
@@ -70,10 +70,9 @@ namespace Ranks.ViewModels
                     FoundGroups = Groups;
                 else
                 {
-                    FoundGroups = Groups.FindAll((group) =>
-                    {
-                        return (group.Group.Name.Contains(value));
-                    });
+                    FoundGroups = new ObservableCollection<GroupViewModel>(
+                        Groups.Where((group) => group.Group.Name.Contains(value))
+                    );
                 }
                 this.RaisePropertyChanged(nameof(FoundGroups));
             }
