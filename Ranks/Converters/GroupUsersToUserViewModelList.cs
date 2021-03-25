@@ -17,7 +17,7 @@ namespace Ranks.Converters
     public class GroupUsersToUserViewModelList : IValueConverter
     {
 
-        public  object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             
             GroupViewModel groupvm = (value as GroupViewModel);

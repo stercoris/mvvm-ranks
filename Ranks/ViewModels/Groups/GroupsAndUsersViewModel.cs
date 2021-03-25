@@ -9,9 +9,9 @@ using RanksClient;
 
 namespace Ranks.ViewModels
 {
-    class GroupsViewModel : ReactiveObject
+    class GroupsAndUsersViewModel : ReactiveObject
     {
-        public GroupsViewModel(API api)
+        public GroupsAndUsersViewModel(API api)
         {
             new Thread(async ()=> 
             {
