@@ -37,9 +37,9 @@ namespace Ranks.ViewModels
                     CurrentlyEditableObject = LastEditedObject : CurrentlyEditableObject = null);
         }
 
-        public ObservableCollection<GroupViewModel> Groups { get; set; }
-        public GroupViewModel SelectedGroup { get; set; }
-        public ObservableCollection<GroupViewModel> FoundGroups { get; set; }
+        [Reactive] public ObservableCollection<GroupViewModel> Groups { get; set; }
+        [Reactive] public GroupViewModel SelectedGroup { get; set; }
+        [Reactive] public ObservableCollection<GroupViewModel> FoundGroups { get; set; }
 
 
         #region Логика окна редактирования
