@@ -22,7 +22,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
@@ -74,7 +74,7 @@
         <Canvas Panel.ZIndex="10" Grid.Column="1">
             <Button
                 Canvas.Right="10"
-                Canvas.Bottom="20"
+                Canvas.Bottom="5"
                 Width="auto"
                 Height="auto"
                 Template="{StaticResource CustomButton}"
@@ -88,8 +88,8 @@
                     BorderBrush="Black">
                     <materialDesign:PackIcon 
                         Style="{StaticResource NavBtnIcon}"
-                        Width="80"
-                        Height="80"
+                        Width="60"
+                        Height="60"
                         Margin="10"
                         HorizontalAlignment="Center"
                         Kind="Create">
@@ -128,6 +128,7 @@
         <Button
             Grid.Column="2"
             BorderThickness="0"
+            
             Background="{StaticResource OrangeToPurpleGradient}"
             Height="auto"
             Command="{Binding CmdChangeEditMenuVisibility}"
@@ -135,7 +136,7 @@
             Padding="-12,0,0,0">
             <materialDesign:PackIcon
                 Kind="KeyboardArrowRight"
-                Height="40" Width="40"
+                Height="40" Width="50"
                 RenderTransformOrigin="0.5, 0.5">
                 <materialDesign:PackIcon.RenderTransform>
                     <RotateTransform 
