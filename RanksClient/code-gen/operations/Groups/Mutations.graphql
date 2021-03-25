@@ -1,0 +1,16 @@
+mutation AddGroup($group: NewGroup!) {
+  AddGroup(newGroup: $group) {
+    id
+    name
+    picture
+    about
+  }
+}
+
+mutation UpdateGroup($groupid: Int!, $group: UpdateGroup!) {
+  UpdateGroup(id: $groupid, updateGroup: $group)
+}
+
+mutation DeleteGroup($groupid: Int!) {
+  DeleteGroup(id: $groupid)
+}

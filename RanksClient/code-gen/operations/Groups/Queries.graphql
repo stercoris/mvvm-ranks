@@ -1,0 +1,47 @@
+query GetGroupsAndUsers {
+  Groups {
+    id
+    name
+    picture
+    about
+    users {
+      id
+      name
+      secname
+      about
+      picture
+      rankId
+    }
+  }
+}
+
+query GetGroups {
+  Groups {
+    id
+    name
+    picture
+    about
+  }
+}
+
+query GetGroupsAndUsersAndRanks {
+  Groups {
+    id
+    name
+    picture
+    about
+    users {
+      id
+      name
+      secname
+      about
+      picture
+      rankId
+    }
+  }
+  Ranks {
+    id
+    name
+    picture
+  }
+}

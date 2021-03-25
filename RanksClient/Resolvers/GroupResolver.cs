@@ -17,13 +17,6 @@ namespace RanksClient.Resolvers
                 Query = @"{Groups{id,name,about,picture,Users{id,name,secname,about}, avrgRank}}"
             };
         }
-        //protected override GraphQLRequest QueryGetImage => throw new System.NotImplementedException();
-        //{
-        //    get => new GraphQLRequest
-        //    {
-        //        Query = @"{Groups{id,name,about,picture,Users{id,name,secname,about,picture}}}"
-        //    };
-        //}
         protected override GraphQLRequest MutationStringCreate
         {
             get => new GraphQLRequest
@@ -44,8 +37,6 @@ namespace RanksClient.Resolvers
             {
                 Query = @""
             };
-
-
         }
 
         public async Task<List<Group>> GetAsync()
