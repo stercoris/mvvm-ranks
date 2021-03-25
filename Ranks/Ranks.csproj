@@ -133,6 +133,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\SelectGroupCommand.cs" />
+    <Compile Include="Converters\Base64ToImageSourceConverter.cs" />
     <Compile Include="Converters\GroupUsersToUserViewModelList.cs" />
     <Compile Include="Converters\EditStateToArrowAngleConverter.cs" />
     <Compile Include="ViewModels\Groups\GroupViewModel.cs" />
