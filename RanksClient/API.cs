@@ -12,13 +12,17 @@ using Newtonsoft.Json;
 
 namespace RanksClient
 {
-    public class API
+    static public class API
     {
-        public GraphQLHttpClient graphQLClient;
+        public static GraphQLHttpClient _client;
 
-        public API(string Url)
+        public static GraphQLHttpClient Client
         {
-            this.graphQLClient = new GraphQLHttpClient(Url, new NewtonsoftJsonSerializer(new JsonSerializerSettings()));
+            get {
+                if (_client == null)
+                    _client = new GraphQLHttpClient("http://localhost:8000/graphql", new NewtonsoftJsonSerializer(new JsonSerializerSettings()));
+                return _client;
+            }
         }
 
     }

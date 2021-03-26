@@ -23,7 +23,6 @@ namespace Ranks.Converters
             if (groupvm != null)
             {
                 List<User> users = groupvm.Group.users;
-                var api = new API("http://localhost:8000/graph");
                 var userViewModels = (users.Select((user) => new UserViewModel(groupvm.groupsvm, user)));
 
                 return userViewModels;

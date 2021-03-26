@@ -28,8 +28,7 @@ namespace Ranks.ViewModels
         }
         async private Task LoadImage()
         {
-            API api = new API("http://localhost:8000/graphql");
-            var pic = (await RanksApi.IGetGroupImageGQL.SendQueryAsync(api.graphQLClient, new RanksApi.IGetGroupImageGQL.Variables { id = this.Group.id })).Data.Group.picture;
+            var pic = (await RanksApi.IGetGroupImageGQL.SendQueryAsync(API.Client, new RanksApi.IGetGroupImageGQL.Variables { id = this.Group.id })).Data.Group.picture;
             this.Picture = Services.ImageConverter.toImage(pic, 250, 100);
         }
 

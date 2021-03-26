@@ -26,15 +26,12 @@ namespace Ranks.ViewModels
         [Reactive] public RanksViewModel RanksViewModel { get; set; }
         #endregion
 
-        public API api { get; set; }
-
         public MainViewModel()
         {
-            api = new API("http://localhost:8000/graphql");
             GroupsAndUsers = new View.GroupsAndUsers() { DataContext = this };
             RankList = new View.RankList() { DataContext = this };
 
-            GroupsViewModel = new GroupsAndUsersViewModel(api);
+            GroupsViewModel = new GroupsAndUsersViewModel();
             RanksViewModel = new RanksViewModel();
             SelectedPage = GroupsAndUsers;
 

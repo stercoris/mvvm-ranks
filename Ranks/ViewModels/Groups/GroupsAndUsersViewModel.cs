@@ -14,9 +14,9 @@ namespace Ranks.ViewModels
 {
     class GroupsAndUsersViewModel : ReactiveObject
     {
-        public GroupsAndUsersViewModel(API api)
+        public GroupsAndUsersViewModel()
         {
-            LoadGroups(api);
+            LoadGroups();
 
 
             CmdChangeEditMenuVisibility = ReactiveCommand.Create(
@@ -65,9 +65,9 @@ namespace Ranks.ViewModels
             }
         }
 
-        async private Task LoadGroups(API api)
+        async private Task LoadGroups()
         {
-            var GroupsAndUsers = await RanksApi.IGetGroupsAndUsersWithoutPicturesGQL.SendQueryAsync(api.graphQLClient);
+            var GroupsAndUsers = await RanksApi.IGetGroupsAndUsersWithoutPicturesGQL.SendQueryAsync(API.Client);
             List<Group> groups = GroupsAndUsers.Data.Groups;
 
             Groups = new ObservableCollection<GroupViewModel>(
