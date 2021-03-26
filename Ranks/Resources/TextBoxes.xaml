@@ -139,7 +139,7 @@
         <Setter Property="Margin" Value="0"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
-        <Setter Property="Foreground" Value="{StaticResource TrueOrange}"/>
+        <Setter Property="Foreground" Value="Orange"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>

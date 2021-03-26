@@ -3,11 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Ranks">
 
-    <!-- Убери это Надькин!!!!!! -->
-    <SolidColorBrush x:Key="TrueOrange"             Color="Orange"/>
-    <SolidColorBrush x:Key="Black"                  Color="Black"/>
     <SolidColorBrush x:Key="MoreDarkerOrangeBrush"  Color="#D95632"/>
-    <!-- Убери это Надькин!!!!!! -->
+
 
     <Color x:Key="Orange">      #FF663B</Color>
     <Color x:Key="Pink">        #FF3066</Color>

@@ -18,6 +18,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid  Grid.Row="1">
             <Grid.RowDefinitions>
@@ -44,23 +45,24 @@
                     </ImageBrush>
                 </StackPanel.Background>
             </StackPanel>
-            <ScrollViewer Grid.Row="2" Padding="0,0,-15,0">
+            <ScrollViewer Grid.Row="2" Padding="0,0,-15,0" Margin="0,10,0,-10">
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="1*"/>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/> 
                     </Grid.RowDefinitions>
                     <TextBox 
                         MinHeight="100"
                         Grid.Row="0"
-                        MaxLength="1500"
+                        MaxLength="500"
                         Style="{DynamicResource GroupTextBoxes}"
                         
                         TextAlignment="Center"
                         VerticalContentAlignment="Center"
+                        Foreground="{StaticResource OrangeBrush}"
                         Text="{Binding Group.about, Mode=TwoWay}">
                     </TextBox>
                     <Grid Grid.Row="1">
@@ -68,30 +70,94 @@
                             <ColumnDefinition Width="170" />
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid 
+                                Grid.Row="0"
+                                Background="{StaticResource DarkPurple}"
+                                Margin="10,5,10,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBox 
+                                    TextAlignment="Center"
+                                    MinHeight="10"                      
+                                    Grid.Row="0"
+                                    Style="{DynamicResource GroupTextBoxes}"
+                                    Text="Рейтинг:"
+                                    Margin="0"
+                                    IsReadOnly="True"
+                                    >
+                                </TextBox>
+                                <TextBox 
+                                    IsReadOnly="True"
+                                    TextAlignment="Center"
+                                    MinHeight="10"
+                                    VerticalContentAlignment="Top"
+                                    Grid.Row="1"
+                                    Style="{DynamicResource GroupTextBoxes}"
+                                    Foreground="Orange"
+                                    Text="12">
+                                </TextBox>
+                            </Grid>
+
+                            <Grid 
+                                Grid.Row="1"
+                                Background="{StaticResource DarkPurple}"
+                                Margin="10,5,10,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBox 
+                                    IsReadOnly="True"
+                                    TextAlignment="Center"
+                                    MinHeight="10"                      
+                                    Grid.Row="0"
+                                    Style="{DynamicResource GroupTextBoxes}"
+                                    Text="Среднее звание:"
+                                    Margin="0"
+                                    FontSize="16">
+                                </TextBox>
+                                <TextBox 
+                                    IsReadOnly="True"
+                                    TextAlignment="Center"
+                                    MinHeight="10"
+                                    VerticalContentAlignment="Top"
+                                    Grid.Row="1"
+                                    Style="{DynamicResource GroupTextBoxes}"
+                                    Foreground="Orange"
+                                    Text="мастер">
+                                </TextBox>
+                            </Grid>
+                        </Grid>
                         <StackPanel>
-                            <TextBox 
-                                TextAlignment="Center"
-                                MinHeight="50"                      
-                                Grid.Column="0"
-                                Style="{DynamicResource GroupTextBoxes}"
-                                Text="Рейтинг: \n 1">
-                            </TextBox>
-                            <TextBox 
-                                TextAlignment="Center"
-                                MinHeight="100"                      
-                                Grid.Column="0"
-                                Style="{DynamicResource GroupTextBoxes}"
-                                Text="среднее звание">
-                            </TextBox>
+                           
+                            
                         </StackPanel>
-                        <TextBox 
-                            TextAlignment="Center"
+                        <Grid 
+                            Background="{StaticResource DarkPurple}"
                             MinHeight="100"                      
                             Grid.Column="1"
-                            Style="{DynamicResource GroupTextBoxes}"
-                            Margin="0,5,10,5"
-                            Text="Топ 3">
-                        </TextBox>
+                            Margin="0,5,10,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBox 
+                                IsReadOnly="True"
+                                TextAlignment="Center"
+                                Height="30"                      
+                                Grid.Row="0"
+                                Style="{DynamicResource GroupTextBoxes}"
+                                Margin="0"
+                                Text="Топ 3:">
+                            </TextBox>
+                        </Grid>
                         <StackPanel Grid.Column="1">
                             <ItemsControl  x:Name="TopUsers" ItemsSource="{Binding FoundGroups}">
                                 <ItemsControl.ItemTemplate>
@@ -102,15 +168,16 @@
                             </ItemsControl>
                         </StackPanel>
                     </Grid>
-                    <Button 
-                        Grid.Row="4"
-                        BorderThickness="0"
-                        Content="Добавить нового студента"
-                        Style="{DynamicResource ConfirmChange}">
-                    </Button>
+                    
                 </Grid>
             </ScrollViewer>
-            
         </Grid>
+        <Button 
+            Grid.Row="2"
+            BorderThickness="0"
+            Content="Добавить нового студента"
+            
+            Style="{DynamicResource ConfirmChange}">
+        </Button>
     </Grid>
 </UserControl>
