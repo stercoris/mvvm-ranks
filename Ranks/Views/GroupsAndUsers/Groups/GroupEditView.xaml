@@ -77,7 +77,7 @@
                             </Grid.RowDefinitions>
                             <Grid 
                                 Grid.Row="0"
-                                Background="{StaticResource DarkPurple}"
+                                Background="{StaticResource DarkPurpleBrush}"
                                 Margin="10,5,10,5">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
@@ -107,7 +107,7 @@
 
                             <Grid 
                                 Grid.Row="1"
-                                Background="{StaticResource DarkPurple}"
+                                Background="{StaticResource DarkPurpleBrush}"
                                 Margin="10,5,10,5">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
@@ -140,7 +140,7 @@
                             
                         </StackPanel>
                         <Grid 
-                            Background="{StaticResource DarkPurple}"
+                            Background="{StaticResource DarkPurpleBrush}"
                             MinHeight="100"                      
                             Grid.Column="1"
                             Margin="0,5,10,5">
