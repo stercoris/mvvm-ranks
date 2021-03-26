@@ -7,7 +7,8 @@ using System.Threading;
 using System.Windows.Input;
 using RanksClient;
 using System.Collections.ObjectModel;
-using Group = RanksApi.IGetGroupsAndUsersWithoutPicturesGQL.Response.GroupSelection;
+using Group = RanksApi.IGetGroupsGQL.Response.GroupSelection;
+using User = RanksApi.IGetGroupGQL.Response.GroupSelection.UserSelection;
 using System.Threading.Tasks;
 
 namespace Ranks.ViewModels
@@ -23,11 +24,24 @@ namespace Ranks.ViewModels
                 () => CurrentlyEditableObject == null ? 
                     CurrentlyEditableObject = LastEditedObject : CurrentlyEditableObject = null);
         }
-
+        private int a { get; set; }
         [Reactive] public ObservableCollection<GroupViewModel> Groups { get; set; }
-        [Reactive] public GroupViewModel SelectedGroup { get; set; }
         [Reactive] public ObservableCollection<GroupViewModel> FoundGroups { get; set; }
 
+        #region Логика выбора группы и отображения пользователей
+        private GroupViewModel _selected_group;
+        public GroupViewModel SelectedGroup
+        {
+            get => _selected_group;
+            set
+            {
+                if(_selected_group != value)
+                    LoadUsers(value.Group.id);
+                this.RaiseAndSetIfChanged(ref _selected_group, value);
+            }
+        }
+        [Reactive] public ObservableCollection<UserViewModel> SelectedGroupUsers { get; set; }
+        #endregion
 
         #region Логика окна редактирования
         public ICommand CmdChangeEditMenuVisibility { get; set; }
@@ -46,6 +60,7 @@ namespace Ranks.ViewModels
         }
         #endregion
 
+        #region Логика поиска групп
         private string _search_string;
         public string SearchString
         {
@@ -64,10 +79,12 @@ namespace Ranks.ViewModels
                 this.RaisePropertyChanged(nameof(FoundGroups));
             }
         }
+        #endregion
+
 
         async private Task LoadGroups()
         {
-            var GroupsAndUsers = await RanksApi.IGetGroupsAndUsersWithoutPicturesGQL.SendQueryAsync(API.Client);
+            var GroupsAndUsers = await RanksApi.IGetGroupsGQL.SendQueryAsync(API.Client);
             List<Group> groups = GroupsAndUsers.Data.Groups;
 
             Groups = new ObservableCollection<GroupViewModel>(
@@ -79,6 +96,16 @@ namespace Ranks.ViewModels
                 SelectedGroup = FoundGroups[0];
                 LastEditedObject = FoundGroups[0];
             }
+        }
+
+        async private Task LoadUsers(int groupId)
+        {
+            var GroupsAndUsers = await RanksApi.IGetGroupGQL.SendQueryAsync(API.Client, new RanksApi.IGetGroupGQL.Variables {id = groupId});
+            List<User> users = GroupsAndUsers.Data.Group.users;
+
+            SelectedGroupUsers = new ObservableCollection<UserViewModel>(
+                users.Select((user) => new UserViewModel(this, user))
+            );
         }
     }
 }

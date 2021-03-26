@@ -1,21 +1,28 @@
-query GetGroupsAndUsersWithoutPictures {
+query GetGroups {
   Groups {
     id
     name
     about
-    users {
-      id
-      name
-      secname
-      about
-      rankId
-    }
+    picture
   }
 }
 
 query GetGroupImage($id: Int!) {
   Group(id: $id) {
     picture
+  }
+}
+
+query GetGroup($id: Int!) {
+  Group(id: $id) {
+    users {
+      id
+      rankId
+      name
+      secname
+      picture
+      about
+    }
   }
 }
 

@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
-using Group = RanksApi.IGetGroupsAndUsersWithoutPicturesGQL.Response.GroupSelection;
+using Group = RanksApi.IGetGroupsGQL.Response.GroupSelection;
 
 namespace Ranks.ViewModels
 {

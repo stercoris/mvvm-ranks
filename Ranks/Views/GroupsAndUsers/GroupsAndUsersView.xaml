@@ -107,8 +107,7 @@
             <WrapPanel 
                     HorizontalAlignment="Center">
                 <ItemsControl 
-                    ItemsSource="{Binding SelectedGroup, 
-                        Converter={StaticResource GroupUsersToUserViewModelList}}">
+                    ItemsSource="{Binding SelectedGroupUsers}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel 

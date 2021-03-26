@@ -4,35 +4,29 @@ using GraphQL.Client.Abstractions;
 
 namespace RanksApi {
 
-    public class IGetGroupsAndUsersWithoutPicturesGQL {
+    public class IGetGroupsGQL {
       /// <summary>
-      /// IGetGroupsAndUsersWithoutPicturesGQL.Request 
+      /// IGetGroupsGQL.Request 
       /// </summary>
       public static GraphQLRequest Request() {
         return new GraphQLRequest {
-          Query = GetGroupsAndUsersWithoutPicturesDocument,
-          OperationName = "GetGroupsAndUsersWithoutPictures"
+          Query = GetGroupsDocument,
+          OperationName = "GetGroups"
         };
       }
 
       /// <remarks>This method is obsolete. Use Request instead.</remarks>
-      public static GraphQLRequest getIGetGroupsAndUsersWithoutPicturesGQL() {
+      public static GraphQLRequest getIGetGroupsGQL() {
         return Request();
       }
       
-      public static string GetGroupsAndUsersWithoutPicturesDocument = @"
-        query GetGroupsAndUsersWithoutPictures {
+      public static string GetGroupsDocument = @"
+        query GetGroups {
           Groups {
             id
             name
             about
-            users {
-              id
-              name
-              secname
-              about
-              rankId
-            }
+            picture
           }
         }
         ";
@@ -51,27 +45,8 @@ namespace RanksApi {
           [JsonProperty("about")]
           public string about { get; set; }
           
-          public class UserSelection {
-          
-            [JsonProperty("id")]
-            public int id { get; set; }
-            
-            [JsonProperty("name")]
-            public string name { get; set; }
-            
-            [JsonProperty("secname")]
-            public string secname { get; set; }
-            
-            [JsonProperty("about")]
-            public string about { get; set; }
-            
-            [JsonProperty("rankId")]
-            public string rankId { get; set; }
-            
-          }
-          
-          [JsonProperty("users")]
-          public System.Collections.Generic.List<UserSelection> users { get; set; }
+          [JsonProperty("picture")]
+          public string picture { get; set; }
           
         }
         
@@ -127,6 +102,90 @@ namespace RanksApi {
         
           [JsonProperty("picture")]
           public string picture { get; set; }
+          
+        }
+        
+        [JsonProperty("Group")]
+        public GroupSelection Group { get; set; }
+        
+      }
+      
+      public static System.Threading.Tasks.Task<GraphQLResponse<Response>> SendQueryAsync(IGraphQLClient client, Variables variables, System.Threading.CancellationToken cancellationToken = default) {
+        return client.SendQueryAsync<Response>(Request(variables), cancellationToken);
+      }
+      
+    }
+    
+
+    public class IGetGroupGQL {
+      /// <summary>
+      /// IGetGroupGQL.Request 
+      /// <para>Required variables:<br/> { id=(int) }</para>
+      /// <para>Optional variables:<br/> {  }</para>
+      /// </summary>
+      public static GraphQLRequest Request(object variables = null) {
+        return new GraphQLRequest {
+          Query = GetGroupDocument,
+          OperationName = "GetGroup",
+          Variables = variables
+        };
+      }
+
+      /// <remarks>This method is obsolete. Use Request instead.</remarks>
+      public static GraphQLRequest getIGetGroupGQL() {
+        return Request();
+      }
+      
+      public static string GetGroupDocument = @"
+        query GetGroup($id: Int!) {
+          Group(id: $id) {
+            users {
+              id
+              rankId
+              name
+              secname
+              picture
+              about
+            }
+          }
+        }
+        ";
+            
+      public class Variables {
+      
+        [JsonProperty("id")]
+        public int id { get; set; }
+        
+      }
+      
+      public class Response {
+      
+        public class GroupSelection {
+        
+          public class UserSelection {
+          
+            [JsonProperty("id")]
+            public int id { get; set; }
+            
+            [JsonProperty("rankId")]
+            public string rankId { get; set; }
+            
+            [JsonProperty("name")]
+            public string name { get; set; }
+            
+            [JsonProperty("secname")]
+            public string secname { get; set; }
+            
+            [JsonProperty("picture")]
+            public string picture { get; set; }
+            
+            [JsonProperty("about")]
+            public string about { get; set; }
+            
+          }
+          
+          [JsonProperty("users")]
+          public System.Collections.Generic.List<UserSelection> users { get; set; }
           
         }
         

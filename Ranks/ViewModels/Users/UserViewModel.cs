@@ -6,7 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
-using User = RanksApi.IGetGroupsAndUsersWithoutPicturesGQL.Response.GroupSelection.UserSelection;
+using User = RanksApi.IGetGroupGQL.Response.GroupSelection.UserSelection;
+
 
 namespace Ranks.ViewModels
 {

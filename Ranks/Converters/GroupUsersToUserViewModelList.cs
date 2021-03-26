@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using RanksClient;
 using System.Threading;
-using User = RanksApi.IGetGroupsAndUsersWithoutPicturesGQL.Response.GroupSelection.UserSelection;
 
 namespace Ranks.Converters
 {
@@ -18,14 +17,13 @@ namespace Ranks.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            
+            throw new NotImplementedException();
             GroupViewModel groupvm = (value as GroupViewModel);
             if (groupvm != null)
             {
-                List<User> users = groupvm.Group.users;
-                var userViewModels = (users.Select((user) => new UserViewModel(groupvm.groupsvm, user)));
+                //var userViewModels = (users.Select((user) => new UserViewModel(groupvm.groupsvm, user)));
 
-                return userViewModels;
+                //return userViewModels;
             }
             else
             {
