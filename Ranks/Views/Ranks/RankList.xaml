@@ -15,7 +15,7 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Orientation="Vertical" Background="{DynamicResource DarkPurple}">
+        <StackPanel Grid.Column="0" Orientation="Vertical" Background="{DynamicResource DarkPurpleBrush}">
             <TextBlock 
                 Style="{DynamicResource RanksText}" 
                 HorizontalAlignment="Center" 

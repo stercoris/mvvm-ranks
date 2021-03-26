@@ -26,7 +26,7 @@
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Background="{DynamicResource DarkPurple}">
+        <Grid Grid.Column="0" Background="{DynamicResource DarkPurpleBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="1*"/>
@@ -83,7 +83,7 @@
                 Command="{Binding SelectedGroup.EditCommand}">
                 
                 <Border
-                    Background="{StaticResource DarkPurple}"
+                    Background="{StaticResource DarkPurpleBrush}"
                     CornerRadius="100"                    
                     BorderBrush="Black">
                     <materialDesign:PackIcon 
@@ -102,7 +102,7 @@
         <ScrollViewer 
             Grid.Column="1"
             VerticalScrollBarVisibility="Auto"  
-            Background="{DynamicResource DarkGradient}"
+            Background="{StaticResource DarkGradient}"
             Resources="{StaticResource DisableScroller}">
             <WrapPanel 
                     HorizontalAlignment="Center">

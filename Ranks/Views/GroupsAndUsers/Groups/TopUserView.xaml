@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
     </UserControl.Resources>
-    <Grid Background="{StaticResource DarkPurple}">
+    <Grid Background="{StaticResource DarkPurpleBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="120"/>

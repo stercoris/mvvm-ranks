@@ -81,7 +81,7 @@
         <Setter Property="Foreground" Value="{StaticResource OrangeBrush}"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="{StaticResource WindowControlsColor}"/>
+        <Setter Property="Background" Value="{StaticResource PurpleBrush}"/>
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
     </Style>
 
@@ -91,7 +91,7 @@
         <Setter Property="Foreground" Value="{StaticResource MoreDarkerOrangeBrush}"/>
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="{StaticResource WindowControlsColor}"/>
+        <Setter Property="Background" Value="{StaticResource PurpleBrush}"/>
         <Setter Property="BorderThickness" Value="0,0,0,0"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="TextAlignment" Value="Justify"/>
@@ -100,7 +100,7 @@
     <Style x:Key="GroupTextBoxes" TargetType="TextBox">
         <Setter Property="Margin" Value="10,5"/>
         <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
-        <Setter Property="Background" Value="{StaticResource DarkPurple}"/>
+        <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource MoreDarkerOrangeBrush}"/>
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -113,7 +113,7 @@
         <Setter Property="Margin" Value="0,40,0,0"/>
         <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
         <Setter Property="Foreground" Value="{StaticResource MoreDarkerOrangeBrush}"/>
-        <Setter Property="Background" Value="{StaticResource DarkPurple}"/>
+        <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
         <Setter Property="HorizontalContentAlignment" Value="Right"/>
         <Setter Property="BorderThickness" Value="0,0,0,0"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
@@ -126,7 +126,7 @@
         <Setter Property="Margin" Value="20,40,20,0"/>
         <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
         <Setter Property="Foreground" Value="{StaticResource TrueOrange}"/>
-        <Setter Property="Background" Value="{StaticResource DarkPurple}"/>
+        <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="HorizontalContentAlignment" Value="Right"/>
         <Setter Property="BorderThickness" Value="0,0,0,0"/>
@@ -142,7 +142,7 @@
         <Setter Property="Foreground" Value="{StaticResource TrueOrange}"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="{StaticResource DarkPurple}"/>
+        <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
         <Setter Property="BorderThickness" Value="0,0,0,0"/>
     </Style>
     
@@ -155,7 +155,7 @@
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="IsReadOnly" Value="True"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="{StaticResource DarkPurple}"/>
+        <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
         <Setter Property="BorderThickness" Value="0,0,0,0"/>
     </Style>
 </ResourceDictionary>

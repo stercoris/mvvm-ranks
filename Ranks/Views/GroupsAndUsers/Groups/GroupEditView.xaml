@@ -14,7 +14,7 @@
     <UserControl.Resources>
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
     </UserControl.Resources>
-    <Grid Background="{StaticResource WindowControlsColor}">
+    <Grid Background="{StaticResource PurpleBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>
