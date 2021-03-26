@@ -20,11 +20,9 @@
     </Color>-->
 
     <SolidColorBrush x:Key="DarkPurple" Color="#100E14"/>
-    <SolidColorBrush x:Key="Black" Color="Black"/>
     <SolidColorBrush x:Key="WindowControlsColor" Color="#151319"/>
     <SolidColorBrush x:Key="PurpleBrush" Color="#FF3066"/>
     <SolidColorBrush x:Key="OrangeBrush" Color="#FF663B"/>
-    <SolidColorBrush x:Key="TrueOrange" Color="Orange"/>
     <SolidColorBrush x:Key="MoreDarkerOrangeBrush" Color="#D95632"/>
     <SolidColorBrush x:Key="GrayBrush" Color="#2F3035"/>
 

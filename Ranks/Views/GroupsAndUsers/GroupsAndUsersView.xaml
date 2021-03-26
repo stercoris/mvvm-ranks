@@ -158,7 +158,11 @@
                     <views:UserEditView/>
                 </DataTemplate>
             </Grid.Resources>
-            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="11*"/>
+                <RowDefinition Height="64*"/>
+            </Grid.RowDefinitions>
+
             <Frame x:Name="InfoFrame" 
                    Content="{Binding CurrentlyEditableObject}"
                    NavigationUIVisibility="Hidden" 
