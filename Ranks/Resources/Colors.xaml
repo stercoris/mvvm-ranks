@@ -2,34 +2,26 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Ranks">
-     
-    <Color x:Key="Orange">
-        #FF663B
-    </Color>
-    <Color x:Key="Purple">
-        #FF3066
-    </Color>
-    <Color x:Key="Dark">
-        #151319
-    </Color>
-    <Color x:Key="Gray">
-        #2F3035
-    </Color>
-    <!--<Color x:Key="DarkPurple">
-        #100E14
-    </Color>-->
 
-    <SolidColorBrush x:Key="DarkPurple" Color="#100E14"/>
-    <SolidColorBrush x:Key="WindowControlsColor" Color="#151319"/>
-    <SolidColorBrush x:Key="PurpleBrush" Color="#FF3066"/>
-    <SolidColorBrush x:Key="OrangeBrush" Color="#FF663B"/>
-    <SolidColorBrush x:Key="MoreDarkerOrangeBrush" Color="#D95632"/>
-    <SolidColorBrush x:Key="GrayBrush" Color="#2F3035"/>
+    <SolidColorBrush x:Key="MoreDarkerOrangeBrush"  Color="#D95632"/>
+
+
+    <Color x:Key="Orange">      #FF663B</Color>
+    <Color x:Key="Pink">        #FF3066</Color>
+    <Color x:Key="Dark">        #151319</Color>
+    <Color x:Key="Gray">        #2F3035</Color>
+    <Color x:Key="DarkPurple">  #100E14</Color>
+     
+    <SolidColorBrush x:Key="DarkPurpleBrush"    Color="{StaticResource DarkPurple}"/>
+    <SolidColorBrush x:Key="PurpleBrush"        Color="{StaticResource Dark}"/>
+    <SolidColorBrush x:Key="PinkBrush"          Color="{StaticResource Pink}"/>
+    <SolidColorBrush x:Key="OrangeBrush"        Color="{StaticResource Orange}"/>
+    <SolidColorBrush x:Key="GrayBrush"          Color="{StaticResource Gray}"/>
 
     <LinearGradientBrush x:Key="OrangeToPurpleGradient" StartPoint="0,0" EndPoint="0,1">
         <LinearGradientBrush.GradientStops>
-            <GradientStop Offset="0.1" Color="{StaticResource Orange}" />
-            <GradientStop Offset="1" Color="{StaticResource Purple}" />
+            <GradientStop Offset="0.1"  Color="{StaticResource Orange}" />
+            <GradientStop Offset="1"    Color="{StaticResource Pink}" />
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
 

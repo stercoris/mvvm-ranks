@@ -21,7 +21,7 @@
                 <ColumnDefinition Width="60"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid Background="{StaticResource WindowControlsColor}" Grid.Column="0">
+            <Grid Background="{StaticResource PurpleBrush}" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition/>
@@ -58,7 +58,7 @@
                 </Grid.RowDefinitions>
                 <Border 
                     Height="30" Grid.Row="0" 
-                    Background="{StaticResource WindowControlsColor}" 
+                    Background="{StaticResource PurpleBrush}" 
                     MouseDown="GrabStart">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button 
