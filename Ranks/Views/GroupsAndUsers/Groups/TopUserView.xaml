@@ -23,8 +23,11 @@
                 Width="55" Height="50"
                 Margin="0" Stretch="Fill">
             <Ellipse.Fill>
-                <ImageBrush >
-                        <!--ImageSource="{Binding Picture}"-->
+                <ImageBrush 
+                    ImageSource="{
+                        Binding Group.picture,
+                        Converter={StaticResource Base64ToImageSourceConverter},
+                        ConverterParameter=100}">
                 </ImageBrush>
             </Ellipse.Fill>
         </Ellipse>        

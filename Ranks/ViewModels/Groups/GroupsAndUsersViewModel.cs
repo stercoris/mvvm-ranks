@@ -17,9 +17,17 @@ namespace Ranks.ViewModels
     {
         public GroupsAndUsersViewModel()
         {
-            LoadGroups();
+            Task.Run(async () => {
+                Groups = await LoadGroups();
+                FoundGroups = Groups;
+                if (FoundGroups.Count >= 0)
+                {
+                    SelectedGroup = FoundGroups[0];
+                    LastEditedObject = FoundGroups[0];
+                }
+            });
 
-
+            
             CmdChangeEditMenuVisibility = ReactiveCommand.Create(
                 () => CurrentlyEditableObject == null ? 
                     CurrentlyEditableObject = LastEditedObject : CurrentlyEditableObject = null);
@@ -36,7 +44,7 @@ namespace Ranks.ViewModels
             set
             {
                 if(_selected_group != value)
-                    LoadUsers(value.Group.id);
+                    Task.Run(async () => SelectedGroupUsers = await LoadUsers(value.Group.id));
                 this.RaiseAndSetIfChanged(ref _selected_group, value);
             }
         }
@@ -83,29 +91,24 @@ namespace Ranks.ViewModels
 
 
         // TODO: Вынести нахер
-        async private Task LoadGroups()
+        async private Task<ObservableCollection<GroupViewModel>> LoadGroups()
         {
             var GroupsAndUsers = await RanksApi.IGetGroupsGQL.SendQueryAsync(API.Client);
             List<Group> groups = GroupsAndUsers.Data.Groups;
 
-            Groups = new ObservableCollection<GroupViewModel>(
+            return(new ObservableCollection<GroupViewModel>(
                 groups.Select(group => new GroupViewModel(this, group))
-            );
-            FoundGroups = Groups;
-            if (FoundGroups.Count >= 0)
-            {
-                SelectedGroup = FoundGroups[0];
-                LastEditedObject = FoundGroups[0];
-            }
+            ));
+            
         }
 
         // TODO: Вынести нахер
-        async private Task LoadUsers(int groupId)
+        async private Task<ObservableCollection<UserViewModel>> LoadUsers(int groupId)
         {
             var GroupsAndUsers = await RanksApi.IGetGroupGQL.SendQueryAsync(API.Client, new RanksApi.IGetGroupGQL.Variables {id = groupId});
             List<User> users = GroupsAndUsers.Data.Group.users;
 
-            SelectedGroupUsers = new ObservableCollection<UserViewModel>(
+            return new ObservableCollection<UserViewModel>(
                 users.Select((user) => new UserViewModel(this, user))
             );
         }

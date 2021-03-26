@@ -24,12 +24,14 @@ namespace Ranks.Converters
             bitmapImage.CacheOption = BitmapCacheOption.None;
             if (base64String == null)
             {
-                return bitmapImage;
+                return("\\Images\\logo.ico");
             }
-            bitmapImage.StreamSource = new MemoryStream(System.Convert.FromBase64String(base64String));
+            var ms = new MemoryStream(System.Convert.FromBase64String(base64String));
+            bitmapImage.StreamSource = ms;
             bitmapImage.EndInit();
-
+            bitmapImage.Freeze();
             return (bitmapImage);
+            
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -24,13 +24,6 @@ namespace Ranks.ViewModels
             // Требуется вынести в родительский класс, зачем создавать так много экземпляров команды?????????????
             ShowUsersCommand = ReactiveCommand.Create(() => groupsvm.SelectedGroup = this);
             EditCommand = ReactiveCommand.Create(() => groupsvm.CurrentlyEditableObject = this);
-            LoadImage();
-        }
-        // TODO: Вынести нахер
-        async private Task LoadImage()
-        {
-            var pic = (await RanksApi.IGetGroupImageGQL.SendQueryAsync(API.Client, new RanksApi.IGetGroupImageGQL.Variables { id = this.Group.id })).Data.Group.picture;
-            this.Picture = Services.ImageConverter.toImage(pic, 250, 100);
         }
 
         // TODO: Удалить ICommnand и сделать через ReactiveCommand.Create
