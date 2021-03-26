@@ -32,7 +32,7 @@
                 <ImageBrush 
                     ImageSource="{Binding User.picture, 
                                 Converter={StaticResource Base64ToImageSourceConverter},
-                                ConverterParameter=250}"
+                                ConverterParameter=500}"
                     Stretch="Fill">
                 </ImageBrush>
             </Ellipse.Fill>

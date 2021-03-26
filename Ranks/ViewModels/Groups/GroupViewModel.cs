@@ -12,24 +12,21 @@ namespace Ranks.ViewModels
     class GroupViewModel : ReactiveObject
     {
         [Reactive] public Group Group { get; set; }
-        [Reactive] public GroupsAndUsersViewModel groupsvm { get; set; }
         [Reactive] public ImageSource Picture { get; set; }
+
+        // Каллбек для фетча пользователей группы
         public ICommand ShowUsersCommand { get; set; }
+        // Каллбек для перемещения объекта в режим редактирования
         public ICommand EditCommand { get; set; }
 
-        public GroupViewModel(GroupsAndUsersViewModel groupsvm, Group group)
-        {
+        public GroupViewModel(
+            Group group,
+            ICommand groupSelectCommand,
+            ICommand groupEditCommand
+        ) {
             this.Group = group;
-            this.groupsvm = groupsvm;
-            // Требуется вынести в родительский класс, зачем создавать так много экземпляров команды?????????????
-            ShowUsersCommand = ReactiveCommand.Create(() => groupsvm.SelectedGroup = this);
-            EditCommand = ReactiveCommand.Create(() => groupsvm.CurrentlyEditableObject = this);
-        }
-
-        // TODO: Удалить ICommnand и сделать через ReactiveCommand.Create
-        public void Select()
-        {
-            groupsvm.SelectedGroup = this;
+            ShowUsersCommand = groupSelectCommand;
+            EditCommand = groupEditCommand;
         }
     }
 }

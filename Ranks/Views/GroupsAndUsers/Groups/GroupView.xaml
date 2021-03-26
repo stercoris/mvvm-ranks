@@ -16,7 +16,8 @@
     </UserControl.Resources>
     <Button 
         Style="{DynamicResource GroupSelectButton}" 
-        Command="{Binding ShowUsersCommand}">
+        Command="{Binding ShowUsersCommand}"
+        CommandParameter="{Binding}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>

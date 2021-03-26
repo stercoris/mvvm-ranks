@@ -27,32 +27,45 @@ namespace Ranks.ViewModels
                 }
             });
 
-            
-            CmdChangeEditMenuVisibility = ReactiveCommand.Create(
-                () => CurrentlyEditableObject == null ? 
-                    CurrentlyEditableObject = LastEditedObject : CurrentlyEditableObject = null);
+            SelectGroupCommand = ReactiveCommand.Create<GroupViewModel>(
+                groupvm => SelectedGroup = groupvm
+            );
+
+            SetEditableObject = ReactiveCommand.Create<ReactiveObject>(
+                groupvm => CurrentlyEditableObject = groupvm
+            );
+
+            CmdChangeEditMenuVisibility = ReactiveCommand.Create(() =>
+                CurrentlyEditableObject == null ?
+                    CurrentlyEditableObject = LastEditedObject :
+                    CurrentlyEditableObject = null
+            );
         }
-        private int a { get; set; }
         [Reactive] public ObservableCollection<GroupViewModel> Groups { get; set; }
         [Reactive] public ObservableCollection<GroupViewModel> FoundGroups { get; set; }
 
         #region Логика выбора группы и отображения пользователей
+        
         private GroupViewModel _selected_group;
         public GroupViewModel SelectedGroup
         {
             get => _selected_group;
             set
             {
-                if(_selected_group != value)
+                if(_selected_group != value) {
                     Task.Run(async () => SelectedGroupUsers = await LoadUsers(value.Group.id));
+                }
                 this.RaiseAndSetIfChanged(ref _selected_group, value);
             }
         }
         [Reactive] public ObservableCollection<UserViewModel> SelectedGroupUsers { get; set; }
+
+        private ICommand SelectGroupCommand { get; set; }
         #endregion
 
         #region Логика окна редактирования
         public ICommand CmdChangeEditMenuVisibility { get; set; }
+        private ICommand SetEditableObject { get; set; }
 
         public ReactiveObject LastEditedObject;
 
@@ -96,8 +109,8 @@ namespace Ranks.ViewModels
             var GroupsAndUsers = await RanksApi.IGetGroupsGQL.SendQueryAsync(API.Client);
             List<Group> groups = GroupsAndUsers.Data.Groups;
 
-            return(new ObservableCollection<GroupViewModel>(
-                groups.Select(group => new GroupViewModel(this, group))
+            return (new ObservableCollection<GroupViewModel>(
+                groups.Select(group => new GroupViewModel(group, SelectGroupCommand, SetEditableObject))
             ));
             
         }
@@ -109,7 +122,7 @@ namespace Ranks.ViewModels
             List<User> users = GroupsAndUsers.Data.Group.users;
 
             return new ObservableCollection<UserViewModel>(
-                users.Select((user) => new UserViewModel(this, user))
+                users.Select((user) => new UserViewModel(user, SetEditableObject))
             );
         }
     }

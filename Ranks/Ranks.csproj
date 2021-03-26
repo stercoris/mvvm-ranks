@@ -154,13 +154,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\SelectGroupCommand.cs" />
     <Compile Include="Converters\Base64ToImageSourceConverter.cs" />
-    <Compile Include="Converters\GroupUsersToUserViewModelList.cs" />
     <Compile Include="Converters\EditStateToArrowAngleConverter.cs" />
     <Compile Include="Services\ImageConverter.cs" />
-    <Compile Include="ViewModels\Groups\GroupViewModel.cs" />
     <Compile Include="ViewModels\Groups\GroupsAndUsersViewModel.cs" />
+    <Compile Include="ViewModels\Groups\GroupViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Ranks\RanksViewModel.cs" />
@@ -321,7 +319,9 @@
       <Name>RanksClient</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Commands\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

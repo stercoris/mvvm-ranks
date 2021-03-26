@@ -16,7 +16,8 @@
     </UserControl.Resources>
     <Button 
         Style="{DynamicResource UserSelectionButton}"
-        Command="{Binding Select}">
+        Command="{Binding EditCommand}"
+        CommandParameter="{Binding}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
