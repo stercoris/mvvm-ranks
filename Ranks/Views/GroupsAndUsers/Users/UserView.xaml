@@ -30,10 +30,14 @@
                 <Run Text=" " />
                 <Run Text="{Binding User.secname}" />
             </TextBlock>
-
+            <!-- TODO: IsAsync= True или False - что лучше????? -->
             <Image 
                 Grid.Row="1" 
-                Source="{Binding Picture, IsAsync=True}"
+                
+                Source="{Binding User.picture, IsAsync=True,
+                        Converter={StaticResource Base64ToImageSourceConverter},
+                        ConverterParameter=150}"
+                
                 Stretch="Fill"
                 Height="auto">
             </Image>

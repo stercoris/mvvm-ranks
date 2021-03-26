@@ -82,6 +82,7 @@ namespace Ranks.ViewModels
         #endregion
 
 
+        // TODO: Вынести нахер
         async private Task LoadGroups()
         {
             var GroupsAndUsers = await RanksApi.IGetGroupsGQL.SendQueryAsync(API.Client);
@@ -98,6 +99,7 @@ namespace Ranks.ViewModels
             }
         }
 
+        // TODO: Вынести нахер
         async private Task LoadUsers(int groupId)
         {
             var GroupsAndUsers = await RanksApi.IGetGroupGQL.SendQueryAsync(API.Client, new RanksApi.IGetGroupGQL.Variables {id = groupId});

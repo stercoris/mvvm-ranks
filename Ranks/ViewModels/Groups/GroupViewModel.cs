@@ -26,12 +26,14 @@ namespace Ranks.ViewModels
             EditCommand = ReactiveCommand.Create(() => groupsvm.CurrentlyEditableObject = this);
             LoadImage();
         }
+        // TODO: Вынести нахер
         async private Task LoadImage()
         {
             var pic = (await RanksApi.IGetGroupImageGQL.SendQueryAsync(API.Client, new RanksApi.IGetGroupImageGQL.Variables { id = this.Group.id })).Data.Group.picture;
             this.Picture = Services.ImageConverter.toImage(pic, 250, 100);
         }
 
+        // TODO: Удалить ICommnand и сделать через ReactiveCommand.Create
         public void Select()
         {
             groupsvm.SelectedGroup = this;

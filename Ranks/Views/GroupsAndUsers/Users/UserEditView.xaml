@@ -30,7 +30,9 @@
         <Ellipse Grid.Row="0" Width="250" Height="250" Margin="10">
             <Ellipse.Fill>
                 <ImageBrush 
-                    ImageSource="{Binding Picture,  IsAsync=True}"
+                    ImageSource="{Binding User.picture, 
+                                Converter={StaticResource Base64ToImageSourceConverter},
+                                ConverterParameter=250}"
                     Stretch="Fill">
                 </ImageBrush>
             </Ellipse.Fill>
