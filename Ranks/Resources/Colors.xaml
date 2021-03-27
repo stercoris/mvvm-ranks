@@ -32,4 +32,11 @@
         </LinearGradientBrush.GradientStops>
     </LinearGradientBrush>
 
+    <LinearGradientBrush x:Key="HorizontalPurpleGradient" StartPoint="0,0.5" EndPoint="1,0.5">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#FA3568" />
+            <GradientStop Offset="1" Color="#DF7451" />
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
 </ResourceDictionary>

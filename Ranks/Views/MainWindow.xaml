@@ -8,7 +8,7 @@
         xmlns:viewmodels="clr-namespace:Ranks.ViewModels"
         Title="Ранги" 
         Height="800" Width="1280"
-        MinHeight="800" MinWidth="1280"
+        MinHeight="700" MinWidth="1280"
         ResizeMode="CanResize" WindowStyle="None" WindowState="Maximized"
         MaxHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}}" 
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">
