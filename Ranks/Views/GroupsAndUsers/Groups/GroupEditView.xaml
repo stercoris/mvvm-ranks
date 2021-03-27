@@ -13,6 +13,7 @@
             d:DataContext="{d:DesignInstance Type=viewmodels:GroupViewModel, IsDesignTimeCreatable=False}">
     <UserControl.Resources>
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
+        <converters:TopUsersConverter x:Key="TopUsersConverter"/>
     </UserControl.Resources>
     <Grid Background="{StaticResource PurpleBrush}">
         <Grid.RowDefinitions>
@@ -34,7 +35,7 @@
                 BorderThickness="0"
                 Margin="0,0,0,10">
             </TextBox>
-            <StackPanel Grid.Row="1" Height="300" Width="360"   Margin="10,0,10,10">
+            <StackPanel Grid.Row="1" Height="250" Width="360"   Margin="10,0,10,10">
                 <StackPanel.Background>
                     <ImageBrush 
                         ImageSource="{
@@ -60,17 +61,17 @@
                             <ColumnDefinition Width="170" />
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Grid>
+                        <Grid >
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <Grid 
                                 Grid.Row="0"
                                 Background="{StaticResource DarkPurpleBrush}"
                                 Margin="10,5,10,5">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="1*"/>
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
                                 <TextBox 
@@ -98,7 +99,7 @@
                                 Background="{StaticResource DarkPurpleBrush}"
                                 Margin="10,5,10,5">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="1*"/>
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
                                 <TextBox 
@@ -116,7 +117,7 @@
                                 </TextBox>
                             </Grid>
                         </Grid>
-                        <Grid 
+                        <Grid
                             Background="{StaticResource DarkPurpleBrush}"
                             MinHeight="100"                      
                             Grid.Column="1"
@@ -125,6 +126,17 @@
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
+                            <ScrollViewer Grid.Row="0">
+                                <StackPanel>
+                                    <ItemsControl ItemsSource="{Binding Users, Converter={StaticResource TopUsersConverter}}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <views:TopUserView DataContext="{Binding}"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </ScrollViewer>
                             <TextBox               
                                 Grid.Row="1"
                                 Style="{DynamicResource LowerSignatureTextBox}"

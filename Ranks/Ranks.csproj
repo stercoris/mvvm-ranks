@@ -157,6 +157,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\Base64ToImageSourceConverter.cs" />
+    <Compile Include="Converters\ColorConverter.cs" />
     <Compile Include="Converters\EditStateToArrowAngleConverter.cs" />
     <Compile Include="DataAccess\RanksStorage.cs" />
     <Compile Include="Converters\TopUsersConverter.cs" />
