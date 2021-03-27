@@ -41,6 +41,7 @@ namespace Ranks.ViewModels
                     CurrentlyEditableObject = null
             );
         }
+
         [Reactive] public ObservableCollection<GroupViewModel> Groups { get; set; }
         [Reactive] public ObservableCollection<GroupViewModel> FoundGroups { get; set; }
 
@@ -53,6 +54,7 @@ namespace Ranks.ViewModels
             set
             {
                 if(_selected_group != value) {
+                    //if(SelectedGroupUsers != null) foreach(var user in SelectedGroupUsers) user.Dispose();
                     Task.Run(async () => SelectedGroupUsers = await LoadUsers(value.Group.id));
                 }
                 this.RaiseAndSetIfChanged(ref _selected_group, value);
@@ -121,6 +123,7 @@ namespace Ranks.ViewModels
             var GroupsAndUsers = await RanksApi.IGetGroupGQL.SendQueryAsync(API.Client, new RanksApi.IGetGroupGQL.Variables {id = groupId});
             List<User> users = GroupsAndUsers.Data.Group.users;
 
+            GC.Collect(); // TODO: Что вот он собирает, ничего же нет!!!!!(Выяснить что собирает GC)
             return new ObservableCollection<UserViewModel>(
                 users.Select((user) => new UserViewModel(user, SetEditableObject))
             );
