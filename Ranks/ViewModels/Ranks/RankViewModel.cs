@@ -1,10 +1,7 @@
 ﻿using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using Rank = RanksApi.IGetRanksGQL.Response.RankSelection;
 
-class Rank
-{
-
-}
 
 namespace Ranks.ViewModels
 {

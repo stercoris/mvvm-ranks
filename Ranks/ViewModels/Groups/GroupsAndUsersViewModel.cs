@@ -32,7 +32,7 @@ namespace Ranks.ViewModels
             );
 
             SetEditableObject = ReactiveCommand.Create<ReactiveObject>(
-                groupvm => CurrentlyEditableObject = groupvm
+                objectToEdit => CurrentlyEditableObject = objectToEdit
             );
 
             CmdChangeEditMenuVisibility = ReactiveCommand.Create(() =>
@@ -41,8 +41,8 @@ namespace Ranks.ViewModels
                     CurrentlyEditableObject = null
             );
         }
+
         [Reactive] public ObservableCollection<GroupViewModel> Groups { get; set; }
-        [Reactive] public ObservableCollection<GroupViewModel> FoundGroups { get; set; }
 
         #region Логика выбора группы и отображения пользователей
         
@@ -52,13 +52,13 @@ namespace Ranks.ViewModels
             get => _selected_group;
             set
             {
-                if(_selected_group != value) {
-                    Task.Run(async () => SelectedGroupUsers = await LoadUsers(value.Group.id));
+                if(_selected_group?.Group.id != value?.Group.id) {
+                    _selected_group?.UnloadUsers();
+                    value.LoadUsers();
                 }
                 this.RaiseAndSetIfChanged(ref _selected_group, value);
             }
         }
-        [Reactive] public ObservableCollection<UserViewModel> SelectedGroupUsers { get; set; }
 
         private ICommand SelectGroupCommand { get; set; }
         #endregion
@@ -82,6 +82,8 @@ namespace Ranks.ViewModels
         #endregion
 
         #region Логика поиска групп
+        [Reactive] public ObservableCollection<GroupViewModel> FoundGroups { get; set; }
+
         private string _search_string;
         public string SearchString
         {
@@ -113,17 +115,6 @@ namespace Ranks.ViewModels
                 groups.Select(group => new GroupViewModel(group, SelectGroupCommand, SetEditableObject))
             ));
             
-        }
-
-        // TODO: Вынести нахер
-        async private Task<ObservableCollection<UserViewModel>> LoadUsers(int groupId)
-        {
-            var GroupsAndUsers = await RanksApi.IGetGroupGQL.SendQueryAsync(API.Client, new RanksApi.IGetGroupGQL.Variables {id = groupId});
-            List<User> users = GroupsAndUsers.Data.Group.users;
-
-            return new ObservableCollection<UserViewModel>(
-                users.Select((user) => new UserViewModel(user, SetEditableObject))
-            );
         }
     }
 }

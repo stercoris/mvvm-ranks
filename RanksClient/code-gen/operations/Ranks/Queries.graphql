@@ -1,0 +1,15 @@
+query GetRank($id: Int!) {
+  Rank(id: $id) {
+    id
+    name
+    picture
+  }
+}
+
+query GetRanks {
+  Ranks {
+    id
+    name
+    picture
+  }
+}

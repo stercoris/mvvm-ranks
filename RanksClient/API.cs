@@ -14,7 +14,7 @@ namespace RanksClient
 {
     static public class API
     {
-        public static GraphQLHttpClient _client;
+        private static GraphQLHttpClient _client;
 
         public static GraphQLHttpClient Client
         {

@@ -107,7 +107,7 @@
             <WrapPanel 
                     HorizontalAlignment="Center">
                 <ItemsControl 
-                    ItemsSource="{Binding SelectedGroupUsers}">
+                    ItemsSource="{Binding SelectedGroup.Users, IsAsync=True}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel 
