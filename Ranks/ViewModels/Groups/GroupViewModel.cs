@@ -54,17 +54,17 @@ namespace Ranks.ViewModels
         }
         public void UnloadUsers()
         {
-            if (GroupLoading != null && GroupLoading.Status == TaskStatus.Running)
-            {
+            if (GroupLoading != null && 
+                (
+                    GroupLoading.Status == TaskStatus.RanToCompletion || 
+                    GroupLoading.Status == TaskStatus.Running
+                )
+            ) {
                 GroupLoading.Dispose();
             }
-            else if(Users != null)
+            if(Users != null)
             {
                 Users.Clear();
-            }
-            else
-            {
-                throw new Exception("Загрузка, которую вы хотели остановить, не была инициализированна");
             }
 
         }

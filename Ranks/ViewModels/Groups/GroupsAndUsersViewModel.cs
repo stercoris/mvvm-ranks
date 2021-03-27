@@ -52,7 +52,7 @@ namespace Ranks.ViewModels
             get => _selected_group;
             set
             {
-                if(_selected_group != value) {
+                if(_selected_group?.Group.id != value?.Group.id) {
                     _selected_group?.UnloadUsers();
                     value.LoadUsers();
                 }
