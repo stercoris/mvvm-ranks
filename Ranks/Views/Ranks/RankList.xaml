@@ -25,7 +25,7 @@
             
             <TextBlock Style="{DynamicResource UserSelectionTitle}">
                 <Run> Количество рангов : </Run>
-                <Run Text="{Binding RankItems.Count, Mode=OneWay}"/>
+                <Run Text="{Binding RankItems.Count, Mode=OneWay, IsAsync=True}"/>
             </TextBlock>
         </StackPanel>
 
@@ -34,7 +34,7 @@
                 VerticalScrollBarVisibility="Hidden"
                 Grid.Row="1"
                 Resources="{StaticResource DisableScroller}">
-                <ItemsControl  x:Name="Ranks" ItemsSource="{Binding RankItems}">
+                <ItemsControl  x:Name="Ranks" ItemsSource="{Binding RankItems, IsAsync=True}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Vertical" Margin="20"/>

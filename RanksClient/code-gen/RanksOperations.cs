@@ -201,6 +201,123 @@ namespace RanksApi {
     }
     
 
+    public class IGetRankGQL {
+      /// <summary>
+      /// IGetRankGQL.Request 
+      /// <para>Required variables:<br/> { id=(int) }</para>
+      /// <para>Optional variables:<br/> {  }</para>
+      /// </summary>
+      public static GraphQLRequest Request(object variables = null) {
+        return new GraphQLRequest {
+          Query = GetRankDocument,
+          OperationName = "GetRank",
+          Variables = variables
+        };
+      }
+
+      /// <remarks>This method is obsolete. Use Request instead.</remarks>
+      public static GraphQLRequest getIGetRankGQL() {
+        return Request();
+      }
+      
+      public static string GetRankDocument = @"
+        query GetRank($id: Int!) {
+          Rank(id: $id) {
+            id
+            name
+            picture
+          }
+        }
+        ";
+            
+      public class Variables {
+      
+        [JsonProperty("id")]
+        public int id { get; set; }
+        
+      }
+      
+      public class Response {
+      
+        public class RankSelection {
+        
+          [JsonProperty("id")]
+          public int id { get; set; }
+          
+          [JsonProperty("name")]
+          public string name { get; set; }
+          
+          [JsonProperty("picture")]
+          public string picture { get; set; }
+          
+        }
+        
+        [JsonProperty("Rank")]
+        public RankSelection Rank { get; set; }
+        
+      }
+      
+      public static System.Threading.Tasks.Task<GraphQLResponse<Response>> SendQueryAsync(IGraphQLClient client, Variables variables, System.Threading.CancellationToken cancellationToken = default) {
+        return client.SendQueryAsync<Response>(Request(variables), cancellationToken);
+      }
+      
+    }
+    
+
+    public class IGetRanksGQL {
+      /// <summary>
+      /// IGetRanksGQL.Request 
+      /// </summary>
+      public static GraphQLRequest Request() {
+        return new GraphQLRequest {
+          Query = GetRanksDocument,
+          OperationName = "GetRanks"
+        };
+      }
+
+      /// <remarks>This method is obsolete. Use Request instead.</remarks>
+      public static GraphQLRequest getIGetRanksGQL() {
+        return Request();
+      }
+      
+      public static string GetRanksDocument = @"
+        query GetRanks {
+          Ranks {
+            id
+            name
+            picture
+          }
+        }
+        ";
+            
+      
+      public class Response {
+      
+        public class RankSelection {
+        
+          [JsonProperty("id")]
+          public int id { get; set; }
+          
+          [JsonProperty("name")]
+          public string name { get; set; }
+          
+          [JsonProperty("picture")]
+          public string picture { get; set; }
+          
+        }
+        
+        [JsonProperty("Ranks")]
+        public System.Collections.Generic.List<RankSelection> Ranks { get; set; }
+        
+      }
+      
+      public static System.Threading.Tasks.Task<GraphQLResponse<Response>> SendQueryAsync(IGraphQLClient client, System.Threading.CancellationToken cancellationToken = default) {
+        return client.SendQueryAsync<Response>(Request(), cancellationToken);
+      }
+      
+    }
+    
+
     public class IGetUserImageGQL {
       /// <summary>
       /// IGetUserImageGQL.Request 

@@ -13,8 +13,8 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Text="{Binding Rank.Id}" Style="{StaticResource UserSelectionTitle}" FontSize="32"/>
-        <TextBlock Grid.Column="1" Text="{Binding Rank.Name}" Style="{StaticResource UserSelectionTitle}" FontSize="32"/>
+        <TextBlock Grid.Column="0" Text="{Binding Rank.id}" Style="{StaticResource UserSelectionTitle}" FontSize="32"/>
+        <TextBlock Grid.Column="1" Text="{Binding Rank.name}" Style="{StaticResource UserSelectionTitle}" FontSize="32"/>
         <Button Grid.Column="2" HorizontalAlignment="Right" Style="{StaticResource Navigation}" Width="50" Height="50">
             <materialDesign:PackIcon Kind="ArrowDownThick" Style="{StaticResource NavBtnIcon}"/>
         </Button>

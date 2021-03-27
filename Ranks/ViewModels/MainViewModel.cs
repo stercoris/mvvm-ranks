@@ -28,11 +28,12 @@ namespace Ranks.ViewModels
 
         public MainViewModel()
         {
-            GroupsAndUsers = new View.GroupsAndUsers() { DataContext = this };
-            RankList = new View.RankList() { DataContext = this };
 
             GroupsViewModel = new GroupsAndUsersViewModel();
             RanksViewModel = new RanksViewModel();
+
+            GroupsAndUsers = new View.GroupsAndUsers() { DataContext = this };
+            RankList = new View.RankList() { DataContext = this };
             SelectedPage = GroupsAndUsers;
 
         }
