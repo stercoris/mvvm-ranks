@@ -16,6 +16,7 @@
         <views:GroupEditView x:Key="GroupEditView"/>
         <views:UserEditView x:Key="UserEditView"/>
         <converters:EditStateToArrowAngleConverter x:Key="EditStateToArrowAngleConverter"/>
+        <converters:StringToGroupsSearchConverter x:Key="StringToGroupsSearchConverter"/>
     </Page.Resources>
     <Grid DataContext="{Binding GroupsViewModel}">
         <Grid.ColumnDefinitions>
@@ -43,7 +44,15 @@
                 Grid.Row="1"
                 Resources="{StaticResource DisableScroller}">
                 <StackPanel Orientation="Vertical">
-                    <ItemsControl  x:Name="Groups" ItemsSource="{Binding FoundGroups}">
+                    <ItemsControl  x:Name="Groups">
+                        <ItemsControl.ItemsSource>
+                            <MultiBinding 
+                                Converter="{StaticResource StringToGroupsSearchConverter}">
+                                <Binding Path="SearchString"/>
+                                <Binding Path="Groups"/>
+                            </MultiBinding>
+                        </ItemsControl.ItemsSource>
+                        
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <views:GroupView DataContext="{Binding}"/>

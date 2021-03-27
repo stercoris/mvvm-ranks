@@ -19,11 +19,10 @@ namespace Ranks.ViewModels
         {
             Task.Run(async () => {
                 Groups = await LoadGroups();
-                FoundGroups = Groups;
-                if (FoundGroups.Count >= 0)
+                if (Groups.Count >= 0)
                 {
-                    SelectedGroup = FoundGroups[0];
-                    LastEditedObject = FoundGroups[0];
+                    SelectedGroup = Groups[0];
+                    LastEditedObject = Groups[0];
                 }
             });
 
@@ -82,26 +81,7 @@ namespace Ranks.ViewModels
         #endregion
 
         #region Логика поиска групп
-        [Reactive] public ObservableCollection<GroupViewModel> FoundGroups { get; set; }
-
-        private string _search_string;
-        public string SearchString
-        {
-            get => _search_string;
-            set
-            {
-                this.RaiseAndSetIfChanged(ref _search_string, value);
-                if (String.IsNullOrWhiteSpace(value))
-                    FoundGroups = Groups;
-                else
-                {
-                    FoundGroups = new ObservableCollection<GroupViewModel>(
-                        Groups.Where((group) => group.Group.name.Contains(value))
-                    );
-                }
-                this.RaisePropertyChanged(nameof(FoundGroups));
-            }
-        }
+        [Reactive] public string SearchString { get; set; }
         #endregion
 
 

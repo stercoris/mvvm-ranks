@@ -170,6 +170,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\Base64ToImageSourceConverter.cs" />
     <Compile Include="Converters\EditStateToArrowAngleConverter.cs" />
+    <Compile Include="Converters\StringToGroupsSearchConverter.cs" />
     <Compile Include="DataAccess\RanksStorage.cs" />
     <Compile Include="Services\ImageConverter.cs" />
     <Compile Include="ViewModels\Groups\GroupsAndUsersViewModel.cs" />
