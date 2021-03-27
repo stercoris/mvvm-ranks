@@ -122,10 +122,11 @@
 
     <Style x:Key="ConfirmChange" TargetType="Button">
         <Setter Property="Padding" Value="0"/>
-        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontSize" Value="22"/>
         <Setter Property="Height" Value="50"/>
-        <Setter Property="Margin" Value="10,10,10,10"/>
-        <Setter Property="Background" Value="{StaticResource OrangeToPurpleGradient}"/>
+        <Setter Property="Margin" Value="0,10,0,10"/>
+        <Setter Property="Background" Value="{StaticResource HorizontalPurpleGradient}"/>
         <Setter Property="Template" Value="{StaticResource CustomButton}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>     
     </Style>
 </ResourceDictionary>
