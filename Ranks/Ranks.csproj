@@ -160,8 +160,10 @@
     <Compile Include="Converters\ColorConverter.cs" />
     <Compile Include="Converters\EditStateToArrowAngleConverter.cs" />
     <Compile Include="Converters\StringToGroupsSearchConverter.cs" />
+    <Compile Include="DataAccess\GroupsStorage.cs" />
     <Compile Include="DataAccess\RanksStorage.cs" />
     <Compile Include="Converters\TopUsersConverter.cs" />
+    <Compile Include="DataAccess\UsersStorage.cs" />
     <Compile Include="Services\ImageConverter.cs" />
     <Compile Include="ViewModels\Groups\GroupsAndUsersViewModel.cs" />
     <Compile Include="ViewModels\Groups\GroupViewModel.cs" />

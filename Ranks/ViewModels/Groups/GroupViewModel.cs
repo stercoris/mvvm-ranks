@@ -17,10 +17,9 @@ namespace Ranks.ViewModels
     class GroupViewModel : ReactiveObject
     {
         [Reactive] public Group Group { get; set; }
-        [Reactive] public ImageSource Picture { get; set; }
 
         // Каллбек для фетча пользователей группы
-        public ICommand ShowUsersCommand { get; set; }
+        [Reactive] public ICommand ShowUsersCommand { get; set; }
         // Каллбек для перемещения объекта в режим редактирования
         public ICommand EditCommand { get; set; }
 
@@ -29,12 +28,12 @@ namespace Ranks.ViewModels
             Group group,
             ICommand groupSelectCommand,
             ICommand groupEditCommand
-        ) {
+        )
+        {
             this.Group = group;
-            ShowUsersCommand = groupSelectCommand;
             EditCommand = groupEditCommand;
+            ShowUsersCommand = groupSelectCommand;
         }
-
 
         #region Users Loading
         private Task GroupLoading { get; set; }
@@ -45,29 +44,29 @@ namespace Ranks.ViewModels
                 var GroupsAndUsers = await RanksApi.IGetGroupGQL.SendQueryAsync(API.Client, new RanksApi.IGetGroupGQL.Variables { id = this.Group.id });
                 List<User> users = GroupsAndUsers.Data.Group.users;
 
-                GC.Collect(); // TODO: Что вот он собирает, ничего же нет!!!!!(Выяснить что собирает GC)
                 Users = new ObservableCollection<UserViewModel>(
                     users.Select((user) => new UserViewModel(user, EditCommand))
                 );
+                GC.Collect(); // TODO: Что вот он собирает, ничего же нет!!!!!(Выяснить что собирает GC)
             });
         }
         public void UnloadUsers()
         {
-            if (GroupLoading != null && 
+            if (GroupLoading != null &&
                 (
-                    GroupLoading.Status == TaskStatus.RanToCompletion || 
+                    GroupLoading.Status == TaskStatus.RanToCompletion ||
                     GroupLoading.Status == TaskStatus.Running
                 )
-            ) {
+            )
+            {
                 GroupLoading.Dispose();
             }
-            if(Users != null)
+            if (Users != null)
             {
                 Users.Clear();
             }
 
         }
         #endregion
-
     }
 }

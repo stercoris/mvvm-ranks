@@ -31,37 +31,38 @@ namespace Ranks.ViewModels
                     CurrentlyEditableObject = null
             );
 
-            Task.Run(async () => {
-                Groups = await LoadGroups();
-                if (Groups.Count >= 0)
-                {
-                    SelectedGroup = Groups[2];
-                    LastEditedObject = Groups[2];
-                }
-            });
+            var groups = DataAccess.GroupsStorage.Groups;
+            Groups = new ObservableCollection<GroupViewModel>(
+                // Логика не совсем понятная, 
+                // но я передаю группу, команду выбора группы(отображение пользователей), 
+                // команду выбора объекта, который редактирутся в контроллер
+                groups.Select(group => new GroupViewModel(group, SelectGroupCommand, SetEditableObject))
+            );
+
+            if (Groups.Count >= 0)
+            {
+                SelectedGroup = Groups[0];
+                LastEditedObject = Groups[0];
+            }
         }
 
         [Reactive] public ObservableCollection<GroupViewModel> Groups { get; set; }
 
-        public ICommand Test { get => ReactiveCommand.Create(() => Console.WriteLine("TEST")); }
-
-
         #region Логика выбора группы и отображения пользователей
-
         private GroupViewModel _selected_group;
         public GroupViewModel SelectedGroup
         {
             get => _selected_group;
             set
             {
-                if(_selected_group?.Group.id != value?.Group.id) {
+                if (_selected_group?.Group.id != value?.Group.id)
+                {
                     _selected_group?.UnloadUsers();
                     value.LoadUsers();
                 }
                 this.RaiseAndSetIfChanged(ref _selected_group, value);
             }
         }
-
         private ICommand SelectGroupCommand { get; set; }
         #endregion
 
@@ -87,17 +88,5 @@ namespace Ranks.ViewModels
         [Reactive] public string SearchString { get; set; }
         #endregion
 
-
-        // TODO: Вынести нахер
-        async private Task<ObservableCollection<GroupViewModel>> LoadGroups()
-        {
-            var GroupsAndUsers = await RanksApi.IGetGroupsGQL.SendQueryAsync(API.Client);
-            List<Group> groups = GroupsAndUsers.Data.Groups;
-
-            return (new ObservableCollection<GroupViewModel>(
-                groups.Select(group => new GroupViewModel(group, SelectGroupCommand, SetEditableObject))
-            ));
-            
-        }
     }
 }

@@ -61,7 +61,6 @@
                     </ItemsControl>
                     <Button 
                         Style="{StaticResource GroupSelectButton}"
-                        Command="{Binding Test}"
                         Height="70">
                         <StackPanel Orientation="Vertical">
                             <materialDesign:PackIcon 
@@ -117,7 +116,7 @@
             <WrapPanel 
                     HorizontalAlignment="Center">
                 <ItemsControl 
-                    ItemsSource="{Binding SelectedGroup.Users, IsAsync=True}">
+                    ItemsSource="{Binding SelectedGroup.Users, IsAsync=False}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel 

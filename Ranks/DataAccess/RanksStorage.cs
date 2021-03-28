@@ -1,4 +1,5 @@
 ﻿using RanksClient;
+using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,12 +12,7 @@ namespace Ranks.DataAccess
 {
     public class RanksStorage
     {
-        //public RanksStorage()
-        //{
-        //    Task.Run(async () => Ranks = await LoadRanks());
-        //}
-
-        public static ObservableCollection<Rank> Ranks { get; private set; }
+        [Reactive] public static ObservableCollection<Rank> Ranks { get; private set; }
         public static async Task<ObservableCollection<Rank>> LoadRanks()
         {
             if (Ranks == null)

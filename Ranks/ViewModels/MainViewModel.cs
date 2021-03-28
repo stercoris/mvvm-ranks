@@ -28,9 +28,19 @@ namespace Ranks.ViewModels
 
         private async Task Loading()
         {
-            await DataAccess.RanksStorage.LoadRanks();
+            await Task.Run(DataAccess.RanksStorage.LoadRanks);
+            await Task.Run(async () =>
+            {
+                var groups = await DataAccess.GroupsStorage.LoadGroups();
+                if (groups.Count > 0)
+                {
+                    //await DataAccess.UsersStorage.LoadUsers(groups[0].id);
+                    //DataAccess.UsersStorage.LoadUsers(groups[1].id);    //TODO: Для тестинга, Убрать на релизе
+                    //DataAccess.UsersStorage.LoadUsers(groups[2].id);    //TODO: Для тестинга, Убрать на релизе
+                }
+            });
             PageContainer = new PageContainer();
-            await Task.Delay(2000); //TODO: Убрать на релизе
+            await Task.Delay(2000); //TODO: Для красоты, Убрать на релизе
             AppState = PageContainer;
         }
     }
