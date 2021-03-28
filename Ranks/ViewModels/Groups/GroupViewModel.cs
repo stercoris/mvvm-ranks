@@ -50,7 +50,6 @@ namespace Ranks.ViewModels
                     users.Select((user) => new UserViewModel(user, EditCommand))
                 );
             });
-            
         }
         public void UnloadUsers()
         {

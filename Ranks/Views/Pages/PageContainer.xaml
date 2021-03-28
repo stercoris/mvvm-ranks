@@ -1,0 +1,91 @@
+﻿<Page 
+    x:Class="Ranks.Views.Pages.PageContainer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:local="clr-namespace:Ranks"
+    xmlns:viewmodels="clr-namespace:Ranks.ViewModels"
+    xmlns:uc="clr-namespace:Ranks.View"
+    d:DesignHeight="800" d:DesignWidth="1280" x:Uid="Контроллер страниц"
+    d:DataContext="{d:DesignInstance Type=viewmodels:PageController, IsDesignTimeCreatable=True}">
+    <Page.DataContext>
+        <viewmodels:PageController/>
+    </Page.DataContext>
+    <Grid >
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Background="{StaticResource PurpleBrush}" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Image 
+                    Source="/Images/up_logo.ico" 
+                    Margin="8,13">
+                </Image>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Row="1" Margin="0,0,0,150">
+                    <Button 
+                        Style="{DynamicResource Navigation}"
+                        Template="{DynamicResource CustomButton}"
+                        Command="{Binding bNavGroupsAndUsersClick}">
+                        <materialDesign:PackIcon
+                            Style="{DynamicResource NavBtnIcon}"
+                            Kind="User">
+                        </materialDesign:PackIcon>
+                    </Button>
+                    <Button 
+                        Style="{DynamicResource Navigation}"
+                        Template="{DynamicResource CustomButton}"
+                        Command="{Binding bNavRankListClick}">
+                        <materialDesign:PackIcon 
+                            Style="{DynamicResource NavBtnIcon}" 
+                            Kind="ViewList">
+                        </materialDesign:PackIcon>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border 
+                    Height="30" Grid.Row="0" 
+                    Background="{StaticResource PurpleBrush}" >
+                    <!--MouseDown="GrabStart"-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button 
+                            WindowChrome.IsHitTestVisibleInChrome="True"
+                            Style="{DynamicResource WindowControls}" 
+                            Template="{DynamicResource CustomButton}">
+                            <materialDesign:PackIcon 
+                                Style="{DynamicResource NavBtnIcon}" 
+                                Margin="0,6,0,0" Kind="WindowMinimize">
+                            </materialDesign:PackIcon>
+                        </Button>
+                        <Button 
+                            WindowChrome.IsHitTestVisibleInChrome="True"
+                            Style="{DynamicResource WindowControls}" 
+                            Template="{DynamicResource CustomButton}">
+                            <materialDesign:PackIcon 
+                                Style="{DynamicResource NavBtnIcon}" 
+                                Kind="Close">
+                            </materialDesign:PackIcon>
+                        </Button>
+                    </StackPanel>
+                </Border>
+                <Frame 
+                    Content="{Binding SelectedPage}" 
+                    Grid.Row="1" 
+                    NavigationUIVisibility="Hidden" 
+                    Panel.ZIndex="200">
+                </Frame>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

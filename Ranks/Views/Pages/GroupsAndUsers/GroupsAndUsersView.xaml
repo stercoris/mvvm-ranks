@@ -10,7 +10,7 @@
     xmlns:converters="clr-namespace:Ranks.Converters"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     d:DesignHeight ="600" d:DesignWidth="1240" x:Uid="Пользователи"
-    d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">
+    d:DataContext="{d:DesignInstance Type=viewmodels:PageController, IsDesignTimeCreatable=False}">
 
     <Page.Resources>
         <views:GroupEditView x:Key="GroupEditView"/>
@@ -61,6 +61,7 @@
                     </ItemsControl>
                     <Button 
                         Style="{StaticResource GroupSelectButton}"
+                        Command="{Binding Test}"
                         Height="70">
                         <StackPanel Orientation="Vertical">
                             <materialDesign:PackIcon 

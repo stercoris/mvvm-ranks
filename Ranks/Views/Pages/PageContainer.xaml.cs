@@ -13,16 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Ranks.View
+namespace Ranks.Views.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Interaction logic for PageContainer.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PageContainer : Page
     {
-        public MainWindow()
+        public PageContainer()
         {
-            this.DataContext = new ViewModels.MainViewModel();
             InitializeComponent();
         }
 

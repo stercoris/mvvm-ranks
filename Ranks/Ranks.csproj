@@ -165,35 +165,42 @@
     <Compile Include="Services\ImageConverter.cs" />
     <Compile Include="ViewModels\Groups\GroupsAndUsersViewModel.cs" />
     <Compile Include="ViewModels\Groups\GroupViewModel.cs" />
+    <Compile Include="ViewModels\PageController.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Ranks\RanksViewModel.cs" />
     <Compile Include="ViewModels\Ranks\RankViewModel.cs" />
+    <Compile Include="Views\LoadingScreen.xaml.cs">
+      <DependentUpon>LoadingScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GroupsAndUsers\Groups\GroupEditView.xaml.cs">
+    <Compile Include="Views\Pages\PageContainer.xaml.cs">
+      <DependentUpon>PageContainer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\GroupsAndUsers\Groups\GroupEditView.xaml.cs">
       <DependentUpon>GroupEditView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GroupsAndUsers\Groups\GroupView.xaml.cs">
+    <Compile Include="Views\Pages\GroupsAndUsers\Groups\GroupView.xaml.cs">
       <DependentUpon>GroupView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GroupsAndUsers\Groups\TopUserView.xaml.cs">
+    <Compile Include="Views\Pages\GroupsAndUsers\Groups\TopUserView.xaml.cs">
       <DependentUpon>TopUserView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GroupsAndUsers\Users\UserEditView.xaml.cs">
+    <Compile Include="Views\Pages\GroupsAndUsers\Users\UserEditView.xaml.cs">
       <DependentUpon>UserEditView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GroupsAndUsers\Users\UserView.xaml.cs">
+    <Compile Include="Views\Pages\GroupsAndUsers\Users\UserView.xaml.cs">
       <DependentUpon>UserView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Ranks\RankList.xaml.cs">
+    <Compile Include="Views\Pages\Ranks\RankList.xaml.cs">
       <DependentUpon>RankList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Ranks\RankView.xaml.cs">
+    <Compile Include="Views\Pages\Ranks\RankView.xaml.cs">
       <DependentUpon>RankView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GroupsAndUsers\GroupsAndUsersView.xaml.cs">
+    <Compile Include="Views\Pages\GroupsAndUsers\GroupsAndUsersView.xaml.cs">
       <DependentUpon>GroupsAndUsersView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\Buttons.xaml">
@@ -220,6 +227,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\LoadingScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -228,35 +239,39 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\GroupsAndUsers\Groups\GroupEditView.xaml">
+    <Page Include="Views\Pages\PageContainer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GroupsAndUsers\Groups\GroupView.xaml">
+    <Page Include="Views\Pages\GroupsAndUsers\Groups\GroupEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GroupsAndUsers\Groups\TopUserView.xaml">
+    <Page Include="Views\Pages\GroupsAndUsers\Groups\GroupView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GroupsAndUsers\Users\UserEditView.xaml">
+    <Page Include="Views\Pages\GroupsAndUsers\Groups\TopUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GroupsAndUsers\Users\UserView.xaml">
+    <Page Include="Views\Pages\GroupsAndUsers\Users\UserEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Ranks\RankList.xaml">
+    <Page Include="Views\Pages\GroupsAndUsers\Users\UserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Ranks\RankView.xaml">
+    <Page Include="Views\Pages\Ranks\RankList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GroupsAndUsers\GroupsAndUsersView.xaml">
+    <Page Include="Views\Pages\Ranks\RankView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\GroupsAndUsers\GroupsAndUsersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

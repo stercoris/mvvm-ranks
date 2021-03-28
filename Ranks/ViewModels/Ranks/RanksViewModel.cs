@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using ReactiveUI.Fody.Helpers;
+using Rank = RanksApi.IGetRanksGQL.Response.RankSelection;
 
 namespace Ranks.ViewModels
 {
@@ -11,13 +12,9 @@ namespace Ranks.ViewModels
 
         public RanksViewModel()
         {
-            Task.Run(async () =>
-            {
-                var Ranks = (await DataAccess.RanksStorage.LoadRanks());
-                var RankItemVMs = new ObservableCollection<RankItemViewModel>();
-                foreach (var rank in Ranks) RankItemVMs.Add(new RankItemViewModel(rank));
-                RankItems = new ObservableCollection<RankItemViewModel>(RankItemVMs);
-            });
+            ObservableCollection<Rank> ranks = DataAccess.RanksStorage.Ranks;
+            RankItems = new ObservableCollection<RankItemViewModel>();
+            foreach (var rank in ranks) RankItems.Add(new RankItemViewModel(rank));
         }
     }
 }

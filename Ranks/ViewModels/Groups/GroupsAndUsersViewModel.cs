@@ -17,15 +17,6 @@ namespace Ranks.ViewModels
     {
         public GroupsAndUsersViewModel()
         {
-            Task.Run(async () => {
-                Groups = await LoadGroups();
-                if (Groups.Count >= 0)
-                {
-                    SelectedGroup = Groups[0];
-                    LastEditedObject = Groups[0];
-                }
-            });
-
             SelectGroupCommand = ReactiveCommand.Create<GroupViewModel>(
                 groupvm => SelectedGroup = groupvm
             );
@@ -39,12 +30,24 @@ namespace Ranks.ViewModels
                     CurrentlyEditableObject = LastEditedObject :
                     CurrentlyEditableObject = null
             );
+
+            Task.Run(async () => {
+                Groups = await LoadGroups();
+                if (Groups.Count >= 0)
+                {
+                    SelectedGroup = Groups[2];
+                    LastEditedObject = Groups[2];
+                }
+            });
         }
 
         [Reactive] public ObservableCollection<GroupViewModel> Groups { get; set; }
 
+        public ICommand Test { get => ReactiveCommand.Create(() => Console.WriteLine("TEST")); }
+
+
         #region Логика выбора группы и отображения пользователей
-        
+
         private GroupViewModel _selected_group;
         public GroupViewModel SelectedGroup
         {

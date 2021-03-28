@@ -1,6 +1,11 @@
-﻿using RanksClient;
+﻿using Ranks.Views;
+using Ranks.Views.Pages;
+using RanksClient;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -8,34 +13,27 @@ namespace Ranks.ViewModels
 {
     internal class MainViewModel : ReactiveObject
     {
-        #region Pages And NavBar
-        private Page GroupsAndUsers;
-        private Page RankList;
+        [Reactive] public Page AppState { get; set; }
 
-        [Reactive] public Page SelectedPage { get; set; }
-
-        public ICommand bNavGroupsAndUsersClick
-        { get => ReactiveCommand.Create(() => SelectedPage = GroupsAndUsers); }
-        public ICommand bNavRankListClick
-        { get => ReactiveCommand.Create(() => SelectedPage = RankList); }
-
+        #region Pages
+        [Reactive] public Page PageContainer { get; set; }
+        [Reactive] public Page LoadingScreen { get; set; }
         #endregion
-
-        #region ChildrenViewModels
-        [Reactive] public GroupsAndUsersViewModel GroupsViewModel { get; set; }
-        [Reactive] public RanksViewModel RanksViewModel { get; set; }
-        #endregion
-
         public MainViewModel()
         {
 
-            GroupsViewModel = new GroupsAndUsersViewModel();
-            RanksViewModel = new RanksViewModel();
+            LoadingScreen = new LoadingScreen();
+            AppState = LoadingScreen;
 
-            GroupsAndUsers = new View.GroupsAndUsers() { DataContext = this };
-            RankList = new View.RankList() { DataContext = this };
-            SelectedPage = GroupsAndUsers;
+            Loading();
+        }
 
+        private async Task Loading()
+        {
+            await DataAccess.RanksStorage.LoadRanks();
+            await Task.Delay(5000);
+            PageContainer = new PageContainer();
+            AppState = PageContainer;
         }
     }
 }

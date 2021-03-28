@@ -8,7 +8,7 @@
         xmlns:viewmodels="clr-namespace:Ranks.ViewModels"
         xmlns:uc="clr-namespace:Ranks.View"
         d:DesignHeight ="600" d:DesignWidth="900" x:Uid="Ранги"
-        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">
+        d:DataContext="{d:DesignInstance Type=viewmodels:PageController, IsDesignTimeCreatable=False}">
 
     <Grid DataContext="{Binding RanksViewModel}">
         <Grid.ColumnDefinitions>

@@ -9,83 +9,18 @@
         Title="Ранги" 
         Height="800" Width="1280"
         MinHeight="700" MinWidth="1280"
-        ResizeMode="CanResize" WindowStyle="None" WindowState="Maximized"
+        ResizeMode="CanResize" WindowStyle="None" 
         MaxHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}}" 
-        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=False}">
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=True}">
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5"/>
+        <WindowChrome CaptionHeight="30" ResizeBorderThickness="5"/>
     </WindowChrome.WindowChrome>
     <Grid Style="{StaticResource WindowMainPanelStyle}">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="60"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid Background="{StaticResource PurpleBrush}" Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Image 
-                    Source="/Images/up_logo.ico" 
-                    Margin="8,13">
-                </Image>
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Row="1" Margin="0,0,0,150">
-                    <Button 
-                        Style="{DynamicResource Navigation}"
-                        Template="{DynamicResource CustomButton}"
-                        Command="{Binding bNavGroupsAndUsersClick}">
-                        <materialDesign:PackIcon
-                            Style="{DynamicResource NavBtnIcon}"
-                            Kind="User">
-                        </materialDesign:PackIcon>
-                    </Button>
-                    <Button 
-                        Style="{DynamicResource Navigation}"
-                        Template="{DynamicResource CustomButton}"
-                        Command="{Binding bNavRankListClick}">
-                        <materialDesign:PackIcon 
-                            Style="{DynamicResource NavBtnIcon}" 
-                            Kind="ViewList">
-                        </materialDesign:PackIcon>
-                    </Button>
-                </StackPanel>
-            </Grid>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Border 
-                    Height="30" Grid.Row="0" 
-                    Background="{StaticResource PurpleBrush}" 
-                    MouseDown="GrabStart">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button 
-                            Style="{DynamicResource WindowControls}" 
-                            Template="{DynamicResource CustomButton}">
-                            <materialDesign:PackIcon 
-                                Style="{DynamicResource NavBtnIcon}" 
-                                Margin="0,6,0,0" Kind="WindowMinimize">
-                            </materialDesign:PackIcon>
-                        </Button>
-                        <Button 
-                            Style="{DynamicResource WindowControls}" 
-                            Template="{DynamicResource CustomButton}">
-                            <materialDesign:PackIcon 
-                                Style="{DynamicResource NavBtnIcon}" 
-                                Kind="Close">
-                            </materialDesign:PackIcon>
-                        </Button>
-                    </StackPanel>
-                </Border>
-                <Frame 
-                    Content="{Binding SelectedPage}" 
-                    Grid.Row="1" 
-                    NavigationUIVisibility="Hidden" 
-                    Panel.ZIndex="200">
-                </Frame>
-            </Grid>
-        </Grid>
+        <Frame 
+            Content="{Binding AppState, IsAsync=True}" 
+            NavigationUIVisibility="Hidden" 
+            Width="auto" Height="auto"
+            Panel.ZIndex="200">
+        </Frame>
     </Grid>
 </Window>

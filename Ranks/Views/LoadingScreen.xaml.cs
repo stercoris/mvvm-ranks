@@ -13,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Ranks.View
+namespace Ranks.Views
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Interaction logic for LoadingScreen.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoadingScreen : Page
     {
-        public MainWindow()
+        public LoadingScreen()
         {
-            this.DataContext = new ViewModels.MainViewModel();
             InitializeComponent();
         }
-
     }
 }
