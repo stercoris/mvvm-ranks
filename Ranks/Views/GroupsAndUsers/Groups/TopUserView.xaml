@@ -15,13 +15,13 @@
     </UserControl.Resources>
     <Grid Background="{StaticResource DarkPurpleBrush}">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Ellipse 
                 Grid.Column="0" 
-            Width="45"
-            Height="45"
+                Width="45"
+                Height="45"
                 Margin="0" Stretch="Fill">
             <Ellipse.Fill>
                 <ImageBrush 
@@ -35,9 +35,13 @@
         <TextBlock 
                 Grid.Column="1"
                 Text="{Binding User.name}"
-                Margin="20,0"
                 VerticalAlignment="Center"
-                Style="{DynamicResource RanksText}" >
+                Style="{DynamicResource RanksText}" 
+                Padding="0"
+                Background="{Binding User.rankId, Converter={StaticResource ColorConverter}}"
+                TextAlignment="Left"
+                Margin="10,0,0,0"
+                FontSize="16">
         </TextBlock>
     </Grid>
 </UserControl>

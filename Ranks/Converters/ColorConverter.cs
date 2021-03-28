@@ -16,7 +16,8 @@ namespace Ranks.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return 1;
+            
+            return "red";
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
