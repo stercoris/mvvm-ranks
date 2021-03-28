@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ranks.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,5 +26,15 @@ namespace Ranks.Views.Pages
             InitializeComponent();
         }
 
+        private void CloseApp(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void MinimizeApp(object sender, RoutedEventArgs e)
+        {
+            var Window = Application.Current.MainWindow;
+            Window.WindowState = WindowState.Minimized;
+        }
     }
 }

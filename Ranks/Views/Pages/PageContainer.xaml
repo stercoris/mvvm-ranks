@@ -62,7 +62,7 @@
                         <Button 
                             WindowChrome.IsHitTestVisibleInChrome="True"
                             Style="{DynamicResource WindowControls}" 
-                            Template="{DynamicResource CustomButton}">
+                            Template="{DynamicResource CustomButton}" Click="MinimizeApp">
                             <materialDesign:PackIcon 
                                 Style="{DynamicResource NavBtnIcon}" 
                                 Margin="0,6,0,0" Kind="WindowMinimize">
@@ -71,7 +71,7 @@
                         <Button 
                             WindowChrome.IsHitTestVisibleInChrome="True"
                             Style="{DynamicResource WindowControls}" 
-                            Template="{DynamicResource CustomButton}">
+                            Template="{DynamicResource CustomButton}" Click="CloseApp">
                             <materialDesign:PackIcon 
                                 Style="{DynamicResource NavBtnIcon}" 
                                 Kind="Close">
