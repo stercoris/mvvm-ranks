@@ -12,9 +12,18 @@
     <Grid 
         VerticalAlignment="Center"
         HorizontalAlignment="Center">
+
         <Image
+            x:Name="LogoImg"
             Source="/Images/up_logo.ico"
             Width="50" Height="50">
         </Image>
+        
+        <TextBlock 
+            Margin="0,80,0,0"
+            Style="{StaticResource RanksText}"
+            Text="Загрузка">
+        </TextBlock>
+
     </Grid>
 </Page>

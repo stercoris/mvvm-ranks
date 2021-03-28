@@ -21,18 +21,16 @@ namespace Ranks.ViewModels
         #endregion
         public MainViewModel()
         {
-
             LoadingScreen = new LoadingScreen();
             AppState = LoadingScreen;
-
             Loading();
         }
 
         private async Task Loading()
         {
             await DataAccess.RanksStorage.LoadRanks();
-            await Task.Delay(5000);
             PageContainer = new PageContainer();
+            await Task.Delay(2000); //TODO: Убрать на релизе
             AppState = PageContainer;
         }
     }
