@@ -78,11 +78,12 @@
                                     IsReadOnly="True"
                                     TextAlignment="Center"
                                     MinHeight="10"
-                                    VerticalContentAlignment="Top"
+                                    VerticalContentAlignment="Center"
                                     Grid.Row="0"
                                     Style="{DynamicResource GroupTextBoxes}"
                                     Foreground="Orange"
                                     FontFamily="{StaticResource Montserrat}"
+                                    IsHitTestVisible="False"
                                     Text="12">
                                 </TextBox>
                                 <TextBox          
@@ -93,7 +94,6 @@
                                     >
                                 </TextBox>
                             </Grid>
-
                             <Grid 
                                 Grid.Row="1"
                                 Background="{StaticResource DarkPurpleBrush}"
@@ -107,7 +107,8 @@
                                     Grid.Row="0"
                                     Style="{DynamicResource GroupTextBoxes}"
                                     Foreground="Orange"
-                                    FontFamily="{StaticResource Montserrat}"    
+                                    FontFamily="{StaticResource Montserrat}"  
+                                     IsHitTestVisible="False"
                                     Text="мастер">
                                 </TextBox>
                                 <TextBox                      
@@ -148,7 +149,6 @@
                                 Text="Топ 3">
                             </TextBox>
                         </Grid>
-
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
@@ -176,7 +176,6 @@
                             >
                         </TextBox>
                     </Grid>
-
                 </Grid>
             </ScrollViewer>
         </Grid>
