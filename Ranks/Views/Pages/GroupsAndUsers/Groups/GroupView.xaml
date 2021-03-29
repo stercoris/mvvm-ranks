@@ -35,7 +35,6 @@
                             Converter={StaticResource Base64ToImageSourceConverter},
                             ConverterParameter=100}">
                     </ImageBrush>
-                    
                 </Ellipse.Fill>
             </Ellipse>
 
