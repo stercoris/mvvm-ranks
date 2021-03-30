@@ -19,12 +19,12 @@ namespace Order.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory;
-            if (!File.Exists(Path.Combine(path, "order.db")))
+            string path = AppDomain.CurrentDomain.BaseDirectory; // TODO: Наверное это и не работает в релизе?
+            if (!File.Exists(Path.Combine(path, Config.DBName)))
             {
-                File.Create(Path.Combine(path, "order.db"));
+                File.Create(Path.Combine(path, Config.DBName));
             }
-            options.UseSqlite("Data Source=" + Path.Combine(path, "order.db") + ";");
+            options.UseSqlite("Data Source=" + Path.Combine(path, Config.DBName) + ";");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
