@@ -6,7 +6,7 @@ using System.IO;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
-namespace Ranks.Converters
+namespace Order.Converters
 {
     class Base64ToImageSourceConverter : IValueConverter
     {
@@ -15,7 +15,7 @@ namespace Ranks.Converters
             BitmapImage bitmapImage = new BitmapImage();
 
             int width = System.Convert.ToInt32(parameter);
-            int height = width/16*9;
+            int height = width / 16 * 9;
             string base64String = (string)value;
 
             bitmapImage.BeginInit();
@@ -24,14 +24,14 @@ namespace Ranks.Converters
             bitmapImage.CacheOption = BitmapCacheOption.None;
             if (base64String == null)
             {
-                return("\\Images\\logo.ico");
+                return ("\\Images\\logo.ico");
             }
             var ms = new MemoryStream(System.Convert.FromBase64String(base64String));
             bitmapImage.StreamSource = ms;
             bitmapImage.EndInit();
             bitmapImage.Freeze();
             return (bitmapImage);
-            
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

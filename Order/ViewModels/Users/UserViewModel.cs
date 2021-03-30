@@ -1,11 +1,10 @@
 ﻿using Order.DataAccess.Models;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using System;
 using System.Windows.Input;
 
 
-namespace Ranks.ViewModels
+namespace Order.ViewModels
 {
     class UserViewModel : ReactiveObject
     {

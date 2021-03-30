@@ -1,5 +1,0 @@
-query GetUserImage($id: Int!) {
-  User(id: $id) {
-    picture
-  }
-}

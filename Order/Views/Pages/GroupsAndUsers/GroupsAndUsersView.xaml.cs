@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Ranks.View
+namespace Order.View
 {
     public partial class GroupsAndUsers : Page
     {

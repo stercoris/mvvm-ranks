@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,7 +9,7 @@ namespace Order.DataAccess.Models
     {
 
         [Key] public int Id { get; set; }
-        
+
         [Comment("First name of the user"), MaxLength(10), Required]
         public string Name { get; set; }
 
@@ -25,7 +24,7 @@ namespace Order.DataAccess.Models
         [Comment("Rank of the user, cant be nullable"), Required]
         public Rank Rank { get; set; }
 
-        [Comment("Group of the user, cant be nullable"),  Required]
+        [Comment("Group of the user, cant be nullable"), Required]
         public Group Group { get; set; }
 
     }

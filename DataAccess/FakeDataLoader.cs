@@ -1,9 +1,5 @@
 ﻿using Order.DataAccess.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Order.DataAccess
 {
@@ -15,7 +11,7 @@ namespace Order.DataAccess
 
             dbContext.Groups.Add(new Group
             {
-                About = "Крутая группа ТПК", 
+                About = "Крутая группа ТПК",
                 Name = "Вп-31",
             });
 
@@ -36,10 +32,15 @@ namespace Order.DataAccess
                 Name = "Иди нахуй говно",
             });
 
+            dbContext.Ranks.Add(new Rank
+            {
+                Name = "Второе говно нафиг!!!",
+            });
+
             dbContext.Students.Add(new Student
             {
-                About = "Дмитрий, блин родин!!", 
-                Name = "Дмитрий", 
+                About = "Дмитрий, блин родин!!",
+                Name = "Дмитрий",
                 SecondName = "Родин",
                 Group = new Group
                 {

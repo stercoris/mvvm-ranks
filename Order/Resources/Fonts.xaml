@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Ranks">
+                    xmlns:local="clr-namespace:Order">
     <FontFamily x:Key="Montserrat">pack://application:,,,/Resources/#Montserrat Alternates Regular</FontFamily>
 
     <Style x:Key="RanksText" TargetType="TextBlock">

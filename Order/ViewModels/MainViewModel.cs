@@ -1,14 +1,13 @@
-﻿using Ranks.Views;
-using Ranks.Views.Pages;
+﻿using Order.Views;
+using Order.Views.Pages;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
-namespace Ranks.ViewModels
+namespace Order.ViewModels
 {
     internal class MainViewModel : ReactiveObject
     {

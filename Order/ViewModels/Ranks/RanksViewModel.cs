@@ -1,9 +1,10 @@
-﻿using ReactiveUI;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
+﻿using Order.DataAccess;
+using Order.DataAccess.Models;
+using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using System.Collections.ObjectModel;
 
-namespace Ranks.ViewModels
+namespace Order.ViewModels
 {
     class RanksViewModel : ReactiveObject
     {
@@ -11,9 +12,9 @@ namespace Ranks.ViewModels
 
         public RanksViewModel()
         {
-            //ObservableCollection<Rank> ranks = DataAccess.RanksStorage.Ranks;
-            //RankItems = new ObservableCollection<RankItemViewModel>();
-            //foreach (var rank in ranks) RankItems.Add(new RankItemViewModel(rank));
+            var ranks = new ObservableCollection<Rank>(DBProvider.DBContext.Ranks);
+            RankItems = new ObservableCollection<RankItemViewModel>();
+            foreach (var rank in ranks) RankItems.Add(new RankItemViewModel(rank));
         }
     }
 }

@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>up_logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +16,7 @@
 
   <ItemGroup>
     <Folder Include="Commands\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,7 +58,7 @@
     <Compile Update="Views\Pages\GroupsAndUsers\Groups\GroupView.xaml.cs">
       <DependentUpon>GroupView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Pages\GroupsAndUsers\Groups\TopUserView.xaml.cs">
+    <Compile Update="Views\Pages\GroupsAndUsers\Users\TopUserView.xaml.cs">
       <DependentUpon>TopUserView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Pages\GroupsAndUsers\Users\UserEditView.xaml.cs">
@@ -110,7 +112,7 @@
     <Page Update="Views\Pages\GroupsAndUsers\Groups\GroupView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Pages\GroupsAndUsers\Groups\TopUserView.xaml">
+    <Page Update="Views\Pages\GroupsAndUsers\Users\TopUserView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Pages\GroupsAndUsers\Users\UserEditView.xaml">

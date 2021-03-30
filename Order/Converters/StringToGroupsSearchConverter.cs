@@ -1,14 +1,11 @@
-﻿using Ranks.ViewModels;
+﻿using Order.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace Ranks.Converters
+namespace Order.Converters
 {
     public class StringToGroupsSearchConverter : IMultiValueConverter
     {
@@ -18,7 +15,7 @@ namespace Ranks.Converters
         {
             if (value != null && value[1] != null)
             {
-                if(value[0] == null || (value[0] as string).Length == 0)
+                if (value[0] == null || (value[0] as string).Length == 0)
                 {
                     return (value[1]);
                 }

@@ -1,15 +1,11 @@
-﻿using ReactiveUI;
+﻿using Order.DataAccess;
+using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Windows.Input;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using Order.DataAccess;
+using System.Linq;
+using System.Windows.Input;
 
-namespace Ranks.ViewModels
+namespace Order.ViewModels
 {
     class GroupsAndUsersViewModel : ReactiveObject
     {

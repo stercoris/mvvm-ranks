@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Order.DataAccess
 {
@@ -18,12 +13,12 @@ namespace Order.DataAccess
                 if (_dbcontext == null)
                 {
                     _dbcontext = new OrderContext(new DbContextOptions<OrderContext>());
-                    if(System.Diagnostics.Debugger.IsAttached)
+                    if (System.Diagnostics.Debugger.IsAttached)
                     {
                         //FakeDataLoader.Load(_dbcontext);
                     }
                 }
-                
+
                 return (_dbcontext);
             }
         }

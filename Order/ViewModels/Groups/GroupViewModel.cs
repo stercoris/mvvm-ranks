@@ -1,17 +1,12 @@
-﻿using ReactiveUI;
+﻿using Order.DataAccess;
+using Order.DataAccess.Models;
+using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Collections.Generic;
-using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Order.DataAccess.Models;
-using Order.DataAccess;
+using System.Windows.Input;
 
-namespace Ranks.ViewModels
+namespace Order.ViewModels
 {
     class GroupViewModel : ReactiveObject
     {
@@ -39,7 +34,9 @@ namespace Ranks.ViewModels
         public void LoadUsers()
         {
             Users = new ObservableCollection<UserViewModel>(
-                DBProvider.DBContext.Students.Select((user) => new UserViewModel(user, EditCommand))
+                DBProvider.DBContext.Students
+                    .Where((student) => student.Group.Id == this.Group.Id)
+                    .Select((user) => new UserViewModel(user, EditCommand))
             );
         }
         public void UnloadUsers()

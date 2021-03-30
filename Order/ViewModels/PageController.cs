@@ -3,7 +3,7 @@ using ReactiveUI.Fody.Helpers;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Ranks.ViewModels
+namespace Order.ViewModels
 {
     class PageController : ReactiveObject
     {

@@ -1,5 +1,5 @@
-﻿using Order.DataAccess.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Order.DataAccess.Models;
 using System;
 using System.IO;
 
@@ -7,7 +7,7 @@ namespace Order.DataAccess
 {
     public class OrderContext : DbContext
     {
-        public OrderContext(DbContextOptions<OrderContext> options) : base(options) 
+        public OrderContext(DbContextOptions<OrderContext> options) : base(options)
         {
             this.Database.Migrate();
             //this.Database.EnsureDeleted();
@@ -33,9 +33,9 @@ namespace Order.DataAccess
                 .HasMany(g => g.Students)
                 .WithOne(s => s.Group);
 
-            modelBuilder.Entity<Student>()
-                .HasOne(s => s.Rank)
-                .WithMany(r => r.Students);
+            modelBuilder.Entity<Rank>()
+                .HasMany(r => r.Students)
+                .WithOne(s => s.Rank);
         }
     }
 }

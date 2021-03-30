@@ -1,14 +1,13 @@
-﻿<Page x:Class="Ranks.View.GroupsAndUsers"
+﻿<Page 
+    x:Class="Order.View.GroupsAndUsers"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:local="clr-namespace:Ranks"
-    xmlns:views="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
-    xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
-    xmlns:converters="clr-namespace:Ranks.Converters"
-    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:views="clr-namespace:Order.Views.Pages.GroupsAndUsers"
+    xmlns:viewmodels="clr-namespace:Order.ViewModels"
+    xmlns:converters="clr-namespace:Order.Converters"
     d:DesignHeight ="600" d:DesignWidth="1240" x:Uid="Пользователи"
     d:DataContext="{d:DesignInstance Type=viewmodels:PageController, IsDesignTimeCreatable=False}">
 

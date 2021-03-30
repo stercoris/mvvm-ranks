@@ -3,7 +3,7 @@ using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
 
-namespace Ranks.ViewModels
+namespace Order.ViewModels
 {
     class RankItemViewModel : ReactiveObject
     {
