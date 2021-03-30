@@ -114,7 +114,7 @@
             Background="{StaticResource DarkGradient}"
             Resources="{StaticResource DisableScroller}">
             <WrapPanel 
-                    HorizontalAlignment="Center">
+                HorizontalAlignment="Center">
                 <ItemsControl 
                     ItemsSource="{Binding SelectedGroup.Users, IsAsync=False}">
                     <ItemsControl.ItemsPanel>
@@ -172,11 +172,12 @@
                 <RowDefinition Height="64*"/>
             </Grid.RowDefinitions>
 
-            <Frame x:Name="InfoFrame" 
-                   Content="{Binding CurrentlyEditableObject}"
-                   NavigationUIVisibility="Hidden" 
-                   DataContext="{Binding}" 
-                   Grid.RowSpan="2">
+            <Frame 
+			    x:Name="InfoFrame" 
+			    Content="{Binding CurrentlyEditableObject}"
+			    NavigationUIVisibility="Hidden" 
+			    DataContext="{Binding}" 
+			    Grid.RowSpan="2">
             </Frame>
         </Grid>
     </Grid>

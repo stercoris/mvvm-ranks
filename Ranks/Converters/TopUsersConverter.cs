@@ -18,7 +18,7 @@ namespace Ranks.Converters
         {
             
             var UsersList = (value as ObservableCollection<UserViewModel>).ToList();
-            UsersList = UsersList.OrderBy(user => System.Convert.ToInt32(user.User.rankId)).ToList();
+            UsersList = UsersList.OrderBy(user => System.Convert.ToInt32(user.User.rankId)).Reverse().ToList();
             var topUsers = new ObservableCollection<UserViewModel>();
             foreach (var user in UsersList.GetRange(0   , (UsersList.Count > 3) ? 3: UsersList.Count))
             {

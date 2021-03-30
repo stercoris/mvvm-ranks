@@ -6,23 +6,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
              xmlns:local="clr-namespace:Ranks.Views.Pages.GroupsAndUsers"
              xmlns:viewmodels="clr-namespace:Ranks.ViewModels" 
+             xmlns:ranks="clr-namespace:Ranks.DataAccess"
              d:DataContext="{d:DesignInstance Type=viewmodels:UserViewModel, IsDesignTimeCreatable=False}"
              Tag="Представление топового студента группы"
-             d:DesignHeight="50" d:DesignWidth="150">
+             d:DesignHeight="50" d:DesignWidth="150" 
+             Width="auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"> 
     <UserControl.Resources>
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
         <converters:ColorConverter x:Key="ColorConverter"/>
     </UserControl.Resources>
-    <Grid Background="{StaticResource DarkPurpleBrush}">
+    <Grid Width="auto" Background="{StaticResource DarkPurpleBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Ellipse 
-                Grid.Column="0" 
-                Width="45"
-                Height="45"
-                Margin="0" Stretch="Fill">
+            Grid.Column="0" 
+            Width="45"
+            Height="45"
+            Margin="0"
+            Stretch="Fill">
             <Ellipse.Fill>
                 <ImageBrush 
                     ImageSource="{
@@ -31,17 +35,33 @@
                         ConverterParameter=100}">
                 </ImageBrush>
             </Ellipse.Fill>
-        </Ellipse>        
+        </Ellipse>
         <TextBlock 
-                Grid.Column="1"
-                Text="{Binding User.name}"
-                VerticalAlignment="Center"
-                Style="{DynamicResource RanksText}" 
-                Padding="0"
-                Background="{Binding User.rankId, Converter={StaticResource ColorConverter}}"
-                TextAlignment="Left"
-                Margin="10,0,0,0"
-                FontSize="16">
+            Grid.Column="1"
+            Text="{Binding User.name}"
+            VerticalAlignment="Center"
+            Style="{DynamicResource RanksText}" 
+            Padding="0"
+            TextAlignment="Left"
+            Margin="10,0,0,0"
+            FontSize="16">
         </TextBlock>
+        <Border
+            Grid.Column="2"
+            Background="{Binding User.rankId, Converter={StaticResource ColorConverter}}"
+            Margin="0"
+            BorderBrush="{StaticResource DarkPurpleBrush}"
+            BorderThickness="1">
+            <TextBlock
+                Text="{Binding User.rankId}"
+                FontSize="16"
+                TextAlignment="Center"
+                FontWeight="Bold"
+                VerticalAlignment="Center">
+                <!--<TextBlock.LayoutTransform>
+                    <RotateTransform Angle="90"/>
+                </TextBlock.LayoutTransform>-->
+            </TextBlock>
+        </Border>
     </Grid>
 </UserControl>
