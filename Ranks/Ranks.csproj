@@ -337,12 +337,6 @@
     <Resource Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RanksClient\RanksClient.csproj">
-      <Project>{faf4db5c-7ba9-4264-9e71-7ac5e815a956}</Project>
-      <Name>RanksClient</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Commands\" />
   </ItemGroup>
   <ItemGroup>

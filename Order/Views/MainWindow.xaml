@@ -1,0 +1,26 @@
+﻿<Window x:Class="Ranks.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Ranks"
+        xmlns:viewmodels="clr-namespace:Ranks.ViewModels"
+        Title="Ранги" 
+        Height="800" Width="1280"
+        MinHeight="700" MinWidth="1280"
+        ResizeMode="CanResize" WindowStyle="None" 
+        MaxHeight="{Binding Source={x:Static SystemParameters.MaximizedPrimaryScreenHeight}}" 
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=True}">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="30" ResizeBorderThickness="5"/>
+    </WindowChrome.WindowChrome>
+    <Grid Style="{StaticResource WindowMainPanelStyle}">
+        <Frame 
+            Content="{Binding AppState, IsAsync=True}" 
+            NavigationUIVisibility="Hidden" 
+            Width="auto" Height="auto"
+            Panel.ZIndex="200">
+        </Frame>
+    </Grid>
+</Window>

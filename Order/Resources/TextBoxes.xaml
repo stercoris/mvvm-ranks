@@ -1,0 +1,179 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ControlTemplate x:Key="SearchBox" TargetType="{x:Type TextBox}">
+        <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Black"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <materialDesign:PackIcon 
+                    Grid.Column="0" 
+                    Kind="Search" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center" 
+                    Margin="10,0">
+                </materialDesign:PackIcon>
+
+                <ScrollViewer 
+                    Grid.Column="1"
+                    x:Name="PART_ContentHost"
+                    materialDesign:HintAssist.Hint="Поиск"
+                    Background="Transparent">
+                </ScrollViewer>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Text" Value=""/>
+                <Setter TargetName="PART_ContentHost" Property="Opacity" Value="1"/>
+            </Trigger>
+            <Trigger Property="IsFocused" Value="False">
+                <Setter Property="Text" Value="Поиск"/>
+                <Setter TargetName="PART_ContentHost" Property="Opacity" Value="0.5"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+
+    <Style x:Key="SearchTextBox" TargetType="TextBox">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="AcceptsReturn" Value="False"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="23,0"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+    </Style>
+
+
+    <ControlTemplate x:Key="EditFieldTextBox" TargetType="{x:Type TextBox}">
+        <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <ScrollViewer
+                    Grid.Column="1" 
+                    x:Name="PART_ContentHost" 
+                    Background="Transparent">
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </ControlTemplate>
+
+    <Style x:Key="EditFieldTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Margin" Value="50,0"/>
+        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
+        <Setter Property="Foreground" Value="{StaticResource OrangeBrush}"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{StaticResource PurpleBrush}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+    </Style>
+
+    <Style x:Key="AboutTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Margin" Value="50,100"/>
+        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
+        <Setter Property="Foreground" Value="{StaticResource MoreDarkerOrangeBrush}"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{StaticResource PurpleBrush}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="TextAlignment" Value="Justify"/>
+    </Style>
+
+    <Style x:Key="GroupTextBoxes" TargetType="TextBox">
+        <Setter Property="Margin" Value="10,5,10,5"/>
+        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
+        <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+    </Style>
+    
+    <Style x:Key="ConstTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Margin" Value="0,40,0,0"/>
+        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
+        <Setter Property="Foreground" Value="{StaticResource MoreDarkerOrangeBrush}"/>
+        <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontSize" Value="24"/>
+        
+        <Setter Property="TextAlignment" Value="Left"/>
+    </Style>
+
+    <Style x:Key="InfoTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Margin" Value="20,40,20,0"/>
+        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
+        <Setter Property="Foreground" Value="{StaticResource TrueOrange}"/>
+        <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+    </Style>
+
+    <Style x:Key="NewEditFieldTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
+        <Setter Property="Foreground" Value="Orange"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+    </Style>
+    
+    
+    <Style x:Key="NoEditFieldTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Margin" Value="10,0,0,10"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
+        <Setter Property="Foreground" Value="{StaticResource OrangeBrush}"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+    </Style>
+
+    <Style x:Key="LowerSignatureTextBox" TargetType="TextBox">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{StaticResource HorizontalPurpleGradient}"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkPurpleBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+    </Style>
+    
+</ResourceDictionary>
