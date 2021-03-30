@@ -20,7 +20,7 @@ namespace Order.DataAccess
                     _dbcontext = new OrderContext(new DbContextOptions<OrderContext>());
                     if(System.Diagnostics.Debugger.IsAttached)
                     {
-                        FakeDataLoader.Load(_dbcontext);
+                        //FakeDataLoader.Load(_dbcontext);
                     }
                 }
                 

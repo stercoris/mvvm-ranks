@@ -9,8 +9,9 @@ namespace Order.DataAccess
     {
         public OrderContext(DbContextOptions<OrderContext> options) : base(options) 
         {
-            this.Database.EnsureDeleted();
-            this.Database.EnsureCreated();
+            this.Database.Migrate();
+            //this.Database.EnsureDeleted();
+            //this.Database.EnsureCreated();
         }
         public DbSet<Student> Students { get; set; }
         public DbSet<Rank> Ranks { get; set; }
