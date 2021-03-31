@@ -9,7 +9,10 @@ namespace Order.DataAccess
     {
         public OrderContext(DbContextOptions<OrderContext> options) : base(options)
         {
-            this.Database.Migrate();
+            if (!this.Database.EnsureCreated())
+            {
+                this.Database.Migrate();
+            }
             //this.Database.EnsureDeleted();
             //this.Database.EnsureCreated();
         }
@@ -17,14 +20,14 @@ namespace Order.DataAccess
         public DbSet<Rank> Ranks { get; set; }
         public DbSet<Group> Groups { get; set; }
 
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             string path = AppDomain.CurrentDomain.BaseDirectory; // TODO: Наверное это и не работает в релизе?
-            if (!File.Exists(Path.Combine(path, Config.DBName)))
-            {
-                File.Create(Path.Combine(path, Config.DBName));
-            }
-            options.UseSqlite("Data Source=" + Path.Combine(path, Config.DBName) + ";");
+            string dbPath = Path.Combine(path, Config.DBName);
+            options.UseSqlite("Data Source=" + dbPath + ";");
+            base.OnConfiguring(options);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
