@@ -14,15 +14,15 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Orientation="Vertical" Background="{DynamicResource DarkPurpleBrush}">
+        <StackPanel Grid.Column="0" Orientation="Vertical" Background="{StaticResource DarkPurpleBrush}">
             <TextBlock 
-                Style="{DynamicResource RanksText}" 
+                Style="{StaticResource RanksText}" 
                 HorizontalAlignment="Center" 
                 Padding="10,30"> 
                 Ранги 
             </TextBlock>
             
-            <TextBlock Style="{DynamicResource UserSelectionTitle}">
+            <TextBlock Style="{StaticResource UserSelectionTitle}">
                 <Run> Количество рангов : </Run>
                 <Run Text="{Binding RankItems.Count, Mode=OneWay, IsAsync=True}"/>
             </TextBlock>

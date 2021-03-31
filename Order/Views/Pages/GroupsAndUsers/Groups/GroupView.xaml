@@ -7,12 +7,12 @@
     xmlns:converters="clr-namespace:Order.Converters"
     xmlns:viewmodels="clr-namespace:Order.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:GroupViewModel, IsDesignTimeCreatable=False}"
-    Tag="Представление группы">
+    Tag="Представление группы" d:Width="250" d:Background="{StaticResource DarkPurpleBrush}">
     <UserControl.Resources>
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
     </UserControl.Resources>
     <Button 
-        Style="{DynamicResource GroupSelectButton}" 
+        Style="{StaticResource GroupSelectButton}" 
         Command="{Binding ShowUsersCommand}"
         CommandParameter="{Binding}">
         <Grid>
@@ -24,13 +24,15 @@
             <Ellipse 
                 Grid.Column="0" 
                 Width="55" Height="50"
-                Margin="0" Stretch="Fill">
+                Margin="0">
                 <Ellipse.Fill>
                     <ImageBrush 
+                        d:ImageSource="/Images/no_image.png"
                         ImageSource="{
                             Binding Group.Picture,
                             Converter={StaticResource Base64ToImageSourceConverter},
-                            ConverterParameter=100}">
+                            ConverterParameter=100}"
+                        Stretch="Uniform">
                     </ImageBrush>
                     
                 </Ellipse.Fill>
@@ -41,7 +43,7 @@
                 Text="{Binding Group.Name}"
                 Margin="20,0"
                 VerticalAlignment="Center"
-                Style="{DynamicResource RanksText}" >
+                Style="{StaticResource RanksText}" >
             </TextBlock>
 
         </Grid>

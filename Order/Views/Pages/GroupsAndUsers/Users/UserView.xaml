@@ -12,7 +12,7 @@
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
     </UserControl.Resources>
     <Button 
-        Style="{DynamicResource UserSelectionButton}"
+        Style="{StaticResource UserSelectionButton}"
         Command="{Binding EditCommand}"
         CommandParameter="{Binding}">
         <Grid>
@@ -23,21 +23,23 @@
 
             <TextBlock 
                 Grid.Row="0" 
-                Style="{DynamicResource UserSelectionTitle}">
+                Style="{StaticResource UserSelectionTitle}">
                 <Run Text="{Binding User.Name}" />
                 <Run Text=" " />
                 <Run Text="{Binding User.SecondName}" />
             </TextBlock>
             <!-- TODO: IsAsync= True или False - что лучше????? -->
-            <Image 
-                Grid.Row="1" 
-                
+
+            <Grid Grid.Row="1" Background="{StaticResource OrangeToPurpleGradient}">
+                <Image 
                 Source="{Binding User.Picture, IsAsync=True,
                         Converter={StaticResource Base64ToImageSourceConverter},
-                        ConverterParameter=150}"
+                        ConverterParameter=500}"
                 Stretch="Fill"
                 Height="auto">
-            </Image>
+                </Image>
+            </Grid>
+            
         </Grid>
     </Button>
 </UserControl>

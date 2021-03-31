@@ -28,20 +28,20 @@
                 </Image>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Row="1" Margin="0,0,0,150">
                     <Button 
-                        Style="{DynamicResource Navigation}"
-                        Template="{DynamicResource CustomButton}"
+                        Style="{StaticResource Navigation}"
+                        Template="{StaticResource CustomButton}"
                         Command="{Binding bNavGroupsAndUsersClick}">
                         <materialDesign:PackIcon
-                            Style="{DynamicResource NavBtnIcon}"
+                            Style="{StaticResource NavBtnIcon}"
                             Kind="User">
                         </materialDesign:PackIcon>
                     </Button>
                     <Button 
-                        Style="{DynamicResource Navigation}"
-                        Template="{DynamicResource CustomButton}"
+                        Style="{StaticResource Navigation}"
+                        Template="{StaticResource CustomButton}"
                         Command="{Binding bNavRankListClick}">
                         <materialDesign:PackIcon 
-                            Style="{DynamicResource NavBtnIcon}" 
+                            Style="{StaticResource NavBtnIcon}" 
                             Kind="ViewList">
                         </materialDesign:PackIcon>
                     </Button>
@@ -58,19 +58,19 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button 
                             WindowChrome.IsHitTestVisibleInChrome="True"
-                            Style="{DynamicResource WindowControls}" 
-                            Template="{DynamicResource CustomButton}" Click="MinimizeApp">
+                            Style="{StaticResource WindowControls}" 
+                            Template="{StaticResource CustomButton}" Click="MinimizeApp">
                             <materialDesign:PackIcon 
-                                Style="{DynamicResource NavBtnIcon}" 
+                                Style="{StaticResource NavBtnIcon}" 
                                 Margin="0,6,0,0" Kind="WindowMinimize">
                             </materialDesign:PackIcon>
                         </Button>
                         <Button 
                             WindowChrome.IsHitTestVisibleInChrome="True"
-                            Style="{DynamicResource WindowControls}" 
-                            Template="{DynamicResource CustomButton}" Click="CloseApp">
+                            Style="{StaticResource WindowControls}" 
+                            Template="{StaticResource CustomButton}" Click="CloseApp">
                             <materialDesign:PackIcon 
-                                Style="{DynamicResource NavBtnIcon}" 
+                                Style="{StaticResource NavBtnIcon}" 
                                 Kind="Close">
                             </materialDesign:PackIcon>
                         </Button>

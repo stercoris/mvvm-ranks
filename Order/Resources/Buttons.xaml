@@ -70,7 +70,7 @@
         <Setter Property="Padding" Value="10,10"/>
         <Setter Property="Margin" Value="0"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-        <Setter Property="Template" Value="{DynamicResource CustomButton}"/>
+        <Setter Property="Template" Value="{StaticResource CustomButton}"/>
         <Setter Property="BorderThickness" Value="0,1,0,1"/>
         <Setter Property="BorderBrush" Value="{StaticResource GrayBrush}"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -104,6 +104,15 @@
         <Setter Property="Background" Value="{StaticResource PurpleBrush}"/>
     </Style>
 
+    <Style x:Key="ConfirmChange" TargetType="Button">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Margin" Value="0,10,0,10"/>
+        <Setter Property="Background" Value="{StaticResource HorizontalPurpleGradient}"/>
+        <Setter Property="Template" Value="{DynamicResource CustomButton}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
+    </Style>
 
     <Style x:Key="AddUser" TargetType="Button">
         <Setter Property="Padding" Value="0"/>
@@ -115,14 +124,4 @@
         <Setter Property="Template" Value="{StaticResource CustomButton}"/>
     </Style>
 
-
-    <Style x:Key="ConfirmChange" TargetType="Button">
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="FontSize" Value="22"/>
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="Margin" Value="0,10,0,10"/>
-        <Setter Property="Background" Value="{StaticResource HorizontalPurpleGradient}"/>
-        <Setter Property="Template" Value="{StaticResource CustomButton}"/>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
-    </Style>
 </ResourceDictionary>

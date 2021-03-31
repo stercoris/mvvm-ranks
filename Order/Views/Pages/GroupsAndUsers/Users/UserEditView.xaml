@@ -19,26 +19,19 @@
             <RowDefinition Height="AUTO"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Height="250" Width="360"   Margin="10,0,10,10">
-            <StackPanel.Background>
-                <ImageBrush 
-                        ImageSource="{
-                            Binding User.Picture, IsAsync=True,
-                            Converter={StaticResource Base64ToImageSourceConverter},
-                            ConverterParameter=500}"
-                        Stretch="UniformToFill">
-                </ImageBrush>
-            </StackPanel.Background>
-        </StackPanel>
+        <Image
+            Source="{
+                Binding User.Picture, IsAsync=True,
+                Converter={StaticResource Base64ToImageSourceConverter},
+                ConverterParameter=500}"
+            Margin="10"
+            d:Source="/Images/no_image.png"
+            Stretch="Uniform">
+        </Image>
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Height="auto" Width="auto">
+            <StackPanel Orientation="Vertical">
+                <!-- Имя и фамилия -->
+                <Grid Height="auto" Width="auto">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -56,7 +49,7 @@
                             MinHeight="10"
                             VerticalContentAlignment="Center"
                             Grid.Row="0"
-                            Style="{DynamicResource GroupTextBoxes}"
+                            Style="{StaticResource GroupTextBoxes}"
                             Foreground="Orange"
                             FontFamily="{StaticResource Montserrat}"
                             FontSize="20"
@@ -65,7 +58,7 @@
                         </TextBox>
                         <TextBox          
                             Grid.Row="1"
-                            Style="{DynamicResource LowerSignatureTextBox}"
+                            Style="{StaticResource LowerSignatureTextBox}"
                             Text="Имя"
                             Background="{StaticResource HorizontalPurpleGradient}">
                         </TextBox>
@@ -84,28 +77,28 @@
                             MinHeight="10"
                             VerticalContentAlignment="Center"
                             Grid.Row="0"
-                            Style="{DynamicResource GroupTextBoxes}"
+                            Style="{StaticResource GroupTextBoxes}"
                             Foreground="Orange"
                             FontFamily="{StaticResource Montserrat}"
                             Text="{Binding User.SecondName, Mode=TwoWay}">
                         </TextBox>
                         <TextBox          
                             Grid.Row="1"
-                            Style="{DynamicResource LowerSignatureTextBox}"
+                            Style="{StaticResource LowerSignatureTextBox}"
                             Text="Фамилия"
                             Background="{StaticResource HorizontalPurpleGradient}">
                         </TextBox>
                     </Grid>
                 </Grid>
-                <Grid Grid.Row="1" Height="auto" Width="auto" Margin="0,0,5,0">
+                <!-- Звание и стрелочки его изменения -->
+                <Grid Height="auto" Width="auto" Margin="10,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0"
-                        Background="{StaticResource DarkPurpleBrush}"
-                        Margin="10,5,5,5">
+                        Background="{StaticResource DarkPurpleBrush}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="auto"/>
@@ -116,21 +109,21 @@
                             MinHeight="10"
                             VerticalContentAlignment="Center"
                             Grid.Row="0"
-                            Style="{DynamicResource GroupTextBoxes}"
+                            Style="{StaticResource GroupTextBoxes}"
                             Foreground="Orange"
                             FontFamily="{StaticResource Montserrat}"
                             Text="{Binding User.Rank.Id, Mode=TwoWay}">
                         </TextBox>
                         <TextBox          
                             Grid.Row="1"
-                            Style="{DynamicResource LowerSignatureTextBox}"
+                            Style="{StaticResource LowerSignatureTextBox}"
                             Text="Звание"
                             Background="{StaticResource HorizontalPurpleGradient}">
                         </TextBox>
                     </Grid>
                     <Button Grid.Column="1"
                         Background="#FD4755" 
-                        Style="{DynamicResource RankUpDown}">
+                        Style="{StaticResource RankUpDown}">
                         <materialDesign:PackIcon 
                             Grid.Column="1"
                             Height="50"
@@ -140,8 +133,8 @@
                         </materialDesign:PackIcon>
                     </Button>
                     <Button Grid.Column="2"
-                    Background="#FD4755" 
-                    Style="{DynamicResource RankUpDown}">
+                        Background="#FD4755" 
+                        Style="{StaticResource RankUpDown}">
                         <materialDesign:PackIcon 
                             Grid.Column="1"
                             Height="50"
@@ -151,25 +144,26 @@
                         </materialDesign:PackIcon>
                     </Button>
                 </Grid>
-                <Grid Grid.Row="2" Height="auto" Width="auto">
+                <!-- Возраст и группа -->
+                <Grid Height="auto" Width="auto" Margin="10,5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Grid 
                         Grid.Column="0"
-                        Background="{StaticResource DarkPurpleBrush}"
-                        Margin="10,5,5,5">
+                        Background="{StaticResource DarkPurpleBrush}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <TextBox 
+                            Grid.Row="0"
                             TextAlignment="Center"
                             MinHeight="10"
                             VerticalContentAlignment="Center"
-                            Grid.Row="0"
-                            Style="{DynamicResource GroupTextBoxes}"
+                            Style="{StaticResource GroupTextBoxes}"
                             Foreground="Orange"
                             FontFamily="{StaticResource Montserrat}"
                             FontSize="20"
@@ -178,15 +172,14 @@
                         </TextBox>
                         <TextBox          
                             Grid.Row="1"
-                            Style="{DynamicResource LowerSignatureTextBox}"
+                            Style="{StaticResource LowerSignatureTextBox}"
                             Text="Возраст"
                             Background="{StaticResource HorizontalPurpleGradient}">
                         </TextBox>
                     </Grid>
                     <Grid 
-                        Grid.Column="1"
-                        Background="{StaticResource DarkPurpleBrush}"
-                        Margin="5,5,10,5">
+                        Grid.Column="2"
+                        Background="{StaticResource DarkPurpleBrush}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="auto"/>
@@ -197,22 +190,23 @@
                             MinHeight="10"
                             VerticalContentAlignment="Center"
                             Grid.Row="0"
-                            Style="{DynamicResource GroupTextBoxes}"
+                            Style="{StaticResource GroupTextBoxes}"
                             Foreground="Orange"
                             FontFamily="{StaticResource Montserrat}"
                             Text="Нада конвертер штоле добавить">
                         </TextBox>
                         <TextBox          
                             Grid.Row="1"
-                            Style="{DynamicResource LowerSignatureTextBox}"
+                            Style="{StaticResource LowerSignatureTextBox}"
                             Text="Группа"
                             Background="{StaticResource HorizontalPurpleGradient}">
                         </TextBox>
                     </Grid>
+                <!-- Звание и стрелочки его изменения -->
                 </Grid>
-                <Grid Grid.Row="3"
-                    Background="{StaticResource DarkPurpleBrush}"
-                    Margin="10,5,5,5">
+                <!-- Описание -->
+                <Grid Margin="10,5,5,5"
+                    Background="{StaticResource DarkPurpleBrush}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="auto"/>
@@ -223,19 +217,19 @@
                         MinHeight="10"
                         VerticalContentAlignment="Center"
                         Grid.Row="0"
-                        Style="{DynamicResource GroupTextBoxes}"
+                        Style="{StaticResource GroupTextBoxes}"
                         Foreground="Orange"
                         FontFamily="{StaticResource Montserrat}"
                         Text="{Binding User.About, Mode=TwoWay}">
                     </TextBox>
                     <TextBox          
                         Grid.Row="1"
-                        Style="{DynamicResource LowerSignatureTextBox}"
+                        Style="{StaticResource LowerSignatureTextBox}"
                         Text="Описание"
                         Background="{StaticResource HorizontalPurpleGradient}">
                     </TextBox>
                 </Grid>
-            </Grid>
+            </StackPanel>
         </ScrollViewer>
         <Button 
             Grid.Row="3"
@@ -243,7 +237,7 @@
             FontSize="28"
             Content="Сохранить"
             Style="{DynamicResource ConfirmChange}"
-            Margin="2,0,2,0"
+            Margin="2,0"
             FontFamily="{StaticResource Montserrat}">
         </Button>
     </Grid>
