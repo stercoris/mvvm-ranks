@@ -1,5 +1,6 @@
 ﻿using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using Serilog;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -33,7 +34,7 @@ namespace Order.ViewModels
             GroupsAndUsers = new View.GroupsAndUsers() { DataContext = this };
             RankList = new View.RankList() { DataContext = this };
             SelectedPage = GroupsAndUsers;
-
+            Log.Information($"{nameof(PageController)} was succ created");
         }
     }
 }

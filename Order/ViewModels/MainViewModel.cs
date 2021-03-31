@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Serilog;
 
 namespace Order.ViewModels
 {
@@ -26,6 +27,11 @@ namespace Order.ViewModels
 
         private async Task Loading()
         {
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Seq("http://localhost:5341")
+                .CreateLogger();
+            Log.Information("Logger was configurated");
+            Log.Information("Start loading");
             PageContainer = new PageContainer();
             await Task.Delay(2000); //TODO: Для красоты, Убрать на релизе
             AppState = PageContainer;
