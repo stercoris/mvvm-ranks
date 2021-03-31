@@ -24,7 +24,7 @@ namespace Order.Converters
             bitmapImage.CacheOption = BitmapCacheOption.None;
             if (base64String == null)
             {
-                return ("\\Images\\logo.ico");
+                return ("\\Images\\no_image.png");
             }
             var ms = new MemoryStream(System.Convert.FromBase64String(base64String));
             bitmapImage.StreamSource = ms;
