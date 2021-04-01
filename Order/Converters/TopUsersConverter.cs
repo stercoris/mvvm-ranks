@@ -12,14 +12,17 @@ namespace Order.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var UsersList = (value as ObservableCollection<UserViewModel>).ToList();
-            UsersList = UsersList.OrderBy(user => System.Convert.ToInt32(user.User.Rank.Id)).Reverse().ToList();
-            var topUsers = new ObservableCollection<UserViewModel>();
-            foreach (var user in UsersList.GetRange(0, (UsersList.Count > 3) ? 3 : UsersList.Count))
-            {
-                topUsers.Add(user);
-            }
-            return topUsers;
+            var groupId = (value as DataAccess.Models.Group).Id;
+            var studentVMs = DataAccess.DBProvider.DBContext.Students
+                .Where(student => student.Group.Id == groupId).ToList()
+                .OrderBy(user => System.Convert.ToInt32(user.Rank.Id))
+                .Reverse()
+                .Select(student => new UserViewModel(student, null)).ToList();
+
+
+            return (new ObservableCollection<UserViewModel>(
+                studentVMs.GetRange(0, (studentVMs.Count > 3) ? 3 : studentVMs.Count)
+            ));
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

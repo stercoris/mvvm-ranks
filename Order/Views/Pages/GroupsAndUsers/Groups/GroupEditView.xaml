@@ -126,7 +126,7 @@
                             </Grid.RowDefinitions>
                             <ItemsControl 
                                 Grid.Column="0" 
-                                ItemsSource="{Binding Users, 
+                                ItemsSource="{Binding Group, 
                                     Converter={StaticResource TopUsersConverter}}">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
