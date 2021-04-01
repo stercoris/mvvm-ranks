@@ -7,18 +7,11 @@ namespace Order.DataAccess
 {
     public class OrderContext : DbContext
     {
-        public OrderContext(DbContextOptions<OrderContext> options) : base(options)
+        public OrderContext(DbContextOptions<OrderContext> options)
         {
-            if (!this.Database.EnsureCreated())
-            {
-                this.Database.Migrate();
-            }
-            //this.Database.EnsureDeleted();
-            //this.Database.EnsureCreated();
+
+            this.Database.Migrate();
         }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Rank> Ranks { get; set; }
-        public DbSet<Group> Groups { get; set; }
 
 
 
@@ -27,7 +20,6 @@ namespace Order.DataAccess
             string path = AppDomain.CurrentDomain.BaseDirectory; // TODO: Наверное это и не работает в релизе?
             string dbPath = Path.Combine(path, Config.DBName);
             options.UseSqlite("Data Source=" + dbPath + ";");
-            base.OnConfiguring(options);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -40,5 +32,9 @@ namespace Order.DataAccess
                 .HasMany(r => r.Students)
                 .WithOne(s => s.Rank);
         }
+
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Rank> Ranks { get; set; }
+        public DbSet<Group> Groups { get; set; }
     }
 }

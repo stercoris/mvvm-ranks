@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Serilog;
 using System.Linq;
+using Order.DataAccess;
 
 namespace Order.ViewModels
 {
@@ -28,18 +29,20 @@ namespace Order.ViewModels
 
         private async Task Loading()
         {
+                var students = DBProvider.DBContext.Students;
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Seq("http://localhost:5341")
                 .CreateLogger();
             Log.Information("Logger was configurated");
             Log.Information("Start loading");
+            
 
             // Это говно????
             (new Thread(async () =>
             {
                 while(Application.Current != null)
                 {
-                    await DataAccess.DBProvider.DBContext.SaveChangesAsync();
+                    await DBProvider.DBContext.SaveChangesAsync();
                     Thread.Sleep(500);
                 }
             })).Start();

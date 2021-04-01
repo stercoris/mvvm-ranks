@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Diagnostics;
+using System.Windows.Controls;
 
 namespace Order.View
 {
@@ -11,6 +12,5 @@ namespace Order.View
         {
             InitializeComponent();
         }
-
     }
 }
