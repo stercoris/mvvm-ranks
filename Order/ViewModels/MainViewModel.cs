@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Serilog;
+using System.Linq;
 
 namespace Order.ViewModels
 {
@@ -32,6 +33,17 @@ namespace Order.ViewModels
                 .CreateLogger();
             Log.Information("Logger was configurated");
             Log.Information("Start loading");
+
+            // Это говно????
+            (new Thread(async () =>
+            {
+                while(Application.Current != null)
+                {
+                    await DataAccess.DBProvider.DBContext.SaveChangesAsync();
+                    Thread.Sleep(500);
+                }
+            })).Start();
+
             PageContainer = new PageContainer();
             await Task.Delay(2000); //TODO: Для красоты, Убрать на релизе
             AppState = PageContainer;

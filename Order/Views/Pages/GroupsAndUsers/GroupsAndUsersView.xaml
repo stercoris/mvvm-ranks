@@ -34,7 +34,9 @@
             
             <TextBox 
                 Grid.Row="0"  
-                Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding SearchString, 
+                    UpdateSourceTrigger=PropertyChanged,
+                    Delay=100}"
                 Style="{StaticResource SearchTextBox}"
                 Template="{StaticResource SearchBox}">
             </TextBox>
@@ -85,12 +87,13 @@
                 Canvas.Bottom="5"
                 Width="auto"
                 Height="auto"
+                d:Height="100"
                 Template="{StaticResource CustomButton}"
                 Background="{x:Null}"
                 BorderThickness="0"
                 Command="{Binding SelectedGroup.EditCommand}"
                 CommandParameter="{Binding SelectedGroup}">
-                
+                 
                 <Border
                     Background="{StaticResource DarkPurpleBrush}"
                     CornerRadius="100"                    

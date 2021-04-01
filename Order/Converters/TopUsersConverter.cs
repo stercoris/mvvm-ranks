@@ -1,4 +1,5 @@
 ﻿using Order.ViewModels;
+using Serilog;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -15,10 +16,9 @@ namespace Order.Converters
             var groupId = (value as DataAccess.Models.Group).Id;
             var studentVMs = DataAccess.DBProvider.DBContext.Students
                 .Where(student => student.Group.Id == groupId).ToList()
-                .OrderBy(user => System.Convert.ToInt32(user.Rank.Id))
+                .OrderBy(user => user.Rank.Id)
                 .Reverse()
                 .Select(student => new UserViewModel(student, null)).ToList();
-
 
             return (new ObservableCollection<UserViewModel>(
                 studentVMs.GetRange(0, (studentVMs.Count > 3) ? 3 : studentVMs.Count)
@@ -26,7 +26,7 @@ namespace Order.Converters
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (value);
+            throw new NotImplementedException();
         }
     }
 

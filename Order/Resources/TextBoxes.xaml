@@ -75,7 +75,6 @@
     </ControlTemplate>
 
     <Style x:Key="EditFieldTextBoxStyle" TargetType="TextBox">
-        <Setter Property="Margin" Value="50,0"/>
         <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
         <Setter Property="Foreground" Value="{StaticResource OrangeBrush}"/>
         <Setter Property="FontSize" Value="24"/>
