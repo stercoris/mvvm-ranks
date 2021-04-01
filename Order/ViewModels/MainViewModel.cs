@@ -36,8 +36,6 @@ namespace Order.ViewModels
             Log.Information("Logger was configurated");
             Log.Information("Start loading");
             
-
-            // Это говно????
             (new Thread(async () =>
             {
                 while(Application.Current != null)
