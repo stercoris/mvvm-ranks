@@ -9,7 +9,6 @@ namespace Order.DataAccess
     {
         public OrderContext(DbContextOptions<OrderContext> options)
         {
-
             this.Database.Migrate();
         }
 
