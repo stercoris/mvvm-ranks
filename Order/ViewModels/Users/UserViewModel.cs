@@ -11,7 +11,7 @@ namespace Order.ViewModels
         [Reactive] public Student User { get; set; }
         // Каллбек для перемещения объекта в режим редактирования
         public ICommand EditCommand { get; set; }
-        public UserViewModel(Student user, ICommand editCommand)
+        public UserViewModel(Student user, ICommand editCommand = null)
         {
             this.User = user;
             this.EditCommand = editCommand;

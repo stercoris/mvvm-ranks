@@ -10,30 +10,21 @@ namespace Order.Converters
     public class StringToGroupsSearchConverter : IMultiValueConverter
     {
 
-        // TODO: Переписать в нормальном виде
         public object Convert(object[] value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null && value[1] != null)
-            {
-                if (value[0] == null || (value[0] as string).Length == 0)
-                {
-                    return (value[1]);
-                }
-                string search = ((string)value[0]).ToLower();
-                var groups = ((ObservableCollection<GroupViewModel>)value[1]);
+            string search = ((string)value[0])?.ToLower();
+            var groups = ((ObservableCollection<GroupViewModel>)value[1])?? new ObservableCollection<GroupViewModel>();
 
-                return (groups.ToList().FindAll((group) =>
-                {
-                    string groupName = group.Group.Name.ToLower();
-                    string[] fixes = groupName.Split('-');
-                    if (search.Contains(fixes[0]) || search.Contains(fixes[1]))
-                    {
-                        return (true);
-                    }
-                    return (false);
-                }));
+            //Тупо, но легче коммент оставить -> value[1] = ObservableCollection<GroupViewModel>
+            if (value[1] is null || search is null)
+            {
+                return groups;
             }
-            return new ObservableCollection<GroupViewModel>();
+
+            var founded = groups.ToList()
+                .FindAll((group) => group.Group.Name.ToLower().Contains(search));
+
+            return (founded);
 
 
         }

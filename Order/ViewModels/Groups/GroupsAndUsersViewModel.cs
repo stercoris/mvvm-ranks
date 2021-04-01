@@ -43,20 +43,7 @@ namespace Order.ViewModels
         [Reactive] public ObservableCollection<GroupViewModel> Groups { get; set; }
 
         #region Логика выбора группы и отображения пользователей
-        private GroupViewModel _selected_group;
-        public GroupViewModel SelectedGroup
-        {
-            get => _selected_group;
-            set
-            {
-                if (_selected_group?.Group.Id != value?.Group.Id)
-                {
-                    _selected_group?.UnloadUsers();
-                    value.LoadUsers();
-                }
-                this.RaiseAndSetIfChanged(ref _selected_group, value);
-            }
-        }
+        [Reactive] public GroupViewModel SelectedGroup { get; set; }
         private ICommand SelectGroupCommand { get; set; }
         #endregion
 

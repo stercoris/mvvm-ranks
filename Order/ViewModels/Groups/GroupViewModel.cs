@@ -28,21 +28,5 @@ namespace Order.ViewModels
             EditCommand = groupEditCommand;
             ShowUsersCommand = groupSelectCommand;
         }
-
-        #region Users Loading
-        [Reactive] public ObservableCollection<UserViewModel> Users { get; set; }
-        public void LoadUsers()
-        {
-            Users = new ObservableCollection<UserViewModel>(
-                DBProvider.DBContext.Students
-                    .Where((student) => student.Group.Id == this.Group.Id)
-                    .Select((user) => new UserViewModel(user, EditCommand))
-            );
-        }
-        public void UnloadUsers()
-        {
-            Users.Clear();
-        }
-        #endregion
     }
 }

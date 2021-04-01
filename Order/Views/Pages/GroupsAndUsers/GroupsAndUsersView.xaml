@@ -16,6 +16,7 @@
         <views:UserEditView x:Key="UserEditView"/>
         <converters:EditStateToArrowAngleConverter x:Key="EditStateToArrowAngleConverter"/>
         <converters:StringToGroupsSearchConverter x:Key="StringToGroupsSearchConverter"/>
+        <converters:SelectedGroupToStudentViewModelsConverter x:Key="SelectedGroupToStudentViewModelsConverter"/>
     </Page.Resources>
     <Grid DataContext="{Binding GroupsViewModel}">
         <Grid.ColumnDefinitions>
@@ -115,7 +116,8 @@
             <WrapPanel 
                     HorizontalAlignment="Center">
                 <ItemsControl 
-                    ItemsSource="{Binding SelectedGroup.Users, IsAsync=False}">
+                    ItemsSource="{Binding SelectedGroup, 
+                        Converter={StaticResource SelectedGroupToStudentViewModelsConverter}}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel 
