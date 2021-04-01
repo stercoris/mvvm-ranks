@@ -12,12 +12,16 @@ namespace Order.DataAccess
             this.Database.Migrate();
         }
 
-
-
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             string path = AppDomain.CurrentDomain.BaseDirectory; // TODO: Наверное это и не работает в релизе?
-            string dbPath = Path.Combine(path, Config.DBName);
+
+            #if DEBUG
+                string dbPath = Path.Combine(path, "..\\..\\..\\..\\DataAccess\\order.db");
+            #else
+                string dbPath = Path.Combine(path, Config.DBName);
+            #endif
+
             options.UseSqlite("Data Source=" + dbPath + ";");
         }
 
