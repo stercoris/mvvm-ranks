@@ -8,7 +8,7 @@
     xmlns:local="clr-namespace:Order.Views.Pages.GroupsAndUsers"
     xmlns:viewmodels="clr-namespace:Order.ViewModels"
     xmlns:converters="clr-namespace:Order.Converters"
-    d:DesignHeight ="800" Width="360" x:Uid="Управление группой"
+    d:DesignHeight ="900" Width="360" x:Uid="Управление группой"
     d:DataContext="{d:DesignInstance Type=viewmodels:GroupViewModel, IsDesignTimeCreatable=False}">
     <UserControl.Resources>
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
@@ -18,23 +18,17 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TextBox 
-            Grid.Row="0"
-            Width="360"
-            Text="{Binding Group.Name, Mode=TwoWay}"
-            Style="{StaticResource EditFieldTextBoxStyle}"
-            BorderThickness="0"
-            Padding="0,10">
-        </TextBox>
-        <Grid  Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
 
+            <TextBox 
+                Grid.Row="0"
+                Width="360"
+                Text="{Binding Group.Name, Mode=TwoWay}"
+                Style="{StaticResource EditFieldTextBoxStyle}"
+                BorderThickness="0"
+                Padding="0,10">
+            </TextBox>
             <Image 
                 Source="{
                     Binding Group.Picture, IsAsync=True,
@@ -43,138 +37,114 @@
                 Stretch="Uniform"
                 d:Source="/Images/no_image.png">
             </Image>
-            <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="2" >
-                <StackPanel Orientation="Vertical">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Grid >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <Grid 
-                                Grid.Row="0"
-                                Background="{StaticResource DarkPurpleBrush}"
-                                Margin="10,5,10,5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <TextBox 
-                                    IsReadOnly="True"
-                                    TextAlignment="Center"
-                                    MinHeight="10"
-                                    VerticalContentAlignment="Center"
-                                    Grid.Row="0"
-                                    Style="{StaticResource GroupTextBoxes}"
-                                    Foreground="Orange"
-                                    FontFamily="{StaticResource Montserrat}"
-                                    IsHitTestVisible="False"
-                                    Text="12">
-                                </TextBox>
-                                <TextBox          
-                                    Grid.Row="1"
-                                    Style="{StaticResource LowerSignatureTextBox}"
-                                    Text="Рейтинг"
-                                    Background="{StaticResource HorizontalPurpleGradient}"
-                                    >
-                                </TextBox>
-                            </Grid>
-                            <Grid 
-                                Grid.Row="1"
-                                Background="{StaticResource DarkPurpleBrush}"
-                                Margin="10,5,10,5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <TextBox 
-                                    MinHeight="10"
-                                    Grid.Row="0"
-                                    Style="{StaticResource GroupTextBoxes}"
-                                    Foreground="Orange"
-                                    FontFamily="{StaticResource Montserrat}"  
-                                     IsHitTestVisible="False"
-                                    Text="мастер">
-                                </TextBox>
-                                <TextBox                      
-                                    Grid.Row="1"
-                                    Style="{StaticResource LowerSignatureTextBox}"
-                                    Text="Среднее звание">
-                                </TextBox>
-                            </Grid>
-                        </Grid>
-                        <Grid
-                            Background="{StaticResource DarkPurpleBrush}"
-                            MinHeight="100"                      
-                            Grid.Column="1"
-                            Margin="0,5,10,5">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-                            <ItemsControl 
-                                Grid.Column="0" 
-                                ItemsSource="{Binding Group, 
-                                    Converter={StaticResource TopUsersConverter}}">
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Vertical"/>
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <views:TopUserView DataContext="{Binding}"/>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                            <TextBox               
-                                Grid.Row="1"
-                                Style="{StaticResource LowerSignatureTextBox}"
-                                Background="{StaticResource HorizontalPurpleGradient}"
-                                Text="Топ 3">
-                            </TextBox>
-                        </Grid>
-                    </Grid>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBox 
-                            MinHeight="100"
-                            Grid.Row="0"
-                            MaxLength="500"
-                            Style="{StaticResource GroupTextBoxes}"    
-                            Padding="10"
-                            Margin="10,5,10,0" 
-                            FontFamily="{StaticResource Montserrat}"
-                            Foreground="{StaticResource MoreDarkerOrangeBrush}"
-                            IsReadOnly="False"
-                            Text="{Binding Group.About, Mode=TwoWay}">
-                        </TextBox>
-                        <TextBox                      
-                            Grid.Row="1"
-                            Style="{StaticResource LowerSignatureTextBox}"
-                            Text="Описание группы"
-                            Background="{StaticResource HorizontalPurpleGradient}"
-                            Margin="10,0,10,20"
-                            >
-                        </TextBox>
-                    </Grid>
-                </StackPanel>
-            </ScrollViewer>
-        </Grid>
-        <!--<Button 
-            Grid.Row="2"
-            BorderThickness="0"
-            Content="Сохранить"
-            Style="{DynamicResource ConfirmChange}"
-            Margin="2,0,2,0"
-            FontFamily="{StaticResource Montserrat}">
-        </Button>-->
+        </StackPanel>
+
+
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1" >
+            <StackPanel Orientation="Vertical">
+                <!-- Рейтинг -->
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBox 
+                        IsReadOnly="True"
+                        TextAlignment="Center"
+                        MinHeight="10"
+                        VerticalContentAlignment="Center"
+                        Grid.Row="0"
+                        Style="{StaticResource GroupTextBoxes}"
+                        Foreground="Orange"
+                        FontFamily="{StaticResource Montserrat}"
+                        IsHitTestVisible="False"
+                        Text="12">
+                    </TextBox>
+                    <TextBox          
+                        Grid.Row="1"
+                        Style="{StaticResource LowerSignatureTextBox}"
+                        Text="Рейтинг"
+                        Background="{StaticResource HorizontalPurpleGradient}">
+                    </TextBox>
+                </Grid>
+                <!-- Среднее звание -->
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBox 
+                        MinHeight="10"
+                        Grid.Row="0"
+                        Style="{StaticResource GroupTextBoxes}"
+                        Foreground="Orange"
+                        FontFamily="{StaticResource Montserrat}"  
+                        IsHitTestVisible="False"
+                        Text="мастер">
+                    </TextBox>
+                    <TextBox                      
+                        Grid.Row="1"
+                        Style="{StaticResource LowerSignatureTextBox}"
+                        Text="Среднее звание">
+                    </TextBox>
+                </Grid>
+                <!-- Топ 3 -->
+                <Grid
+                    Background="{StaticResource DarkPurpleBrush}"
+                    MinHeight="150"
+                    Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <ItemsControl 
+                        Grid.Column="0" 
+                        ItemsSource="{Binding Group, 
+                            Converter={StaticResource TopUsersConverter}}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <views:TopUserView DataContext="{Binding}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <TextBox               
+                        Grid.Row="1"
+                        Style="{StaticResource LowerSignatureTextBox}"
+                        Background="{StaticResource HorizontalPurpleGradient}"
+                        Text="Топ 3">
+                    </TextBox>
+                </Grid>
+                <!-- Описание группы -->
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBox 
+                        MinHeight="100"
+                        Grid.Row="0"
+                        MaxLength="500"
+                        Style="{StaticResource GroupTextBoxes}"    
+                        Padding="10"
+                        Margin="10,5,10,0" 
+                        FontFamily="{StaticResource Montserrat}"
+                        Foreground="{StaticResource MoreDarkerOrangeBrush}"
+                        IsReadOnly="False"
+                        Text="{Binding Group.About, Mode=TwoWay}">
+                    </TextBox>
+                    <TextBox                      
+                        Grid.Row="1"
+                        Style="{StaticResource LowerSignatureTextBox}"
+                        Text="Описание группы"
+                        Background="{StaticResource HorizontalPurpleGradient}">
+                    </TextBox>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>

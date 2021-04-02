@@ -202,7 +202,6 @@
                             Background="{StaticResource HorizontalPurpleGradient}">
                         </TextBox>
                     </Grid>
-                <!-- Звание и стрелочки его изменения -->
                 </Grid>
                 <!-- Описание -->
                 <Grid Margin="10,5,5,5"
