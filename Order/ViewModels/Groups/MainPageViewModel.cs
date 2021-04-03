@@ -25,13 +25,21 @@ namespace Order.WPF.ViewModels
                     CurrentlyEditableObject = null
             );
 
-            var groups = DBProvider.DBContext.Groups;
-            Groups = new ObservableCollection<GroupViewModel>(
-                // Логика не совсем понятная, 
-                // но я передаю группу, команду выбора группы(отображение пользователей), 
-                // команду выбора объекта, который редактирутся в контроллер
-                groups.Select(group => new GroupViewModel(group, SelectGroupCommand, SetEditableObject))
-            );
+            if(DBProvider.DBContext.Groups.Count() != 0)
+            {
+                var groups = DBProvider.DBContext.Groups;
+                Groups = new ObservableCollection<GroupViewModel>(
+                    // Логика не совсем понятная, 
+                    // но я передаю группу, команду выбора группы(отображение пользователей), 
+                    // команду выбора объекта, который редактирутся в контроллер
+                    groups.Select(group => new GroupViewModel(group, SelectGroupCommand, SetEditableObject))
+                );
+            }
+            else
+            {
+                Groups = new ObservableCollection<GroupViewModel>();
+            }
+            
 
             if (Groups.Count > 0)
             {
