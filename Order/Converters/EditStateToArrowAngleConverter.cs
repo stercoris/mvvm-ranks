@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace Order.Converters
+namespace Order.WPF.Converters
 {
 
     public class EditStateToArrowAngleConverter : IValueConverter

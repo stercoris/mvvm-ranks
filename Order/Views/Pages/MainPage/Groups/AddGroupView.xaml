@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="Order.WPF.Views.Pages.GroupsAndUsers.Groups.AddGroupView"
+﻿<UserControl x:Class="Order.WPF.Views.Pages.MainPage.AddGroupView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:converters="clr-namespace:Order.Converters"
-             xmlns:local="clr-namespace:Order.WPF.Views.Pages.GroupsAndUsers.Groups"
+             xmlns:converters="clr-namespace:Order.WPF.Converters"
+             xmlns:local="clr-namespace:Order.WPF.Views.Pages.MainPage"
              mc:Ignorable="d" 
              d:DesignHeight ="800" Width="360">
     <UserControl.Resources>
@@ -17,7 +17,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        
+
         <Grid  Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -32,8 +32,8 @@
                     Converter={StaticResource Base64ToImageSourceConverter},
                     ConverterParameter=500}"
                 Stretch="Uniform"
-                d:Source="/Images/no_image.png">  
-                
+                d:Source="/Images/no_image.png">
+
             </Image>
             <Button
                 VerticalAlignment="Bottom"

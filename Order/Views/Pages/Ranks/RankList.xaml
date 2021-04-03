@@ -1,11 +1,11 @@
 ﻿<Page 
-    x:Class="Order.View.RankList"
+    x:Class="Order.WPF.Views.Pages.Ranks.RankList"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
-    xmlns:viewmodels="clr-namespace:Order.ViewModels"
-    xmlns:uc="clr-namespace:Order.View"
+    xmlns:viewmodels="clr-namespace:Order.WPF.ViewModels"
+    xmlns:rankViews="clr-namespace:Order.WPF.Views.Pages.Ranks"
     d:DesignHeight ="600" d:DesignWidth="900" x:Uid="Ранги"
     d:DataContext="{d:DesignInstance Type=viewmodels:PageController, IsDesignTimeCreatable=False}"
     Loaded="Page_Loaded">
@@ -64,7 +64,7 @@
 
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <uc:RankStatisticView DataContext="{Binding}" Margin="0,10"/>
+                                <rankViews:RankStatisticView DataContext="{Binding}" Margin="0,10"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
@@ -87,7 +87,7 @@
 
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <uc:RankView DataContext="{Binding}" Margin="0,10"/>
+                            <rankViews:RankView DataContext="{Binding}" Margin="0,10"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

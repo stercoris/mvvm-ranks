@@ -1,13 +1,13 @@
 ﻿using System.Windows.Controls;
 
-namespace Order.Views.Pages.GroupsAndUsers
+namespace Order.WPF.Views.Pages.MainPage
 {
     /// <summary>
     /// Логика взаимодействия для UserEditView.xaml
     /// </summary>
-    public partial class UserEditView : UserControl
+    public partial class StudentEditView : UserControl
     {
-        public UserEditView()
+        public StudentEditView()
         {
             InitializeComponent();
         }

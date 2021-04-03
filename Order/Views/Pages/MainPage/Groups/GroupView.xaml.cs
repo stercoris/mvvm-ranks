@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Order.Views.Pages.GroupsAndUsers
+namespace Order.WPF.Views.Pages.MainPage
 {
     /// <summary>
     /// Interaction logic for GroupView.xaml

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Diagnostics;
+﻿using Order.DataAccess;
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
-using Order.DataAccess;
 
-namespace Order.Converters
+namespace Order.WPF.Converters
 {
 
     public class StatisticSizeConverter : IValueConverter
@@ -15,7 +14,7 @@ namespace Order.Converters
         {
             int rankId = System.Convert.ToInt32(value);
             var students = DBProvider.DBContext.Students
-                .Select((student)=>student.Rank.Id).ToList();
+                .Select((student) => student.Rank.Id).ToList();
             double count = 0;
             double studentsCount = 0;
             foreach (var student in students)
@@ -23,7 +22,7 @@ namespace Order.Converters
                 if (student == rankId) count++;
                 studentsCount++;
             }
-            int width = System.Convert.ToInt32((count/ studentsCount) * 400);
+            int width = System.Convert.ToInt32((count / studentsCount) * 400);
             return width;
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

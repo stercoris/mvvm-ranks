@@ -5,11 +5,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 
-namespace Order.ViewModels
+namespace Order.WPF.ViewModels
 {
-    class GroupsAndUsersViewModel : ReactiveObject
+    class MainPageViewModel : ReactiveObject
     {
-        public GroupsAndUsersViewModel()
+        public MainPageViewModel()
         {
             SelectGroupCommand = ReactiveCommand.Create<GroupViewModel>(
                 groupvm => SelectedGroup = groupvm

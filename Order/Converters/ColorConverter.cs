@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 
-namespace Order.Converters
+namespace Order.WPF.Converters
 {
 
     public class ColorConverter : IValueConverter
@@ -37,7 +37,7 @@ namespace Order.Converters
             int point = System.Convert.ToInt32(length * ratio);
             return point + startPoint;
         }
-        private int GetRedPointByRatio(double ratio, int startPoint, int endPoint)
+        private static int GetRedPointByRatio(double ratio, int startPoint, int endPoint)
         {
             double length = ratio * (endPoint - startPoint);
             int point = System.Convert.ToInt32(length * ratio);

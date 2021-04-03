@@ -1,12 +1,11 @@
-﻿using Order.ViewModels;
-using Serilog;
+﻿using Order.WPF.ViewModels;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 
-namespace Order.Converters
+namespace Order.WPF.Converters
 {
 
     public class TopUsersConverter : IValueConverter
@@ -18,9 +17,9 @@ namespace Order.Converters
                 .Where(student => student.Group.Id == groupId).ToList()
                 .OrderBy(user => user.Rank.Id)
                 .Reverse()
-                .Select(student => new UserViewModel(student, null)).ToList();
+                .Select(student => new StudentViewModel(student, null)).ToList();
 
-            return (new ObservableCollection<UserViewModel>(
+            return (new ObservableCollection<StudentViewModel>(
                 studentVMs.GetRange(0, (studentVMs.Count > 3) ? 3 : studentVMs.Count)
             ));
         }
