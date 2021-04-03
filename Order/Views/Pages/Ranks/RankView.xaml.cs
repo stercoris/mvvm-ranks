@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-namespace Order.View
+namespace Order.WPF.Views.Pages.Ranks
 {
     /// <summary>
     /// Логика взаимодействия для RankView.xaml

@@ -5,7 +5,12 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>up_logo.ico</ApplicationIcon>
-    <AssemblyName>Order</AssemblyName>
+    <StartupObject></StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>0</WarningLevel>
+    <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -63,23 +68,23 @@
     <Compile Update="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Pages\GroupsAndUsers\GroupsAndUsersView.xaml.cs">
-      <DependentUpon>GroupsAndUsersView.xaml</DependentUpon>
+    <Compile Update="Views\Pages\MainPage\MainPageView.xaml.cs">
+      <DependentUpon>MainPageView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Pages\GroupsAndUsers\Groups\GroupEditView.xaml.cs">
+    <Compile Update="Views\Pages\MainPage\Groups\GroupEditView.xaml.cs">
       <DependentUpon>GroupEditView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Pages\GroupsAndUsers\Groups\GroupView.xaml.cs">
+    <Compile Update="Views\Pages\MainPage\Groups\GroupView.xaml.cs">
       <DependentUpon>GroupView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Pages\GroupsAndUsers\Users\TopUserView.xaml.cs">
-      <DependentUpon>TopUserView.xaml</DependentUpon>
+    <Compile Update="Views\Pages\MainPage\Students\TopStudentView.xaml.cs">
+      <DependentUpon>TopStudentView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Pages\GroupsAndUsers\Users\UserEditView.xaml.cs">
-      <DependentUpon>UserEditView.xaml</DependentUpon>
+    <Compile Update="Views\Pages\MainPage\Students\StudentEditView.xaml.cs">
+      <DependentUpon>StudentEditView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Pages\GroupsAndUsers\Users\UserView.xaml.cs">
-      <DependentUpon>UserView.xaml</DependentUpon>
+    <Compile Update="Views\Pages\MainPage\Students\StudentView.xaml.cs">
+      <DependentUpon>StudentView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Pages\PageContainer.xaml.cs">
       <DependentUpon>PageContainer.xaml</DependentUpon>
@@ -117,22 +122,22 @@
     <Page Update="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Pages\GroupsAndUsers\GroupsAndUsersView.xaml">
+    <Page Update="Views\Pages\MainPage\MainPageView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Pages\GroupsAndUsers\Groups\GroupEditView.xaml">
+    <Page Update="Views\Pages\MainPage\Groups\GroupEditView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Pages\GroupsAndUsers\Groups\GroupView.xaml">
+    <Page Update="Views\Pages\MainPage\Groups\GroupView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Pages\GroupsAndUsers\Users\TopUserView.xaml">
+    <Page Update="Views\Pages\MainPage\Students\TopStudentView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Pages\GroupsAndUsers\Users\UserEditView.xaml">
+    <Page Update="Views\Pages\MainPage\Students\StudentEditView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Pages\GroupsAndUsers\Users\UserView.xaml">
+    <Page Update="Views\Pages\MainPage\Students\StudentView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Pages\PageContainer.xaml">

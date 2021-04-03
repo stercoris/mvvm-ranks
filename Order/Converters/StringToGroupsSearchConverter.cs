@@ -1,11 +1,11 @@
-﻿using Order.ViewModels;
+﻿using Order.WPF.ViewModels;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 
-namespace Order.Converters
+namespace Order.WPF.Converters
 {
     public class StringToGroupsSearchConverter : IMultiValueConverter
     {
@@ -13,7 +13,7 @@ namespace Order.Converters
         public object Convert(object[] value, Type targetType, object parameter, CultureInfo culture)
         {
             string search = ((string)value[0])?.ToLower();
-            var groups = ((ObservableCollection<GroupViewModel>)value[1])?? new ObservableCollection<GroupViewModel>();
+            var groups = ((ObservableCollection<GroupViewModel>)value[1]) ?? new ObservableCollection<GroupViewModel>();
 
             //Тупо, но легче коммент оставить -> value[1] = ObservableCollection<GroupViewModel>
             if (value[1] is null || search is null)

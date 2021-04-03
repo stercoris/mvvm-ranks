@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Order.Views
+namespace Order.WPF.Views
 {
     /// <summary>
     /// Interaction logic for LoadingScreen.xaml

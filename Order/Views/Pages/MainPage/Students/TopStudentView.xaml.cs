@@ -1,13 +1,13 @@
 ﻿using System.Windows.Controls;
 
-namespace Order.Views.Pages.GroupsAndUsers
+namespace Order.WPF.Views.Pages.MainPage
 {
     /// <summary>
     /// Логика взаимодействия для TopUserView.xaml
     /// </summary>
-    public partial class TopUserView : UserControl
+    public partial class TopStudentView : UserControl
     {
-        public TopUserView()
+        public TopStudentView()
         {
             InitializeComponent();
         }

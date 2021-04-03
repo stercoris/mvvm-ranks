@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Order.View
+namespace Order.WPF.View
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml

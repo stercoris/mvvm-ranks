@@ -1,16 +1,15 @@
 ﻿<UserControl 
-    x:Class="Order.Views.Pages.GroupsAndUsers.TopUserView"
+    x:Class="Order.WPF.Views.Pages.MainPage.TopStudentView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:converters="clr-namespace:Order.Converters"
+    xmlns:converters="clr-namespace:Order.WPF.Converters"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
-    xmlns:viewmodels="clr-namespace:Order.ViewModels" 
-    d:DataContext="{d:DesignInstance Type=viewmodels:UserViewModel, IsDesignTimeCreatable=False}"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:converters1="clr-namespace:Order.WPF.Converters" mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance Type=viewmodels:StudentViewModel, IsDesignTimeCreatable=False}"
     Tag="Представление топового студента группы"
     d:DesignHeight="70" d:DesignWidth="150">
     <UserControl.Resources>
-        <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
+        <converters1:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
         <converters:ColorConverter x:Key="ColorConverter"/>
     </UserControl.Resources>
     <Border BorderThickness="0,1,0,1" BorderBrush="{StaticResource GrayBrush}">

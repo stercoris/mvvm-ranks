@@ -1,11 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
+﻿using System.Windows.Controls;
 
-namespace Order.View
+namespace Order.WPF.Views.Pages.Ranks
 {                                               //TODO: Вырезать
     /// <summary>
     /// Логика взаимодействия для RankList.xaml

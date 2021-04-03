@@ -6,13 +6,13 @@ using System.IO;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
-namespace Order.Converters
+namespace Order.WPF.Converters
 {
     class Base64ToImageSourceConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            BitmapImage bitmapImage = new BitmapImage();
+            BitmapImage bitmapImage = new();
 
             int width = System.Convert.ToInt32(parameter);
             int height = width / 16 * 9;
@@ -37,12 +37,12 @@ namespace Order.Converters
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             BitmapSource image = (BitmapSource)value;
-            MemoryStream outStream = new MemoryStream();
+            MemoryStream outStream = new();
             BitmapEncoder enc = new BmpBitmapEncoder();
             enc.Frames.Add(BitmapFrame.Create(image));
             enc.Save(outStream);
-            Bitmap bitmap = new Bitmap(outStream);
-            Bitmap bm = new Bitmap(bitmap);
+            Bitmap bitmap = new(outStream);
+            Bitmap bm = new(bitmap);
             MemoryStream ms = new MemoryStream();
             bm.Save(ms, ImageFormat.Jpeg);
             byte[] byteImage = ms.ToArray();

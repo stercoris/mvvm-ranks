@@ -4,7 +4,7 @@ using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System.Collections.ObjectModel;
 
-namespace Order.ViewModels
+namespace Order.WPF.ViewModels
 {
     class RanksViewModel : ReactiveObject
     {
