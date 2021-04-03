@@ -5,12 +5,12 @@ using System.Windows.Input;
 
 namespace Order.WPF.ViewModels
 {
-    class AddStudentViewModel : ReactiveObject
+    public class AddStudentViewModel : ReactiveObject
     {
         [Reactive] public Student Student { get; set; }
         [Reactive] public ICommand Save { get; set; }
 
-        AddStudentViewModel()
+        public AddStudentViewModel()
         {
             this.Student = new();
             this.Save = ReactiveCommand.Create(() =>
