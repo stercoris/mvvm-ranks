@@ -74,7 +74,7 @@
                         <TextBox 
                             Grid.Row="0"
                             MaxLength="500"
-                            Style="{StaticResource GroupTextBoxes}"    
+                            Style="{StaticResource OrderTextBox}"    
                             Padding="10"
                             Margin="10,5,10,0" 
                             FontFamily="{StaticResource Montserrat}"
@@ -100,7 +100,7 @@
                             MinHeight="100"
                             Grid.Row="0"
                             MaxLength="500"
-                            Style="{StaticResource GroupTextBoxes}"    
+                            Style="{StaticResource OrderTextBox}"    
                             Padding="10"
                             Margin="10,5,10,0" 
                             FontFamily="{StaticResource Montserrat}"

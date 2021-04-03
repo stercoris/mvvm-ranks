@@ -1,16 +1,18 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Order.View
-{
+{                                               //TODO: Вырезать
     /// <summary>
     /// Логика взаимодействия для RankList.xaml
     /// </summary>
     public partial class RankList : Page
     {
+        //public List<RankView> ranksList = new();
 
         public RankList()
         {
@@ -26,8 +28,8 @@ namespace Order.View
             //{
             //    var chld = VisualTreeHelper.GetChild(ranksList, i);
             //    RankView rankView = VisualTreeHelper.GetChild(chld, 0) as RankView;
-            //    Trace.WriteLine(rankView.TranslatePoint(new Point(0, 0), ranksListsFather as ItemsPresenter).Y);
-                
+            //    this.ranksList.Add(rankView);
+            //    //Trace.WriteLine(rankView.TranslatePoint(new Point(0, 0), ranksListsFather as ItemsPresenter).Y);
             //}
         }
     }

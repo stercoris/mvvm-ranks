@@ -20,10 +20,8 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
-
             <TextBox 
                 Grid.Row="0"
-                Width="360"
                 Text="{Binding Group.Name, Mode=TwoWay}"
                 Style="{StaticResource EditFieldTextBoxStyle}"
                 BorderThickness="0"
@@ -43,43 +41,31 @@
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1" >
             <StackPanel Orientation="Vertical">
                 <!-- Рейтинг -->
-                <Grid Margin="5">
+                <Grid Margin="5,10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <TextBox 
-                        IsReadOnly="True"
-                        TextAlignment="Center"
-                        MinHeight="10"
-                        VerticalContentAlignment="Center"
                         Grid.Row="0"
-                        Style="{StaticResource GroupTextBoxes}"
-                        Foreground="Orange"
-                        FontFamily="{StaticResource Montserrat}"
-                        IsHitTestVisible="False"
+                        Style="{StaticResource UneditableOrderTextBox}"
                         Text="12">
                     </TextBox>
                     <TextBox          
                         Grid.Row="1"
                         Style="{StaticResource LowerSignatureTextBox}"
-                        Text="Рейтинг"
-                        Background="{StaticResource HorizontalPurpleGradient}">
+                        Text="Рейтинг">
                     </TextBox>
                 </Grid>
                 <!-- Среднее звание -->
-                <Grid Margin="5">
+                <Grid Margin="5,10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <TextBox 
-                        MinHeight="10"
                         Grid.Row="0"
-                        Style="{StaticResource GroupTextBoxes}"
-                        Foreground="Orange"
-                        FontFamily="{StaticResource Montserrat}"  
-                        IsHitTestVisible="False"
+                        Style="{StaticResource UneditableOrderTextBox}"
                         Text="мастер">
                     </TextBox>
                     <TextBox                      
@@ -91,8 +77,8 @@
                 <!-- Топ 3 -->
                 <Grid
                     Background="{StaticResource DarkPurpleBrush}"
-                    MinHeight="150"
-                    Margin="5">
+                    MinHeight="210"
+                    Margin="5,10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="auto"/>
@@ -115,12 +101,11 @@
                     <TextBox               
                         Grid.Row="1"
                         Style="{StaticResource LowerSignatureTextBox}"
-                        Background="{StaticResource HorizontalPurpleGradient}"
                         Text="Топ 3">
                     </TextBox>
                 </Grid>
                 <!-- Описание группы -->
-                <Grid Margin="5">
+                <Grid Margin="5,10">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -129,19 +114,14 @@
                         MinHeight="100"
                         Grid.Row="0"
                         MaxLength="500"
-                        Style="{StaticResource GroupTextBoxes}"    
-                        Padding="10"
-                        Margin="10,5,10,0" 
-                        FontFamily="{StaticResource Montserrat}"
+                        Style="{StaticResource OrderTextBox}"    
                         Foreground="{StaticResource MoreDarkerOrangeBrush}"
-                        IsReadOnly="False"
                         Text="{Binding Group.About, Mode=TwoWay}">
                     </TextBox>
                     <TextBox                      
                         Grid.Row="1"
                         Style="{StaticResource LowerSignatureTextBox}"
-                        Text="Описание группы"
-                        Background="{StaticResource HorizontalPurpleGradient}">
+                        Text="Описание группы">
                     </TextBox>
                 </Grid>
             </StackPanel>

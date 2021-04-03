@@ -22,13 +22,13 @@
             </ContentPresenter>
         </Border>
         <ControlTemplate.Triggers>
-            <Trigger Property="IsDefaulted" Value="True">
+            <!--<Trigger Property="IsDefaulted" Value="True">
                 <Setter 
                     Property="BorderBrush" 
                     TargetName="border" 
                     Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
                 </Setter>
-            </Trigger>
+            </Trigger>-->
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Opacity" TargetName="border" Value="0.7"/>
             </Trigger>
@@ -89,8 +89,7 @@
 
 
     <Style x:Key="RankUpDown" TargetType="Button">
-        <Setter Property="FontSize" Value="24"/>
-        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Margin" Value="5,0"/>
         <Setter Property="BorderBrush" Value="{StaticResource PurpleBrush}"/>
         <Setter Property="Background" Value="{StaticResource HorizontalPurpleGradient}"/>
         <Setter Property="Template" Value="{StaticResource CustomButton}"/>
@@ -110,18 +109,9 @@
         <Setter Property="Height" Value="50"/>
         <Setter Property="Margin" Value="0,10,0,10"/>
         <Setter Property="Background" Value="{StaticResource HorizontalPurpleGradient}"/>
-        <Setter Property="Template" Value="{DynamicResource CustomButton}"/>
+        <Setter Property="Template" Value="{StaticResource CustomButton}"/>
         <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
     </Style>
 
-    <Style x:Key="AddUser" TargetType="Button">
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="Margin" Value="10, 5"/>
-        <Setter Property="FontSize" Value="16"/>
-        <Setter Property="BorderBrush" Value="{StaticResource PurpleBrush}"/>
-        <Setter Property="Background" Value="{StaticResource PurpleBrush}"/>
-        <Setter Property="Template" Value="{StaticResource CustomButton}"/>
-    </Style>
 
 </ResourceDictionary>

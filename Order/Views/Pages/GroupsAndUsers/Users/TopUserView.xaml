@@ -8,58 +8,59 @@
     xmlns:viewmodels="clr-namespace:Order.ViewModels" 
     d:DataContext="{d:DesignInstance Type=viewmodels:UserViewModel, IsDesignTimeCreatable=False}"
     Tag="Представление топового студента группы"
-    d:DesignHeight="50" d:DesignWidth="150">
+    d:DesignHeight="70" d:DesignWidth="150">
     <UserControl.Resources>
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
         <converters:ColorConverter x:Key="ColorConverter"/>
     </UserControl.Resources>
-    <Grid Width="auto" Background="{StaticResource DarkPurpleBrush}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        <Ellipse 
-            Grid.Column="0" 
-            Width="45"
-            Height="45"
-            Margin="0"
-            Stretch="Fill">
-            <Ellipse.Fill>
-                <ImageBrush 
-                    ImageSource="{
-                        Binding User.Picture,
-                        Converter={StaticResource Base64ToImageSourceConverter},
-                        ConverterParameter=100}">
-                </ImageBrush>
-            </Ellipse.Fill>
-        </Ellipse>
-        <TextBlock 
-            Grid.Column="1"
-            Text="{Binding User.Name}"
-            VerticalAlignment="Center"
-            Style="{StaticResource RanksText}" 
-            Padding="0"
-            TextAlignment="Left"
-            Margin="10,0,0,0"
-            FontSize="16">
-        </TextBlock>
-        <Border
-            Grid.Column="2"
-            Background="{Binding User.Rank.Id, Converter={StaticResource ColorConverter}}"
-            Margin="0"
-            BorderBrush="{StaticResource DarkPurpleBrush}"
-            BorderThickness="1">
-            <TextBlock
-                Text="{Binding User.Rank.Id}"
-                FontSize="16"
-                TextAlignment="Center"
-                FontWeight="Bold"
-                VerticalAlignment="Center">
-                <!--<TextBlock.LayoutTransform>
-                    <RotateTransform Angle="90"/>
-                </TextBlock.LayoutTransform>-->
+    <Border BorderThickness="0,1,0,1" BorderBrush="{StaticResource GrayBrush}">
+        <Grid Width="auto" Background="{StaticResource DarkPurpleBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Ellipse 
+                Grid.Column="0" 
+                Width="50"
+                Height="50"
+                Margin="5">
+                <Ellipse.Fill>
+                    <ImageBrush 
+                        ImageSource="{
+                            Binding User.Picture,
+                            Converter={StaticResource Base64ToImageSourceConverter},
+                            ConverterParameter=100}"
+                        Stretch="UniformToFill">
+                    </ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock 
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                Style="{StaticResource RanksText}" 
+                Padding="0"
+                TextAlignment="Left"
+                Margin="10,0,0,0"
+                FontSize="16">
+                <Run Text="{Binding User.Name}" />
+                <Run Text=" " />
+                <Run Text="{Binding User.SecondName}" />
             </TextBlock>
-        </Border>
-    </Grid>
+            <Border
+                    Grid.Column="2"
+                    Background="{Binding User.Rank.Id, Converter={StaticResource ColorConverter}}"
+                    Margin="0"
+                    BorderBrush="{StaticResource DarkPurpleBrush}"
+                    BorderThickness="1">
+                <TextBlock
+                    Text="{Binding User.Rank.Id}"
+                    FontSize="16"
+                    TextAlignment="Center"
+                    FontWeight="Bold"
+                    VerticalAlignment="Center">
+                </TextBlock>
+            </Border>
+        </Grid>
+    </Border>
 </UserControl>

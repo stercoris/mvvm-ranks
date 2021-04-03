@@ -83,97 +83,32 @@
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
     </Style>
 
-    <Style x:Key="AboutTextBoxStyle" TargetType="TextBox">
-        <Setter Property="Margin" Value="50,100"/>
-        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
-        <Setter Property="Foreground" Value="{StaticResource MoreDarkerOrangeBrush}"/>
-        <Setter Property="FontSize" Value="20"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="{StaticResource PurpleBrush}"/>
-        <Setter Property="BorderThickness" Value="0,0,0,0"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="TextAlignment" Value="Justify"/>
-    </Style>
-
-    <Style x:Key="GroupTextBoxes" TargetType="TextBox">
-        <Setter Property="Margin" Value="10,5,10,5"/>
+    <Style x:Key="OrderTextBox" TargetType="TextBox">
+        <Setter Property="Padding" Value="10,5,10,5"/>
+        <Setter Property="MinHeight" Value="10"/>
         <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
         <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
-        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Foreground" Value="Orange"/>
         <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="TextAlignment" Value="Center"/>
-        <Setter Property="IsReadOnly" Value="True"/>
-    </Style>
-    
-    <Style x:Key="ConstTextBoxStyle" TargetType="TextBox">
-        <Setter Property="Margin" Value="0,40,0,0"/>
-        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
-        <Setter Property="Foreground" Value="{StaticResource MoreDarkerOrangeBrush}"/>
-        <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
-        <Setter Property="HorizontalContentAlignment" Value="Right"/>
-        <Setter Property="BorderThickness" Value="0,0,0,0"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="FontSize" Value="24"/>
-        
-        <Setter Property="TextAlignment" Value="Left"/>
     </Style>
 
-    <Style x:Key="InfoTextBoxStyle" TargetType="TextBox">
-        <Setter Property="Margin" Value="20,40,20,0"/>
-        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
-        <Setter Property="Foreground" Value="{StaticResource TrueOrange}"/>
-        <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
-        <Setter Property="FontSize" Value="24"/>
-        <Setter Property="HorizontalContentAlignment" Value="Right"/>
-        <Setter Property="BorderThickness" Value="0,0,0,0"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="TextAlignment" Value="Left"/>
-        <Setter Property="BorderThickness" Value="0,0,0,1"/>
-    </Style>
-
-    <Style x:Key="NewEditFieldTextBoxStyle" TargetType="TextBox">
-        <Setter Property="Margin" Value="0"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
-        <Setter Property="Foreground" Value="Orange"/>
-        <Setter Property="FontSize" Value="24"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
-        <Setter Property="BorderThickness" Value="0,0,0,0"/>
-    </Style>
-    
-    
-    <Style x:Key="NoEditFieldTextBoxStyle" TargetType="TextBox">
-        <Setter Property="Margin" Value="10,0,0,10"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
-        <Setter Property="Foreground" Value="{StaticResource OrangeBrush}"/>
-        <Setter Property="FontSize" Value="24"/>
+    <Style x:Key="UneditableOrderTextBox" TargetType="TextBox" BasedOn="{StaticResource OrderTextBox}">
         <Setter Property="IsReadOnly" Value="True"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="{StaticResource DarkPurpleBrush}"/>
-        <Setter Property="BorderThickness" Value="0,0,0,0"/>
-    </Style>
-
-    <Style x:Key="LowerSignatureTextBox" TargetType="TextBox">
-        <Setter Property="Margin" Value="0"/>
-        <Setter Property="Template" Value="{StaticResource EditFieldTextBox}"/>
-        <Setter Property="FontSize" Value="16"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="IsReadOnly" Value="True"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="{StaticResource HorizontalPurpleGradient}"/>
-        <Setter Property="TextAlignment" Value="Center"/>
-        <Setter Property="Foreground" Value="{StaticResource DarkPurpleBrush}"/>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
-        <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="BorderThickness" Value="0,0,0,0"/>
         <Setter Property="IsHitTestVisible" Value="False"/>
-        <Setter Property="IsReadOnly" Value="True"/>
+    </Style>
+
+    <Style x:Key="LowerSignatureTextBox" TargetType="TextBox" BasedOn="{StaticResource UneditableOrderTextBox}">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Background" Value="{StaticResource HorizontalPurpleGradient}"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkPurpleBrush}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
     </Style>
     
 </ResourceDictionary>
