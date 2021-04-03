@@ -25,8 +25,8 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
-            <Image 
-                Grid.Row="0"
+            <Grid>
+                <Image 
                 Source="{
                     Binding Group.Picture, IsAsync=True,
                     Converter={StaticResource Base64ToImageSourceConverter},
@@ -34,36 +34,37 @@
                 Stretch="Uniform"
                 d:Source="/Images/no_image.png">
 
-            </Image>
-            <Button
+                </Image>
+                <Button
                 VerticalAlignment="Bottom"
                 Width="auto"
                 Height="auto"
                 d:Height="100"
-                HorizontalContentAlignment="Right"
-                Grid.Row="0"
+                HorizontalContentAlignment="Center"
+                HorizontalAlignment="Right"
                 Template="{StaticResource CustomButton}"
                 Background="{x:Null}"
                 BorderThickness="0"
                 Command="{Binding SelectedGroup.EditCommand}"
                 CommandParameter="{Binding SelectedGroup}">
 
-                <Border
-                    Background="{StaticResource DarkPurpleBrush}"
+                    <Border
+                    Background="{StaticResource PurpleBrush}"
                     CornerRadius="100"   
                     Height="auto"
                     Width="auto"
                     BorderBrush="Black">
-                    <materialDesign:PackIcon 
+                        <materialDesign:PackIcon 
                         Style="{StaticResource NavBtnIcon}"
-                        Width="60"
-                        Height="60"
+                        Width="35"
+                        Height="35"
                         Margin="10"
                         HorizontalAlignment="Center"
-                        Kind="Create">
-                    </materialDesign:PackIcon>
-                </Border>
-            </Button>
+                        Kind="ImageEdit">
+                        </materialDesign:PackIcon>
+                    </Border>
+                </Button>
+            </Grid>
             <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1" >
                 <StackPanel Orientation="Vertical">
                     <Grid>

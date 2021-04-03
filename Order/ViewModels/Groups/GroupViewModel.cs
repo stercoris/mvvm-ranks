@@ -13,17 +13,20 @@ namespace Order.WPF.ViewModels
         [Reactive] public ICommand ShowUsersCommand { get; set; }
         // Каллбек для перемещения объекта в режим редактирования
         public ICommand EditCommand { get; set; }
+        public ICommand AddStudentCommand { get; set; }
 
 
         public GroupViewModel(
             Group group,
             ICommand groupSelectCommand,
-            ICommand groupEditCommand
+            ICommand groupEditCommand,
+            ICommand addStudentCommand
         )
         {
             this.Group = group;
             EditCommand = groupEditCommand;
             ShowUsersCommand = groupSelectCommand;
+            AddStudentCommand = addStudentCommand;
         }
     }
 }

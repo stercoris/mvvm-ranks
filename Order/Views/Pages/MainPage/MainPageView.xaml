@@ -82,32 +82,63 @@
             </ScrollViewer>
         </Grid>
         <Canvas Panel.ZIndex="10" Grid.Column="1">
-            <Button
+
+            <Border
+                Background="{StaticResource DarkPurpleBrush}"
+                CornerRadius="35"                    
+                BorderBrush="Black"
                 Canvas.Right="10"
-                Canvas.Bottom="5"
-                Width="auto"
-                Height="auto"
-                d:Height="100"
-                Template="{StaticResource CustomButton}"
-                Background="{x:Null}"
-                BorderThickness="0"
-                Command="{Binding SelectedGroup.EditCommand}"
-                CommandParameter="{Binding SelectedGroup}">
-                 
-                <Border
-                    Background="{StaticResource DarkPurpleBrush}"
-                    CornerRadius="100"                    
-                    BorderBrush="Black">
-                    <materialDesign:PackIcon 
-                        Style="{StaticResource NavBtnIcon}"
-                        Width="60"
-                        Height="60"
-                        Margin="10"
-                        HorizontalAlignment="Center"
-                        Kind="Create">
-                    </materialDesign:PackIcon>
-                </Border>
-            </Button>
+                Canvas.Bottom="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Column="0"
+                        Width="auto"
+                        Height="auto"
+                        d:Height="100"
+                        Template="{StaticResource CustomButton}"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Command="{Binding SelectedGroup.EditCommand}"
+                        CommandParameter="{Binding SelectedGroup}">
+                        <materialDesign:PackIcon 
+                            Style="{StaticResource NavBtnIcon}"
+                            Width="40"
+                            Height="40"
+                            Margin="0,7,-5,7"
+                            HorizontalAlignment="Center"
+                            Kind="Create">
+                        </materialDesign:PackIcon>
+                    </Button>
+                    <Border 
+                        Grid.Column="1"
+                        Background="{StaticResource PurpleBrush}">
+                    </Border>
+                    <Button
+                        Grid.Column="2"
+                        Width="auto"
+                        Height="auto"
+                        d:Height="100"
+                        Template="{StaticResource CustomButton}"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Command="{Binding SelectedGroup.AddStudentCommand}">
+                        <materialDesign:PackIcon 
+                            Style="{StaticResource NavBtnIcon}"
+                            Width="40"
+                            Height="40"
+                            Margin="-5,7,0,7"
+                            HorizontalAlignment="Center"
+                            Kind="Add">
+                        </materialDesign:PackIcon>
+                    </Button>
+                </Grid>
+            </Border>
+            
 
         </Canvas>
 
@@ -169,6 +200,9 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodels:StudentViewModel}">
                     <views:StudentEditView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:AddStudentViewModel}">
+                    <views:AddStudentView/>
                 </DataTemplate>
             </Grid.Resources>
             

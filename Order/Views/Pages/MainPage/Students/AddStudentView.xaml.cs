@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Order.WPF.Views.Pages.GroupsAndUsers.Users
+namespace Order.WPF.Views.Pages.MainPage
 {
     /// <summary>
     /// Логика взаимодействия для AddUser.xaml
     /// </summary>
-    public partial class AddUser : UserControl
+    public partial class AddStudentView : UserControl
     {
-        public AddUser()
+        public AddStudentView()
         {
             InitializeComponent();
         }

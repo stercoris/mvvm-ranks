@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:views="clr-namespace:Order.WPF.Views.Pages.MainPage"
     xmlns:viewmodels="clr-namespace:Order.WPF.ViewModels"
     xmlns:converters="clr-namespace:Order.WPF.Converters"
@@ -26,17 +27,47 @@
                 BorderThickness="0"
                 Padding="0,10">
             </TextBox>
-            <Image 
+            <Grid>
+                <Image 
                 Source="{
                     Binding Group.Picture, IsAsync=True,
                     Converter={StaticResource Base64ToImageSourceConverter},
                     ConverterParameter=500}"
                 Stretch="Uniform"
                 d:Source="/Images/no_image.png">
-            </Image>
+
+                </Image>
+                <Button
+                VerticalAlignment="Bottom"
+                Width="auto"
+                Height="auto"
+                d:Height="100"
+                HorizontalContentAlignment="Center"
+                HorizontalAlignment="Right"
+                Template="{StaticResource CustomButton}"
+                Background="{x:Null}"
+                BorderThickness="0"
+                Command="{Binding SelectedGroup.EditCommand}"
+                CommandParameter="{Binding SelectedGroup}">
+
+                    <Border
+                    Background="{StaticResource PurpleBrush}"
+                    CornerRadius="100"   
+                    Height="auto"
+                    Width="auto"
+                    BorderBrush="Black">
+                        <materialDesign:PackIcon 
+                        Style="{StaticResource NavBtnIcon}"
+                        Width="35"
+                        Height="35"
+                        Margin="10"
+                        HorizontalAlignment="Center"
+                        Kind="ImageEdit">
+                        </materialDesign:PackIcon>
+                    </Border>
+                </Button>
+            </Grid>
         </StackPanel>
-
-
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1" >
             <StackPanel Orientation="Vertical">
                 <!-- Рейтинг -->

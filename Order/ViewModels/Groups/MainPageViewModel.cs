@@ -25,12 +25,14 @@ namespace Order.WPF.ViewModels
                     CurrentlyEditableObject = null
             );
 
+            var AddStudentCommand = ReactiveCommand.Create(()=> CurrentlyEditableObject = new AddStudentViewModel());
+
             var groups = DBProvider.DBContext.Groups;
             Groups = new ObservableCollection<GroupViewModel>(
                 // Логика не совсем понятная, 
                 // но я передаю группу, команду выбора группы(отображение пользователей), 
                 // команду выбора объекта, который редактирутся в контроллер
-                groups.Select(group => new GroupViewModel(group, SelectGroupCommand, SetEditableObject))
+                groups.Select(group => new GroupViewModel(group, SelectGroupCommand, SetEditableObject, AddStudentCommand))
             );
 
             if (Groups.Count > 0)

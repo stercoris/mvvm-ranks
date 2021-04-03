@@ -17,16 +17,46 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Image
-            Grid.Row="0"
-            Source="{
-                Binding User.Picture,
-                Converter={StaticResource Base64ToImageSourceConverter},
-                ConverterParameter=500}"
-            Margin="10"
-            d:Source="/Images/no_image.png"
-            Stretch="Uniform">
-        </Image>
+        <Grid>
+            <Image 
+                Source="{
+                    Binding User.Picture, IsAsync=True,
+                    Converter={StaticResource Base64ToImageSourceConverter},
+                    ConverterParameter=500}"
+                Stretch="Uniform"
+                d:Source="/Images/no_image.png">
+
+            </Image>
+            <Button
+                VerticalAlignment="Bottom"
+                Width="auto"
+                Height="auto"
+                d:Height="100"
+                HorizontalContentAlignment="Center"
+                HorizontalAlignment="Right"
+                Template="{StaticResource CustomButton}"
+                Background="{x:Null}"
+                BorderThickness="0"
+                Command="{Binding SelectedGroup.EditCommand}"
+                CommandParameter="{Binding SelectedGroup}">
+
+                <Border
+                    Background="{StaticResource PurpleBrush}"
+                    CornerRadius="100"   
+                    Height="auto"
+                    Width="auto"
+                    BorderBrush="Black">
+                    <materialDesign:PackIcon 
+                        Style="{StaticResource NavBtnIcon}"
+                        Width="35"
+                        Height="35"
+                        Margin="10"
+                        HorizontalAlignment="Center"
+                        Kind="ImageEdit">
+                    </materialDesign:PackIcon>
+                </Border>
+            </Button>
+        </Grid>
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">
             <StackPanel Orientation="Vertical">
                 <!-- Имя и фамилия -->
@@ -133,15 +163,19 @@
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <TextBox 
-                            Grid.Row="0"
-                            Style="{StaticResource UneditableOrderTextBox}"
-                            Text="19">
-                        </TextBox>
+                        <DatePicker
+                            CalendarStyle="{DynamicResource DateTimeCalendar}"
+                            FontSize="20"
+                            Text="01.01.2002"
+                            Foreground="Orange"
+                            HorizontalContentAlignment="Center"
+                            Background="{StaticResource DarkPurpleBrush}"
+                            >
+                        </DatePicker>
                         <TextBox          
                             Grid.Row="1"
                             Style="{StaticResource LowerSignatureTextBox}"
-                            Text="Возраст">
+                            Text="Дата рождения">
                         </TextBox>
                     </Grid>
                     <Grid 
