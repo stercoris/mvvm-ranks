@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
     </UserControl.Resources>
-    <Grid Background="{StaticResource PurpleBrush}">
+    <Grid  Background="{StaticResource PurpleBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="16*"/>
@@ -59,7 +59,7 @@
             </Button>
         </Grid>
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" x:Name="dateGrid">
                 <!-- Имя и фамилия -->
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -164,10 +164,19 @@
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <DatePicker x:Name="ReportDateTimePicker" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" 
-                            Padding="0,3,0,0" Margin="10,1,10,-1" FirstDayOfWeek="Monday" Width="148"
+                        
+                        
+                        <DatePicker 
+                            x:Name="ReportDateTimePicker"
+                            FontSize="20"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Height="40"                             
+                            FirstDayOfWeek="Monday"
+                            Width="148"
+                            Foreground="Orange"
                             FontFamily="{StaticResource Montserrat}" 
-                            CalendarStyle="{DynamicResource DatePickerCalendarStyle}"/>
+                            CalendarStyle="{DynamicResource DateTimeCalendar}"/>
                         <TextBox          
                             Grid.Row="1"
                             Style="{StaticResource LowerSignatureTextBox}"

@@ -57,8 +57,10 @@
 
     <ControlTemplate x:Key="EditFieldTextBox" TargetType="{x:Type TextBox}">
         <Border Background="{TemplateBinding Background}" 
-                x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0">
+                x:Name="Bd" 
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}" 
+                CornerRadius="0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
