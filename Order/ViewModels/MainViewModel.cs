@@ -28,7 +28,6 @@ namespace Order.WPF.ViewModels
 
         private async Task Loading()
         {
-            var students = DBProvider.DBContext.Students;
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Seq("http://localhost:5341")
                 .CreateLogger();

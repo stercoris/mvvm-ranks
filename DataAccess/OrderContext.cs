@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Order.DataAccess
 {
-    public class OrderContext : DbContext
+    public class OrderContext : DbContext, IDisposable
     {
         public OrderContext(DbContextOptions<OrderContext> options)
         {
@@ -35,6 +35,12 @@ namespace Order.DataAccess
             modelBuilder.Entity<Rank>()
                 .HasMany(r => r.Students)
                 .WithOne(s => s.Rank);
+        }
+
+        public override void Dispose()
+        {
+            this.SaveChanges();
+            base.Dispose();
         }
 
         public DbSet<Student> Students { get; set; }

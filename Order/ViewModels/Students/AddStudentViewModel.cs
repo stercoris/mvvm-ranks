@@ -1,6 +1,7 @@
 ﻿using Order.DataAccess.Models;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using System.Linq;
 using System.Windows.Input;
 
 namespace Order.WPF.ViewModels
@@ -10,12 +11,12 @@ namespace Order.WPF.ViewModels
         [Reactive] public Student Student { get; set; }
         [Reactive] public ICommand Save { get; set; }
 
-        public AddStudentViewModel()
+        public AddStudentViewModel(ICommand saveUserCommand)
         {
             this.Student = new();
             this.Save = ReactiveCommand.Create(() =>
             {
-                DataAccess.DBProvider.DBContext.Students.Add(Student);
+                saveUserCommand.Execute(Student);
             });
         }
     }

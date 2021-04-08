@@ -62,6 +62,7 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                     <Button 
+                        Command="{Binding AddGroupCommand}"
                         Style="{StaticResource GroupSelectButton}"
                         Height="70">
                         <StackPanel Orientation="Vertical">
@@ -203,6 +204,9 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodels:AddStudentViewModel}">
                     <views:AddStudentView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:AddGroupViewModel}">
+                    <views:AddGroupView/>
                 </DataTemplate>
             </Grid.Resources>
             

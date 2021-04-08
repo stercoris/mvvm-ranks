@@ -8,7 +8,7 @@
     xmlns:views="clr-namespace:Order.WPF.Views.Pages.MainPage"
     xmlns:viewmodels="clr-namespace:Order.WPF.ViewModels"
     xmlns:converters="clr-namespace:Order.WPF.Converters"
-    d:DesignHeight ="900" Width="360" x:Uid="Управление группой"
+    d:DesignHeight ="1000" Width="360" x:Uid="Управление группой"
     d:DataContext="{d:DesignInstance Type=viewmodels:GroupViewModel, IsDesignTimeCreatable=False}">
     <UserControl.Resources>
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>

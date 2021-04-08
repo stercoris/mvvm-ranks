@@ -1,4 +1,5 @@
 ﻿using Order.DataAccess;
+using Order.DataAccess.Models;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System.Collections.ObjectModel;
@@ -25,15 +26,40 @@ namespace Order.WPF.ViewModels
                     CurrentlyEditableObject = null
             );
 
-            var AddStudentCommand = ReactiveCommand.Create(()=> CurrentlyEditableObject = new AddStudentViewModel());
 
-            if(DBProvider.DBContext.Groups.Count() != 0)
+            SaveGroupCommand = ReactiveCommand.Create<Group>((newGroup) =>
             {
-                var groups = DBProvider.DBContext.Groups;
+                using(var dbContext = DataAccess.DBProvider.DBLocalContext)
+                {
+                    dbContext.Groups.Add(newGroup);
+                    var newGroupVM = new GroupViewModel(newGroup, SelectGroupCommand, SetEditableObject, AddStudentCommand);
+                    this.Groups.Add(newGroupVM);
+                    CurrentlyEditableObject = newGroupVM;
+                }
+            });
+
+            SaveStudentCommand = ReactiveCommand.Create<Student>((newStudent) =>
+            {
+                using (var dbContext = DataAccess.DBProvider.DBLocalContext)
+                {
+                    dbContext.Students.Add(newStudent);
+                    newStudent.Rank = dbContext.Ranks.First();
+                    newStudent.Group = this.SelectedGroup.Group;
+
+                    var newStudentVM = new StudentViewModel(newStudent, SetEditableObject);
+                    this.SelectedGroup.RaisePropertyChanging();
+                    CurrentlyEditableObject = newStudentVM;
+                }
+            });
+
+
+            AddStudentCommand = ReactiveCommand.Create(() => CurrentlyEditableObject = new AddStudentViewModel(SaveStudentCommand));
+            AddGroupCommand = ReactiveCommand.Create(() => CurrentlyEditableObject = new AddGroupViewModel(SaveGroupCommand));
+
+            if (DataAccess.DBProvider.DBContext.Groups.Any())
+            {
+                var groups = DataAccess.DBProvider.DBContext.Groups;
                 Groups = new ObservableCollection<GroupViewModel>(
-                    // Логика не совсем понятная, 
-                    // но я передаю группу, команду выбора группы(отображение пользователей), 
-                    // команду выбора объекта, который редактирутся в контроллер
                     groups.Select(group => new GroupViewModel(group, SelectGroupCommand, SetEditableObject, AddStudentCommand))
                 );
             }
@@ -41,8 +67,6 @@ namespace Order.WPF.ViewModels
             {
                 Groups = new ObservableCollection<GroupViewModel>();
             }
-            
-
             if (Groups.Count > 0)
             {
                 SelectedGroup = Groups[0];
@@ -59,6 +83,10 @@ namespace Order.WPF.ViewModels
 
         #region Логика окна редактирования
         public ICommand CmdChangeEditMenuVisibility { get; set; }
+        public ICommand SaveGroupCommand { get; set; }
+        public ICommand SaveStudentCommand { get; set; }
+        public ICommand AddGroupCommand { get; set; }
+        public ICommand AddStudentCommand { get; set; }
         private ICommand SetEditableObject { get; set; }
 
         public ReactiveObject LastEditedObject;

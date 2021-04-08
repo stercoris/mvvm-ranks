@@ -199,9 +199,9 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <TextBox 
+                        Text="{Binding Student.About}"
                         Grid.Row="0"
-                        Style="{StaticResource OrderTextBox}"
-                        Text="">
+                        Style="{StaticResource OrderTextBox}">
                     </TextBox>
                     <TextBox          
                         Grid.Row="1"
@@ -212,6 +212,7 @@
             </StackPanel>
         </ScrollViewer>
         <Button 
+            Command="{Binding Save}"
             Grid.Row="2"
             BorderThickness="0"
             Content="Сохранить"

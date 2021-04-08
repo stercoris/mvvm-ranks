@@ -14,7 +14,7 @@ namespace Order.WPF.Converters
         {
             var group = value as GroupViewModel;
             var studentsVMs = new ObservableCollection<StudentViewModel>();
-            if (DataAccess.DBProvider.DBContext.Students.Count() > 0)
+            if (DataAccess.DBProvider.DBContext.Students.Any())
             {
                 var students = DataAccess.DBProvider.DBContext.Students
                     .Where((student) => student.Group.Id == group.Group.Id)
