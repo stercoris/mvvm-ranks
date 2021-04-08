@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="Resources/ScrollView.xaml"/>
                 <ResourceDictionary Source="Resources/Calendar.xaml"/>
                 <ResourceDictionary Source="Resources/Buttons.xaml"/>
+                <ResourceDictionary Source="Resources/Slider.xaml"/>
                 <ResourceDictionary Source="Resources/Fonts.xaml"/>
                 <ResourceDictionary Source="Resources/TextBoxes.xaml"/>
                 <ResourceDictionary Source="Resources/MainWindowStyle.xaml"/>
