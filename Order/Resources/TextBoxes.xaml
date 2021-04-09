@@ -112,5 +112,21 @@
         <Setter Property="Foreground" Value="{StaticResource DarkPurpleBrush}"/>
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
-    
+
+    <Style x:Key="ChangeableOrderTextBox" TargetType="TextBox" BasedOn="{StaticResource OrderTextBox}">
+        <Setter Property="MaxLength" Value="20"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="True">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="White" Opacity="0.01" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                <Setter Property="BorderBrush" Value="{StaticResource OrangeBrush}"/>
+
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>

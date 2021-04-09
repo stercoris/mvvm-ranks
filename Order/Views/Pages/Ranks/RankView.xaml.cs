@@ -19,20 +19,33 @@ namespace Order.WPF.Views.Pages.Ranks
         }
         private void ExpandRankClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            double startPoint = ActualHeight;
-            double finishPoint = 150;
-            RotateTransform rotateTransform = new(180);
-            if (startPoint == finishPoint)
+            if(groupName.IsEnabled == false)
             {
-                finishPoint = 60;
-                rotateTransform = new(0);
+                groupName.IsEnabled = true;
+                materialIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Done;
+                ChangeRankAvatar.Visibility = Visibility.Visible;
             }
-            DoubleAnimation rankSizeAnimation = new();
-            rankSizeAnimation.From = startPoint;
-            rankSizeAnimation.To = finishPoint;
-            rankSizeAnimation.Duration = TimeSpan.FromSeconds(0.3);
-            BeginAnimation(Button.HeightProperty, rankSizeAnimation);
-            (sender as Button).RenderTransform = rotateTransform;
+            else
+            {
+                groupName.IsEnabled = false;
+                ChangeRankAvatar.Visibility = Visibility.Hidden;
+                materialIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Create;
+            }
+          
+            //double startPoint = ActualHeight;
+            //double finishPoint = 150;
+            //RotateTransform rotateTransform = new(180);
+            //if (startPoint == finishPoint)
+            //{
+            //    finishPoint = 60;
+            //    rotateTransform = new(0);
+            //}
+            //DoubleAnimation rankSizeAnimation = new();
+            //rankSizeAnimation.From = startPoint;
+            //rankSizeAnimation.To = finishPoint;
+            //rankSizeAnimation.Duration = TimeSpan.FromSeconds(0.3);
+            //BeginAnimation(Button.HeightProperty, rankSizeAnimation);
+            //(sender as Button).RenderTransform = rotateTransform;
         }
         private void UserControl_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {

@@ -23,6 +23,8 @@ namespace Order.WPF.Views.Pages.Ranks
         public RankList()
         {
             InitializeComponent();
+            MouseUp += new MouseButtonEventHandler(DropCancel);
+
         }
 
         private void Drop(object sender, DragEventArgs e)
@@ -60,7 +62,7 @@ namespace Order.WPF.Views.Pages.Ranks
                 base.OnMouseMove(e);
                 if (e.LeftButton == MouseButtonState.Pressed)
                 {
-                    (sender as RankView).Visibility = Visibility.Hidden;
+                    //(sender as RankView).Visibility = Visibility.Hidden;
                     if (HidenObject != null)
                     {
                         HidenObject.Visibility = Visibility.Visible;
@@ -68,8 +70,10 @@ namespace Order.WPF.Views.Pages.Ranks
                     }
                     else
                         HidenObject = sender as RankView;
-
-                    DragDrop.DoDragDrop(sender as RankView, data, DragDropEffects.Move);
+                    try
+                    {
+                        DragDrop.DoDragDrop(sender as RankView, data, DragDropEffects.Move);
+                    }catch(InvalidOperationException) { }
                     e.Handled = true;
                 }
             }
@@ -88,6 +92,17 @@ namespace Order.WPF.Views.Pages.Ranks
             T tmp = list[indexA];
             list[indexA] = list[indexB];
             list[indexB] = tmp;
+        }
+
+        private void DropCancel(object sender, EventArgs e)
+        {
+            Trace.WriteLine("podnal!!!!!!!!!!!!!!!!!");
+            if(HidenObject != null)
+            {
+                HidenObject.Visibility = Visibility.Visible;
+                HidenObject = null;
+            }
+            //Trace.WriteLine("asfdasdsadsadasdasdas");
         }
     }
 }

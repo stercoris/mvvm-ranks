@@ -21,20 +21,14 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
 
-        <Ellipse
-                Width="20"
-                Height="20"
-                Fill="red">
-        </Ellipse>
         <Grid 
             Background="{StaticResource DarkPurpleBrush}"
             Grid.Row="0"
-            Grid.Column="1">
+            Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -55,27 +49,61 @@
                     </ImageBrush>
                 </Ellipse.Fill>
             </Ellipse>
-            <TextBlock x:Name="groupName"
+           
+            <TextBox x:Name="groupName"
                     Margin="10,0,0,0"
                     Grid.Column="1"
                     Text="{Binding Rank.Name}"
-                    Style="{StaticResource UserSelectionTitle}"
+                    Style="{StaticResource ChangeableOrderTextBox}"
+                     IsEnabled="False"
                     FontSize="32"
                     HorizontalAlignment="Left">
-            </TextBlock>
+            </TextBox>
         </Grid>
+        <Button
+            x:Name="ChangeRankAvatar"
+            Visibility="Hidden"
+            Grid.Column="1"
+            Grid.Row="0"
+            HorizontalAlignment="Left" 
+            Width="auto"
+            Height="auto"
+            d:Height="80"
+            Template="{StaticResource CustomButton}"
+            Background="{x:Null}"
+            BorderThickness="0"
+            Command="{Binding SelectedGroup.EditCommand}"
+            CommandParameter="{Binding SelectedGroup}"
+            Margin="0"
+            Padding="0">
+            <Border
+                    CornerRadius="0" 
+                    Margin="0"
+                    Height="auto"
+                    Width="auto"
+                    BorderBrush="Black">
+                <materialDesign:PackIcon 
+                        Style="{StaticResource NavBtnIcon}"
+                        Width="50"
+                        Height="50"
+                        Margin="0"
+                        HorizontalAlignment="Center"
+                        Kind="ImageEdit">
+                </materialDesign:PackIcon>
+            </Border>
+        </Button>
         <Button 
             Background="{StaticResource DarkPurpleBrush}"
             x:Name="arrowButton"
-            Grid.Column="2"
+            Grid.Column="1"
             Grid.Row="0"
             HorizontalAlignment="Right" 
             Style="{StaticResource Navigation}" 
-            Width="50" Height="60" 
+            Width="50" Height="50" 
             RenderTransformOrigin="0.5, 0.5"
             Click="ExpandRankClick">
-            <materialDesign:PackIcon 
-                Kind="ArrowDownThick"
+            <materialDesign:PackIcon x:Name="materialIcon" 
+                Kind="Create"
                 Style="{StaticResource NavBtnIcon}">
             </materialDesign:PackIcon>
         </Button>
