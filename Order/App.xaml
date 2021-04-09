@@ -24,7 +24,7 @@
                 <Setter Property="Margin" Value="0" />
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=WindowState}" Value="Maximized">
-                        <Setter Property="Margin" Value="7" />
+                        <Setter Property="Margin" Value="3" />
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
