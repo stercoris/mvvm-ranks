@@ -10,12 +10,12 @@ namespace Order.WPF.ViewModels
     {
         [Reactive] public Group Group { get; set; } 
         public ICommand Save { get; set; }
-        public AddGroupViewModel(ICommand setEditableObjectCommand)
+        public AddGroupViewModel(ICommand saveGroupCommand)
         {
             this.Group = new();
             this.Save = ReactiveCommand.Create(() =>
             {
-                setEditableObjectCommand.Execute(this.Group);
+                saveGroupCommand.Execute(this.Group);
             });
         }
     }

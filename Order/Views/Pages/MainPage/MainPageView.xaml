@@ -149,9 +149,9 @@
             Background="{StaticResource DarkGradient}"
             Resources="{StaticResource DisableScroller}">
             <WrapPanel 
-                    HorizontalAlignment="Center">
+                HorizontalAlignment="Center">
                 <ItemsControl 
-                    ItemsSource="{Binding SelectedGroup, 
+                    ItemsSource="{Binding SelectedGroup, Mode=OneWay, 
                         Converter={StaticResource SelectedGroupToStudentViewModelsConverter}}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
