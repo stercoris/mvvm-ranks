@@ -34,7 +34,7 @@ namespace Order.WPF.ViewModels
             GroupsViewModel = new MainPageViewModel();
             RanksViewModel = new RanksViewModel();
             GroupsAndUsers = new MainPageView() { DataContext = this };
-            RankList = new RankList() { DataContext = this };
+            RankList = new RankList() { DataContext = RanksViewModel };
             SelectedPage = GroupsAndUsers;
             Log.Information($"{nameof(PageController)} was succ created");
         }

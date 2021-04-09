@@ -8,13 +8,14 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:viewmodels="clr-namespace:Order.WPF.ViewModels"
     d:DesignHeight="150" d:DesignWidth="800"
-    d:DataContext="{d:DesignInstance Type=viewmodels:RankItemViewModel, IsDesignTimeCreatable=False}">
+    d:DataContext="{d:DesignInstance Type=viewmodels:RankItemViewModel, IsDesignTimeCreatable=False}"
+    MouseDown="UserControl_MouseDown"
+    BorderThickness="3">
     <UserControl.Resources>
-
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
         <converters:ColorConverter x:Key="ColorConverter"/>
     </UserControl.Resources>
-    <Grid>
+    <Grid Background="{StaticResource DarkPurpleBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -54,7 +55,7 @@
                     </ImageBrush>
                 </Ellipse.Fill>
             </Ellipse>
-            <TextBlock
+            <TextBlock x:Name="groupName"
                     Margin="10,0,0,0"
                     Grid.Column="1"
                     Text="{Binding Rank.Name}"

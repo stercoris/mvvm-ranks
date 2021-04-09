@@ -1,31 +1,93 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using Order.WPF.Views.Pages.Ranks;
+using Order.WPF.ViewModels;
+using ReactiveUI;
 
 namespace Order.WPF.Views.Pages.Ranks
-{                                               //TODO: Вырезать
+{                                               //TODO: Drag cancel and Statistic
     /// <summary>
     /// Логика взаимодействия для RankList.xaml
     /// </summary>
     public partial class RankList : Page
     {
-        //public List<RankView> ranksList = new();
-
+        public RankView HidenObject;
         public RankList()
         {
             InitializeComponent();
         }
 
-        private void Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private void Drop(object sender, DragEventArgs e)
         {
-            //var ranksListsGrandfather = VisualTreeHelper.GetChild(RanksItemControl, 0);//я не смог напрямую обратиться к листу с рангами (
-            //var ranksListsFather = VisualTreeHelper.GetChild(ranksListsGrandfather, 0);
-            //var ranksList = VisualTreeHelper.GetChild(ranksListsFather, 0);
-            //for (int i = 0; i < VisualTreeHelper.GetChildrenCount(ranksList); i++)
-            //{
-            //    var chld = VisualTreeHelper.GetChild(ranksList, i);
-            //    RankView rankView = VisualTreeHelper.GetChild(chld, 0) as RankView;
-            //    this.ranksList.Add(rankView);
-            //    //Trace.WriteLine(rankView.TranslatePoint(new Point(0, 0), ranksListsFather as ItemsPresenter).Y);
-            //}
+            (sender as RankView).BorderBrush = new SolidColorBrush();
+            var source = e.Data.GetData("Source");
+            if(HidenObject != null)
+                HidenObject.Visibility = Visibility.Visible;
+            int DropTarget = 0, DropedRank = 0, cunt = 0; ;
+            int temp = 0;
+            foreach (var rank in (DataContext as RanksViewModel).RankItems)
+            {
+                if(rank.Rank.Id == Convert.ToInt32(source))
+                    DropedRank = cunt;
+                if (rank.Rank.Id == ((sender as RankView).DataContext as RankItemViewModel).Rank.Id)
+                    DropTarget = cunt;
+                cunt++;
+            }
+            Swap((DataContext as RanksViewModel).RankItems, DropedRank, DropTarget);
+            var name = (DataContext as RanksViewModel).RankItems;
+            (DataContext as RanksViewModel).RaisePropertyChanged(nameof(name));
+        }
+
+        private void PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            var data = new DataObject();
+            data.SetData("Source", ((sender as RankView).DataContext as RankItemViewModel).Rank.Id.ToString());
+            
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount((RankView)sender); i++)
+            {
+                var chld = VisualTreeHelper.GetChild((RankView)sender, i);
+            }
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                base.OnMouseMove(e);
+                if (e.LeftButton == MouseButtonState.Pressed)
+                {
+                    (sender as RankView).Visibility = Visibility.Hidden;
+                    if (HidenObject != null)
+                    {
+                        HidenObject.Visibility = Visibility.Visible;
+                        HidenObject = (sender as RankView);
+                    }
+                    else
+                        HidenObject = sender as RankView;
+
+                    DragDrop.DoDragDrop(sender as RankView, data, DragDropEffects.Move);
+                    e.Handled = true;
+                }
+            }
+        }
+        private void RankView_DragOver(object sender, DragEventArgs e)
+        {
+            (sender as RankView).BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF3066"));
+        }
+        private void RankView_DragLeave(object sender, DragEventArgs e)
+        {
+            (sender as RankView).BorderBrush = new SolidColorBrush();
+        }
+
+        public static void Swap<T>(IList<T> list, int indexA, int indexB)
+        {
+            T tmp = list[indexA];
+            list[indexA] = list[indexB];
+            list[indexB] = tmp;
         }
     }
 }

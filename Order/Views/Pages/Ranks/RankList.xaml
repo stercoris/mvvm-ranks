@@ -8,12 +8,11 @@
     xmlns:viewmodels="clr-namespace:Order.WPF.ViewModels"
     xmlns:rankViews="clr-namespace:Order.WPF.Views.Pages.Ranks"
     d:DesignHeight ="600" d:DesignWidth="900" x:Uid="Ранги"
-    d:DataContext="{d:DesignInstance Type=viewmodels:PageController, IsDesignTimeCreatable=False}"
-    Loaded="Page_Loaded">
+    d:DataContext="{d:DesignInstance Type=viewmodels:RanksViewModel, IsDesignTimeCreatable=False}">
     <Page.Resources>
         <converters:XPLineLengthConverter x:Key="XPLineLengthConverter"/>
     </Page.Resources>
-    <Grid DataContext="{Binding RanksViewModel}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="500"/>
             <ColumnDefinition/>
@@ -78,7 +77,8 @@
 
         
         <Grid Grid.Column="1" Background="{StaticResource DarkGradient}">
-                <Slider
+                
+                <!--<Slider
                     Height="{Binding RankItems.Count, Converter={StaticResource XPLineLengthConverter}}"
                     Width="30"
                     HorizontalAlignment="Left"
@@ -95,30 +95,34 @@
                     <Slider.RenderTransform>
                         <RotateTransform Angle="180"/>
                     </Slider.RenderTransform>
-                </Slider>
+                </Slider>-->
             
             <ScrollViewer
                 VerticalScrollBarVisibility="Hidden"
                 Grid.Row="0"
                 Resources="{StaticResource DisableScroller}">
-                
-                <ItemsControl x:Name="RanksItemControl" ItemsSource="{Binding RankItems, IsAsync=True}">
-                    
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Vertical" Margin="20"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
+                    <ItemsControl x:Name="RanksItemControl" ItemsSource="{Binding RankItems, IsAsync=True}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical" Margin="20"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
 
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <rankViews:RankView DataContext="{Binding}" Margin="0,10"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    
-                </ItemsControl>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <rankViews:RankView 
+                                    DataContext="{Binding}" 
+                                    Margin="0,10"
+                                    PreviewMouseMove="PreviewMouseMove"
+                                    
+                                    Drop="Drop"
+                                    DragOver="RankView_DragOver"
+                                    DragLeave="RankView_DragLeave"
+                                    AllowDrop="True"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
             </ScrollViewer>
         </Grid>
-        
     </Grid>
 </Page>
