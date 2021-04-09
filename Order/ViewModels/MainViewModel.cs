@@ -4,10 +4,12 @@ using Order.WPF.Views;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Serilog;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace Order.WPF.ViewModels
 {
@@ -28,24 +30,34 @@ namespace Order.WPF.ViewModels
 
         private async Task Loading()
         {
+
+            // LOGGING
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Seq("http://localhost:5341")
                 .CreateLogger();
             Log.Information("Logger was configurated");
             Log.Information("Start loading");
+            // LOGGING
 
-            (new Thread(async () =>
+            // AUTOSAVING
+            DispatcherTimer autoSaveTimer = new()
             {
-                while (Application.Current != null)
-                {
-                    await DBProvider.DBContext.SaveChangesAsync();
-                    Thread.Sleep(500);
-                }
-            })).Start();
+                Interval = TimeSpan.FromSeconds(1),
+            };
+            autoSaveTimer.Tick += (sender, args) =>
+            { 
+                try { DBProvider.DBContext.SaveChanges(); } 
+                catch { } 
+            };
+            autoSaveTimer.Start();
+            // AUTOSAVING
 
+            // STARTUP
             PageContainer = new PageContainer();
             await Task.Delay(2000); //TODO: Для красоты, Убрать на релизе
             AppState = PageContainer;
+            // STARTUP
+
         }
     }
 }

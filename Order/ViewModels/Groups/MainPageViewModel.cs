@@ -2,8 +2,11 @@
 using Order.DataAccess.Models;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Order.WPF.ViewModels
@@ -21,35 +24,42 @@ namespace Order.WPF.ViewModels
             );
 
             CmdChangeEditMenuVisibility = ReactiveCommand.Create(() =>
-                CurrentlyEditableObject == null ?
-                    CurrentlyEditableObject = LastEditedObject :
-                    CurrentlyEditableObject = null
+                CurrentlyEditableObject = (CurrentlyEditableObject == null) ? LastEditedObject : null
             );
 
 
             SaveGroupCommand = ReactiveCommand.Create<Group>((newGroup) =>
             {
-                using(var dbContext = DataAccess.DBProvider.DBLocalContext)
+                new Task(async () =>
                 {
-                    dbContext.Groups.Add(newGroup);
+                    await DataAccess.DBProvider.DBContext.Groups.AddAsync(newGroup);
+
+                    await DataAccess.DBProvider.DBContext.SaveChangesAsync();
                     var newGroupVM = new GroupViewModel(newGroup, SelectGroupCommand, SetEditableObject, AddStudentCommand);
-                    this.Groups.Add(newGroupVM);
-                    CurrentlyEditableObject = newGroupVM;
-                }
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        this.Groups.Add(newGroupVM);
+                        CurrentlyEditableObject = newGroupVM;
+
+                    });
+                }).Start();
             });
 
             SaveStudentCommand = ReactiveCommand.Create<Student>((newStudent) =>
             {
-                using (var dbContext = DataAccess.DBProvider.DBLocalContext)
+                new Task(async () =>
                 {
-                    dbContext.Students.Add(newStudent);
-                    newStudent.Rank = dbContext.Ranks.First();
-                    newStudent.Group = this.SelectedGroup.Group;
+                    DataAccess.DBProvider.DBContext.Students.Add(newStudent);
 
+                    newStudent.Rank = DBProvider.DBContext.Ranks.First();
+                    newStudent.Group = this.SelectedGroup.Group;
+                    await DataAccess.DBProvider.DBContext.SaveChangesAsync();
+
+                    this.RaisePropertyChanged(nameof(SelectedGroup));
                     var newStudentVM = new StudentViewModel(newStudent, SetEditableObject);
-                    this.SelectedGroup.RaisePropertyChanging();
                     CurrentlyEditableObject = newStudentVM;
-                }
+
+                }).Start();
             });
 
 
@@ -58,7 +68,7 @@ namespace Order.WPF.ViewModels
 
             if (DataAccess.DBProvider.DBContext.Groups.Any())
             {
-                var groups = DataAccess.DBProvider.DBContext.Groups;
+                var groups = DBProvider.DBContext.Groups;
                 Groups = new ObservableCollection<GroupViewModel>(
                     groups.Select(group => new GroupViewModel(group, SelectGroupCommand, SetEditableObject, AddStudentCommand))
                 );
