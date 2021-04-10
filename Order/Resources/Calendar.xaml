@@ -25,13 +25,11 @@
         TargetType="{x:Type Calendar}"
         x:Key="DateTimeCalendar" 
         BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
-        <Setter Property="BorderBrush" Value="{StaticResource HorizontalPurpleGradient}"/>
-        <Setter Property="BorderThickness" Value="5"/>
         <Setter Property="Margin" Value="20,20,0,0"/>
         <Setter Property="Background" Value="{StaticResource HorizontalPurpleGradient}"/>
-        <Setter Property="CalendarButtonStyle" Value="{StaticResource CalendarDayButtonStyle}"/>
+        <!--<Setter Property="CalendarButtonStyle" Value="{StaticResource CalendarDayButtonStyle}"/>-->
         <Style.Resources>
-            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="{StaticResource Dark}" />
+            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="White" />
             <SolidColorBrush x:Key="MaterialDesignBody" Color="{StaticResource DarkPurple}" />
         </Style.Resources>
     </Style>

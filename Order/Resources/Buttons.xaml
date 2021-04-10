@@ -107,8 +107,8 @@
         <Setter Property="Padding" Value="0"/>
         <Setter Property="FontSize" Value="22"/>
         <Setter Property="Background" Value="{StaticResource HorizontalPurpleGradient}"/>
-        <Setter Property="Template" Value="{StaticResource CustomButton}"/>
         <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
+        <Setter Property="Template" Value="{StaticResource CustomButton}"/>
     </Style>
 
 </ResourceDictionary>

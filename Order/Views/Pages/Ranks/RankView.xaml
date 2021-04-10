@@ -1,5 +1,5 @@
 ﻿<UserControl 
-    x:Class="Order.WPF.Views.Pages.Ranks.RankViewModel"
+    x:Class="Order.WPF.Views.Pages.Ranks.RankView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:converters="clr-namespace:Order.WPF.Converters"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

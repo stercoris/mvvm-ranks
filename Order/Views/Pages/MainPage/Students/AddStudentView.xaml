@@ -11,6 +11,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:AddStudentViewModel, IsDesignTimeCreatable=False}">
     <UserControl.Resources>
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
+        <converters:GroupListConverter x:Key="GroupListConverter"/>
     </UserControl.Resources>
     <Grid  Background="{StaticResource PurpleBrush}">
         <Grid.RowDefinitions>
@@ -21,7 +22,7 @@
         <Grid>
             <Image 
                 Source="{
-                    Binding User.Picture, IsAsync=True,
+                    Binding Student.Picture,
                     Converter={StaticResource Base64ToImageSourceConverter},
                     ConverterParameter=500}"
                 Stretch="Uniform"
@@ -37,10 +38,7 @@
                 HorizontalAlignment="Right"
                 Template="{StaticResource CustomButton}"
                 Background="{x:Null}"
-                BorderThickness="0"
-                Command="{Binding SelectedGroup.EditCommand}"
-                CommandParameter="{Binding SelectedGroup}">
-
+                BorderThickness="0">
                 <Border
                     Background="{StaticResource PurpleBrush}"
                     CornerRadius="100"   
@@ -59,90 +57,64 @@
             </Button>
         </Grid>
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">
-            <StackPanel Orientation="Vertical" x:Name="dateGrid">
+            <StackPanel Orientation="Vertical">
                 <!-- Имя и фамилия -->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Grid 
+                    <Label
+                        Uid="Имя"
                         Grid.Column="0"
-                        Background="{StaticResource DarkPurpleBrush}"
-                        Margin="5,15">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
+                        Template="{StaticResource OrderFielTemplate}">
                         <TextBox 
-                            Grid.Row="0"
                             Style="{StaticResource OrderTextBox}"
                             Text="{Binding Student.Name}">
                         </TextBox>
-                        <TextBox          
-                            Grid.Row="1"
-                            Style="{StaticResource LowerSignatureTextBox}"
-                            Text="Имя">
-                        </TextBox>
-                    </Grid>
-                    <Grid 
+                    </Label>
+                    <Label
+                        Uid="Фамилия"
                         Grid.Column="1"
-                        Background="{StaticResource DarkPurpleBrush}"
-                        Margin="5,15">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
+                        Template="{StaticResource OrderFielTemplate}">
                         <TextBox 
-                            Grid.Row="0"
                             Style="{StaticResource OrderTextBox}"
-                            Text="">
+                            Text="{Binding Student.SecondName, Mode=TwoWay}">
                         </TextBox>
-                        <TextBox          
-                            Grid.Row="1"
-                            Style="{StaticResource LowerSignatureTextBox}"
-                            Text="Фамилия">
-                        </TextBox>
-                    </Grid>
+                    </Label>
                 </Grid>
                 <!-- Звание и стрелочки его изменения -->
-                <Grid Margin="5,15">
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0"
-                        Background="{StaticResource DarkPurpleBrush}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
+                    <Label
+                        Uid="Ранг"
+                        Grid.Column="0"
+                        Template="{StaticResource OrderFielTemplate}">
                         <TextBox 
-                            Grid.Row="0"
                             Style="{StaticResource UneditableOrderTextBox}"
-                            Text="">
+                            Text="{Binding Student.Rank.Id, Mode=TwoWay}">
                         </TextBox>
-                        <TextBox          
-                            Grid.Row="1"
-                            Style="{StaticResource LowerSignatureTextBox}"
-                            Text="Звание">
-                        </TextBox>
-                    </Grid>
-                    <Button Grid.Column="1"
+                    </Label>
+                    <Button 
+                        Grid.Column="1" 
+                        Margin="0,7"
                         Style="{StaticResource RankUpDown}">
-                        <materialDesign:PackIcon 
-                            Grid.Column="1"
+                        <materialDesign:PackIcon
                             Height="50"
                             Width="50"
                             HorizontalAlignment="Center"
                             Kind="KeyboardArrowDown">
                         </materialDesign:PackIcon>
                     </Button>
-                    <Button Grid.Column="2"
+                    <Button 
+                        Grid.Column="2"
+                        Margin="0,7"
                         Style="{StaticResource  RankUpDown}">
-                        <materialDesign:PackIcon 
-                            Grid.Column="1"
+                        <materialDesign:PackIcon
                             Height="50"
                             Width="50"
                             HorizontalAlignment="Center"
@@ -150,80 +122,33 @@
                         </materialDesign:PackIcon>
                     </Button>
                 </Grid>
-                <!-- Возраст и группа -->
-                <Grid Margin="5,15">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="10"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid 
-                        Grid.Column="0"
-                        Background="{StaticResource DarkPurpleBrush}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        
-                        
-                        <DatePicker 
-                            x:Name="ReportDateTimePicker"
-                            FontSize="20"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Height="40"                             
-                            FirstDayOfWeek="Monday"
-                            Width="148"
-                            Foreground="Orange"
-                            FontFamily="{StaticResource Montserrat}" 
-                            CalendarStyle="{DynamicResource DateTimeCalendar}"/>
-                        <TextBox          
-                            Grid.Row="1"
-                            Style="{StaticResource LowerSignatureTextBox}"
-                            Text="Дата рождения">
-                        </TextBox>
-                    </Grid>
-                    <Grid 
-                        Grid.Column="2"
-                        Background="{StaticResource DarkPurpleBrush}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <ComboBox 
-                            FontSize="20"
-                            HorizontalContentAlignment="Center"
-                            Foreground="Orange"
-                            SelectedItem="1">
-                            <TextBlock>вп-11</TextBlock>
-                            <TextBlock>вп-21</TextBlock>
-                            <TextBlock>вп-31</TextBlock>
-                        </ComboBox>
-                        <TextBox          
-                            Grid.Row="1"
-                            Style="{StaticResource LowerSignatureTextBox}"
-                            Text="Группа">
-                        </TextBox>
-                    </Grid>
-                </Grid>
-                <!-- Описание -->
-                <Grid Margin="5,15"
-                    Background="{StaticResource DarkPurpleBrush}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <TextBox 
-                        Text="{Binding Student.About}"
+                <!-- Группа -->
+                <Label
+                    Uid="Группа"
+                    Grid.Column="2"
+                    Template="{StaticResource OrderFielTemplate}">
+                    <ComboBox
+                        Style="{StaticResource CustomComboBox}"         
+                        SelectedIndex="0"
+                        ItemsSource="{Binding Converter={StaticResource GroupListConverter}}">
+                    </ComboBox>
+                    <!--<TextBox 
                         Grid.Row="0"
-                        Style="{StaticResource OrderTextBox}">
+                        Style="{StaticResource OrderTextBox}"
+                        Text="{Binding Student.Group.Name}">
+                    </TextBox>-->
+                </Label>
+                <!-- Описание -->
+                <Label
+                    Uid="Описание"
+                    Grid.Column="2"
+                    Template="{StaticResource OrderFielTemplate}">
+                    <TextBox 
+                        Grid.Row="0"
+                        Style="{StaticResource OrderTextBox}"
+                        Text="{Binding Student.About, Mode=TwoWay}">
                     </TextBox>
-                    <TextBox          
-                        Grid.Row="1"
-                        Style="{StaticResource LowerSignatureTextBox}"
-                        Text="Описание">
-                    </TextBox>
-                </Grid>
+                </Label>
             </StackPanel>
         </ScrollViewer>
         <Button 

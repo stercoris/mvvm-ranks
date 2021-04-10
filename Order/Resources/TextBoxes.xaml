@@ -40,6 +40,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    
 
 
     <Style x:Key="SearchTextBox" TargetType="TextBox">

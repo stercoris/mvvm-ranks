@@ -10,10 +10,10 @@ namespace Order.WPF.Views.Pages.Ranks
     /// <summary>
     /// Логика взаимодействия для RankView.xaml
     /// </summary>
-    public partial class RankViewModel : UserControl
+    public partial class RankView : UserControl
     {
 
-        public RankViewModel()
+        public RankView()
         {
             InitializeComponent();
         }

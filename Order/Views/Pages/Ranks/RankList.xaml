@@ -120,10 +120,11 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                            <rankViews:RankViewModel 
+                                <rankViews:RankView 
                                     DataContext="{Binding}" 
-                                    Margin="0,10"/>
-                        </DataTemplate>
+                                    Margin="0,10">
+                                </rankViews:RankView>
+                            </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
             </ScrollViewer>
