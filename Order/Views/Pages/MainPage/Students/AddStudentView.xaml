@@ -191,7 +191,13 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <ComboBox 
-                            FontSize="20">
+                            FontSize="20"
+                            HorizontalContentAlignment="Center"
+                            Foreground="Orange"
+                            SelectedItem="1">
+                            <TextBlock>вп-11</TextBlock>
+                            <TextBlock>вп-21</TextBlock>
+                            <TextBlock>вп-31</TextBlock>
                         </ComboBox>
                         <TextBox          
                             Grid.Row="1"

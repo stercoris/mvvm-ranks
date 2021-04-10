@@ -19,7 +19,7 @@ namespace Order.WPF.Views.Pages.Ranks
     /// </summary>
     public partial class RankList : Page
     {
-        public RankView HidenObject;
+        public RankViewModel HidenObject;
         public RankList()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace Order.WPF.Views.Pages.Ranks
 
         private void Drop(object sender, DragEventArgs e)
         {
-            (sender as RankView).BorderBrush = new SolidColorBrush();
+            (sender as RankViewModel).BorderBrush = new SolidColorBrush();
             var source = e.Data.GetData("Source");
             if(HidenObject != null)
                 HidenObject.Visibility = Visibility.Visible;
@@ -39,7 +39,7 @@ namespace Order.WPF.Views.Pages.Ranks
             {
                 if(rank.Rank.Id == Convert.ToInt32(source))
                     DropedRank = cunt;
-                if (rank.Rank.Id == ((sender as RankView).DataContext as RankItemViewModel).Rank.Id)
+                if (rank.Rank.Id == ((sender as RankViewModel).DataContext as RankItemViewModel).Rank.Id)
                     DropTarget = cunt;
                 cunt++;
             }
@@ -51,11 +51,11 @@ namespace Order.WPF.Views.Pages.Ranks
         private void PreviewMouseMove(object sender, MouseEventArgs e)
         {
             var data = new DataObject();
-            data.SetData("Source", ((sender as RankView).DataContext as RankItemViewModel).Rank.Id.ToString());
+            data.SetData("Source", ((sender as RankViewModel).DataContext as RankItemViewModel).Rank.Id.ToString());
             
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount((RankView)sender); i++)
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount((RankViewModel)sender); i++)
             {
-                var chld = VisualTreeHelper.GetChild((RankView)sender, i);
+                var chld = VisualTreeHelper.GetChild((RankViewModel)sender, i);
             }
             if (e.LeftButton == MouseButtonState.Pressed)
             {
@@ -66,13 +66,13 @@ namespace Order.WPF.Views.Pages.Ranks
                     if (HidenObject != null)
                     {
                         HidenObject.Visibility = Visibility.Visible;
-                        HidenObject = (sender as RankView);
+                        HidenObject = (sender as RankViewModel);
                     }
                     else
-                        HidenObject = sender as RankView;
+                        HidenObject = sender as RankViewModel;
                     try
                     {
-                        DragDrop.DoDragDrop(sender as RankView, data, DragDropEffects.Move);
+                        DragDrop.DoDragDrop(sender as RankViewModel, data, DragDropEffects.Move);
                     }catch(InvalidOperationException) { }
                     e.Handled = true;
                 }
@@ -80,11 +80,11 @@ namespace Order.WPF.Views.Pages.Ranks
         }
         private void RankView_DragOver(object sender, DragEventArgs e)
         {
-            (sender as RankView).BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF3066"));
+            (sender as RankViewModel).BorderBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF3066"));
         }
         private void RankView_DragLeave(object sender, DragEventArgs e)
         {
-            (sender as RankView).BorderBrush = new SolidColorBrush();
+            (sender as RankViewModel).BorderBrush = new SolidColorBrush();
         }
 
         public static void Swap<T>(IList<T> list, int indexA, int indexB)
