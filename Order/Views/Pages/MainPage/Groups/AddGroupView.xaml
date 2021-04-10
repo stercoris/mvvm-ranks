@@ -29,97 +29,69 @@
 
             <Grid>
                 <Image 
-                Source="{
-                    Binding Group.Picture, IsAsync=True,
-                    Converter={StaticResource Base64ToImageSourceConverter},
-                    ConverterParameter=500}"
-                Stretch="Uniform"
-                d:Source="/Images/no_image.png">
-
+                    Source="{
+                        Binding Group.Picture,
+                        Converter={StaticResource Base64ToImageSourceConverter},
+                        ConverterParameter=500}"
+                    Stretch="Uniform"
+                    d:Source="/Images/no_image.png">
                 </Image>
                 <Button
-                VerticalAlignment="Bottom"
-                Width="auto"
-                Height="auto"
-                d:Height="100"
-                HorizontalContentAlignment="Center"
-                HorizontalAlignment="Right"
-                Template="{StaticResource CustomButton}"
-                Background="{x:Null}"
-                BorderThickness="0"
-                Command="{Binding SelectedGroup.EditCommand}"
-                CommandParameter="{Binding SelectedGroup}">
-
-                    <Border
-                    Background="{StaticResource PurpleBrush}"
-                    CornerRadius="100"   
-                    Height="auto"
+                    VerticalAlignment="Bottom"
                     Width="auto"
-                    BorderBrush="Black">
+                    Height="auto"
+                    d:Height="100"
+                    HorizontalContentAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Template="{StaticResource CustomButton}"
+                    Background="{x:Null}"
+                    BorderThickness="0">
+                    <Border
+                        Background="{StaticResource PurpleBrush}"
+                        CornerRadius="100"   
+                        Height="auto"
+                        Width="auto"
+                        BorderBrush="Black">
                         <materialDesign:PackIcon 
-                        Style="{StaticResource NavBtnIcon}"
-                        Width="35"
-                        Height="35"
-                        Margin="10"
-                        HorizontalAlignment="Center"
-                        Kind="ImageEdit">
+                            Style="{StaticResource NavBtnIcon}"
+                            Width="35"
+                            Height="35"
+                            Margin="10"
+                            HorizontalAlignment="Center"
+                            Kind="ImageEdit">
                         </materialDesign:PackIcon>
                     </Border>
                 </Button>
             </Grid>
             <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1" >
                 <StackPanel Orientation="Vertical">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBox 
-                            Grid.Row="0"
+                    <Label
+                        Uid="Название группы"
+                        Template="{StaticResource OrderFielTemplate}">
+                        <TextBox
                             MaxLength="500"
                             Style="{StaticResource OrderTextBox}"    
                             Padding="10"
-                            Margin="10,5,10,0" 
                             FontFamily="{StaticResource Montserrat}"
                             Foreground="{StaticResource MoreDarkerOrangeBrush}"
                             IsReadOnly="False"
                             Text="{Binding Group.Name, Mode=TwoWay}">
                         </TextBox>
-                        <TextBox                      
-                            Grid.Row="1"
-                            Style="{StaticResource LowerSignatureTextBox}"
-                            Text="Название группы"
-                            Background="{StaticResource HorizontalPurpleGradient}"
-                            Margin="10,0,10,10"
-                            >
-                        </TextBox>
-                    </Grid>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBox 
+                    </Label>
+                    <Label
+                        Uid="Описание группы"
+                        Template="{StaticResource OrderFielTemplate}">
+                        <TextBox
                             MinHeight="100"
-                            Grid.Row="0"
                             MaxLength="500"
                             Style="{StaticResource OrderTextBox}"    
                             Padding="10"
-                            Margin="10,5,10,0" 
                             FontFamily="{StaticResource Montserrat}"
                             Foreground="{StaticResource MoreDarkerOrangeBrush}"
                             IsReadOnly="False"
                             Text="{Binding Group.About, Mode=TwoWay}">
                         </TextBox>
-                        <TextBox                      
-                            Grid.Row="1"
-                            Style="{StaticResource LowerSignatureTextBox}"
-                            Text="Описание группы"
-                            Background="{StaticResource HorizontalPurpleGradient}"
-                            Margin="10,0,10,20"
-                            >
-                        </TextBox>
-                    </Grid>
+                    </Label>
                 </StackPanel>
             </ScrollViewer>
             <Button 

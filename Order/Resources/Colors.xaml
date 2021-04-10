@@ -17,6 +17,7 @@
     <SolidColorBrush x:Key="OrangeBrush"        Color="{StaticResource Orange}"/>
     <SolidColorBrush x:Key="GrayBrush"          Color="{StaticResource Gray}"/>
 
+     
     <LinearGradientBrush x:Key="OrangeToPurpleGradient" StartPoint="0,0" EndPoint="0,1">
         <LinearGradientBrush.GradientStops>
             <GradientStop Offset="0.1"  Color="{StaticResource Orange}" />

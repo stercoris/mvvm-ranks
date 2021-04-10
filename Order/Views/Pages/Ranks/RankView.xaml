@@ -34,30 +34,31 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Ellipse 
-                        x:Name="imgElipse"
-                        Grid.Column="0" 
-                        Width="60"
-                        Height="60"
-                        Margin="0"
-                        Stretch="Fill">
+                x:Name="imgElipse"
+                Grid.Column="0" 
+                Width="60"
+                Height="60"
+                Margin="0"
+                Stretch="Fill">
                 <Ellipse.Fill>
                     <ImageBrush 
-                                ImageSource="{
-                                Binding Rank.Picture,
-                                Converter={StaticResource Base64ToImageSourceConverter},
-                                ConverterParameter=100}">
+                        ImageSource="{
+                        Binding Rank.Picture,
+                        Converter={StaticResource Base64ToImageSourceConverter},
+                        ConverterParameter=100}">
                     </ImageBrush>
                 </Ellipse.Fill>
             </Ellipse>
            
-            <TextBox x:Name="groupName"
-                    Margin="10,0,0,0"
-                    Grid.Column="1"
-                    Text="{Binding Rank.Name}"
-                    Style="{StaticResource ChangeableOrderTextBox}"
-                     IsEnabled="False"
-                    FontSize="32"
-                    HorizontalAlignment="Left">
+            <TextBox 
+                x:Name="groupName"
+                Margin="10,0,0,0"
+                Grid.Column="1"
+                Text="{Binding Rank.Name}"
+                Style="{StaticResource ChangeableOrderTextBox}"
+                IsEnabled="False"
+                FontSize="32"
+                HorizontalAlignment="Left">
             </TextBox>
         </Grid>
         <Button
@@ -77,18 +78,18 @@
             Margin="0"
             Padding="0">
             <Border
-                    CornerRadius="0" 
-                    Margin="0"
-                    Height="auto"
-                    Width="auto"
-                    BorderBrush="Black">
+                CornerRadius="0" 
+                Margin="0"
+                Height="auto"
+                Width="auto"
+                BorderBrush="Black">
                 <materialDesign:PackIcon 
-                        Style="{StaticResource NavBtnIcon}"
-                        Width="50"
-                        Height="50"
-                        Margin="0"
-                        HorizontalAlignment="Center"
-                        Kind="ImageEdit">
+                    Style="{StaticResource NavBtnIcon}"
+                    Width="50"
+                    Height="50"
+                    Margin="0"
+                    HorizontalAlignment="Center"
+                    Kind="ImageEdit">
                 </materialDesign:PackIcon>
             </Border>
         </Button>

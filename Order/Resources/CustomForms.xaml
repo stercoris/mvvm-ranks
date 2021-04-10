@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <ControlTemplate x:Key="OrderFielTemplate" TargetType="Label">
+        <Grid Margin="5,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            
+            <ContentPresenter MinHeight="{TemplateBinding MinHeight}" MaxHeight="{TemplateBinding MaxHeight}"/>
+            <TextBox          
+                Grid.Row="1"
+                Style="{StaticResource LowerSignatureTextBox}"
+                Text="{TemplateBinding Uid}">
+            </TextBox>
+        </Grid>
+    </ControlTemplate>
+    
+    
+</ResourceDictionary>

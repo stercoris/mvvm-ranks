@@ -29,40 +29,36 @@
             </TextBox>
             <Grid>
                 <Image 
-                Source="{
-                    Binding Group.Picture, IsAsync=True,
-                    Converter={StaticResource Base64ToImageSourceConverter},
-                    ConverterParameter=500}"
-                Stretch="Uniform"
-                d:Source="/Images/no_image.png">
-
+                    Source="{
+                        Binding Group.Picture,
+                        Converter={StaticResource Base64ToImageSourceConverter},
+                        ConverterParameter=500}"
+                    Stretch="Uniform"
+                    d:Source="/Images/no_image.png">
                 </Image>
                 <Button
-                VerticalAlignment="Bottom"
-                Width="auto"
-                Height="auto"
-                d:Height="100"
-                HorizontalContentAlignment="Center"
-                HorizontalAlignment="Right"
-                Template="{StaticResource CustomButton}"
-                Background="{x:Null}"
-                BorderThickness="0"
-                Command="{Binding SelectedGroup.EditCommand}"
-                CommandParameter="{Binding SelectedGroup}">
-
-                    <Border
-                    Background="{StaticResource PurpleBrush}"
-                    CornerRadius="100"   
-                    Height="auto"
+                    VerticalAlignment="Bottom"
                     Width="auto"
-                    BorderBrush="Black">
+                    Height="auto"
+                    d:Height="100"
+                    HorizontalContentAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Template="{StaticResource CustomButton}"
+                    Background="{x:Null}"
+                    BorderThickness="0">
+                    <Border
+                        Background="{StaticResource PurpleBrush}"
+                        CornerRadius="100"   
+                        Height="auto"
+                        Width="auto"
+                        BorderBrush="Black">
                         <materialDesign:PackIcon 
-                        Style="{StaticResource NavBtnIcon}"
-                        Width="35"
-                        Height="35"
-                        Margin="10"
-                        HorizontalAlignment="Center"
-                        Kind="ImageEdit">
+                            Style="{StaticResource NavBtnIcon}"
+                            Width="35"
+                            Height="35"
+                            Margin="10"
+                            HorizontalAlignment="Center"
+                            Kind="ImageEdit">
                         </materialDesign:PackIcon>
                     </Border>
                 </Button>
@@ -71,49 +67,32 @@
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1" >
             <StackPanel Orientation="Vertical">
                 <!-- Рейтинг -->
-                <Grid Margin="5,10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
+                <Label
+                    Uid="Рейтинг"
+                    Template="{StaticResource OrderFielTemplate}">
                     <TextBox 
                         Grid.Row="0"
                         Style="{StaticResource UneditableOrderTextBox}"
                         Text="12">
                     </TextBox>
-                    <TextBox          
-                        Grid.Row="1"
-                        Style="{StaticResource LowerSignatureTextBox}"
-                        Text="Рейтинг">
-                    </TextBox>
-                </Grid>
+                </Label>
                 <!-- Среднее звание -->
-                <Grid Margin="5,10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
+                <Label
+                    Uid="Ранг"
+                    Template="{StaticResource OrderFielTemplate}">
                     <TextBox 
                         Grid.Row="0"
                         Style="{StaticResource UneditableOrderTextBox}"
                         Text="мастер">
                     </TextBox>
-                    <TextBox                      
-                        Grid.Row="1"
-                        Style="{StaticResource LowerSignatureTextBox}"
-                        Text="Среднее звание">
-                    </TextBox>
-                </Grid>
-                <!-- Топ 3 -->
-                <Grid
-                    Background="{StaticResource DarkPurpleBrush}"
+                </Label>
+                <!-- Топ -->
+                <Label
+                    Uid="Топ"
                     MinHeight="210"
-                    Margin="5,10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
+                    Template="{StaticResource OrderFielTemplate}">
                     <ItemsControl 
+                        Background="{StaticResource DarkPurpleBrush}"
                         Grid.Column="0" 
                         ItemsSource="{Binding Group, 
                             Converter={StaticResource TopUsersConverter}}">
@@ -128,18 +107,11 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    <TextBox               
-                        Grid.Row="1"
-                        Style="{StaticResource LowerSignatureTextBox}"
-                        Text="Топ 3">
-                    </TextBox>
-                </Grid>
+                </Label>
                 <!-- Описание группы -->
-                <Grid Margin="5,10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+                <Label
+                    Uid="Описание"
+                    Template="{StaticResource OrderFielTemplate}">
                     <TextBox 
                         MinHeight="100"
                         Grid.Row="0"
@@ -148,12 +120,7 @@
                         Foreground="{StaticResource MoreDarkerOrangeBrush}"
                         Text="{Binding Group.About, Mode=TwoWay}">
                     </TextBox>
-                    <TextBox                      
-                        Grid.Row="1"
-                        Style="{StaticResource LowerSignatureTextBox}"
-                        Text="Описание группы">
-                    </TextBox>
-                </Grid>
+                </Label>
             </StackPanel>
         </ScrollViewer>
     </Grid>

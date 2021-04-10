@@ -1,11 +1,11 @@
 ﻿<Application x:Class="Order.WPF.App" 
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Order.WPF"
+             xmlns:local="clr-namespace:Order.WPF" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-
+        
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Colors.xaml"/>
                 <ResourceDictionary Source="Resources/ScrollView.xaml"/>
@@ -14,8 +14,10 @@
                 <ResourceDictionary Source="Resources/Slider.xaml"/>
                 <ResourceDictionary Source="Resources/Fonts.xaml"/>
                 <ResourceDictionary Source="Resources/TextBoxes.xaml"/>
+                <ResourceDictionary Source="Resources/CustomForms.xaml"/>
                 <ResourceDictionary Source="Resources/MainWindowStyle.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <materialDesign:BundledTheme BaseTheme="Dark" PrimaryColor="Orange" SecondaryColor="DeepOrange"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
 

@@ -11,7 +11,7 @@ namespace Order.WPF.Views.Pages.Ranks
     /// </summary>
     public partial class RankView : UserControl
     {
-        public string GroupName{ get => groupName.ToString(); }
+        public string GroupName { get => groupName.ToString(); }
 
         public RankView()
         {
