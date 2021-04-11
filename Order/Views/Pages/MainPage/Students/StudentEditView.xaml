@@ -12,6 +12,7 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:StudentViewModel, IsDesignTimeCreatable=False}">
     <UserControl.Resources>
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
+        <converters:GroupListConverter x:Key="GroupListConverter"/>
     </UserControl.Resources>
     <Grid Background="{StaticResource PurpleBrush}">
         <Grid.RowDefinitions>
@@ -76,7 +77,9 @@
                     <Button 
                         Grid.Column="1" 
                         Margin="5,7"
-                        Style="{StaticResource RankUpDown}">
+                        Style="{StaticResource RankUpDown}"
+                        Command="{Binding ChangeRank}"
+                        CommandParameter="-1">
                         <materialDesign:PackIcon
                             Height="50"
                             Width="50"
@@ -87,7 +90,9 @@
                     <Button 
                         Grid.Column="2"
                         Margin="5,7"
-                        Style="{StaticResource  RankUpDown}">
+                        Style="{StaticResource  RankUpDown}"
+                        Command="{Binding ChangeRank}"
+                        CommandParameter="1">
                         <materialDesign:PackIcon
                             Height="50"
                             Width="50"
@@ -101,11 +106,20 @@
                     Uid="Группа"
                     Grid.Column="2"
                     Template="{StaticResource OrderFielTemplate}">
-                    <TextBox 
-                        Grid.Row="0"
-                        Style="{StaticResource OrderTextBox}"
-                        Text="{Binding User.Group.Name}">
-                    </TextBox>
+                    <ComboBox 
+                        Style="{StaticResource CustomComboBox}"    
+                        SelectedIndex="0"
+                        ItemsSource="{Binding 
+                            Converter={StaticResource GroupListConverter}}"
+                        SelectedItem="{Binding User.Group,
+                            Mode=TwoWay,
+                            UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </Label>
                 <!-- Описание -->
                 <Label

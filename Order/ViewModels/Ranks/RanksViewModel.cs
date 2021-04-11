@@ -25,6 +25,7 @@ namespace Order.WPF.ViewModels
             });
             CreateRank = ReactiveCommand.Create(() =>
             {
+                //DataAccess.DBProvider.DBContext.Ranks.Add
                 RankItems.Add(new RankItemViewModel(new Rank{Name="Новый Ранг"}, DeleteRank));
             });
             var ranks = new ObservableCollection<Rank>(DBProvider.DBContext.Ranks);

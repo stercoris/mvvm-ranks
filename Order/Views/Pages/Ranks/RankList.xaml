@@ -20,7 +20,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
             <TextBlock 
                 Grid.Row="0"
@@ -53,7 +53,8 @@
                     Grid.Row="1" 
                     MinHeight="100"  
                     Background="#222328"
-                    Margin="0,0,0,50">
+                    Margin="10,50"
+                    VerticalScrollBarVisibility="Hidden">
                     <ItemsControl  x:Name="Ranks" ItemsSource="{Binding RankItems, IsAsync=True}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Animation;
 using Order.WPF.ViewModels;
 
@@ -17,30 +18,39 @@ namespace Order.WPF.Views.Pages.Ranks
         {
             InitializeComponent();
         }
-        private void ExpandRankClick(object sender, System.Windows.RoutedEventArgs e)
+        private void ExpandRankClick(object sender, RoutedEventArgs e)
         {
-            if(groupName.IsEnabled == false)
+            
+
+
+        }
+        
+       Style OrderTextBox = Application.Current.FindResource("OrderTextBox") as Style;
+       Style ChangeableOrderTextBox = Application.Current.FindResource("ChangeableOrderTextBox") as Style;
+        private void groupName_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (!groupName.IsReadOnly)
             {
-                groupName.IsEnabled = true;
-                materialIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Done;
+                groupName.IsReadOnly = true;
+                groupName.Style = OrderTextBox;
+                ImageUpload.Visibility = Visibility.Hidden;
+                DeleteRank.Visibility = Visibility.Hidden;
             }
             else
             {
-                groupName.IsEnabled = false; 
-                materialIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.Create;
+                ImageUpload.Visibility = Visibility.Visible;
+                DeleteRank.Visibility = Visibility.Visible;
+                groupName.IsReadOnly = false;
+                groupName.Style = ChangeableOrderTextBox;
             }
+        }
 
-            double startPoint = ActualHeight;
-            double finishPoint = 150;
-            if (startPoint == finishPoint)
-            {
-                finishPoint = 80;
-            }
-            DoubleAnimation rankSizeAnimation = new();
-            rankSizeAnimation.From = startPoint;
-            rankSizeAnimation.To = finishPoint;
-            rankSizeAnimation.Duration = TimeSpan.FromSeconds(0.3);
-            BeginAnimation(Button.HeightProperty, rankSizeAnimation);
+        private void groupName_LostFocus(object sender, RoutedEventArgs e)
+        {
+            groupName.IsReadOnly = true;
+            ImageUpload.Visibility = Visibility.Hidden;
+            groupName.Style = OrderTextBox;
+            DeleteRank.Visibility = Visibility.Hidden;
         }
     }
 }

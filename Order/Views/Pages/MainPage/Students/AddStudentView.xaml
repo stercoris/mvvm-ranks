@@ -31,7 +31,7 @@
             </Image>
             
             <custom:ImageUploadButton 
-                Picture="{Binding DataContext, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                Picture="{Binding Student.Picture, Mode=TwoWay}">
             </custom:ImageUploadButton>
         </Grid>
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">
