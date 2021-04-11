@@ -15,8 +15,8 @@ namespace Order.WPF.Converters
             int rankId = System.Convert.ToInt32(value);
             var students = DBProvider.DBContext.Students
                 .Select((student) => student.Rank.Id).ToList();
-            double count = 0;
-            double studentsCount = 0;
+            int count = 0;
+            int studentsCount = 0;
             foreach (var student in students)
             {
                 if (student == rankId) count++;
