@@ -129,7 +129,6 @@
         </Grid>
         <Button 
             Background="{StaticResource DarkPurpleBrush}"
-            x:Name="arrowButton"
             Grid.Column="1"
             Grid.Row="0"
             HorizontalAlignment="Right" 

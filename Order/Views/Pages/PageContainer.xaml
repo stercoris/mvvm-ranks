@@ -17,7 +17,8 @@
                 <ColumnDefinition Width="60"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid Background="{StaticResource PurpleBrush}" Grid.Column="0">
+            <Grid Grid.Column="0" 
+                Background="{StaticResource PurpleBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition/>
@@ -26,7 +27,10 @@
                     Source="/Images/up_logo.ico" 
                     Margin="8,13">
                 </Image>
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Row="1" Margin="0,0,0,150">
+                <StackPanel Grid.Row="1" 
+                    Orientation="Vertical" 
+                    VerticalAlignment="Center" 
+                    Margin="0,0,0,150">
                     <Button 
                         Style="{StaticResource Navigation}"
                         Template="{StaticResource CustomButton}"
@@ -52,8 +56,8 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Border 
-                    Height="30" Grid.Row="0" 
+                <Border Grid.Row="0" 
+                    Height="30" 
                     Background="{StaticResource PurpleBrush}" >
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button 
@@ -79,7 +83,7 @@
                 <Frame 
                     Content="{Binding SelectedPage}" 
                     Grid.Row="1" 
-                    NavigationUIVisibility="Hidden" 
+                    NavigationUIVisibility="Hidden"
                     Panel.ZIndex="200">
                 </Frame>
             </Grid>

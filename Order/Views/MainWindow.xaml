@@ -16,7 +16,7 @@
     </WindowChrome.WindowChrome>
     <Grid Style="{StaticResource WindowMainPanelStyle}">
         <Frame 
-            Content="{Binding AppState, IsAsync=True}" 
+            Content="{Binding AppState}" 
             NavigationUIVisibility="Hidden" 
             Width="auto" Height="auto"
             Panel.ZIndex="200">

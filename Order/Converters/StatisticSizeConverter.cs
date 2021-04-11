@@ -12,12 +12,14 @@ namespace Order.WPF.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            // TODO: Перепиши.....
             int rankId = System.Convert.ToInt32(value);
-            var students = DBProvider.DBContext.Students
+            var studentsRanks = DBProvider.DBContext.Students
                 .Select((student) => student.Rank.Id).ToList();
+
             int count = 0;
             int studentsCount = 0;
-            foreach (var student in students)
+            foreach (var student in studentsRanks)
             {
                 if (student == rankId) count++;
                 studentsCount++;
