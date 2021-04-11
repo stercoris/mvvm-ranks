@@ -1,9 +1,11 @@
-﻿using Order.DataAccess;
+﻿using DynamicData;
+using Order.DataAccess;
 using Order.DataAccess.Models;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -27,9 +29,10 @@ namespace Order.WPF.ViewModels
             {
                 RankItems.Add(new RankItemViewModel(new Rank{Name="Новый Ранг"}, DeleteRank));
             });
-            var ranks = new ObservableCollection<Rank>(DBProvider.DBContext.Ranks);
-            RankItems = new ObservableCollection<RankItemViewModel>();
-            foreach (var rank in ranks) RankItems.Add(new RankItemViewModel(rank, DeleteRank));
+
+            RankItems = new ObservableCollection<RankItemViewModel>(
+                DBProvider.DBContext.Ranks.Select(rank => new RankItemViewModel(rank, DeleteRank))
+            );
         }
     }
 }

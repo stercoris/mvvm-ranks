@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace Order.WPF.Converters
 {
-    class SelectedGroupToStudentViewModelsConverter : IValueConverter
+    class SelectedwGroupToStudentViewModelsConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

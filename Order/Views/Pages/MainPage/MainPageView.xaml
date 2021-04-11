@@ -16,7 +16,6 @@
         <views:StudentEditView x:Key="StudentEditView"/>
         <converters:EditStateToArrowAngleConverter x:Key="EditStateToArrowAngleConverter"/>
         <converters:StringToGroupsSearchConverter x:Key="StringToGroupsSearchConverter"/>
-        <converters:SelectedGroupToStudentViewModelsConverter x:Key="SelectedGroupToStudentViewModelsConverter"/>
     </Page.Resources>
     <Grid DataContext="{Binding GroupsViewModel}">
         <Grid.ColumnDefinitions>
@@ -139,40 +138,15 @@
                     </Button>
                 </Grid>
             </Border>
-            
-
         </Canvas>
 
-        <ScrollViewer 
-            Grid.Column="1"
-            VerticalScrollBarVisibility="Auto"  
-            Background="{StaticResource DarkGradient}"
-            Resources="{StaticResource DisableScroller}">
-            <WrapPanel 
-                HorizontalAlignment="Center">
-                <ItemsControl 
-                    ItemsSource="{Binding SelectedGroup, Mode=OneWay, 
-                        Converter={StaticResource SelectedGroupToStudentViewModelsConverter}}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel 
-                                ItemWidth="190" ItemHeight="170">
-                            </WrapPanel>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <views:StudentView DataContext="{Binding}"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </WrapPanel>
-        </ScrollViewer>
+        <views:StudentsPanelView 
+            Grid.Column="1" DataContext="{Binding}">
+        </views:StudentsPanelView>
         
         <Button
             Grid.Column="2"
             BorderThickness="0"
-            
             Background="{StaticResource OrangeToPurpleGradient}"
             Height="auto"
             Command="{Binding CmdChangeEditMenuVisibility}"

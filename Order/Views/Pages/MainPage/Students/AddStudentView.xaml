@@ -108,7 +108,9 @@
                     <ComboBox
                         Style="{StaticResource CustomComboBox}"         
                         SelectedIndex="0"
-                        ItemsSource="{Binding Converter={StaticResource GroupListConverter}}">
+                        ItemsSource="{Binding Student.Group, 
+                            Converter={StaticResource GroupListConverter}, 
+                            Mode=TwoWay}">
                     </ComboBox>
                     <!--<TextBox 
                         Grid.Row="0"
