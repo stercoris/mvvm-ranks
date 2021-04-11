@@ -6,7 +6,6 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewmodels="clr-namespace:Order.WPF.ViewModels"
              xmlns:converters="clr-namespace:Order.WPF.Converters"
-             d:DesignHeight="20"
              d:DataContext="{d:DesignInstance Type=viewmodels:RankItemViewModel, IsDesignTimeCreatable=False}">
     <UserControl.Resources>
         <converters:ColorConverter x:Key="ColorConverter"/>

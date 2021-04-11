@@ -13,15 +13,15 @@ namespace Order.WPF.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var groupId = (value as DataAccess.Models.Group).Id;
+
             var studentVMs = DataAccess.DBProvider.DBContext.Students
                 .Where(student => student.Group.Id == groupId).ToList()
-                .OrderBy(user => user.Rank.Id)
-                .Reverse()
+                .OrderBy(user => user.Rank.Id).Reverse()
                 .Select(student => new StudentViewModel(student, null)).ToList();
 
-            return (new ObservableCollection<StudentViewModel>(
-                studentVMs.GetRange(0, (studentVMs.Count > 3) ? 3 : studentVMs.Count)
-            ));
+            var topThree = studentVMs.GetRange(0, (studentVMs.Count > 3) ? 3 : studentVMs.Count);
+
+            return (new ObservableCollection<StudentViewModel>(topThree));
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
