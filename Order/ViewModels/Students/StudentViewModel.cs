@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reactive;
 using System.Windows;
 using System.Windows.Input;
+using Order.WPF.ViewModels;
 
 
 namespace Order.WPF.ViewModels
@@ -16,6 +17,7 @@ namespace Order.WPF.ViewModels
         // Каллбек для перемещения объекта в режим редактирования
         public ICommand EditCommand { get; set; }
         public ICommand ChangeRank { get; set; }
+        public ICommand DeleteUser{ get; set; }
 
         public StudentViewModel(Student user, ICommand editCommand = null)
         {
@@ -34,6 +36,10 @@ namespace Order.WPF.ViewModels
                 }
                 catch{ }
                 this.RaisePropertyChanged(nameof(User));
+            });
+            DeleteUser = ReactiveCommand.Create((string dif) =>
+            {
+                MessageBox.Show("юсер был удален. Честно!!!");
             });
         }
     }

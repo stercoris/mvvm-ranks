@@ -15,6 +15,11 @@
         Style="{StaticResource UserSelectionButton}"
         Command="{Binding EditCommand}"
         CommandParameter="{Binding}">
+        <Button.ContextMenu>
+            <ContextMenu Name="cm" StaysOpen="true">
+                <MenuItem Header="Удалить" Command="{Binding DeleteUser}"/>
+            </ContextMenu>
+        </Button.ContextMenu>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
