@@ -13,6 +13,7 @@
     <UserControl.Resources>
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
         <converters:GroupListConverter x:Key="GroupListConverter"/>
+        <converters:RankListConverter x:Key="RankListConverter"/>
     </UserControl.Resources>
     <Grid Background="{StaticResource PurpleBrush}">
         <Grid.RowDefinitions>
@@ -31,7 +32,7 @@
             </Image>
             <custom:ImageUploadButton Picture="{Binding User.Picture}"/>
         </Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Disabled" Grid.Row="1">
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">
             <StackPanel Orientation="Vertical">
                 <!-- Имя и фамилия -->
                 <Grid>
@@ -69,10 +70,22 @@
                         Uid="Ранг"
                         Grid.Column="0"
                         Template="{StaticResource OrderFielTemplate}">
-                        <TextBox 
+                        <ComboBox
+                            Style="{StaticResource CustomComboBox}"
+                            ItemsSource="{Binding Converter={StaticResource RankListConverter}}"
+                            SelectedItem="{Binding User.Rank,
+                            Mode=TwoWay,
+                            UpdateSourceTrigger=PropertyChanged}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <!--<TextBox 
                             Style="{StaticResource UneditableOrderTextBox}"
                             Text="{Binding User.Rank.Id, Mode=TwoWay}">
-                        </TextBox>
+                        </TextBox>-->
                     </Label>
                     <Button 
                         Grid.Column="1" 

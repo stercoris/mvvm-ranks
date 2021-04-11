@@ -108,7 +108,7 @@
 
     <Style x:Key="LowerSignatureTextBox" TargetType="TextBox" BasedOn="{StaticResource UneditableOrderTextBox}">
         <Setter Property="Margin" Value="0"/>
-        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontSize" Value="18"/>
         <Setter Property="Background" Value="{StaticResource HorizontalPurpleGradient}"/>
         <Setter Property="Foreground" Value="{StaticResource DarkPurpleBrush}"/>
         <Setter Property="FontWeight" Value="Bold"/>

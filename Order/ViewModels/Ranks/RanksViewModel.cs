@@ -23,12 +23,14 @@ namespace Order.WPF.ViewModels
             /// TODO: Сделать сохранение в бд
             DeleteRank = ReactiveCommand.Create<RankItemViewModel>((rank) =>
             {
+                DBProvider.DBContext.Ranks.Remove(rank.Rank);
                 RankItems.Remove(rank);
             });
             CreateRank = ReactiveCommand.Create(() =>
             {
-                //DataAccess.DBProvider.DBContext.Ranks.Add
-                RankItems.Add(new RankItemViewModel(new Rank{Name="Новый Ранг"}, DeleteRank));
+                var newRank = new Rank { Name = "Новый Ранг" };
+                DBProvider.DBContext.Ranks.Add(newRank);
+                RankItems.Add(new RankItemViewModel(newRank, DeleteRank));
             });
 
             RankItems = new ObservableCollection<RankItemViewModel>(

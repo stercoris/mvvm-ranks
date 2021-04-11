@@ -1,7 +1,10 @@
 ﻿using Order.DataAccess.Models;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using System.Diagnostics;
+using System.Linq;
 using System.Reactive;
+using System.Windows;
 using System.Windows.Input;
 
 
@@ -20,10 +23,16 @@ namespace Order.WPF.ViewModels
             this.EditCommand = editCommand;
             ChangeRank = ReactiveCommand.Create((string dif) =>
             {
+                var ranks = DataAccess.DBProvider.DBContext.Ranks.ToList();
+                int index = ranks.IndexOf(User.Rank);
                 int rankDif = System.Convert.ToInt32(dif);
-                User.Rank = DataAccess.DBProvider.DBContext.Ranks
-                    .Find(this.User.Rank.Id + rankDif)
-                    ??User.Rank;
+                try
+                {
+                    User.Rank = ranks
+                    .ElementAt(index + rankDif)
+                    ?? User.Rank;
+                }
+                catch{ }
                 this.RaisePropertyChanged(nameof(User));
             });
         }
