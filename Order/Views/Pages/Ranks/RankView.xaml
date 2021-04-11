@@ -7,9 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:viewmodels="clr-namespace:Order.WPF.ViewModels"
-    d:DesignHeight="150" d:DesignWidth="800"
+    d:DesignHeight="160" d:DesignWidth="800" Height="80"
     d:DataContext="{d:DesignInstance Type=viewmodels:RankItemViewModel, IsDesignTimeCreatable=False}"
-    MouseDown="UserControl_MouseDown"
     BorderThickness="3">
     <UserControl.Resources>
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
@@ -17,14 +16,13 @@
     </UserControl.Resources>
     <Grid Background="{StaticResource DarkPurpleBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
-
         <Grid 
             Background="{StaticResource DarkPurpleBrush}"
             Grid.Row="0"
@@ -49,8 +47,7 @@
                     </ImageBrush>
                 </Ellipse.Fill>
             </Ellipse>
-           
-            <TextBox 
+            <TextBox
                 x:Name="groupName"
                 Margin="10,0,0,0"
                 Grid.Column="1"
@@ -58,41 +55,78 @@
                 Style="{StaticResource ChangeableOrderTextBox}"
                 IsEnabled="False"
                 FontSize="32"
-                HorizontalAlignment="Left">
+                HorizontalAlignment="Left"
+                Height="50"
+                VerticalAlignment="Center">
             </TextBox>
         </Grid>
-        <Button
-            x:Name="ChangeRankAvatar"
-            Visibility="Hidden"
-            Grid.Column="1"
-            Grid.Row="0"
-            HorizontalAlignment="Left" 
-            Width="auto"
-            Height="auto"
-            d:Height="80"
-            Template="{StaticResource CustomButton}"
-            Background="{x:Null}"
-            BorderThickness="0"
-            Command="{Binding SelectedGroup.EditCommand}"
-            CommandParameter="{Binding SelectedGroup}"
-            Margin="0"
-            Padding="0">
-            <Border
-                CornerRadius="0" 
-                Margin="0"
-                Height="auto"
+        <Grid  
+            Grid.Column="0"
+            Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button
+                x:Name="ChangeRankAvatar"
+                Visibility="Visible"
+                Grid.Column="0"
+                HorizontalAlignment="Left" 
                 Width="auto"
-                BorderBrush="Black">
-                <materialDesign:PackIcon 
-                    Style="{StaticResource NavBtnIcon}"
-                    Width="50"
-                    Height="50"
+                Height="auto"
+                d:Height="80"
+                Template="{StaticResource CustomButton}"
+                Background="{x:Null}"
+                BorderThickness="0"
+                Margin="0"
+                Padding="0">
+                <Border
+                    CornerRadius="0" 
                     Margin="0"
-                    HorizontalAlignment="Center"
-                    Kind="ImageEdit">
-                </materialDesign:PackIcon>
-            </Border>
-        </Button>
+                    Height="auto"
+                    Width="auto"
+                    BorderBrush="Black">
+                    <materialDesign:PackIcon 
+                        Style="{StaticResource NavBtnIcon}"
+                        Width="50"
+                        Height="50"
+                        Margin="0"
+                        HorizontalAlignment="Center"
+                        Kind="ImageEdit">
+                    </materialDesign:PackIcon>
+                </Border>
+            </Button>
+            <Button
+                x:Name="DeleteRank"
+                Visibility="Visible"
+                Grid.Column="1"
+                HorizontalAlignment="Left" 
+                Width="auto"
+                Height="auto"
+                d:Height="80"
+                Command="{Binding DeleteRankCommand}"
+                Template="{StaticResource CustomButton}"
+                Background="{x:Null}"
+                BorderThickness="0"
+                Margin="0"
+                Padding="0" Cursor="Hand">
+                <Border
+                    CornerRadius="0" 
+                    Margin="0"
+                    Height="auto"
+                    Width="auto"
+                    BorderBrush="Black">
+                    <materialDesign:PackIcon 
+                        Style="{StaticResource NavBtnIcon}"
+                        Width="50"
+                        Height="50"
+                        Margin="0"
+                        HorizontalAlignment="Center"
+                        Kind="Delete">
+                    </materialDesign:PackIcon>
+                </Border>
+            </Button>
+        </Grid>
         <Button 
             Background="{StaticResource DarkPurpleBrush}"
             x:Name="arrowButton"

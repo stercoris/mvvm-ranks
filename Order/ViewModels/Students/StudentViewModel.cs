@@ -11,6 +11,14 @@ namespace Order.WPF.ViewModels
         [Reactive] public Student User { get; set; }
         // Каллбек для перемещения объекта в режим редактирования
         public ICommand EditCommand { get; set; }
+
+
+        public ICommand EditStudentRankCommand = ReactiveCommand.Create<Student>((EditeableStudent) =>
+        {
+            EditeableStudent.Id++;
+        });
+
+
         public StudentViewModel(Student user, ICommand editCommand = null)
         {
             this.User = user;

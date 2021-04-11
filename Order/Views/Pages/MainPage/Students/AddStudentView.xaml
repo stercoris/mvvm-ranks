@@ -12,6 +12,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:AddStudentViewModel, IsDesignTimeCreatable=False}">
     <UserControl.Resources>
         <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter"/>
+        <converters:GroupListConverter x:Key="GroupListConverter"/>
     </UserControl.Resources>
     <Grid  Background="{StaticResource PurpleBrush}">
         <Grid.RowDefinitions>
@@ -104,11 +105,16 @@
                     Uid="Группа"
                     Grid.Column="2"
                     Template="{StaticResource OrderFielTemplate}">
-                    <TextBox 
+                    <ComboBox
+                        Style="{StaticResource CustomComboBox}"         
+                        SelectedIndex="0"
+                        ItemsSource="{Binding Converter={StaticResource GroupListConverter}}">
+                    </ComboBox>
+                    <!--<TextBox 
                         Grid.Row="0"
                         Style="{StaticResource OrderTextBox}"
                         Text="{Binding Student.Group.Name}">
-                    </TextBox>
+                    </TextBox>-->
                 </Label>
                 <!-- Описание -->
                 <Label

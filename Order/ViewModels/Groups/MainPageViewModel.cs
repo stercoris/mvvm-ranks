@@ -4,6 +4,7 @@ using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -44,6 +45,10 @@ namespace Order.WPF.ViewModels
                     });
                 }).Start();
             });
+
+
+            
+
 
             SaveStudentCommand = ReactiveCommand.Create<Student>((newStudent) =>
             {

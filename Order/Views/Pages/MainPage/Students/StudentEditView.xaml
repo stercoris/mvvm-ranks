@@ -30,7 +30,7 @@
             </Image>
             <custom:ImageUploadButton Picture="{Binding User.Picture}"/>
         </Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Row="1">
+        <ScrollViewer VerticalScrollBarVisibility="Disabled" Grid.Row="1">
             <StackPanel Orientation="Vertical">
                 <!-- Имя и фамилия -->
                 <Grid>
@@ -75,7 +75,7 @@
                     </Label>
                     <Button 
                         Grid.Column="1" 
-                        Margin="0,7"
+                        Margin="5,7"
                         Style="{StaticResource RankUpDown}">
                         <materialDesign:PackIcon
                             Height="50"
@@ -86,7 +86,7 @@
                     </Button>
                     <Button 
                         Grid.Column="2"
-                        Margin="0,7"
+                        Margin="5,7"
                         Style="{StaticResource  RankUpDown}">
                         <materialDesign:PackIcon
                             Height="50"

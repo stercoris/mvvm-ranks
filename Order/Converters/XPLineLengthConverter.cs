@@ -12,8 +12,7 @@ namespace Order.WPF.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            double length;
-            
+            double length = 1;
             if (System.Convert.ToDouble(value) > 1)
                 length = (System.Convert.ToDouble(value)-1) * 80 + 11;
             else

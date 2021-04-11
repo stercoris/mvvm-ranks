@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="Resources/Buttons.xaml"/>
                 <ResourceDictionary Source="Resources/Slider.xaml"/>
                 <ResourceDictionary Source="Resources/Fonts.xaml"/>
+                <ResourceDictionary Source="Resources/ComboBoxes.xaml"/>
                 <ResourceDictionary Source="Resources/TextBoxes.xaml"/>
                 <ResourceDictionary Source="Resources/CustomForms.xaml"/>
                 <ResourceDictionary Source="Resources/MainWindowStyle.xaml"/>
@@ -21,7 +22,7 @@
             </ResourceDictionary.MergedDictionaries>
 
 
-            <!-- Эта херь не позваоляет оброезать винде края при максимизировании(?) окна-->
+            <!-- Эта херь не позваоляет обрезать винде края при максимизировании(?) окна-->
             <Style TargetType="{x:Type Panel}" x:Key="WindowMainPanelStyle">
                 <Setter Property="Margin" Value="0" />
                 <Style.Triggers>

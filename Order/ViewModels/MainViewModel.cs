@@ -54,7 +54,7 @@ namespace Order.WPF.ViewModels
 
             // STARTUP
             PageContainer = new PageContainer();
-            await Task.Delay(2000); //TODO: Для красоты, Убрать на релизе
+            //await Task.Delay(1000); //TODO: Для красоты, Убрать на релизе
             AppState = PageContainer;
             // STARTUP
 
