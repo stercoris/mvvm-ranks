@@ -16,7 +16,7 @@
         Command="{Binding ShowUsersCommand}"
         CommandParameter="{Binding}">
         <Button.ContextMenu>
-            <ContextMenu StaysOpen="true">
+            <ContextMenu Background="{StaticResource HorizontalPurpleGradient}" StaysOpen="true">
                 <MenuItem Header="Удалить" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding}"/>
             </ContextMenu>
         </Button.ContextMenu>
