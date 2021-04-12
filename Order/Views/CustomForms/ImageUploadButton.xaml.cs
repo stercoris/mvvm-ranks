@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -43,19 +44,24 @@ namespace Order.WPF.Views.CustomForms
             };
             if ((bool)dialog.ShowDialog())
             {
-                BitmapSource image = (new BitmapImage(new Uri(dialog.FileName)));
-                MemoryStream outStream = new();
-                BitmapEncoder enc = new BmpBitmapEncoder();
-                enc.Frames.Add(BitmapFrame.Create(image));
-                enc.Save(outStream);
-                Bitmap bitmap = new(outStream);
-                Bitmap bm = new(bitmap);
-                MemoryStream ms = new MemoryStream();
-                bm.Save(ms, ImageFormat.Jpeg);
-                byte[] byteImage = ms.ToArray();
-                outStream.Close();
-                ms.Close();
-                this.Picture = System.Convert.ToBase64String(byteImage);
+                new Thread(() => {
+                    BitmapSource image = (new BitmapImage(new Uri(dialog.FileName)));
+                    MemoryStream outStream = new();
+                    BitmapEncoder enc = new BmpBitmapEncoder();
+                    enc.Frames.Add(BitmapFrame.Create(image));
+                    enc.Save(outStream);
+                    Bitmap bitmap = new(outStream);
+                    Bitmap bm = new(bitmap);
+                    MemoryStream ms = new();
+                    bm.Save(ms, ImageFormat.Jpeg);
+                    byte[] byteImage = ms.ToArray();
+                    outStream.Close();
+                    ms.Close();
+
+                    Application.Current.Dispatcher.Invoke(() =>
+                        this.Picture = System.Convert.ToBase64String(byteImage)
+                    );
+                }).Start();
             }
         }
     }

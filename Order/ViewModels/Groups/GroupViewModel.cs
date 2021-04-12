@@ -14,19 +14,21 @@ namespace Order.WPF.ViewModels
         // Каллбек для перемещения объекта в режим редактирования
         public ICommand EditCommand { get; set; }
         public ICommand AddStudentCommand { get; set; }
-
+        public ICommand DeleteGroupCommand { get; set; }
 
         public GroupViewModel(
             Group group,
             ICommand groupSelectCommand,
             ICommand groupEditCommand,
-            ICommand addStudentCommand
+            ICommand addStudentCommand,
+            ICommand deleteGroupCommand
         )
         {
             this.Group = group;
             EditCommand = groupEditCommand;
             ShowUsersCommand = groupSelectCommand;
             AddStudentCommand = addStudentCommand;
+            DeleteGroupCommand = deleteGroupCommand;
         }
     }
 }

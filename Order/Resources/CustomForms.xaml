@@ -10,7 +10,9 @@
             </Grid.RowDefinitions>
             
             <ContentPresenter MinHeight="{TemplateBinding MinHeight}" MaxHeight="{TemplateBinding MaxHeight}"/>
-            <TextBox          
+            <TextBox
+                KeyboardNavigation.TabNavigation="None"
+                Focusable="False"
                 Grid.Row="1"
                 Style="{StaticResource LowerSignatureTextBox}"
                 Text="{TemplateBinding Uid}">

@@ -20,7 +20,7 @@ namespace Order.WPF.ViewModels
         public ICommand bNavGroupsAndUsersClick
         { get => ReactiveCommand.Create(() => SelectedPage = GroupsAndUsers); }
         public ICommand bNavRankListClick
-        { get => ReactiveCommand.Create(() => SelectedPage = RankList); }
+        { get => ReactiveCommand.Create(() => SelectedPage = new RankList() { DataContext = new RanksViewModel() }); }
 
         #endregion
 
@@ -34,7 +34,6 @@ namespace Order.WPF.ViewModels
             GroupsViewModel = new MainPageViewModel();
             RanksViewModel = new RanksViewModel();
             GroupsAndUsers = new MainPageView() { DataContext = this };
-            RankList = new RankList() { DataContext = RanksViewModel };
             SelectedPage = GroupsAndUsers;
             Log.Information($"{nameof(PageController)} was succ created");
         }
