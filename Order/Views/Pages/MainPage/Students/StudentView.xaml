@@ -33,7 +33,6 @@
                 <Run Text=" " />
                 <Run Text="{Binding User.SecondName}" />
             </TextBlock>
-            <!-- TODO: IsAsync= True или False - что лучше????? -->
 
             <Grid Grid.Row="1" Background="{StaticResource OrangeToPurpleGradient}">
                 <Image 

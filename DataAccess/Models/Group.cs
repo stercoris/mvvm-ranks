@@ -10,9 +10,9 @@ namespace Order.DataAccess.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = "Новая группа";
         public string Picture { get; set; }
-        public string About { get; set; }
+        public string About { get; set; } = "Описание";
         public DateTime Birthday { get; set; }
         public List<Student> Students { get; set; }
     }

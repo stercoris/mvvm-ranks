@@ -12,15 +12,15 @@ namespace Order.DataAccess.Models
         public int Id { get; set; }
 
         [Comment("First name of the user"), MaxLength(10), Required]
-        public string Name { get; set; }
+        public string Name { get; set; } = "Имя";
 
-        [Comment("Second name of the user"), MaxLength(10)]
+        [Comment("Second name of the user"), MaxLength(10), /*Required*/]
         public string SecondName { get; set; }
-        [Comment("Base64 picture of the user, can be nullable")]
+        [Comment("Base64 picture of the user, can be nullable"), /*Required*/]
         public string Picture { get; set; }
 
         [Comment("Short description of the user, cant be nullable"), Required, MaxLength(250)]
-        public string About { get; set; }
+        public string About { get; set; } = "Описание";
 
         [Comment("Rank of the user, cant be nullable"), /*Required*/]
         public Rank Rank { get; set; }
