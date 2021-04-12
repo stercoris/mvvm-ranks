@@ -14,8 +14,15 @@ namespace Order.WPF.Converters
         {
             var groupId = (value as DataAccess.Models.Group).Id;
 
-            var studentVMs = DataAccess.DBProvider.DBContext.Students
-                .Where(student => student.Group.Id == groupId).ToList()
+            var students = DataAccess.DBProvider.DBContext.Students
+                .Where(student => student.Group.Id == groupId).ToList();
+
+            if (!students.Any(student => student.Rank != null))
+            {
+                return (null);
+            }
+
+            var studentVMs = students
                 .OrderBy(user => user.Rank.Id).Reverse()
                 .Select(student => new StudentViewModel(student, null)).ToList();
 

@@ -11,22 +11,24 @@ namespace Order.DataAccess.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)] 
         public int Id { get; set; }
 
-        [Comment("First name of the user"), MaxLength(10), Required]
+        [Comment("First name of the user"), MaxLength(20), Required]
         public string Name { get; set; } = "Имя";
-
-        [Comment("Second name of the user"), MaxLength(10), /*Required*/]
-        public string SecondName { get; set; }
-        [Comment("Base64 picture of the user, can be nullable"), /*Required*/]
-        public string Picture { get; set; }
 
         [Comment("Short description of the user, cant be nullable"), Required, MaxLength(250)]
         public string About { get; set; } = "Описание";
 
-        [Comment("Rank of the user, cant be nullable"), /*Required*/]
-        public Rank Rank { get; set; }
-
-        [Comment("Group of the user, cant be nullable"), /*Required*/]
+        [Comment("Group of the user, cant be nullable"), Required]
         public Group Group { get; set; }
+        
+        #nullable enable
+        [Comment("Second name of the user"), MaxLength(20), /*Required*/]
+        public string? SecondName { get; set; }
+        [Comment("Base64 picture of the user, can be nullable"), /*Required*/]
+        public string? Picture { get; set; }
+
+        [Comment("Rank of the user, cant be nullable"), /*Required*/]
+        public Rank? Rank { get; set; }
+
 
     }
 }

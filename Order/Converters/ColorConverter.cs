@@ -14,6 +14,12 @@ namespace Order.WPF.Converters
         {
             //start 209, 25, 25
             //finish 25, 209, 25
+
+            if (!DataAccess.DBProvider.DBContext.Ranks.Any())
+            {
+                return (null);
+            }
+
             double ratio = System.Convert.ToDouble(value) / System.Convert.ToDouble(DataAccess.DBProvider.DBContext.Ranks.Max((r) => r.Id));
             Color myColor;
             if (ratio <= 0.5)
