@@ -27,31 +27,29 @@ namespace Order.WPF.ViewModels
                 CurrentlyEditableObject = (CurrentlyEditableObject == null) ? LastEditedObject : null
             );
 
-            SaveGroupCommand = ReactiveCommand.Create<Group>((newGroup) =>
-            {
-                DataAccess.DBProvider.DBContext.Groups.Add(newGroup);
-                var newGroupVM = new GroupViewModel(newGroup, SelectGroupCommand, SetEditableObject, AddStudentCommand);
-                this.Groups.Add(newGroupVM);
-                CurrentlyEditableObject = newGroupVM;
-            });
-
             DeleteUser = ReactiveCommand.Create<StudentViewModel>((student) =>
             {
                 this.Students.Remove(student);
                 DBProvider.DBContext.Students.Remove(student.User);
             });
 
-            SaveStudentCommand = ReactiveCommand.Create<Student>((newStudent) =>
+            AddGroupCommand = ReactiveCommand.Create(() =>
             {
+                var newGroup = new Group();
+                DataAccess.DBProvider.DBContext.Groups.Add(newGroup);
+                var newGroupVM = new GroupViewModel(newGroup, SelectGroupCommand, SetEditableObject, AddStudentCommand);
+                this.Groups.Add(newGroupVM);
+                CurrentlyEditableObject = newGroupVM;
+            });
+
+            AddStudentCommand = ReactiveCommand.Create(() =>
+            {
+                var newStudent = new Student{ Group = this.SelectedGroup.Group };
                 DataAccess.DBProvider.DBContext.Students.Add(newStudent);
                 var newStudentVM = new StudentViewModel(newStudent, DeleteUser, SetEditableObject);
                 this.Students.Add(newStudentVM);
                 CurrentlyEditableObject = newStudentVM;
             });
-
-
-            AddStudentCommand = ReactiveCommand.Create(() => CurrentlyEditableObject = new AddStudentViewModel(SaveStudentCommand));
-            AddGroupCommand = ReactiveCommand.Create(() => CurrentlyEditableObject = new AddGroupViewModel(SaveGroupCommand));
 
             this.WhenAnyValue(t => t.SelectedGroup).WhereNotNull()
                 .Select(group => DataAccess.DBProvider.DBContext.Students.Where(student => student.Group.Id == group.Group.Id)).WhereNotNull()

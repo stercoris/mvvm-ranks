@@ -176,12 +176,6 @@
                 <DataTemplate DataType="{x:Type viewmodels:StudentViewModel}">
                     <views:StudentEditView/>
                 </DataTemplate>
-                <DataTemplate DataType="{x:Type viewmodels:AddStudentViewModel}">
-                    <views:AddStudentView/>
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type viewmodels:AddGroupViewModel}">
-                    <views:AddGroupView/>
-                </DataTemplate>
             </Grid.Resources>
             
             <Frame x:Name="InfoFrame" 

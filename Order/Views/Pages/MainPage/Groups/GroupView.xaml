@@ -15,6 +15,11 @@
         Style="{StaticResource GroupSelectButton}" 
         Command="{Binding ShowUsersCommand}"
         CommandParameter="{Binding}">
+        <Button.ContextMenu>
+            <ContextMenu StaysOpen="true">
+                <MenuItem Header="Удалить"/>
+            </ContextMenu>
+        </Button.ContextMenu>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
