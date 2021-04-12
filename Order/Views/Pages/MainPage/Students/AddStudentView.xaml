@@ -29,9 +29,10 @@
                 Stretch="Uniform"
                 d:Source="/Images/no_image.png">
             </Image>
-            
-            <custom:ImageUploadButton 
-                Picture="{Binding Student.Picture, Mode=TwoWay}">
+
+            <custom:ImageUploadButton Picture="{
+                Binding Student.Picture, 
+                Mode=TwoWay, BindsDirectlyToSource=True}">
             </custom:ImageUploadButton>
         </Grid>
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">

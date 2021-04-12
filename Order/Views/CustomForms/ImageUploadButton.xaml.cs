@@ -20,15 +20,19 @@ namespace Order.WPF.Views.CustomForms
         public ImageUploadButton()
         {
             InitializeComponent();
-            this.DataContext = this;
         }
-        [Reactive] public string Picture { get; set; }
+
+        public string Picture
+        {
+            get { return (string)GetValue(PictureProperty); }
+            set { SetValue(PictureProperty, value); }
+        }
 
         public static readonly DependencyProperty PictureProperty =
            DependencyProperty.Register("Picture", typeof(string), typeof(ImageUploadButton),
                new FrameworkPropertyMetadata(null,
                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void LoadImage(object sender, RoutedEventArgs e)

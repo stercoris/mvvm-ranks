@@ -8,6 +8,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:viewmodels="clr-namespace:Order.WPF.ViewModels"
     xmlns:imageUpload="clr-namespace:Order.WPF.Views.CustomForms"
+    xmlns:custom="clr-namespace:Order.WPF.Views.CustomForms"
     d:DesignHeight="80" d:DesignWidth="800" Height="80"
     d:DataContext="{d:DesignInstance Type=viewmodels:RankItemViewModel, IsDesignTimeCreatable=False}"
     BorderThickness="3">
@@ -57,12 +58,15 @@
             MouseDoubleClick="groupName_MouseDoubleClick"
             VerticalAlignment="Center">
         </TextBox>
-        <imageUpload:ImageUploadButton
+        <custom:ImageUploadButton
             x:Name="ImageUpload"
             Visibility="Hidden"
             Grid.Column="2"
-            VerticalAlignment="Center">
-        </imageUpload:ImageUploadButton>
+            VerticalAlignment="Center" 
+            Picture="{
+                Binding Rank.Picture, 
+                Mode=TwoWay, BindsDirectlyToSource=True}">
+        </custom:ImageUploadButton>
         <Button
             Visibility="Hidden"
             x:Name="DeleteRank"

@@ -8,6 +8,7 @@
     xmlns:views="clr-namespace:Order.WPF.Views.Pages.MainPage"
     xmlns:viewmodels="clr-namespace:Order.WPF.ViewModels"
     xmlns:converters="clr-namespace:Order.WPF.Converters"
+    xmlns:custom="clr-namespace:Order.WPF.Views.CustomForms"
     d:DesignHeight ="1000" Width="360" x:Uid="Управление группой"
     d:DataContext="{d:DesignInstance Type=viewmodels:GroupViewModel, IsDesignTimeCreatable=False}">
     <UserControl.Resources>
@@ -36,32 +37,10 @@
                     Stretch="Uniform"
                     d:Source="/Images/no_image.png">
                 </Image>
-                <Button
-                    VerticalAlignment="Bottom"
-                    Width="auto"
-                    Height="auto"
-                    d:Height="100"
-                    HorizontalContentAlignment="Center"
-                    HorizontalAlignment="Right"
-                    Template="{StaticResource CustomButton}"
-                    Background="{x:Null}"
-                    BorderThickness="0">
-                    <Border
-                        Background="{StaticResource PurpleBrush}"
-                        CornerRadius="100"   
-                        Height="auto"
-                        Width="auto"
-                        BorderBrush="Black">
-                        <materialDesign:PackIcon 
-                            Style="{StaticResource NavBtnIcon}"
-                            Width="35"
-                            Height="35"
-                            Margin="10"
-                            HorizontalAlignment="Center"
-                            Kind="ImageEdit">
-                        </materialDesign:PackIcon>
-                    </Border>
-                </Button>
+                <custom:ImageUploadButton Picture="{
+                    Binding Group.Picture, 
+                    Mode=TwoWay, BindsDirectlyToSource=True}">
+                </custom:ImageUploadButton>
             </Grid>
         </StackPanel>
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1" >
