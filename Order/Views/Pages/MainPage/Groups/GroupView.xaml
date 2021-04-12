@@ -17,7 +17,7 @@
         CommandParameter="{Binding}">
         <Button.ContextMenu>
             <ContextMenu StaysOpen="true">
-                <MenuItem Header="Удалить"/>
+                <MenuItem Header="Удалить" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding}"/>
             </ContextMenu>
         </Button.ContextMenu>
         <Grid>

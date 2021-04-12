@@ -7,6 +7,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Reactive;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,11 +34,17 @@ namespace Order.WPF.ViewModels
                 DBProvider.DBContext.Students.Remove(student.User);
             });
 
+            DeleteGroupCommand = ReactiveCommand.Create<GroupViewModel>(group =>
+            {
+                this.Groups.Remove(group);
+                DBProvider.DBContext.Groups.Remove(group.Group);
+            });
+
             AddGroupCommand = ReactiveCommand.Create(() =>
             {
                 var newGroup = new Group();
                 DataAccess.DBProvider.DBContext.Groups.Add(newGroup);
-                var newGroupVM = new GroupViewModel(newGroup, SelectGroupCommand, SetEditableObject, AddStudentCommand);
+                var newGroupVM = new GroupViewModel(newGroup, SelectGroupCommand, SetEditableObject, AddStudentCommand, DeleteGroupCommand);
                 this.Groups.Add(newGroupVM);
                 CurrentlyEditableObject = newGroupVM;
             });
@@ -62,7 +69,7 @@ namespace Order.WPF.ViewModels
             {
                 var groups = DBProvider.DBContext.Groups;
                 Groups = new ObservableCollection<GroupViewModel>(
-                    groups.Select(group => new GroupViewModel(group, SelectGroupCommand, SetEditableObject, AddStudentCommand))
+                    groups.Select(group => new GroupViewModel(group, SelectGroupCommand, SetEditableObject, AddStudentCommand, DeleteGroupCommand))
                 );
                 SelectedGroup = Groups.First();
                 LastEditedObject = Groups.First();
@@ -84,6 +91,7 @@ namespace Order.WPF.ViewModels
         public ICommand AddStudentCommand { get; set; }
         private ICommand SetEditableObject { get; set; }
         private ICommand DeleteUser { get; set; }
+        public ICommand DeleteGroupCommand { get; set; }
 
         public ReactiveObject LastEditedObject;
 

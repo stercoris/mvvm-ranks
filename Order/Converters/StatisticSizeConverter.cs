@@ -19,6 +19,7 @@ namespace Order.WPF.Converters
             }
 
             var studentsRanks = DBProvider.DBContext.Students
+                .Where(student => student.Rank != null)
                 .Select(student => student.Rank.Id)
                 .ToList();
             int selectedStudents = studentsRanks
