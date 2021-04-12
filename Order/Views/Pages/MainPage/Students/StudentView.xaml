@@ -16,7 +16,7 @@
         Command="{Binding EditCommand}"
         CommandParameter="{Binding}">
         <Button.ContextMenu>
-            <ContextMenu Name="cm" StaysOpen="true">
+            <ContextMenu Name="cm" StaysOpen="true" Background="{StaticResource HorizontalPurpleGradient}">
                 <MenuItem Header="Удалить" Command="{Binding DeleteUserCommand}"/>
             </ContextMenu>
         </Button.ContextMenu>
