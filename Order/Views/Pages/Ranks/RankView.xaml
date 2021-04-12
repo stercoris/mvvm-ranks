@@ -24,6 +24,8 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Ellipse 
             x:Name="imgElipse"
@@ -91,5 +93,64 @@
                 </materialDesign:PackIcon>
             </Border>
         </Button>
+        <!--<Button
+            x:Name="RankUp"
+            Visibility="Visible"
+            Grid.Column="4"
+            HorizontalAlignment="Left" 
+            Width="auto"
+            Height="auto"
+            d:Height="80"
+            Template="{StaticResource CustomButton}"
+            Background="{x:Null}"
+            BorderThickness="0"
+            Margin="0"
+            Padding="0" Cursor="Hand">
+            <Border
+                CornerRadius="0" 
+                Margin="0"
+                Height="auto"
+                Width="auto"
+                BorderBrush="Black">
+                <materialDesign:PackIcon 
+                    Style="{StaticResource NavBtnIcon}"
+                    Width="50"
+                    Height="50"
+                    Margin="0"
+                    HorizontalAlignment="Center"
+                    Kind="ArrowCollapseUp">
+                </materialDesign:PackIcon>
+            </Border>
+        </Button>
+        <Button
+            x:Name="RankDown"
+            Visibility="Visible"
+            Grid.Column="5"
+            HorizontalAlignment="Left" 
+            Width="auto"
+            Height="auto"
+            d:Height="80"
+            Template="{StaticResource CustomButton}"
+            Background="{x:Null}"
+            BorderThickness="0"
+            Command="{Binding ChangeRanksPositionCommand}"
+            Margin="0"
+            Padding="0" Cursor="Hand">
+            <Border
+                CornerRadius="0" 
+                Margin="0"
+                Height="auto"
+                Width="auto"
+                BorderBrush="Black">
+                <materialDesign:PackIcon 
+                    Style="{StaticResource NavBtnIcon}"
+                    Width="50"
+                    Height="50"
+                    Margin="0"
+                    HorizontalAlignment="Center"
+                    Kind="ArrowCollapseDown">
+                </materialDesign:PackIcon>
+            </Border>
+        </Button>-->
     </Grid>
 </UserControl>

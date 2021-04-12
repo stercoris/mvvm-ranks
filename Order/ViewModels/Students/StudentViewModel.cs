@@ -17,9 +17,9 @@ namespace Order.WPF.ViewModels
         // Каллбек для перемещения объекта в режим редактирования
         public ICommand EditCommand { get; set; }
         public ICommand ChangeRank { get; set; }
-        public ICommand DeleteUser{ get; set; }
+        public ICommand DeleteUserCommand { get; set; }
 
-        public StudentViewModel(Student user, ICommand editCommand = null)
+        public StudentViewModel(Student user, ICommand DeleteUser, ICommand editCommand = null)
         {
             this.User = user;
             this.EditCommand = editCommand;
@@ -37,10 +37,11 @@ namespace Order.WPF.ViewModels
                 catch{ }
                 this.RaisePropertyChanged(nameof(User));
             });
-            DeleteUser = ReactiveCommand.Create((string dif) =>
+            this.DeleteUserCommand = ReactiveCommand.Create(() =>
             {
-                MessageBox.Show("юсер был удален. Честно!!!");
+                DeleteUser.Execute(this);
             });
+
         }
     }
 }

@@ -22,7 +22,6 @@ namespace Order.WPF.Views.Pages.Ranks
         public RankList()
         {
             InitializeComponent();
-
         }
     }
 }

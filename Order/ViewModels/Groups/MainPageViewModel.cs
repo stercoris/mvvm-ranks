@@ -35,12 +35,16 @@ namespace Order.WPF.ViewModels
                 CurrentlyEditableObject = newGroupVM;
             });
 
-
+            DeleteUser = ReactiveCommand.Create<StudentViewModel>((student) =>
+            {
+                this.Students.Remove(student);
+                DBProvider.DBContext.Students.Remove(student.User);
+            });
 
             SaveStudentCommand = ReactiveCommand.Create<Student>((newStudent) =>
             {
                 DataAccess.DBProvider.DBContext.Students.Add(newStudent);
-                var newStudentVM = new StudentViewModel(newStudent, SetEditableObject);
+                var newStudentVM = new StudentViewModel(newStudent, DeleteUser, SetEditableObject);
                 this.Students.Add(newStudentVM);
                 CurrentlyEditableObject = newStudentVM;
             });
@@ -51,7 +55,7 @@ namespace Order.WPF.ViewModels
 
             this.WhenAnyValue(t => t.SelectedGroup).WhereNotNull()
                 .Select(group => DataAccess.DBProvider.DBContext.Students.Where(student => student.Group.Id == group.Group.Id)).WhereNotNull()
-                .Select(students => students.Select(student => new StudentViewModel(student, SetEditableObject)))
+                .Select(students => students.Select(student => new StudentViewModel(student, DeleteUser, SetEditableObject)))
                 .Select(studentsVMs => new ObservableCollection<StudentViewModel>(studentsVMs))
                 .Subscribe((students) => Students =  students);
 
@@ -81,6 +85,7 @@ namespace Order.WPF.ViewModels
         public ICommand AddGroupCommand { get; set; }
         public ICommand AddStudentCommand { get; set; }
         private ICommand SetEditableObject { get; set; }
+        private ICommand DeleteUser { get; set; }
 
         public ReactiveObject LastEditedObject;
 
