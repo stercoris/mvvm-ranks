@@ -13,8 +13,13 @@ namespace Order.WPF.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             int rankId = System.Convert.ToInt32(value);
+            if(!DBProvider.DBContext.Students.Any(student => student.Rank != null))
+            {
+                return (null);
+            }
+
             var studentsRanks = DBProvider.DBContext.Students
-                .Select((student) => student.Rank.Id)
+                .Select(student => student.Rank.Id)
                 .ToList();
             int selectedStudents = studentsRanks
                 .Where(studentRank => studentRank == rankId).Count();
