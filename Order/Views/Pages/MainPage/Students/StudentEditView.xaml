@@ -32,7 +32,7 @@
             </Image>
             <custom:ImageUploadButton Picture="{
                 Binding User.Picture, 
-                Mode=TwoWay, BindsDirectlyToSource=True}">
+                Mode=TwoWay, IsAsync=True}">
             </custom:ImageUploadButton>
         </Grid>
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">
