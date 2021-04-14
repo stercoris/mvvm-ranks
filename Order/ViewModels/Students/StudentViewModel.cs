@@ -28,13 +28,16 @@ namespace Order.WPF.ViewModels
                 var ranks = DataAccess.DBProvider.DBContext.Ranks.ToList();
                 int index = ranks.IndexOf(User.Rank);
                 int rankDif = System.Convert.ToInt32(dif);
-                try
+                if (index + rankDif < ranks.Count && index + rankDif >= 0)
                 {
-                    User.Rank = ranks
-                    .ElementAt(index + rankDif)
-                    ?? User.Rank;
+                    User.Rank = ranks.ElementAt(index + rankDif);
                 }
-                catch{ }
+                //try
+                //{
+                    
+                //    ?? User.Rank;
+                //}
+                //catch{ }
                 this.RaisePropertyChanged(nameof(User));
             });
             this.DeleteUserCommand = ReactiveCommand.Create(() =>
