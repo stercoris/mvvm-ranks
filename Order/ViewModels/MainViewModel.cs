@@ -5,9 +5,7 @@ using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Serilog;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
@@ -45,9 +43,9 @@ namespace Order.WPF.ViewModels
                 Interval = TimeSpan.FromSeconds(1),
             };
             autoSaveTimer.Tick += (sender, args) =>
-            { 
-                try { DBProvider.DBContext.SaveChanges(); } 
-                catch { } 
+            {
+                try { DBProvider.DBContext.SaveChanges(); }
+                catch { }
             };
             autoSaveTimer.Start();
             // AUTOSAVING

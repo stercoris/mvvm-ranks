@@ -8,7 +8,7 @@ namespace Order.DataAccess.Models
     public class Student
     {
 
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)] 
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Comment("First name of the user"), MaxLength(20), Required]
@@ -19,8 +19,8 @@ namespace Order.DataAccess.Models
 
         [Comment("Group of the user, cant be nullable"), Required]
         public Group Group { get; set; }
-        
-        #nullable enable
+
+#nullable enable
         [Comment("Second name of the user"), MaxLength(20), /*Required*/]
         public string? SecondName { get; set; }
         [Comment("Base64 picture of the user, can be nullable"), /*Required*/]

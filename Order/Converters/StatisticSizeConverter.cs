@@ -13,7 +13,7 @@ namespace Order.WPF.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             int rankId = System.Convert.ToInt32(value);
-            if(!DBProvider.DBContext.Students.Any(student => student.Rank != null))
+            if (!DBProvider.DBContext.Students.Any(student => student.Rank != null))
             {
                 return (null);
             }

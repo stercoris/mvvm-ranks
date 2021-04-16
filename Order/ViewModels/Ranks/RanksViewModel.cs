@@ -1,13 +1,10 @@
-﻿using DynamicData;
-using Order.DataAccess;
+﻿using Order.DataAccess;
 using Order.DataAccess.Models;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 
@@ -27,8 +24,8 @@ namespace Order.WPF.ViewModels
                 try
                 {
                     int index = RankItems.IndexOf(rank);
-                    Swap(RankItems, index, index+1);
-                    Swap(DBProvider.DBContext.Ranks.ToList(), index, index+1);
+                    Swap(RankItems, index, index + 1);
+                    Swap(DBProvider.DBContext.Ranks.ToList(), index, index + 1);
                 }
                 catch { }
                 //MessageBox.Show("" + RankItems.IndexOf(rank));

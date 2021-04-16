@@ -8,7 +8,7 @@ namespace Order.WPF.ViewModels
 {
     class AddGroupViewModel : ReactiveObject
     {
-        [Reactive] public Group Group { get; set; } 
+        [Reactive] public Group Group { get; set; }
         public ICommand Save { get; set; }
         public AddGroupViewModel(ICommand saveGroupCommand)
         {

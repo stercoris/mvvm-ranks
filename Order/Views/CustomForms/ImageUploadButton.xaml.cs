@@ -1,6 +1,4 @@
-﻿using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -8,7 +6,6 @@ using System.IO;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Order.WPF.Views.CustomForms
@@ -33,7 +30,7 @@ namespace Order.WPF.Views.CustomForms
            DependencyProperty.Register("Picture", typeof(string), typeof(ImageUploadButton),
                new FrameworkPropertyMetadata(null,
                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void LoadImage(object sender, RoutedEventArgs e)
@@ -44,7 +41,8 @@ namespace Order.WPF.Views.CustomForms
             };
             if ((bool)dialog.ShowDialog())
             {
-                new Thread(() => {
+                new Thread(() =>
+                {
                     BitmapSource image = (new BitmapImage(new Uri(dialog.FileName)));
                     MemoryStream outStream = new();
                     BitmapEncoder enc = new BmpBitmapEncoder();

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Animation;
-using Order.WPF.ViewModels;
 
 namespace Order.WPF.Views.Pages.Ranks
 {
@@ -20,13 +16,13 @@ namespace Order.WPF.Views.Pages.Ranks
         }
         private void ExpandRankClick(object sender, RoutedEventArgs e)
         {
-            
+
 
 
         }
-        
-       Style OrderTextBox = Application.Current.FindResource("OrderTextBox") as Style;
-       Style ChangeableOrderTextBox = Application.Current.FindResource("ChangeableOrderTextBox") as Style;
+
+        Style OrderTextBox = Application.Current.FindResource("OrderTextBox") as Style;
+        Style ChangeableOrderTextBox = Application.Current.FindResource("ChangeableOrderTextBox") as Style;
         private void groupName_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (!groupName.IsReadOnly)

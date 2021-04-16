@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Threading;
 
 namespace Order.DataAccess
 {
@@ -28,8 +27,9 @@ namespace Order.DataAccess
             }
         }
 
-        public static OrderContext DBLocalContext { 
-            get => new OrderContext(new DbContextOptions<OrderContext>()); 
+        public static OrderContext DBLocalContext
+        {
+            get => new OrderContext(new DbContextOptions<OrderContext>());
         } // Local context with using
 
     }

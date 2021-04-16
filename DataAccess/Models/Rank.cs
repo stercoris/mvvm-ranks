@@ -12,7 +12,7 @@ namespace Order.DataAccess.Models
         public int Id { get; set; }
         [Comment("Displayed name of the rank"), MaxLength(20), Required]
 
-        #nullable enable
+#nullable enable
         public string? Name { get; set; }
         [Comment("Base64 picture of the rank, can be nullable"), /*Required*/]
         public string? Picture { get; set; }

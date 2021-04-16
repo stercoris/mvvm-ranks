@@ -1,12 +1,8 @@
 ﻿using Order.DataAccess.Models;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using System.Diagnostics;
 using System.Linq;
-using System.Reactive;
-using System.Windows;
 using System.Windows.Input;
-using Order.WPF.ViewModels;
 
 
 namespace Order.WPF.ViewModels
@@ -34,7 +30,7 @@ namespace Order.WPF.ViewModels
                 }
                 //try
                 //{
-                    
+
                 //    ?? User.Rank;
                 //}
                 //catch{ }

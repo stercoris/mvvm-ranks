@@ -1,7 +1,6 @@
 ﻿using Order.DataAccess.Models;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using System.Linq;
 using System.Windows.Input;
 
 namespace Order.WPF.ViewModels

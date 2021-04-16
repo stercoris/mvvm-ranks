@@ -1,16 +1,11 @@
-﻿using DynamicData;
-using Order.DataAccess;
+﻿using Order.DataAccess;
 using Order.DataAccess.Models;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Reactive;
 using System.Reactive.Linq;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Order.WPF.ViewModels
@@ -19,7 +14,7 @@ namespace Order.WPF.ViewModels
     {
         public MainPageViewModel()
         {
-            
+
 
             SetEditableObject = ReactiveCommand.Create<ReactiveObject>(objectToEdit => CurrentlyEditableObject = objectToEdit);
             SelectGroupCommand = ReactiveCommand.Create<GroupViewModel>(groupvm => SelectedGroup = groupvm);
@@ -51,7 +46,7 @@ namespace Order.WPF.ViewModels
 
             AddStudentCommand = ReactiveCommand.Create(() =>
             {
-                var newStudent = new Student{ Group = this.SelectedGroup.Group };
+                var newStudent = new Student { Group = this.SelectedGroup.Group };
                 DataAccess.DBProvider.DBContext.Students.Add(newStudent);
                 var newStudentVM = new StudentViewModel(newStudent, DeleteUser, SetEditableObject);
                 this.Students.Add(newStudentVM);
@@ -62,7 +57,7 @@ namespace Order.WPF.ViewModels
                 .Select(group => DataAccess.DBProvider.DBContext.Students.Where(student => student.Group.Id == group.Group.Id)).WhereNotNull()
                 .Select(students => students.Select(student => new StudentViewModel(student, DeleteUser, SetEditableObject)))
                 .Select(studentsVMs => new ObservableCollection<StudentViewModel>(studentsVMs))
-                .Subscribe((students) => Students =  students);
+                .Subscribe((students) => Students = students);
 
 
             if (DataAccess.DBProvider.DBContext.Groups.Any())
