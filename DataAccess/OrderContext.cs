@@ -15,11 +15,12 @@ namespace Order.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory; // TODO: Наверное это и не работает в релизе?
 
 #if DEBUG
-                string dbPath = Path.Combine(path, "..\\..\\..\\..\\DataAccess\\order.db");
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            string dbPath = Path.Combine(path, "..\\..\\..\\..\\..\\DataAccess\\" + Config.DBName);
 #else
+            string path = Directory.GetCurrentDirectory();
             string dbPath = Path.Combine(path, Config.DBName);
 #endif
 
